@@ -237,9 +237,22 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <li><a href="planes.html">Planes</a></li>
     <li><a href="resultados.html" class="active">Resultados</a></li>
   </ul>
-  <a class="nav-cta" href="https://protocololumina.cl/evaluacion/" target="_blank">Agenda tu hora</a>
+  <a class="nav-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank">Agenda tu hora</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:rgba(251,246,244,0.99);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:0;">
+  <button onclick="closeMobileMenu()" style="position:absolute;top:24px;right:24px;background:none;border:none;cursor:pointer;padding:8px;">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#1E1818" stroke-width="1.5"><line x1="1" y1="1" x2="21" y2="21"/><line x1="21" y1="1" x2="1" y2="21"/></svg>
+  </button>
+  <nav style="display:flex;flex-direction:column;align-items:center;gap:36px;">
+    <a href="index.html" style="font-family:'Sora',sans-serif;font-size:13px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(30,24,24,0.85);text-decoration:none;font-weight:500;">Inicio</a>
+    <a href="planes.html" style="font-family:'Sora',sans-serif;font-size:13px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(30,24,24,0.85);text-decoration:none;font-weight:500;">Planes</a>
+    <a href="resultados.html" style="font-family:'Sora',sans-serif;font-size:13px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(30,24,24,0.85);text-decoration:none;font-weight:500;">Resultados</a>
+  </nav>
+  <a href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank" style="margin-top:48px;font-family:'Sora',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:#4CAF7D;padding:14px 32px;text-decoration:none;font-weight:500;">Agenda tu hora</a>
+</div>
 
 <!-- ══ PAGE HEADER — CLARO ROSADO ══ -->
 <div class="page-header hanji">
@@ -536,20 +549,15 @@ window.addEventListener('scroll', ()=>{
 }, { passive:true });
 
 /* ── Hamburger ── */
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').style.display='none';
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
 document.getElementById('hamburger').addEventListener('click', ()=>{
-  const hb = document.getElementById('hamburger');
-  const l = document.querySelector('.nav-links');
-  const isOpen = hb.classList.contains('open');
-  if(isOpen){
-    hb.classList.remove('open');
-    l.style.cssText = '';
-    l.querySelectorAll('a').forEach(a=>{ a.style.cssText=''; });
-  } else {
-    hb.classList.add('open');
-    l.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(251,246,244,0.98);backdrop-filter:blur(20px);align-items:center;justify-content:center;gap:40px;z-index:1000;';
-    l.querySelectorAll('a').forEach(a=>{ a.style.cssText='color:rgba(30,24,24,0.8);font-size:18px;letter-spacing:3px;'; });
-    l.querySelectorAll('a').forEach(a=>{ a.onclick=()=>{ hb.classList.remove('open'); l.style.cssText=''; }; });
-  }
+  document.getElementById('mobileMenu').style.display='flex';
+  document.getElementById('hamburger').classList.add('open');
+  document.body.style.overflow='hidden';
 });
 
 /* ── Scroll reveal ── */
