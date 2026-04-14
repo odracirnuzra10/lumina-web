@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Tag Manager -->
+  <script async="" src="./img/clarity.js"></script><script async="" src="./img/vs3vnkx1gb"></script><script src="./img/271117138864148" async=""></script><script async="" src="./img/fbevents.js"></script><script type="text/javascript" async="" src="./img/js"></script><script async="" src="./img/gtm.js"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TZC56NQ5');</script>
+  <!-- End Google Tag Manager -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title>Evaluación P3 — Lumina</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://connect.facebook.net/">
+  <link rel="dns-prefetch" href="https://www.clarity.ms/">
+  
+  <link rel="preload" as="image" href="./img/l1.jpeg" fetchpriority="high">
+  
+  <!-- Non-blocking Fonts -->
+  
+  
+  <script>
+    window.webkit = window.webkit || {};
+    window.webkit.messageHandlers = window.webkit.messageHandlers || window.webkit.messagehandlers || {};
+    
+    // Non-blocking third-party scripts
+    window.addEventListener('load', function() {
+      // Facebook Pixel
+      !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js'); 
+      fbq('init', '271117138864148'); 
+      fbq('track', 'PageView', {value: 1, currency: 'USD'});
+      
+      // Microsoft Clarity
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "vs3vnkx1gb");
+    });
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --teal: #0E0E0E;
+      --teal-dark: #1E1818;
+      --teal-darker: #0E0E0E;
+      --teal-light: #FBF6F4;
+      --cream: #ffffff;
+      --text: #1E1818;
+      --text-sec: #636e72;
+      --wa-green: #25D366;
+      --btn-disabled: #b0b0b0;
+      --radius: 12px;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LAYOUT ===== */
+    .page {
+      display: flex;
+      height: 100dvh;
+      width: 100%;
+    }
+
+    /* LEFT COLUMN */
+    .left-col {
+      width: 50%;
+      background: #0E0E0E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .left-col::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .logo .metodo {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 2px;
+    }
+
+    .logo .lumina {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 12px;
+      margin-top: -2px;
+    }
+
+    /* Carousel */
+    .carousel-wrap {
+      width: 72%;
+      max-width: 360px;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      background: #111111;
+    }
+
+    .carousel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .carousel-img.active {
+      opacity: 1;
+    }
+
+    .carousel-caption {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 0.4rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      width: 22px;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    /* Price Badge */
+    .price-badge {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 0.8rem 2rem;
+      text-align: center;
+      margin-top: 1.2rem;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .price-badge .label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.2rem;
+    }
+
+    .price-badge .prices {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .price-badge .old {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: line-through;
+      font-weight: 300;
+    }
+
+    .price-badge .new {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 3rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .price-badge .savings {
+      font-size: 0.75rem;
+      color: #7ddfb8;
+      margin-top: 0.15rem;
+      font-weight: 500;
+    }
+
+    .spots-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #7ddfb8;
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    /* RIGHT COLUMN */
+    .right-col {
+      width: 50%;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* Center horizontally/vertically */
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .right-inner {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      /* Allow centered content to take natural height */
+      max-height: 95vh;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 6px;
+      padding: 1.2rem 2rem 0;
+      flex-shrink: 0;
+    }
+
+    .progress-seg {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: #e5e1e9;
+      transition: background 0.4s ease;
+    }
+
+    /* FCP/LCP Speed Optimization: Remove initial animations */
+    .logo, .carousel-wrap, .price-badge, .spots-tag {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    .progress-seg.done {
+      background: var(--teal);
+    }
+
+    .progress-seg.active {
+      background: var(--teal);
+    }
+
+    .steps-viewport {
+      height: 620px;
+      /* Fixed height for absolute steps on desktop */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Center form fields vertically within the step */
+      opacity: 0;
+      transform: translateX(60px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      overflow-y: auto;
+    }
+
+    .step.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .step.exit-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      pointer-events: none;
+    }
+
+    .step.exit-right {
+      opacity: 0;
+      transform: translateX(60px);
+      pointer-events: none;
+    }
+
+    .viewers {
+      font-size: 0.78rem;
+      color: var(--text-sec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .viewers-count {
+      transition: opacity 0.4s;
+    }
+
+    .step-label {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      color: var(--teal);
+      margin-bottom: 0.3rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .step-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .step-title em {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .step-sub {
+      font-size: 0.85rem;
+      color: var(--text-sec);
+      margin-bottom: 1rem;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: none;
+      border: none;
+      color: var(--text-sec);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      margin-bottom: 0.6rem;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Sede Cards */
+    .sede-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      width: 100%;
+    }
+
+    .sede-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      border: 1.5px solid #e8e8e8;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      background: #fff;
+    }
+
+    .sede-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 2px 12px rgba(14, 14, 14, 0.08);
+    }
+
+    .sede-card.selected {
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+
+    .sede-card .emoji {
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--teal-light);
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .sede-card.selected .emoji {
+      background: rgba(232, 180, 184, 0.15);
+    }
+
+    .sede-card .info {
+      flex: 1;
+    }
+
+    .sede-card .info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .sede-card .info p {
+      font-size: 0.78rem;
+      color: var(--text-sec);
+      font-weight: 300;
+    }
+
+    .sede-card .check-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s;
+    }
+
+    .sede-card.selected .check-circle {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .sede-card .check-circle svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .sede-card.selected .check-circle svg {
+      opacity: 1;
+    }
+
+    /* Day grid */
+    .day-grid {
+      display: flex;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .day-btn {
+      flex: 1;
+      min-width: 54px;
+      padding: 0.55rem 0.3rem;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .day-btn:hover {
+      border-color: var(--teal);
+    }
+
+    .day-btn.selected {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .day-btn .day-name {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .day-btn.selected .day-name {
+      opacity: 1;
+    }
+
+    .day-btn .day-num {
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .slot-label {
+      font-size: 0.76rem;
+      color: var(--text-sec);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .slot-grid {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .slot-btn {
+      flex: 1;
+      min-width: 90px;
+      padding: 0.6rem 0.5rem;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .slot-btn:hover {
+      border-color: var(--teal);
+    }
+
+    .slot-btn.selected {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .slot-btn .slot-time {
+      font-size: 0.68rem;
+      font-weight: 300;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .slot-btn.selected .slot-time {
+      opacity: 0.9;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-group label {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-sec);
+      margin-bottom: 0.25rem;
+      display: block;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .form-group input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(14, 14, 14, 0.1);
+    }
+
+    .form-group input.error {
+      border-color: #e74c3c;
+      animation: shake 0.4s ease;
+    }
+
+    .wa-btn {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      margin-top: 0.4rem;
+    }
+
+    .wa-btn.disabled {
+      background: var(--btn-disabled);
+      pointer-events: none;
+    }
+
+    .wa-btn.enabled {
+      background: var(--wa-green);
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+
+    .wa-btn.enabled:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4);
+    }
+
+    .wa-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-sec);
+      margin-top: 0.6rem;
+      font-weight: 300;
+    }
+
+    /* Success Overlay */
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: #0E0E0E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    .success-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-check {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      animation: scaleBounce 0.6s ease 0.2s both;
+    }
+
+    .success-check svg {
+      width: 40px;
+      height: 40px;
+      color: #fff;
+    }
+
+    .success-overlay h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 3.5rem;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.5s ease 0.3s both;
+    }
+
+    .success-overlay p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.92rem;
+      text-align: center;
+      max-width: 340px;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.5s ease 0.4s both;
+    }
+
+    .success-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wa-green);
+      color: #fff;
+      padding: 0.95rem 2rem;
+      border-radius: 12px;
+      border: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.5s ease 0.5s both;
+    }
+
+    .success-wa-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+    }
+
+    .success-wa-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .success-note {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.75rem;
+      text-align: center;
+      max-width: 320px;
+      margin-top: 1.2rem;
+      animation: fadeUp 0.5s ease 0.6s both;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+
+      html,
+      body {
+        overflow: auto;
+        height: auto;
+      }
+
+      .page {
+        flex-direction: column;
+        min-height: 100dvh;
+      }
+
+      .left-col {
+        display: none;
+      }
+
+      .right-col {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Reset desktop centering */
+        flex: 1;
+        /* Ensure it fills available height */
+      }
+
+      .step {
+        padding: 0.8rem 1rem 1.2rem;
+        /* Reducido top padding de 1.2rem a 0.8rem */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.7rem;
+        /* Reducido de 1.2rem */
+        flex: 1;
+      }
+
+      .step>* {
+        margin: 0 !important;
+        /* Reseteamos todos los márgenes para usar solo el gap */
+      }
+
+      .steps-viewport {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mobile-header-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        background: #0E0E0E;
+      }
+
+      .mobile-hero {
+        display: flex !important;
+        flex-direction: row;
+        padding: 0.8rem 1.2rem;
+        /* Reducido de 1.2rem vertical */
+        gap: 1.2rem;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .right-inner {
+        width: 100%;
+        flex: 1;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .progress-bar {
+        padding: 0.5rem 1.5rem;
+        /* Reducido de 1rem a 0.5rem vertical */
+        background: #fff;
+      }
+
+      .mobile-hero .mobile-carousel {
+        width: 155px;
+        /* Más ancho para el aspecto horizontal */
+        aspect-ratio: 4 / 3;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        background: #111111;
+      }
+
+      .mobile-hero .mobile-carousel img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* Foto completa, no cortada */
+        opacity: 0;
+        transition: opacity 0.7s;
+      }
+
+      .mobile-hero .mobile-carousel img.active {
+        opacity: 1;
+      }
+
+      .mobile-hero .mobile-info {
+        color: #fff;
+        text-align: left;
+        flex: 1;
+      }
+
+      .mobile-hero .mobile-info .m-logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 0.72rem;
+        opacity: 0.8;
+        margin-bottom: -1px;
+      }
+
+      .mobile-hero .mobile-info .m-lumina {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+        line-height: 1;
+      }
+
+      .mobile-hero .mobile-info .m-price-old {
+        font-size: 0.75rem;
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
+
+      .mobile-hero .mobile-info .m-price-new {
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        font-size: 2.8rem;
+        line-height: 0.9;
+        margin-top: 5px;
+      }
+
+      .mobile-hero .mobile-info .m-savings {
+        font-size: 0.65rem;
+        color: #7ddfb8;
+        font-weight: 500;
+      }
+
+      .mobile-hero .mobile-info .m-spots {
+        font-size: 0.7rem;
+        opacity: 0.8;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.3rem;
+      }
+
+      .mobile-hero .mobile-info .m-spots .pulse-dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .step-title {
+        font-size: 1.7rem;
+        margin-bottom: 0.4rem;
+        margin-top: 0.2rem;
+      }
+
+      .step-sub {
+        font-size: 0.95rem;
+      }
+
+      .sede-cards {
+        gap: 1rem;
+      }
+
+      .sede-card {
+        padding: 1.2rem 1rem;
+      }
+
+      .sede-card .emoji {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        border-radius: 8px;
+      }
+
+      .day-grid {
+        gap: 0.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .slot-grid {
+        gap: 0.8rem;
+      }
+
+      .wa-btn {
+        margin-top: 0 !important;
+      }
+
+      .day-btn .day-num {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+
+      .mobile-hero,
+      .mobile-ticker-wrap {
+        display: none !important;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.4);
+      }
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-6px);
+      }
+
+      40% {
+        transform: translateX(6px);
+      }
+
+      60% {
+        transform: translateX(-4px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    @keyframes scaleBounce {
+      0% {
+        transform: scale(0);
+      }
+
+      60% {
+        transform: scale(1.15);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* === Marquesina de tratamientos (Lumina) === */
+    .ticker-wrap {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.42rem 0;
+    }
+
+    .ticker-badge {
+      flex-shrink: 0;
+      padding: 0.18rem 0.85rem 0.18rem 0.9rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #E8B4B8;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+
+    .ticker-scroll-area {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-scroll-area::before,
+    .ticker-scroll-area::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .ticker-scroll-area::before {
+      left: 0;
+      background: linear-gradient(to right, #0E0E0E, transparent);
+    }
+
+    .ticker-scroll-area::after {
+      right: 0;
+      background: linear-gradient(to left, #0E0E0E, transparent);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker-scroll 22s linear infinite;
+      width: max-content;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0 1.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+    }
+
+    .ticker-item .t-sub {
+      font-size: 0.6rem;
+      opacity: 0.55;
+      margin-left: 0.2rem;
+    }
+
+    .ticker-item .t-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.92rem;
+      color: #E8B4B8;
+      letter-spacing: 0.5px;
+    }
+
+    .ticker-item .t-sep {
+      opacity: 0.25;
+      font-size: 0.6rem;
+    }
+
+    /* Mobile ticker */
+    .mobile-ticker-wrap {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: #0A0A0A;
+      padding: 0.28rem 0;
+    }
+
+    .mobile-ticker-wrap .ticker-badge {
+      padding: 0.1rem 0.7rem 0.1rem 0.75rem;
+      font-size: 0.53rem;
+      letter-spacing: 1.2px;
+      border-right-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-ticker-wrap .ticker-scroll-area::before {
+      background: linear-gradient(to right, #0A0A0A, transparent);
+    }
+
+    .mobile-ticker-wrap .ticker-scroll-area::after {
+      background: linear-gradient(to left, #0A0A0A, transparent);
+      width: 20px;
+    }
+
+    .mobile-ticker-wrap .ticker-track {
+      animation-duration: 20s;
+    }
+
+    .mobile-ticker-wrap .ticker-item {
+      font-size: 0.68rem;
+      padding: 0 1.2rem;
+    }
+
+    .mobile-ticker-wrap .ticker-item .t-price {
+      font-size: 0.85rem;
+    }
+
+    @keyframes ticker-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZC56NQ5"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="page">
+    <!-- LEFT COLUMN (Desktop) -->
+    <div class="left-col">
+      <div class="logo">
+        <img src="./img/logo.png" alt="Lumina" style="max-height: 85px; width: auto; display: block; margin: 0 auto 0.5rem;">
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel" id="carouselDesktop">
+          <img class="carousel-img" src="./img/l1.jpeg" alt="Caso 1">
+          <img class="carousel-img active" src="./img/l2.jpeg" alt="Caso 2">
+          <img class="carousel-img" src="./img/l3.jpeg" alt="Caso 3">
+          <img class="carousel-img" src="./img/l4.jpeg" alt="Caso 4">
+        </div>
+        <div class="carousel-caption" id="carouselCaption">Caso exitoso N°204</div>
+        <div class="dots" id="dotsDesktop">
+          <div class="dot" data-i="0"></div>
+          <div class="dot active" data-i="1"></div>
+          <div class="dot" data-i="2"></div>
+          <div class="dot" data-i="3"></div>
+        </div>
+      </div>
+      <div class="price-badge">
+        <div class="label" style="font-size: 1.15rem; line-height: 1.3; text-transform: none; font-weight: 600;">la
+          mejor tecnología coreana del país</div>
+      </div>
+      <div class="spots-tag">
+        <div class="pulse-dot"></div>
+        3 cupos disponibles esta semana
+      </div>
+
+      <!-- Marquesina tratamientos (desktop) -->
+      <div class="ticker-wrap">
+        <div class="ticker-badge">Los más<br>solicitados</div>
+        <div class="ticker-scroll-area">
+          <div class="ticker-track">
+            <span class="ticker-item"><span class="t-name">Armonía de Busan</span><span class="t-sub">26
+                ses.</span><span class="t-price">$3.997.990</span></span><span class="ticker-item t-sep">◆</span>
+            <span class="ticker-item"><span class="t-name">Glow de Seoul</span><span class="t-sub">12 ses.</span><span class="t-price">$897.990</span></span><span class="ticker-item t-sep">◆</span>
+            <span class="ticker-item"><span class="t-name">Incheon Elixir</span><span class="t-sub">14 ses.</span><span class="t-price">$2.997.990</span></span><span class="ticker-item t-sep">◆</span>
+            <!-- duplicado para loop infinito -->
+            <span class="ticker-item"><span class="t-name">Armonía de Busan</span><span class="t-sub">26
+                ses.</span><span class="t-price">$3.997.990</span></span><span class="ticker-item t-sep">◆</span>
+            <span class="ticker-item"><span class="t-name">Glow de Seoul</span><span class="t-sub">12 ses.</span><span class="t-price">$897.990</span></span><span class="ticker-item t-sep">◆</span>
+            <span class="ticker-item"><span class="t-name">Incheon Elixir</span><span class="t-sub">14 ses.</span><span class="t-price">$2.997.990</span></span><span class="ticker-item t-sep">◆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+      <div class="mobile-header-wrapper">
+        <div class="mobile-hero">
+          <div class="mobile-carousel" id="carouselMobile">
+            <img class="" src="./img/l1.jpeg" alt="Caso 1" fetchpriority="high">
+            <img src="./img/l2.jpeg" alt="Caso 2" class="active">
+            <img src="./img/l3.jpeg" alt="Caso 3">
+            <img src="./img/l4.jpeg" alt="Caso 4">
+          </div>
+          <div class="mobile-info">
+            <img src="./img/logo.png" alt="Lumina" style="max-height: 48px; width: auto; display: block; margin-bottom: 6px;">
+            <div class="m-price-new" style="font-size: 0.9rem; font-family: &#39;Outfit&#39;, sans-serif; text-transform: none; line-height: 1.2; margin-top: 4px; font-weight: 600;">
+              la mejor tecnología<br>coreana del país</div>
+          </div>
+        </div>
+        <!-- Marquesina tratamientos (mobile) -->
+        <div class="mobile-ticker-wrap">
+          <div class="ticker-badge">Los más<br>solicitados</div>
+          <div class="ticker-scroll-area">
+            <div class="ticker-track">
+              <span class="ticker-item"><span class="t-name">Armonía de Busan</span><span class="t-sub">26
+                  ses.</span><span class="t-price">$3.997.990</span></span><span class="ticker-item t-sep">◆</span>
+              <span class="ticker-item"><span class="t-name">Glow de Seoul</span><span class="t-sub">12 ses.</span><span class="t-price">$897.990</span></span><span class="ticker-item t-sep">◆</span>
+              <span class="ticker-item"><span class="t-name">Incheon Elixir</span><span class="t-sub">14
+                  ses.</span><span class="t-price">$2.997.990</span></span><span class="ticker-item t-sep">◆</span>
+              <!-- duplicado para loop infinito -->
+              <span class="ticker-item"><span class="t-name">Armonía de Busan</span><span class="t-sub">26
+                  ses.</span><span class="t-price">$3.997.990</span></span><span class="ticker-item t-sep">◆</span>
+              <span class="ticker-item"><span class="t-name">Glow de Seoul</span><span class="t-sub">12 ses.</span><span class="t-price">$897.990</span></span><span class="ticker-item t-sep">◆</span>
+              <span class="ticker-item"><span class="t-name">Incheon Elixir</span><span class="t-sub">14
+                  ses.</span><span class="t-price">$2.997.990</span></span><span class="ticker-item t-sep">◆</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-inner">
+        <div class="progress-bar">
+          <div class="progress-seg active" id="seg1"></div>
+          <div class="progress-seg" id="seg2"></div>
+          <div class="progress-seg" id="seg3"></div>
+        </div>
+        <div class="steps-viewport">
+
+
+          <!-- STEP 1 -->
+          <div class="step active" id="step1">
+            <div class="viewers" style="width: 100%; justify-content: center;">
+              <span class="viewers-count" id="viewersCount">4</span> personas viendo esta oferta
+            </div>
+            <div class="step-label" style="text-align: center; width: 100%;">PASO 1 DE 3</div>
+            <h2 class="step-title" style="text-align: center; width: 100%;">¿DÓNDE TE GUSTARÍA <em>EVALUARTE</em>?</h2>
+            <p class="step-sub" style="text-align: center; width: 100%;">Elige la sede más cercana a ti.</p>
+            <div class="sede-cards">
+              <div class="sede-card" data-sede="Concón — Las Pelargonias 842" onclick="selectSede(this)">
+                <div class="emoji">🌊</div>
+                <div class="info">
+                  <h3>Concón</h3>
+                  <p>Las Pelargonias 842</p>
+                </div>
+                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+              </div>
+              <div class="sede-card" data-sede="Los Ángeles — Av. Gabriela Mistral 269" onclick="selectSede(this)">
+                <div class="emoji">🏔️</div>
+                <div class="info">
+                  <h3>Los Ángeles</h3>
+                  <p>Av. Gabriela Mistral 269</p>
+                </div>
+                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+              </div>
+              <div class="sede-card" data-sede="Vitacura — Los Abedules 3085" onclick="selectSede(this)">
+                <div class="emoji">🏙️</div>
+                <div class="info">
+                  <h3>Vitacura</h3>
+                  <p>Los Abedules 3085</p>
+                </div>
+                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step" id="step2">
+            <button class="back-btn" onclick="goToStep(1, &#39;back&#39;)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Volver
+            </button>
+            <div class="step-label">PASO 2 DE 3</div>
+            <div class="step-title">¿QUÉ DÍA Y HORARIO <em>PREFIERES</em>?</div>
+            <div class="step-sub">Selecciona tu preferencia y te lo confirmamos.</div>
+            <div class="day-grid" id="dayGrid"></div>
+            <div class="slot-label">Franja horaria</div>
+            <div class="slot-grid">
+              <button class="slot-btn" data-slot="Mañana (10–13h)" onclick="selectSlot(this)">Mañana<div class="slot-time">
+                  10:00 – 13:00</div></button>
+              <button class="slot-btn" data-slot="Tarde (15–18h)" onclick="selectSlot(this)">Tarde<div class="slot-time">
+                  15:00 – 18:00</div></button>
+              <button class="slot-btn" data-slot="Final tarde (18–20h)" onclick="selectSlot(this)">Final tarde<div class="slot-time">18:00 – 20:00</div></button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step" id="step3">
+            <button class="back-btn" onclick="goToStep(2, &#39;back&#39;)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              Volver
+            </button>
+            <div class="step-label">PASO 3 DE 3</div>
+            <div class="step-title">TUS DATOS DE <em>CONTACTO</em></div>
+            <div class="step-sub">Para confirmar tu evaluación P3 por WhatsApp.</div>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" id="inputNombre" placeholder="Tu nombre completo" autocomplete="name" oninput="checkForm()" onkeydown="formKeyDown(event, &#39;inputCelular&#39;)">
+            </div>
+            <div class="form-group">
+              <label>Celular</label>
+              <input type="tel" id="inputCelular" value="+56 9 " placeholder="+56 9 XXXX XXXX" autocomplete="tel" oninput="formatPhone(this); checkForm()" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
+            </div>
+            <div class="form-group">
+              <label>Correo</label>
+              <input type="email" id="inputCorreo" placeholder="tu@correo.com" autocomplete="email" oninput="checkForm()" onkeydown="formKeyDown(event, null)">
+            </div>
+            <button class="wa-btn disabled" id="btnSubmit" onclick="handleSubmit()">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+              </svg>
+              Confirmar por WhatsApp
+            </button>
+            <div class="form-note">Sin compromiso · Sin presión · Atención personalizada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Overlay -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h2>¡RESERVA RECIBIDA!</h2>
+    <p>Confirma tu hora por WhatsApp para asegurar tu evaluación P3.</p>
+    <a class="success-wa-btn" id="successWaLink" href="https://protocololumina.cl/evaluacion/#" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+      </svg>
+      Confirmar por WhatsApp
+    </a>
+    <div class="success-note">⚠️ Tu hora debe ser confirmada por WhatsApp. Si no confirmas, la reserva será eliminada.
+    </div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+    let selectedSede = '';
+    let selectedDay = '';
+    let selectedSlot = '';
+    let carouselIndex = 0;
+    const captions = ['Caso exitoso N°117', 'Caso exitoso N°204', 'Caso exitoso N°89', 'Caso exitoso N°156'];
+
+    // Mapeo de sedes → slug para Meta Pixel
+    const sedeSlug = {
+      'Concón — Las Pelargonias 842': 'concon',
+      'Los Ángeles — Av. Gabriela Mistral 269': 'losangeles',
+      'Vitacura — Los Abedules 3085': 'vitacura'
+    };
+
+    function updateCarousel(idx) {
+      carouselIndex = idx;
+      document.querySelectorAll('#carouselDesktop .carousel-img').forEach((img, i) => img.classList.toggle('active', i === idx));
+      document.querySelectorAll('#dotsDesktop .dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+      document.getElementById('carouselCaption').textContent = captions[idx];
+      document.querySelectorAll('#carouselMobile img').forEach((img, i) => img.classList.toggle('active', i === idx));
+    }
+    setInterval(() => updateCarousel((carouselIndex + 1) % 4), 3500);
+    document.querySelectorAll('#dotsDesktop .dot').forEach(d => d.addEventListener('click', () => updateCarousel(+d.dataset.i)));
+
+    const viewersEl = document.getElementById('viewersCount');
+    let viewerCount = 3;
+    setInterval(() => {
+      const dir = Math.random() > 0.5 ? 1 : -1;
+      viewerCount = Math.min(8, Math.max(2, viewerCount + dir));
+      viewersEl.style.opacity = '0';
+      setTimeout(() => { viewersEl.textContent = viewerCount; viewersEl.style.opacity = '1'; }, 300);
+    }, 5000);
+
+    function goToStep(num, direction) {
+      if (num > 1) window.scrollTo({ top: 0, behavior: 'smooth' });
+      const prev = document.getElementById('step' + currentStep);
+      const next = document.getElementById('step' + num);
+      prev.classList.remove('active');
+      prev.classList.add(direction === 'back' ? 'exit-right' : 'exit-left');
+      next.classList.remove('exit-left', 'exit-right');
+      next.style.transform = direction === 'back' ? 'translateX(-60px)' : 'translateX(60px)';
+      next.style.opacity = '0';
+      requestAnimationFrame(() => { next.classList.add('active'); next.style.transform = ''; next.style.opacity = ''; });
+      currentStep = num;
+      updateProgress();
+      setTimeout(() => prev.classList.remove('exit-left', 'exit-right'), 500);
+    }
+
+    function updateProgress() {
+      document.getElementById('seg1').className = 'progress-seg ' + (currentStep > 1 ? 'done' : 'active');
+      document.getElementById('seg2').className = 'progress-seg ' + (currentStep > 2 ? 'done' : currentStep === 2 ? 'active' : '');
+      document.getElementById('seg3').className = 'progress-seg ' + (currentStep === 3 ? 'active' : '');
+    }
+
+    function selectSede(el) {
+      document.querySelectorAll('.sede-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedSede = el.dataset.sede;
+
+      // Meta Pixel — ViewContent (paso 1 → paso 2)
+      if (typeof fbq === 'function') {
+        fbq('track', 'ViewContent', {
+          content_name: 'Protocolo Lumina',
+          content_category: 'facial',
+          clinica: 'lumina',
+          sede: sedeSlug[selectedSede] || selectedSede,
+          content_ids: ['lumina_evaluacion_p3'],
+          value: 2,
+          currency: 'USD'
+        });
+      }
+
+      setTimeout(() => goToStep(2, 'forward'), 450);
+    }
+
+    function generateDays() {
+      const grid = document.getElementById('dayGrid');
+      const dayNames = ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'];
+      let d = new Date(); d.setDate(d.getDate() + 1);
+      let count = 0;
+      while (count < 5) {
+        if (d.getDay() !== 0) {
+          const label = dayNames[d.getDay()] + ' ' + d.getDate();
+          const btn = document.createElement('button');
+          btn.className = 'day-btn';
+          btn.dataset.day = label;
+          btn.innerHTML = '<div class="day-name">' + dayNames[d.getDay()] + '</div><div class="day-num">' + d.getDate() + '</div>';
+          btn.onclick = function () { selectDay(this); };
+          grid.appendChild(btn);
+          count++;
+        }
+        d.setDate(d.getDate() + 1);
+      }
+    }
+    generateDays();
+
+    function selectDay(el) {
+      document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedDay = el.dataset.day;
+      checkStep2();
+    }
+    function selectSlot(el) {
+      document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedSlot = el.dataset.slot;
+      checkStep2();
+    }
+    function checkStep2() {
+      if (selectedDay && selectedSlot) {
+        // Meta Pixel — InitiateCheckout (paso 2 → paso 3)
+        if (typeof fbq === 'function') {
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'Protocolo Lumina',
+            content_category: 'facial',
+            clinica: 'lumina',
+            sede: sedeSlug[selectedSede] || selectedSede,
+            value: 3,
+            currency: 'USD'
+          });
+        }
+        setTimeout(() => goToStep(3, 'forward'), 400);
+      }
+    }
+
+    function formatPhone(input) {
+      let val = input.value.replace(/\D/g, '');
+      if (val.startsWith('569')) val = val.substring(3);
+      else if (val.startsWith('56')) val = val.substring(2);
+      val = val.substring(0, 8);
+
+      let f = '+56 9 ';
+      if (val.length > 0) {
+        f += val.substring(0, 4);
+        if (val.length > 4) f += ' ' + val.substring(4);
+      }
+      input.value = f;
+
+      // Prevent cursor from being inside the prefix
+      if (input.selectionStart < 7) {
+        input.setSelectionRange(7, 7);
+      }
+    }
+
+    function checkForm() {
+      const n = document.getElementById('inputNombre').value.trim();
+      const c = document.getElementById('inputCelular').value.replace(/\D/g, '');
+      const e = document.getElementById('inputCorreo').value.trim();
+      document.getElementById('btnSubmit').className = 'wa-btn ' + (n && c.length === 11 && e.includes('@') ? 'enabled' : 'disabled');
+    }
+
+    function formKeyDown(e, nextId) {
+      if (e.key === 'Enter') { e.preventDefault(); nextId ? document.getElementById(nextId).focus() : handleSubmit(); }
+    }
+
+    function handleSubmit() {
+      const nombre = document.getElementById('inputNombre').value.trim();
+      const celular = document.getElementById('inputCelular').value.trim();
+      const correo = document.getElementById('inputCorreo').value.trim();
+      let hasError = false;
+      ['inputNombre', 'inputCelular', 'inputCorreo'].forEach(id => {
+        const el = document.getElementById(id);
+        const v = el.value.trim();
+        if (!v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && v.replace(/\D/g, '').length < 11)) {
+          el.classList.add('error');
+          if (!hasError) { el.focus(); hasError = true; }
+          setTimeout(() => el.classList.remove('error'), 600);
+        }
+      });
+      if (hasError) return;
+
+      const sede = selectedSede || 'Por confirmar';
+      const sedeKey = sedeSlug[selectedSede] || selectedSede;
+      const disp = (selectedDay && selectedSlot) ? selectedDay + ', ' + selectedSlot : 'Por confirmar';
+
+      // Generar event_id único ANTES de disparar
+      const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+      // Meta Pixel — Lead (paso 3 → confirmación)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Protocolo Lumina',
+          content_category: 'facial',
+          clinica: 'lumina',
+          sede: sedeKey,
+          value: 10,
+          currency: 'USD',
+          content_ids: ['lumina_evaluacion_p3'],
+          eventID: eventId
+        });
+      }
+
+      // Webhook n8n directo — sin intermediario Zapier
+      const payload = {
+        nombre,
+        celular,
+        correo,
+        sede,
+        disponibilidad: disp,
+        fuente: 'Landing Evaluación P3 — Lumina',
+        clinica: 'lumina',
+        sede_slug: sedeKey,
+        event_id: eventId,
+        'landing url': window.location.href,
+        'fecha de creacion': new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago' }),
+        timestamp: Date.now()
+      };
+      fetch('https://clinerasoftware.app.n8n.cloud/webhook/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(e => console.error(e));
+
+      const waMsg = encodeURIComponent('Quiero confirmar mi evaluación P3\n\nNombre: ' + nombre + '\nCelular: ' + celular + '\nCorreo: ' + correo + '\nSede: ' + sede + '\nDisponibilidad: ' + disp);
+      document.getElementById('successWaLink').href = 'https://wa.me/56963222683?text=' + waMsg;
+      document.getElementById('successOverlay').classList.add('visible');
+    }
+  </script>
+
+
+<script type="text/javascript" id="" charset="">(function(){function d(){var a=document.querySelector(".sede-card.selected, .sede-option.selected, [data-value].selected, .sede-btn.active");return a?a.getAttribute("data-value")||a.textContent.trim().toLowerCase():""}function e(){var a=document.querySelector(".day-btn.selected, [data-day].selected, .day-option.active");return a?a.getAttribute("data-day")||a.textContent.trim():""}function f(){var a=document.querySelector(".slot-btn.selected, .time-slot.selected, .slot-option.active");return a?a.textContent.trim():
+""}window.dataLayer=window.dataLayer||[];if(typeof window.selectSede==="function"){var k=window.selectSede;window.selectSede=function(){k.apply(this,arguments);setTimeout(function(){dataLayer.push({event:"eval_select_sede",sede:d()})},100)}}if(typeof window.checkStep2==="function"){var l=window.checkStep2;window.checkStep2=function(){l.apply(this,arguments);setTimeout(function(){var a=d(),b=e(),c=f();a&&b&&c&&dataLayer.push({event:"eval_select_schedule",sede:a,day:b,slot:c})},100)}}if(typeof window.handleSubmit===
+"function"){var m=window.handleSubmit;window.handleSubmit=function(){var a=d(),b=e(),c=f(),n="eval_"+Date.now()+"_"+Math.random().toString(36).substr(2,6);dataLayer.push({event:"eval_submit_form",sede:a,day:b,slot:c,event_id:n});return m.apply(this,arguments)}}var g=document.getElementById("successWaLink");if(g)g.addEventListener("click",function(){var a="",b=document.querySelector("input[name\x3dnombre], input[name\x3dname], #nombre");b&&(a=b.value);dataLayer.push({event:"eval_confirm_whatsapp",
+sede:d(),nombre:a})});else{var h=new MutationObserver(function(){var a=document.getElementById("successWaLink");a&&(h.disconnect(),a.addEventListener("click",function(){var b="",c=document.querySelector("input[name\x3dnombre], input[name\x3dname], #nombre");c&&(b=c.value);dataLayer.push({event:"eval_confirm_whatsapp",sede:d(),nombre:b})}))});h.observe(document.body,{childList:!0,subtree:!0})}})();</script><script type="text/javascript" id="" charset="">(function(){function d(){var a=document.querySelector(".sede-card.selected, .sede-card.active");return a&&(a=a.querySelector("h3"))?a.textContent.trim().toLowerCase():""}function f(){var a=document.querySelector(".day-btn.selected, .day-btn.active");return a?a.getAttribute("data-day")||a.textContent.trim():""}function g(a){a.addEventListener("click",function(){var c="",b=document.querySelector("input[name\x3dnombre],input[name\x3dname],#nombre,input[placeholder*\x3dombre]");b&&(c=b.value);dataLayer.push({event:"eval_confirm_whatsapp",
+sede:d(),nombre:c})})}if(window.location.pathname.indexOf("/evaluacion")!==-1){window.dataLayer=window.dataLayer||[];if(typeof window.selectSede==="function"){var m=window.selectSede;window.selectSede=function(){m.apply(this,arguments);setTimeout(function(){dataLayer.push({event:"eval_select_sede",sede:d()})},150)}}document.addEventListener("click",function(a){var c=a.target.closest(".slot-btn, .time-slot");c&&setTimeout(function(){var b=d(),e=f(),h=c.textContent.trim();b&&e&&h&&dataLayer.push({event:"eval_select_schedule",
+sede:b,day:e,slot:h})},150)});if(typeof window.handleSubmit==="function"){var n=window.handleSubmit;window.handleSubmit=function(){var a=d(),c=f();var b=(b=document.querySelector(".slot-btn.selected, .slot-btn.active, .time-slot.selected"))?b.textContent.trim():"";var e="eval_"+Date.now()+"_"+Math.random().toString(36).substr(2,6);dataLayer.push({event:"eval_submit_form",sede:a,day:c,slot:b,event_id:e});return n.apply(this,arguments)}}var k=document.getElementById("successWaLink");if(k)g(k);else{var l=
+new MutationObserver(function(){var a=document.getElementById("successWaLink");a&&(l.disconnect(),g(a))});l.observe(document.body,{childList:!0,subtree:!0})}}})();</script></body></html>
