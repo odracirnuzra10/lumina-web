@@ -54,14 +54,17 @@ nav.scrolled .nav-links a.active { color:var(--rose-deep); }
 .nav-cta {
   font-family:'Sora',sans-serif; font-size:10px; font-weight:500;
   letter-spacing:2px; text-transform:uppercase;
-  color:var(--void); background:var(--rose); border:none;
+  color:#fff; background:#4CAF7D; border:none;
   padding:12px 26px; cursor:pointer; text-decoration:none; display:inline-block;
   transition:background 0.3s;
 }
-.nav-cta:hover { background:var(--rose-deep); }
-.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.nav-cta:hover { background:#3d9c6b; }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; position:relative; }
 .hamburger span { width:22px; height:1px; background:var(--cloud); display:block; transition:background 0.4s; }
 nav.scrolled .hamburger span { background:var(--ink); }
+.hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); background:var(--ink) !important; }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); background:var(--ink) !important; }
 
 /* ─── HERO — OSCURO ─── */
 .hero {
@@ -227,8 +230,8 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .footer-kr { font-size:10px; color:var(--rose); opacity:0.18; letter-spacing:4px; }
 
 /* STICKY WA */
-.sticky-wa { display:none; position:fixed; bottom:20px; right:20px; z-index:800; background:var(--rose-deep); color:#fff; border:none; padding:14px 22px; font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; align-items:center; gap:8px; box-shadow:0 6px 28px rgba(196,139,144,0.35); transition:background 0.3s; }
-.sticky-wa:hover { background:var(--rose); }
+.sticky-wa { display:none; position:fixed; bottom:20px; right:20px; z-index:800; background:#4CAF7D; color:#fff; border:none; padding:14px 22px; font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; align-items:center; gap:8px; box-shadow:0 6px 28px rgba(76,175,125,0.38); transition:background 0.3s; }
+.sticky-wa:hover { background:#3d9c6b; }
 
 /* ── HANJI TEXTURE — papel tradicional coreano ── */
 .hanji {
@@ -323,6 +326,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 @media(max-width:900px){
   nav{padding:18px 24px;} nav.scrolled{padding:12px 24px;}
   .nav-links{display:none;} .hamburger{display:flex;}
+  .nav-cta{display:none;}
   .hero-split{grid-template-columns:1fr; min-height:auto;}
   .hero-left{padding:110px 24px 48px; text-align:center; align-items:center;}
   .hero-h1{text-align:center;}
@@ -679,14 +683,20 @@ const obs = new IntersectionObserver(e=>{
 document.querySelectorAll('.phase,.tech-card,.ba-item,.testi').forEach((el,i)=>{ el.dataset.delay=(i%3)*90; obs.observe(el); });
 
 document.getElementById('hamburger').addEventListener('click',()=>{
+  const hb=document.getElementById('hamburger');
   const l=document.querySelector('.nav-links');
-  if(l.style.display==='flex'){
+  const isOpen=hb.classList.contains('open');
+  if(isOpen){
+    hb.classList.remove('open');
     l.style.cssText='';
-    l.querySelectorAll('a').forEach(a=>{ a.style.color=''; a.style.fontSize=''; });
-    return;
+    l.querySelectorAll('a').forEach(a=>{ a.style.cssText=''; });
+  } else {
+    hb.classList.add('open');
+    l.style.cssText='display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(251,246,244,0.98);backdrop-filter:blur(20px);align-items:center;justify-content:center;gap:40px;z-index:1000;';
+    l.querySelectorAll('a').forEach(a=>{ a.style.cssText='color:rgba(30,24,24,0.8);font-size:18px;letter-spacing:3px;'; });
+    // Add close-on-link-click
+    l.querySelectorAll('a').forEach(a=>{ a.onclick=()=>{ hb.classList.remove('open'); l.style.cssText=''; a.style.cssText=''; }; });
   }
-  l.style.cssText='display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(251,246,244,0.98);align-items:center;justify-content:center;gap:32px;z-index:800;';
-  l.querySelectorAll('a').forEach(a=>{ a.style.color='rgba(30,24,24,0.75)'; a.style.fontSize='16px'; });
 });
 </script>
 </body>
