@@ -34,14 +34,32 @@ window.addEventListener('load', function() {
   (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '271117138864148');
   fbq('track', 'PageView', {value: 1, currency: 'USD'});
-  fbq('track', 'ViewContent', {
-    content_name: 'Protocolo Lumina - Planes',
-    content_category: 'facial',
-    clinica: 'lumina',
-    content_ids: ['lumina_planes'],
-    value: 2,
-    currency: 'USD'
+
+  // ViewContent se dispara al hacer scroll al 50%
+  var viewContentFired = false;
+  window.addEventListener('scroll', function() {
+    if (viewContentFired) return;
+    var scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+    if (scrollPercent >= 50) {
+      viewContentFired = true;
+      fbq('track', 'ViewContent', {
+        content_name: 'Protocolo Lumina - Planes',
+        content_category: 'facial',
+        clinica: 'lumina',
+        content_ids: ['lumina_planes'],
+        value: 2,
+        currency: 'USD'
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'view_content',
+        content_name: 'planes',
+        scroll_depth: '50',
+        clinica: 'lumina'
+      });
+    }
   });
+
   (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
