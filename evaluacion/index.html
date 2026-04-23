@@ -20,7 +20,7 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net/">
   <link rel="dns-prefetch" href="https://www.clarity.ms/">
 
-  <link rel="preload" as="image" href="./img/l1.jpeg" fetchpriority="high">
+  <link rel="preload" as="image" href="./img/l5.png" fetchpriority="high">
 
   <!-- Non-blocking Fonts -->
 
@@ -1243,17 +1243,19 @@
       </div>
       <div class="carousel-wrap">
         <div class="carousel" id="carouselDesktop">
+          <img class="carousel-img active" src="./img/l5.png" alt="Antes y Después — Caso 5">
           <img class="carousel-img" src="./img/l1.jpeg" alt="Caso 1">
-          <img class="carousel-img active" src="./img/l2.jpeg" alt="Caso 2">
+          <img class="carousel-img" src="./img/l2.jpeg" alt="Caso 2">
           <img class="carousel-img" src="./img/l3.jpeg" alt="Caso 3">
           <img class="carousel-img" src="./img/l4.jpeg" alt="Caso 4">
         </div>
-        <div class="carousel-caption" id="carouselCaption">Caso exitoso N°204</div>
+        <div class="carousel-caption" id="carouselCaption">Caso exitoso N°312</div>
         <div class="dots" id="dotsDesktop">
-          <div class="dot" data-i="0"></div>
-          <div class="dot active" data-i="1"></div>
+          <div class="dot active" data-i="0"></div>
+          <div class="dot" data-i="1"></div>
           <div class="dot" data-i="2"></div>
           <div class="dot" data-i="3"></div>
+          <div class="dot" data-i="4"></div>
         </div>
       </div>
       <div class="price-badge">
@@ -1289,8 +1291,9 @@
       <div class="mobile-header-wrapper">
         <div class="mobile-hero">
           <div class="mobile-carousel" id="carouselMobile">
-            <img class="" src="./img/l1.jpeg" alt="Caso 1" fetchpriority="high">
-            <img src="./img/l2.jpeg" alt="Caso 2" class="active">
+            <img src="./img/l5.png" alt="Antes y Después — Caso 5" class="active" fetchpriority="high">
+            <img src="./img/l1.jpeg" alt="Caso 1">
+            <img src="./img/l2.jpeg" alt="Caso 2">
             <img src="./img/l3.jpeg" alt="Caso 3">
             <img src="./img/l4.jpeg" alt="Caso 4">
           </div>
@@ -1454,7 +1457,7 @@
     let selectedDay = '';
     let selectedSlot = '';
     let carouselIndex = 0;
-    const captions = ['Caso exitoso N°117', 'Caso exitoso N°204', 'Caso exitoso N°89', 'Caso exitoso N°156'];
+    const captions = ['Caso exitoso N°312', 'Caso exitoso N°117', 'Caso exitoso N°204', 'Caso exitoso N°89', 'Caso exitoso N°156'];
 
     // Mapeo de sedes → slug para Meta Pixel
     const sedeSlug = {
@@ -1470,7 +1473,7 @@
       document.getElementById('carouselCaption').textContent = captions[idx];
       document.querySelectorAll('#carouselMobile img').forEach((img, i) => img.classList.toggle('active', i === idx));
     }
-    setInterval(() => updateCarousel((carouselIndex + 1) % 4), 3500);
+    setInterval(() => updateCarousel((carouselIndex + 1) % 5), 3500);
     document.querySelectorAll('#dotsDesktop .dot').forEach(d => d.addEventListener('click', () => updateCarousel(+d.dataset.i)));
 
     const viewersEl = document.getElementById('viewersCount');
