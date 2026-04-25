@@ -8,7 +8,7 @@
   })(window,document,'script','dataLayer','GTM-TZC56NQ5');</script>
   <!-- End Google Tag Manager -->
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Evaluación P3 — Lumina</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -807,8 +807,12 @@
 
       html,
       body {
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
         height: auto;
+        width: 100%;
+        max-width: 100vw;
+        position: relative;
       }
 
       .page {
@@ -832,6 +836,10 @@
       }
 
       .step {
+        position: relative;
+        inset: auto;
+        transform: none !important;
+        opacity: 1 !important;
         padding: 0.8rem 1rem 1.2rem;
         /* Reducido top padding de 1.2rem a 0.8rem */
         display: flex;
@@ -842,12 +850,20 @@
         flex: 1;
       }
 
+      .step:not(.active) {
+        display: none;
+      }
+
       .step>* {
         margin: 0 !important;
         /* Reseteamos todos los márgenes para usar solo el gap */
       }
 
       .steps-viewport {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
         flex: 1;
         display: flex;
         flex-direction: column;
