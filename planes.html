@@ -992,28 +992,37 @@ const observer = new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 
-<!-- WhatsApp Contact Tracking -->
+<!-- Contact WhatsApp Tracking — evento unificado contacto_whatsapp -->
 <script>
-document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"]').forEach(function(link) {
-  link.addEventListener('click', function() {
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'Contact', {
-        content_name: 'WhatsApp - Planes',
-        content_category: 'facial',
-        clinica: 'lumina',
-        value: 5,
-        currency: 'USD'
+(function(){
+  var PAGE = 'planes';
+  var SELECTOR = 'a[href*="whatsapp.com"], a[href*="wa.me"]';
+  document.querySelectorAll(SELECTOR).forEach(function(link){
+    link.addEventListener('click', function(){
+      var label = (link.textContent || '').trim().substring(0, 50);
+      var ctaType = link.getAttribute('data-cro') || '';
+      if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'Contact WhatsApp', {
+          content_name: 'CTA WhatsApp - ' + PAGE,
+          content_category: 'facial',
+          clinica: 'lumina',
+          cta_label: label,
+          cta_type: ctaType,
+          value: 5,
+          currency: 'USD'
+        });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'contacto_whatsapp',
+        cta_label: label,
+        cta_type: ctaType,
+        click_location: PAGE,
+        clinica: 'lumina'
       });
-    }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'whatsapp_click',
-      click_location: 'planes',
-      click_text: this.textContent.trim().substring(0, 50),
-      clinica: 'lumina'
     });
   });
-});
+})();
 </script>
 </body>
 </html>
