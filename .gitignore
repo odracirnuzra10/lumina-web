@@ -3,3 +3,5 @@ Archivo.zip
 img/ana-antes.jpg
 img/ana-despues.jpg
 img/ana-retrato.jpg
+.vercel
+.env*.local
