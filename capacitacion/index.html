@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Recomendación · Análisis Facial → Plan Lumina</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wine: #8B2252;
+    --wine-deep: #5A0F30;
+    --wine-soft: #F5E8EE;
+    --cream: #FAF7F4;
+    --cream-warm: #F2EBE3;
+    --ink: #1A0F12;
+    --ink-soft: #4A3B40;
+    --ink-mute: #8A7A7E;
+    --line: #E8DDD8;
+    --gold: #B8956A;
+    --severe: #C44545;
+    --moderate: #D4A04C;
+    --mild: #5C9A6E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 90vh;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 0 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: 12%;
+    right: -8%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, var(--wine-soft) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+  .brand-mark { display: flex; flex-direction: column; gap: 4px; }
+  .brand-mark .ko {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--wine);
+    letter-spacing: 0.3em;
+  }
+  .brand-mark .name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+  }
+  .doc-meta {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .doc-meta div + div { margin-top: 6px; }
+
+  .cover-center { position: relative; z-index: 1; padding: 64px 0 32px; }
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--wine);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .cover-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 144px);
+    line-height: 0.88;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 24px;
+  }
+  .cover-title .accent {
+    color: var(--wine);
+    font-style: italic;
+    font-family: 'DM Sans', serif;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+  }
+  .cover-sub {
+    max-width: 640px;
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--wine);
+    line-height: 1;
+  }
+  .cover-stat .lbl {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    padding: 64px 0;
+    background: var(--cream-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; }
+  .toc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--wine);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding-top: 8px;
+  }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 24px;
+  }
+  .toc-list li:last-child { border-bottom: none; }
+  .toc-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    min-width: 32px;
+  }
+  .toc-link {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    flex: 1;
+    transition: color 0.2s;
+  }
+  .toc-link:hover { color: var(--wine); }
+
+  /* ---------- CHAPTER ---------- */
+  section.chapter {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .chapter-header { margin-bottom: 64px; max-width: 900px; }
+  .chapter-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .chapter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--wine);
+    line-height: 1;
+  }
+  .chapter-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+  }
+  .chapter-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .chapter-title .em { color: var(--wine); }
+  .chapter-lede {
+    margin-top: 24px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 720px;
+  }
+
+  h3.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  h3.section-title .num {
+    color: var(--wine);
+    font-size: 32px;
+  }
+  .section-lede {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  /* ============================================================
+     PARÁMETRO ROW · El layout principal del manual
+     ============================================================ */
+  .param-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 72px;
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .param-row:first-of-type { padding-top: 8px; }
+  .param-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  .param-id {
+    position: sticky;
+    top: 32px;
+  }
+  .param-num-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--wine);
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+  .param-name-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+  }
+  .param-en-mini {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .param-summary {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 380px;
+  }
+
+  .param-solution { display: flex; flex-direction: column; }
+  .param-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--wine);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .param-section-label::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: var(--wine);
+  }
+  .param-treatment-text {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .param-treatment-text em.tech {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+    background: linear-gradient(transparent 62%, var(--wine-soft) 62%);
+    padding: 0 3px;
+  }
+  .param-plans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .plan-row {
+    display: grid;
+    grid-template-columns: 92px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .plan-row:hover { transform: translateX(4px); }
+  .plan-row.recommended {
+    border-color: var(--wine);
+    background: white;
+  }
+  .plan-row.top {
+    border-color: var(--wine);
+    background: var(--wine);
+    color: var(--cream);
+  }
+  .plan-row .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .plan-row.recommended .tag { color: var(--wine); }
+  .plan-row.top .tag { color: rgba(250,247,244,0.7); }
+  .plan-row .name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .plan-row.top .name { color: var(--cream); }
+  .plan-row .detail {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    text-align: right;
+    line-height: 1.4;
+    max-width: 200px;
+  }
+  .plan-row.top .detail { color: rgba(250,247,244,0.75); }
+
+  .param-flex-note {
+    background: var(--cream-warm);
+    padding: 22px 26px;
+    border-left: 3px solid var(--gold);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .param-flex-note strong { color: var(--wine); font-weight: 600; }
+
+  /* ---------- 3 RANGOS ---------- */
+  .range-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .range-card {
+    padding: 28px 24px;
+    border-top: 3px solid;
+  }
+  .range-card.severe { border-color: var(--severe); background: rgba(196,69,69,0.04); }
+  .range-card.moderate { border-color: var(--moderate); background: rgba(212,160,76,0.05); }
+  .range-card.mild { border-color: var(--mild); background: rgba(92,154,110,0.04); }
+  .range-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .range-card.severe .range-name { color: var(--severe); }
+  .range-card.moderate .range-name { color: var(--moderate); }
+  .range-card.mild .range-name { color: var(--mild); }
+  .range-score {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+  }
+  .range-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ---------- CATÁLOGO ---------- */
+  .plans-catalog { margin-top: 16px; }
+  .plans-group { margin-bottom: 56px; }
+  .plans-group:last-child { margin-bottom: 0; }
+  .plans-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .catalog-row {
+    display: grid;
+    grid-template-columns: 96px 1.1fr 2fr 1.3fr;
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .catalog-row:last-child { border-bottom: none; }
+  .catalog-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .catalog-tag.pop { color: var(--wine); font-weight: 500; }
+  .catalog-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .catalog-pitch {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .catalog-pitch em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--wine);
+  }
+  .catalog-ideal {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+    background: var(--wine-soft);
+    padding: 10px 14px;
+    border-left: 2px solid var(--wine);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.doc-footer {
+    padding: 64px 0 48px;
+    background: var(--ink);
+    color: rgba(250,247,244,0.7);
+    font-size: 13px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .footer-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
+    color: rgba(250,247,244,0.45);
+    text-transform: uppercase;
+  }
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-align: right;
+    color: rgba(250,247,244,0.5);
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { font-size: 11pt; }
+    section.chapter { page-break-before: always; }
+    .param-row { page-break-inside: avoid; }
+    .plan-row.top, footer.doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .param-id { position: static; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .toc-grid, .cover-bottom, .range-legend, .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .param-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 48px 0;
+    }
+    .param-id { position: static; }
+    .param-name-big { font-size: 48px; }
+    .cover-title { font-size: 64px; }
+    .plan-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 16px 18px;
+    }
+    .plan-row .detail { text-align: left; max-width: 100%; }
+    .catalog-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 20px 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<header class="cover">
+  <div class="container">
+    <div class="cover-top">
+      <div class="brand-mark">
+        <span class="ko">빛 의 규 약 · LUMINA</span>
+        <span class="name">PROTOCOLO LUMINA</span>
+      </div>
+      <div class="doc-meta">
+        <div>Documento interno</div>
+        <div>Capacitación · Equipo de ventas</div>
+        <div>Vitacura · Concón · Los Ángeles</div>
+        <div>Versión 2.0 · 2026</div>
+      </div>
+    </div>
+
+    <div class="cover-center">
+      <div class="cover-eyebrow">Manual de recomendación · Volumen 01</div>
+      <h1 class="cover-title">
+        Del análisis<br>
+        facial<br>
+        <span class="accent">al plan</span> correcto.
+      </h1>
+      <p class="cover-sub">
+        Para cada uno de los seis parámetros que mide la máquina, el camino clínico que lo trata y los planes Lumina recomendados según el grado de intervención requerido.
+      </p>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-stat">
+        <div class="num">06</div>
+        <div class="lbl">Parámetros que mide<br>la máquina</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">10</div>
+        <div class="lbl">Planes Lumina<br>en el catálogo vigente</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">03</div>
+        <div class="lbl">Rangos de severidad<br>por parámetro</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== TOC ============== -->
+<section class="toc">
+  <div class="container">
+    <div class="toc-grid">
+      <div class="toc-label">Contenido</div>
+      <ul class="toc-list">
+        <li><span class="toc-num">01</span><a href="#cap-1" class="toc-link">Cómo leer el análisis facial</a></li>
+        <li><span class="toc-num">02</span><a href="#cap-2" class="toc-link">Catálogo de planes Lumina</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CAP 01 ============== -->
+<section class="chapter" id="cap-1">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-eyebrow">
+        <span class="chapter-num">01</span>
+        <span class="chapter-tag">Capítulo uno · Decodificación clínica</span>
+      </div>
+      <h2 class="chapter-title">Cómo leer<br>un <span class="em">análisis facial</span> Lumina.</h2>
+      <p class="chapter-lede">
+        La máquina entrega seis parámetros con puntaje de 0 a 100. Cada uno tiene un camino clínico propio y un plan recomendado según la profundidad de intervención que requiera.
+      </p>
+    </div>
+
+    <h3 class="section-title"><span class="num">1.1</span>Los seis parámetros</h3>
+    <p class="section-lede">
+      Para cada parámetro: lo que mide, el camino clínico que lo trata, y los planes Lumina que aplican esa tecnología. Los planes se presentan en escala de menor a mayor profundidad.
+    </p>
+
+    <!-- 01 · TONO -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 01</div>
+        <div class="param-name-big">Tono</div>
+        <div class="param-en-mini">Skin Tone</div>
+        <p class="param-summary">
+          Mide la luminosidad y uniformidad del color de la piel. Score bajo = piel apagada, fatigada, sin vitalidad. Causas típicas: estrés, mala oxigenación celular, exposición solar acumulada.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          La luminosidad se devuelve con <em class="tech">polinucleótidos profundos (Bio Minji)</em> que rejuvenecen a nivel celular y restauran el tono uniforme. Se requiere un plan que incluya esta tecnología.
+        </p>
+        <div class="param-section-label">Planes recomendados</div>
+        <div class="param-plans-list">
+          <div class="plan-row recommended">
+            <div class="tag">Recomendado</div>
+            <div class="name">Eternal Gangnam</div>
+            <div class="detail">Incluye Bio Minji</div>
+          </div>
+          <div class="plan-row top">
+            <div class="tag">Top</div>
+            <div class="name">Armonía de Busan</div>
+            <div class="detail">Bio Minji + todas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 · HIDRATACIÓN / SEBO -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 02</div>
+        <div class="param-name-big">Hidratación<br>/ Sebo</div>
+        <div class="param-en-mini">Water and Oil</div>
+        <p class="param-summary">
+          Evalúa el balance entre hidratación cutánea y producción de sebo. Score bajo indica desbalance: piel oleosa con núcleo deshidratado. Patrón muy frecuente en LATAM por clima variable y dieta alta en azúcares.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          Para piel seca o con núcleo deshidratado: <em class="tech">polinucleótidos (Bio Minji)</em> o <em class="tech">dermapen con activos hidratantes (Korean Vitaboost)</em>. La elección del plan depende del nivel de profundidad que se quiera atacar y del grado de envejecimiento asociado.
+        </p>
+        <div class="param-section-label">Planes recomendados</div>
+        <div class="param-plans-list">
+          <div class="plan-row">
+            <div class="tag">Entry</div>
+            <div class="name">Glow de Seoul</div>
+            <div class="detail">Korean Vitaboost</div>
+          </div>
+          <div class="plan-row top">
+            <div class="tag">Top</div>
+            <div class="name">Armonía de Busan</div>
+            <div class="detail">Vitaboost + Bio Minji</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 · ARRUGAS -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 03</div>
+        <div class="param-name-big">Arrugas</div>
+        <div class="param-en-mini">Wrinkles</div>
+        <p class="param-summary">
+          Detecta líneas finas, surcos dinámicos y pérdida de elasticidad superficial. Entre 60 y 70: líneas finas iniciando — momento exacto para intervención preventiva. Esperar a que baje de 60 es esperar a que sea estructural.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          Vía principal: <em class="tech">radiofrecuencia fraccionada con péptidos de oro (Rejuveskin)</em>. Es la tecnología clave anti-envejecimiento. El plan se elige según el grado de rejuvenecimiento que se busque alcanzar.
+        </p>
+        <div class="param-section-label">Planes recomendados</div>
+        <div class="param-plans-list">
+          <div class="plan-row">
+            <div class="tag">Entry</div>
+            <div class="name">Glow de Seoul</div>
+            <div class="detail">Sin Rejuveskin · preventivo</div>
+          </div>
+          <div class="plan-row recommended">
+            <div class="tag">Potente</div>
+            <div class="name">Luz de Jeju · Armonía de Busan</div>
+            <div class="detail">Con Rejuveskin · correctivo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 · SENSIBILIDAD -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 04</div>
+        <div class="param-name-big">Sensibilidad</div>
+        <div class="param-en-mini">Sensitivity</div>
+        <p class="param-summary">
+          Mide reactividad vascular: estrías rojas, telangiectasias, microinflamación crónica. Score bajo indica piel reactiva, propensa a rosácea y barrera cutánea debilitada.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          La sensibilidad <em class="tech">no determina el plan</em>: cualquier plan Lumina se adapta con activos específicos para piel sensible. La elección depende del objetivo paralelo de rejuvenecimiento que la cliente quiera alcanzar — no del score de sensibilidad en sí.
+        </p>
+        <div class="param-section-label">Decisión comercial</div>
+        <div class="param-flex-note">
+          <strong>Lectura para el equipo:</strong> el plan se elige por los otros parámetros (tono, arrugas, manchas, poros) y luego el equipo médico calibra los activos para no irritar la barrera cutánea. Si el score de sensibilidad es muy bajo, se inicia con sesiones de fortalecimiento antes de avanzar a tecnologías intensas.
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 · MANCHAS -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 05</div>
+        <div class="param-name-big">Manchas</div>
+        <div class="param-en-mini">Stains</div>
+        <p class="param-summary">
+          Identifica hiperpigmentación: melasma, manchas solares, post-inflamatorias, pecas, manchas de embarazo (cloasma). Único parámetro donde aún en zona "leve" el reporte puede sugerir prevención: si dice "time to pay attention to spots" estamos en transición.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          Protocolo despigmentante completo: <em class="tech">limpiezas despigmentantes</em>, <em class="tech">peeling de algas</em>, y aplicación de <em class="tech">activos despigmentantes con dermapen (Korean Vitaboost)</em>. Si se busca potenciar con bioestimulación profunda, se incluye EndoJiwoo.
+        </p>
+        <div class="param-section-label">Planes recomendados</div>
+        <div class="param-plans-list">
+          <div class="plan-row">
+            <div class="tag">Económico</div>
+            <div class="name">Claridad de Haneul</div>
+            <div class="detail">Despigmentante puro<br>sin EndoJiwoo</div>
+          </div>
+          <div class="plan-row recommended">
+            <div class="tag">Avanzado</div>
+            <div class="name">Flor de Busan</div>
+            <div class="detail">Con EndoJiwoo + Rejuveskin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 · POROS -->
+    <div class="param-row">
+      <div class="param-id">
+        <div class="param-num-big">Parámetro 06</div>
+        <div class="param-name-big">Poros</div>
+        <div class="param-en-mini">Pores</div>
+        <p class="param-summary">
+          Mide tamaño, dilatación y obstrucción de poros. Score severo (&lt;50) indica acumulación de sebo y queratinocitos. Si no se trata, evoluciona a acné inflamatorio y cicatrices atróficas. Se trabaja siempre en conjunto con regulación sebácea.
+        </p>
+      </div>
+      <div class="param-solution">
+        <div class="param-section-label">Camino clínico</div>
+        <p class="param-treatment-text">
+          Vía clínica: <em class="tech">radiofrecuencia fraccionada (Rejuveskin)</em> + <em class="tech">dermapen (Korean Vitaboost)</em>. El plan se elige según el objetivo paralelo de rejuvenecimiento — desde foco puro en poros hasta plan ultra completo.
+        </p>
+        <div class="param-section-label">Planes recomendados</div>
+        <div class="param-plans-list">
+          <div class="plan-row">
+            <div class="tag">Foco poros</div>
+            <div class="name">Claridad de Haneul</div>
+            <div class="detail">Solo enfocado en poros</div>
+          </div>
+          <div class="plan-row recommended">
+            <div class="tag">+ Rejuv</div>
+            <div class="name">Luz de Jeju</div>
+            <div class="detail">Poros + EndoJiwoo<br>rejuvenecimiento</div>
+          </div>
+          <div class="plan-row top">
+            <div class="tag">Ultra</div>
+            <div class="name">Armonía de Busan</div>
+            <div class="detail">Solución más completa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.2 · 3 RANGOS -->
+    <h3 class="section-title" style="margin-top: 96px;"><span class="num">1.2</span>Los tres rangos</h3>
+    <p class="section-lede">
+      Cada score se interpreta con código de color visible en el reporte. Esta es la traducción clínica de cada uno.
+    </p>
+
+    <div class="range-legend">
+      <div class="range-card severe">
+        <div class="range-name">SEVERO</div>
+        <div class="range-score">SCORE 00 — 49</div>
+        <div class="range-desc">Bandera roja. Requiere intervención. La probabilidad de empeoramiento sin tratamiento es alta. Es el punto de mayor urgencia clínica — y también donde la cliente ya intuye que tiene el problema.</div>
+      </div>
+      <div class="range-card moderate">
+        <div class="range-name">MODERADO</div>
+        <div class="range-score">SCORE 50 — 79</div>
+        <div class="range-desc">Zona de prevención inteligente. La piel ya muestra signos pero todavía hay margen. Aquí está la conversación más rentable: convencer a la cliente de actuar antes de que sea problema mayor.</div>
+      </div>
+      <div class="range-card mild">
+        <div class="range-name">LEVE</div>
+        <div class="range-score">SCORE 80 — 100</div>
+        <div class="range-desc">Zona saludable. No es excusa para no vender — es argumento para mantención. Felicita primero, luego vende sostenibilidad. "Lo bien que estás aquí no se mantiene solo."</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== CAP 02 · CATÁLOGO ============== -->
+<section class="chapter" id="cap-2">
+  <div class="container">
+    <div class="chapter-header">
+      <div class="chapter-eyebrow">
+        <span class="chapter-num">02</span>
+        <span class="chapter-tag">Capítulo dos · Catálogo vigente</span>
+      </div>
+      <h2 class="chapter-title">Los <span class="em">10 planes</span><br>Lumina y para<br>quién es cada uno.</h2>
+      <p class="chapter-lede">
+        Referencia rápida del catálogo. Tres categorías: principales, mantención y especializados. Memoriza la columna de la derecha — es lo que conecta diagnóstico con plan.
+      </p>
+    </div>
+
+    <div class="plans-catalog">
+
+      <div class="plans-group">
+        <div class="plans-group-title">Planes principales · Rejuvenecimiento facial</div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">ENTRY</div>
+          <div class="catalog-name">Glow de Seoul</div>
+          <div class="catalog-pitch">Primer acercamiento al protocolo. Oxigenación, nutrición y limpieza coreana profunda. Logra el efecto <em>glass skin</em> con luminosidad inmediata.</div>
+          <div class="catalog-ideal">Pieles jóvenes con falta de luminosidad, oleosidad y poros tapados sin manchas.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">HIDRATANTE</div>
+          <div class="catalog-name">Glow de Asan</div>
+          <div class="catalog-pitch">Hidratación profunda, mejora textura y rellena arrugas superficiales. Incluye Nubea Booster y Sakura Lift.</div>
+          <div class="catalog-ideal">Primeras líneas finas, piel deshidratada o con primeros signos de manchas en transición.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag pop">★ POPULAR</div>
+          <div class="catalog-name">Incheon Elixir</div>
+          <div class="catalog-pitch">Lifting facial real con bio armonización del óvalo. Incluye <em>EndoJiwoo</em> — bioestimulador coreano avanzado para flacidez incipiente.</div>
+          <div class="catalog-ideal">Cliente 28-40 que empieza a notar pérdida de óvalo facial pero sin daño avanzado.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">PREMIUM</div>
+          <div class="catalog-name">Eternal Gangnam</div>
+          <div class="catalog-pitch">Lifting facial profundo con <em>Endolaser Coreano</em>, EndoJiwoo y HIFU. Incluye Bio Minji para luminosidad celular.</div>
+          <div class="catalog-ideal">Cliente con flacidez establecida o quien busca un reset antiedad significativo sin cirugía.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">TOP</div>
+          <div class="catalog-name">Armonía de Busan</div>
+          <div class="catalog-pitch">El más completo. Endolaser + EndoJiwoo + HIFU + bio armonización total + todas las tecnologías Lumina (Bio Minji, Rejuveskin, Korean Vitaboost).</div>
+          <div class="catalog-ideal">Cliente que quiere transformación máxima y dispone del presupuesto. Resultado WOW.</div>
+        </div>
+      </div>
+
+      <div class="plans-group">
+        <div class="plans-group-title">Planes de mantención · Post tratamiento principal</div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">MANTENCIÓN</div>
+          <div class="catalog-name">Luz de Jeju</div>
+          <div class="catalog-pitch">Mantención con foco en luminosidad profunda y revitalización celular. Incluye <em>EndoJiwoo</em> y <em>Rejuveskin</em>.</div>
+          <div class="catalog-ideal">Cliente que terminó plan principal y quiere prolongar resultados. También válido para enfocar arrugas + poros con rejuvenecimiento.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">MANTENCIÓN</div>
+          <div class="catalog-name">Radancia de Daejeon</div>
+          <div class="catalog-pitch">Específico para mantener resultados post Endolaser. Renovación profunda y fortalecimiento cutáneo.</div>
+          <div class="catalog-ideal">Egreso natural de Eternal Gangnam o Armonía de Busan.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">MANTENCIÓN</div>
+          <div class="catalog-name">Aura de Suwon</div>
+          <div class="catalog-pitch">Mantención de firmeza facial y frescura. Versión más accesible para egreso de planes básicos.</div>
+          <div class="catalog-ideal">Egreso natural de Glow de Seoul o Glow de Asan.</div>
+        </div>
+      </div>
+
+      <div class="plans-group">
+        <div class="plans-group-title">Planes especializados · Despigmentación</div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">AVANZADO</div>
+          <div class="catalog-name">Flor de Busan</div>
+          <div class="catalog-pitch">Despigmentante avanzado con <em>EndoJiwoo</em> y <em>Rejuveskin</em>. Limpiezas despigmentantes, peeling de algas y activos despigmentantes con dermapen.</div>
+          <div class="catalog-ideal">Cliente con melasma confirmado, manchas hormonales o post-embarazo establecidas.</div>
+        </div>
+
+        <div class="catalog-row">
+          <div class="catalog-tag">DESPIGMENTANTE</div>
+          <div class="catalog-name">Claridad de Haneul</div>
+          <div class="catalog-pitch">Despigmentante para tono irregular y manchas superficiales. Sin EndoJiwoo — versión más accesible.</div>
+          <div class="catalog-ideal">Cliente con manchas iniciando, pecas que quiere atenuar o tono desigual. También válido como foco poros sin rejuvenecimiento.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="doc-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">PROTOCOLO LUMINA</div>
+        <div class="footer-tag">아름다움 · 빛 의 규 약 · DONDE LA OSCURIDAD REVELA LA LUZ DE TU PIEL</div>
+      </div>
+      <div class="footer-meta">
+        Manual de Recomendación · v2.0 · 2026<br>
+        Documento interno · No distribuir<br>
+        Vitacura · Concón · Los Ángeles
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
