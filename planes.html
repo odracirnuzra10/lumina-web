@@ -217,10 +217,24 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .plan-sessions { font-size:9px; letter-spacing:2px; color:var(--rose-deep); text-transform:uppercase; margin-bottom:18px; display:block; }
 .plan-price { font-family:'Playfair Display',serif; font-size:30px; font-weight:400; color:var(--ink); margin-bottom:14px; }
 .plan-price sup { font-size:13px; font-family:'Sora',sans-serif; font-weight:300; }
-.plan-desc  { font-size:12px; line-height:1.7; color:var(--ink-body); font-weight:300; margin-bottom:22px; }
+.plan-desc  { font-size:13px; line-height:1.75; color:rgba(30,24,24,0.68); font-weight:400; margin-bottom:22px; }
 .plan-treats { display:flex; flex-direction:column; gap:7px; margin-bottom:26px; }
-.plan-treat { font-size:11px; color:var(--ink-body); display:flex; align-items:center; gap:8px; }
-.plan-treat::before { content:''; width:4px; height:4px; background:var(--rose-deep); opacity:0.55; border-radius:50%; flex-shrink:0; }
+.plan-treat { font-size:12px; line-height:1.55; color:rgba(30,24,24,0.7); display:flex; align-items:flex-start; gap:8px; font-weight:400; }
+.plan-treat::before { content:''; width:4px; height:4px; background:var(--rose-deep); opacity:0.55; border-radius:50%; flex-shrink:0; margin-top:0.65em; }
+.plan-stages { display:grid; gap:12px; margin-bottom:26px; }
+.plan-stage {
+  padding:14px 14px 13px;
+  border:1px solid rgba(196,139,144,0.18);
+  background:rgba(255,255,255,0.36);
+  border-radius:6px;
+}
+.stage-title {
+  display:block; margin-bottom:8px;
+  font-size:10px; line-height:1.25; letter-spacing:1.4px;
+  text-transform:uppercase; color:var(--rose-deep); font-weight:700;
+}
+.stage-list { display:flex; flex-direction:column; gap:5px; }
+.stage-item { font-size:13px; line-height:1.45; color:rgba(30,24,24,0.72); font-weight:400; }
 .plan-cta-btn {
   font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px;
   text-transform:uppercase; color:#fff; background:var(--ink); border:none;
@@ -252,10 +266,16 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .plan-sessions-dark { font-size:9px; letter-spacing:2px; color:var(--rose); opacity:0.45; text-transform:uppercase; margin-bottom:18px; display:block; }
 .plan-price-dark { font-family:'Playfair Display',serif; font-size:30px; font-weight:400; color:var(--cloud); margin-bottom:14px; }
 .plan-price-dark sup { font-size:13px; font-family:'Sora',sans-serif; font-weight:300; }
-.plan-desc-dark { font-size:12px; line-height:1.7; color:var(--body-dark); font-weight:300; margin-bottom:26px; }
+.plan-desc-dark { font-size:13px; line-height:1.75; color:rgba(240,238,233,0.66); font-weight:400; margin-bottom:26px; }
 .plan-treats-dark { display:flex; flex-direction:column; gap:7px; margin-bottom:26px; }
-.plan-treat-dark { font-size:11px; color:var(--body-dark); display:flex; align-items:center; gap:8px; }
-.plan-treat-dark::before { content:''; width:4px; height:4px; background:var(--rose); opacity:0.45; border-radius:50%; flex-shrink:0; }
+.plan-treat-dark { font-size:12px; line-height:1.55; color:rgba(240,238,233,0.68); display:flex; align-items:flex-start; gap:8px; font-weight:400; }
+.plan-treat-dark::before { content:''; width:4px; height:4px; background:var(--rose); opacity:0.45; border-radius:50%; flex-shrink:0; margin-top:0.65em; }
+.plan-card-dark .plan-stage {
+  border-color:rgba(232,180,184,0.14);
+  background:rgba(255,255,255,0.035);
+}
+.plan-card-dark .stage-title { color:var(--rose); opacity:0.78; }
+.plan-card-dark .stage-item { color:rgba(240,238,233,0.72); }
 .plan-cta-rose {
   font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px;
   text-transform:uppercase; color:var(--void); background:var(--rose); border:none;
@@ -330,12 +350,23 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .modal-name { font-family:'Playfair Display',serif; font-size:26px; font-weight:400; color:var(--ink); margin-bottom:4px; }
 .modal-sessions { font-size:9px; letter-spacing:2px; color:var(--rose-deep); opacity:0.55; text-transform:uppercase; margin-bottom:18px; display:block; }
 .modal-price { font-family:'Playfair Display',serif; font-size:36px; font-weight:400; color:var(--ink); margin-bottom:14px; }
-.modal-desc { font-size:13px; line-height:1.8; color:var(--ink-body); font-weight:300; margin-bottom:24px; }
+.modal-desc { font-size:14px; line-height:1.8; color:rgba(30,24,24,0.68); font-weight:400; margin-bottom:24px; }
 .modal-hr { border:none; border-top:1px solid rgba(196,139,144,0.18); margin:20px 0; }
-.modal-treats-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--rose-deep); opacity:0.45; margin-bottom:14px; display:block; }
-.modal-treats { display:flex; flex-direction:column; gap:9px; margin-bottom:28px; }
-.modal-treat { font-size:13px; color:var(--ink-body); display:flex; align-items:center; gap:10px; }
-.modal-treat::before { content:''; width:4px; height:4px; background:var(--rose-deep); opacity:0.55; border-radius:50%; flex-shrink:0; }
+.modal-treats-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); opacity:0.72; margin-bottom:14px; display:block; font-weight:700; }
+.modal-treats { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
+.modal-treat { font-size:14px; line-height:1.55; color:rgba(30,24,24,0.72); display:flex; align-items:flex-start; gap:10px; font-weight:400; }
+.modal-treat::before { content:''; width:4px; height:4px; background:var(--rose-deep); opacity:0.55; border-radius:50%; flex-shrink:0; margin-top:0.7em; }
+.modal-stage {
+  padding:14px 15px;
+  border:1px solid rgba(196,139,144,0.18);
+  background:rgba(255,255,255,0.42);
+  border-radius:6px;
+}
+.modal-stage-title {
+  display:block; margin-bottom:8px;
+  font-size:10px; letter-spacing:1.4px; line-height:1.25;
+  text-transform:uppercase; color:var(--rose-deep); font-weight:700;
+}
 .modal-cta {
   font-family:'Sora',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px;
   text-transform:uppercase; color:#fff; background:var(--ink); border:none;
@@ -549,11 +580,23 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions" data-count="18">18 Sesiones · Bio rejuvenecimiento</span>
         <div class="plan-price"><sup>$</sup>3.677.990</div>
         <p class="plan-desc">Plan integral de bio rejuvenecimiento profundo. Combina preparación facial, HIFU, Biominji y EndoJiwoo para resultados visibles desde las primeras sesiones.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">2 Limpiezas + 1 RejuveSkin</span>
-          <span class="plan-treat">3 Sakura Ultra Lift + SkinGym</span>
-          <span class="plan-treat">3 Cuky HIFU · 3 Biominji</span>
-          <span class="plan-treat">1 EndoJiwoo · 5 Jeju Olida</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+              <span class="stage-item">1 sesión de RejuveSkin</span>
+              <span class="stage-item">3 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio rejuvenecimiento</span>
+            <div class="stage-list">
+              <span class="stage-item">3 Cuky HIFU</span>
+              <span class="stage-item">3 Biominji</span>
+              <span class="stage-item">1 EndoJiwoo + 5 Jeju Olida</span>
+            </div>
+          </div>
         </div>
         <span class="plan-cta-outline">Ver detalles del plan</span>
       </div>
@@ -564,11 +607,30 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions" data-count="20">20 Sesiones · Plan más completo</span>
         <div class="plan-price"><sup>$</sup>4.177.990</div>
         <p class="plan-desc">Nuestro plan más completo. Suma bio rejuvenecimiento profundo + bio armonización del óvalo facial con Dahe Beauty, Yuna Face y bioestimulación Neojin.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">Todo lo de Eternal Gangnam</span>
-          <span class="plan-treat">+ 1 Dahe Beauty</span>
-          <span class="plan-treat">+ 1 Yuna Face</span>
-          <span class="plan-treat">+ 1 Bioestimulación Neojin</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+              <span class="stage-item">1 sesión de RejuveSkin</span>
+              <span class="stage-item">3 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio rejuvenecimiento</span>
+            <div class="stage-list">
+              <span class="stage-item">3 Cuky HIFU + 3 Biominji</span>
+              <span class="stage-item">1 EndoJiwoo + 5 Jeju Olida</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio armonización</span>
+            <div class="stage-list">
+              <span class="stage-item">1 Dahe Beauty</span>
+              <span class="stage-item">1 Yuna Face</span>
+              <span class="stage-item">1 Bioestimulación Neojin</span>
+            </div>
+          </div>
         </div>
         <a class="plan-cta-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20me%20interesa%20el%20plan%20Armon%C3%ADa%20de%20Busan" target="_blank" onclick="event.stopPropagation()">Agendar este plan</a>
       </div>
@@ -616,11 +678,22 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions-dark">Solo ojeras · 8 a 11 sesiones</span>
         <div class="plan-price-dark"><sup>$</sup>1.977.990</div>
         <p class="plan-desc-dark">Tratamiento focalizado en ojeras de pigmentación. Tres opciones disponibles según tipo de ojera, incluyendo opción para ojera con bolsa.</p>
-        <div class="plan-treats-dark">
-          <span class="plan-treat-dark">Limpiezas Faciales Coreanas</span>
-          <span class="plan-treat-dark">Sakura Ultra Lift + SkinGym</span>
-          <span class="plan-treat-dark">Biominji · Lumijin · Yuna Face</span>
-          <span class="plan-treat-dark">3 opciones según diagnóstico</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+              <span class="stage-item">2 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Tratamiento de ojeras</span>
+            <div class="stage-list">
+              <span class="stage-item">3 Biominji</span>
+              <span class="stage-item">Lumijin o Yuna Face según diagnóstico</span>
+              <span class="stage-item">3 opciones disponibles</span>
+            </div>
+          </div>
         </div>
         <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('protocolo-asan')">Ver opciones</a>
       </div>
@@ -631,11 +704,22 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions-dark">Ojeras + párpados · 9 a 13 sesiones</span>
         <div class="plan-price-dark"><sup>$</sup>2.677.990</div>
         <p class="plan-desc-dark">Tratamiento integral para ojeras y flacidez de párpados. Tres opciones con sesiones de Fibrojin para tonificar y revitalizar la mirada.</p>
-        <div class="plan-treats-dark">
-          <span class="plan-treat-dark">Limpiezas Faciales Coreanas</span>
-          <span class="plan-treat-dark">Sakura Ultra Lift + SkinGym</span>
-          <span class="plan-treat-dark">Biominji · Lumijin · Yuna Face</span>
-          <span class="plan-treat-dark">+ Sesión de Fibrojin (párpados)</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+              <span class="stage-item">2 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Ojeras + párpados</span>
+            <div class="stage-list">
+              <span class="stage-item">3 Biominji</span>
+              <span class="stage-item">Lumijin o Yuna Face según diagnóstico</span>
+              <span class="stage-item">1 sesión de Fibrojin</span>
+            </div>
+          </div>
         </div>
         <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('protocolo-busan')">Ver opciones</a>
       </div>
@@ -684,11 +768,21 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions" data-count="15">15 Sesiones · Despigmentante avanzado</span>
         <div class="plan-price"><sup>$</sup>2.477.990</div>
         <p class="plan-desc">Plan despigmentante avanzado con bio rejuvenecimiento. Para manchas persistentes, melasma, cicatrices y tono irregular severo.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">2 Limpiezas Despigmentantes</span>
-          <span class="plan-treat">1 Yoori Peel</span>
-          <span class="plan-treat">3 RejuveSkin · 3 Korean Vitaboost</span>
-          <span class="plan-treat">1 EndoJiwoo · 5 Jeju Olida</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación despigmentante</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas despigmentantes</span>
+              <span class="stage-item">1 Yoori Peel</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio rejuvenecimiento</span>
+            <div class="stage-list">
+              <span class="stage-item">3 RejuveSkin + 3 Korean Vitaboost</span>
+              <span class="stage-item">1 EndoJiwoo + 5 Jeju Olida</span>
+            </div>
+          </div>
         </div>
         <span class="plan-cta-outline">Ver detalles del plan</span>
       </div>
@@ -698,11 +792,21 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions" data-count="9">9 Sesiones · Despigmentante</span>
         <div class="plan-price"><sup>$</sup>1.997.990</div>
         <p class="plan-desc">Plan despigmentante para tono uniforme y radiante. Ideal como primer acercamiento al protocolo de luminosidad con enfoque en manchas superficiales.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">2 Limpiezas Despigmentantes</span>
-          <span class="plan-treat">1 Yoori Peel</span>
-          <span class="plan-treat">3 RejuveSkin</span>
-          <span class="plan-treat">3 Korean Vitaboost</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación despigmentante</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas despigmentantes</span>
+              <span class="stage-item">1 Yoori Peel</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Luminosidad</span>
+            <div class="stage-list">
+              <span class="stage-item">3 RejuveSkin</span>
+              <span class="stage-item">3 Korean Vitaboost</span>
+            </div>
+          </div>
         </div>
         <span class="plan-cta-outline">Ver detalles del plan</span>
       </div>
@@ -750,11 +854,22 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions">Mantención · 8 a 12 sesiones</span>
         <div class="plan-price"><sup>$</sup>2.677.990</div>
         <p class="plan-desc">Plan de mantenimiento de bio rejuvenecimiento profundo. Dos opciones para preservar y potenciar resultados con tecnologías de luminosidad y firmeza.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">Cuky HIFU · RejuveSkin</span>
-          <span class="plan-treat">EndoJiwoo · Jeju Olida</span>
-          <span class="plan-treat">Dahe Beauty · Bioestimulación Neojin</span>
-          <span class="plan-treat">2 opciones según objetivo</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Bio rejuvenecimiento</span>
+            <div class="stage-list">
+              <span class="stage-item">Cuky HIFU + RejuveSkin</span>
+              <span class="stage-item">EndoJiwoo + Jeju Olida</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio armonización</span>
+            <div class="stage-list">
+              <span class="stage-item">Dahe Beauty</span>
+              <span class="stage-item">Bioestimulación Neojin según opción</span>
+              <span class="stage-item">2 rutas según objetivo</span>
+            </div>
+          </div>
         </div>
         <span class="plan-cta-outline">Ver opciones</span>
       </div>
@@ -764,11 +879,21 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions" data-count="8">8 Sesiones · Mantención</span>
         <div class="plan-price"><sup>$</sup>1.977.990</div>
         <p class="plan-desc">Plan de mantenimiento para conservar firmeza y frescura facial. Ideal para potenciar resultados post protocolos integrales.</p>
-        <div class="plan-treats">
-          <span class="plan-treat">2 Limpiezas Faciales Coreanas</span>
-          <span class="plan-treat">2 Cuky HIFU</span>
-          <span class="plan-treat">3 Biominji</span>
-          <span class="plan-treat">1 Dahe Beauty</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Bio rejuvenecimiento</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Cuky HIFU</span>
+              <span class="stage-item">3 Biominji</span>
+              <span class="stage-item">1 Dahe Beauty</span>
+            </div>
+          </div>
         </div>
         <span class="plan-cta-outline">Ver detalles del plan</span>
       </div>
@@ -816,10 +941,20 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions-dark" data-count="8">8 Sesiones · Glow</span>
         <div class="plan-price-dark"><sup>$</sup>1.177.990</div>
         <p class="plan-desc-dark">Mantenimiento de hidratación y bioestimulación. Efecto glass skin con luminosidad y nutrición. Perfecto como primer acercamiento al protocolo Lumina.</p>
-        <div class="plan-treats-dark">
-          <span class="plan-treat-dark">2 Limpiezas Faciales Coreanas</span>
-          <span class="plan-treat-dark">3 Korean Vitaboost</span>
-          <span class="plan-treat-dark">3 Sakura Ultra Lift + SkinGym</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Hidratación y glow</span>
+            <div class="stage-list">
+              <span class="stage-item">3 Korean Vitaboost</span>
+              <span class="stage-item">3 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
         </div>
         <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('glow-seoul')">Ver detalles</a>
       </div>
@@ -830,11 +965,21 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <span class="plan-sessions-dark" data-count="8">8 Sesiones · Glow</span>
         <div class="plan-price-dark"><sup>$</sup>1.477.990</div>
         <p class="plan-desc-dark">Mantenimiento con hidratación profunda y revitalización celular. Mejora textura, firmeza y luminosidad facial con Nubea Booster y RejuveSkin.</p>
-        <div class="plan-treats-dark">
-          <span class="plan-treat-dark">2 Limpiezas Faciales Coreanas</span>
-          <span class="plan-treat-dark">1 Nubea Booster</span>
-          <span class="plan-treat-dark">2 RejuveSkin</span>
-          <span class="plan-treat-dark">3 Sakura Ultra Lift + SkinGym</span>
+        <div class="plan-stages">
+          <div class="plan-stage">
+            <span class="stage-title">Preparación</span>
+            <div class="stage-list">
+              <span class="stage-item">2 Limpiezas faciales coreanas</span>
+            </div>
+          </div>
+          <div class="plan-stage">
+            <span class="stage-title">Hidratación profunda</span>
+            <div class="stage-list">
+              <span class="stage-item">1 Nubea Booster</span>
+              <span class="stage-item">2 RejuveSkin</span>
+              <span class="stage-item">3 Sakura Ultra Lift + SkinGym</span>
+            </div>
+          </div>
         </div>
         <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('glow-asan')">Ver detalles</a>
       </div>
@@ -1012,13 +1157,65 @@ const plans = {
   'glow-asan':{ name:'Glow de Asan', sessions:'8 Sesiones · Glow', price:'$1.477.990', desc:'Mantenimiento con hidratación profunda y revitalización celular. Mejora textura, firmeza y luminosidad facial con Nubea Booster y RejuveSkin.', treats:['2 Limpiezas Faciales Coreanas','1 Nubea Booster','2 Sesiones de RejuveSkin','3 Sakura Ultra Lift + SkinGym'], wa:'Hola%2C%20me%20interesa%20el%20plan%20Glow%20de%20Asan' }
 };
 
+const planStages = {
+  'eternal-gangnam':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas','1 sesión de RejuveSkin','3 Sakura Ultra Lift + SkinGym'] },
+    { title:'Bio rejuvenecimiento', items:['3 Cuky HIFU','3 Biominji','1 EndoJiwoo','5 Jeju Olida'] }
+  ],
+  'armonia-busan':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas','1 sesión de RejuveSkin','3 Sakura Ultra Lift + SkinGym'] },
+    { title:'Bio rejuvenecimiento', items:['3 Cuky HIFU','3 Biominji','1 EndoJiwoo','5 Jeju Olida'] },
+    { title:'Bio armonización', items:['1 Dahe Beauty','1 Yuna Face','1 Bioestimulación Neojin'] }
+  ],
+  'protocolo-asan':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas','2 Sakura Ultra Lift + SkinGym'] },
+    { title:'Tratamiento de ojeras', items:['Opción 1: 3 Biominji + 3 Lumijin','Opción 2: 3 Biominji + 1 Yuna Face','Opción 3: 3 Biominji + 1 Yuna Face para ojera con bolsa'] }
+  ],
+  'protocolo-busan':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas','2 Sakura Ultra Lift + SkinGym'] },
+    { title:'Ojeras + párpados', items:['Opción 1: 3 Biominji + 3 Lumijin + 1 Fibrojin','Opción 2: 3 Biominji + 1 Yuna Face + 1 Fibrojin','Opción 3: 3 Biominji + 1 Fibrojin'] }
+  ],
+  'flor-busan':[
+    { title:'Preparación despigmentante', items:['2 Limpiezas despigmentantes','1 Yoori Peel'] },
+    { title:'Bio rejuvenecimiento', items:['3 RejuveSkin','3 Korean Vitaboost','1 EndoJiwoo','5 Jeju Olida'] }
+  ],
+  'claridad-haneul':[
+    { title:'Preparación despigmentante', items:['2 Limpiezas despigmentantes','1 Yoori Peel'] },
+    { title:'Luminosidad', items:['3 RejuveSkin','3 Korean Vitaboost'] }
+  ],
+  'luz-jeju':[
+    { title:'Bio rejuvenecimiento', items:['Opción 1: 2 Cuky HIFU + 1 RejuveSkin + 1 EndoJiwoo + 5 Jeju Olida','Opción 2: 3 Cuky HIFU + 1 RejuveSkin'] },
+    { title:'Bio armonización', items:['Opción 1: 1 Dahe Beauty','Opción 2: 1 Bioestimulación Neojin + 1 Dahe Beauty'] }
+  ],
+  'aura-suwon':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas'] },
+    { title:'Bio rejuvenecimiento', items:['2 Cuky HIFU','3 Biominji','1 Dahe Beauty'] }
+  ],
+  'glow-seoul':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas'] },
+    { title:'Hidratación y glow', items:['3 Korean Vitaboost','3 Sakura Ultra Lift + SkinGym'] }
+  ],
+  'glow-asan':[
+    { title:'Preparación', items:['2 Limpiezas faciales coreanas'] },
+    { title:'Hidratación profunda', items:['1 Nubea Booster','2 RejuveSkin','3 Sakura Ultra Lift + SkinGym'] }
+  ]
+};
+
 function openModal(id) {
   const p = plans[id]; if(!p) return;
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mSessions').textContent = p.sessions;
   document.getElementById('mPrice').textContent = p.price;
   document.getElementById('mDesc').textContent = p.desc;
-  document.getElementById('mTreats').innerHTML = p.treats.map(t=>`<span class="modal-treat">${t}</span>`).join('');
+  const stages = planStages[id];
+  document.getElementById('mTreats').innerHTML = stages
+    ? stages.map(stage => `
+        <div class="modal-stage">
+          <span class="modal-stage-title">${stage.title}</span>
+          ${stage.items.map(item => `<span class="modal-treat">${item}</span>`).join('')}
+        </div>
+      `).join('')
+    : p.treats.map(t=>`<span class="modal-treat">${t}</span>`).join('');
   document.getElementById('mCta').href = `https://api.whatsapp.com/send?phone=56963222683&text=${p.wa}`;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
