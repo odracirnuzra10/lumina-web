@@ -42,7 +42,7 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net/">
   <link rel="dns-prefetch" href="https://www.clarity.ms/">
 
-  <link rel="preload" as="image" href="/evaluacion/img/l5.png" fetchpriority="high">
+  <link rel="preload" as="image" href="/evaluacion/img/l5.webp" fetchpriority="high">
 
   <!-- Non-blocking Fonts -->
 
@@ -683,6 +683,63 @@
       animation: shake 0.4s ease;
     }
 
+    /* Phone input con prefijo +56 separado */
+    .phone-group {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      background: #fff;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      overflow: hidden;
+    }
+
+    .phone-group:focus-within {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(14, 14, 14, 0.1);
+    }
+
+    .phone-group.error {
+      border-color: #e74c3c;
+      animation: shake 0.4s ease;
+    }
+
+    .phone-prefix {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 0.85rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #555;
+      background: #f5f5f5;
+      border-right: 1.5px solid #e0e0e0;
+      user-select: none;
+      -webkit-user-select: none;
+      flex-shrink: 0;
+    }
+
+    .phone-group input {
+      flex: 1;
+      width: 100%;
+      padding: 0.95rem 1.1rem;
+      border: none;
+      border-radius: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text);
+      background: transparent;
+      outline: none;
+      min-width: 0;
+    }
+
+    .phone-group input:focus {
+      box-shadow: none;
+    }
+
     .wa-btn {
       width: 100%;
       padding: 1rem;
@@ -1282,15 +1339,15 @@
     <!-- LEFT COLUMN (Desktop) -->
     <div class="left-col">
       <div class="logo">
-        <img src="/evaluacion/img/logo.png" alt="Lumina" style="max-height: 85px; width: auto; display: block; margin: 0 auto 0.5rem;">
+        <img src="/evaluacion/img/logo.webp" alt="Lumina" width="2048" height="1014" decoding="async" style="max-height: 85px; width: auto; display: block; margin: 0 auto 0.5rem;">
       </div>
       <div class="carousel-wrap">
         <div class="carousel" id="carouselDesktop">
-          <img class="carousel-img active" src="/evaluacion/img/l5.png" alt="Antes y Después — Caso 5">
-          <img class="carousel-img" src="/evaluacion/img/l1.jpeg" alt="Caso 1">
-          <img class="carousel-img" src="/evaluacion/img/l2.jpeg" alt="Caso 2">
-          <img class="carousel-img" src="/evaluacion/img/l3.jpeg" alt="Caso 3">
-          <img class="carousel-img" src="/evaluacion/img/l4.jpeg" alt="Caso 4">
+          <img class="carousel-img active" src="/evaluacion/img/l5.webp" alt="Antes y Después — Caso 5" width="1436" height="1096" fetchpriority="high" decoding="async">
+          <img class="carousel-img" src="/evaluacion/img/l1.webp" alt="Caso 1" width="920" height="700" loading="lazy" decoding="async">
+          <img class="carousel-img" src="/evaluacion/img/l2.webp" alt="Caso 2" width="920" height="700" loading="lazy" decoding="async">
+          <img class="carousel-img" src="/evaluacion/img/l3.webp" alt="Caso 3" width="920" height="700" loading="lazy" decoding="async">
+          <img class="carousel-img" src="/evaluacion/img/l4.webp" alt="Caso 4" width="920" height="700" loading="lazy" decoding="async">
         </div>
         <div class="carousel-caption" id="carouselCaption">Caso exitoso N°312</div>
         <div class="dots" id="dotsDesktop">
@@ -1334,14 +1391,14 @@
       <div class="mobile-header-wrapper">
         <div class="mobile-hero">
           <div class="mobile-carousel" id="carouselMobile">
-            <img src="/evaluacion/img/l5.png" alt="Antes y Después — Caso 5" class="active" fetchpriority="high">
-            <img src="/evaluacion/img/l1.jpeg" alt="Caso 1">
-            <img src="/evaluacion/img/l2.jpeg" alt="Caso 2">
-            <img src="/evaluacion/img/l3.jpeg" alt="Caso 3">
-            <img src="/evaluacion/img/l4.jpeg" alt="Caso 4">
+            <img src="/evaluacion/img/l5.webp" alt="Antes y Después — Caso 5" class="active" width="1436" height="1096" fetchpriority="high" decoding="async">
+            <img src="/evaluacion/img/l1.webp" alt="Caso 1" width="920" height="700" loading="lazy" decoding="async">
+            <img src="/evaluacion/img/l2.webp" alt="Caso 2" width="920" height="700" loading="lazy" decoding="async">
+            <img src="/evaluacion/img/l3.webp" alt="Caso 3" width="920" height="700" loading="lazy" decoding="async">
+            <img src="/evaluacion/img/l4.webp" alt="Caso 4" width="920" height="700" loading="lazy" decoding="async">
           </div>
           <div class="mobile-info">
-            <img src="/evaluacion/img/logo.png" alt="Lumina" style="max-height: 48px; width: auto; display: block; margin-bottom: 6px;">
+            <img src="/evaluacion/img/logo.webp" alt="Lumina" width="2048" height="1014" decoding="async" style="max-height: 48px; width: auto; display: block; margin-bottom: 6px;">
             <div class="m-price-new" style="font-size: 0.9rem; font-family: &#39;Outfit&#39;, sans-serif; text-transform: none; line-height: 1.2; margin-top: 4px; font-weight: 600;">
               la mejor tecnología<br>coreana del país</div>
           </div>
@@ -1456,7 +1513,10 @@
             </div>
             <div class="form-group">
               <label>Celular</label>
-              <input type="tel" id="inputCelular" value="+56 9 " placeholder="+56 9 XXXX XXXX" autocomplete="tel" oninput="formatPhone(this); checkForm()" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
+              <div class="phone-group" id="phoneGroup">
+                <span class="phone-prefix" aria-hidden="true">+56</span>
+                <input type="tel" id="inputCelular" placeholder="9 XXXX XXXX" inputmode="numeric" maxlength="11" autocomplete="tel-national" oninput="formatPhone(this); checkForm()" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
+              </div>
             </div>
             <div class="form-group">
               <label>Correo</label>
@@ -1622,28 +1682,20 @@
 
     function formatPhone(input) {
       let val = input.value.replace(/\D/g, '');
-      if (val.startsWith('569')) val = val.substring(3);
-      else if (val.startsWith('56')) val = val.substring(2);
-      val = val.substring(0, 8);
+      if (val.startsWith('56')) val = val.substring(2);
+      val = val.substring(0, 9);
 
-      let f = '+56 9 ';
-      if (val.length > 0) {
-        f += val.substring(0, 4);
-        if (val.length > 4) f += ' ' + val.substring(4);
-      }
+      let f = val.charAt(0) || '';
+      if (val.length > 1) f += ' ' + val.substring(1, 5);
+      if (val.length > 5) f += ' ' + val.substring(5);
       input.value = f;
-
-      // Prevent cursor from being inside the prefix
-      if (input.selectionStart < 7) {
-        input.setSelectionRange(7, 7);
-      }
     }
 
     function checkForm() {
       const n = document.getElementById('inputNombre').value.trim();
       const c = document.getElementById('inputCelular').value.replace(/\D/g, '');
       const e = document.getElementById('inputCorreo').value.trim();
-      document.getElementById('btnSubmit').className = 'wa-btn ' + (n && c.length === 11 && e.includes('@') ? 'enabled' : 'disabled');
+      document.getElementById('btnSubmit').className = 'wa-btn ' + (n && c.length === 9 && e.includes('@') ? 'enabled' : 'disabled');
     }
 
     function formKeyDown(e, nextId) {
@@ -1652,16 +1704,22 @@
 
     function handleSubmit() {
       const nombre = document.getElementById('inputNombre').value.trim();
-      const celular = document.getElementById('inputCelular').value.trim();
+      const celularInput = document.getElementById('inputCelular').value.trim();
+      const celular = celularInput ? '+56 ' + celularInput : '';
       const correo = document.getElementById('inputCorreo').value.trim();
       let hasError = false;
       ['inputNombre', 'inputCelular', 'inputCorreo'].forEach(id => {
         const el = document.getElementById(id);
         const v = el.value.trim();
-        if (!v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && v.replace(/\D/g, '').length < 11)) {
+        if (!v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && v.replace(/\D/g, '').length < 9)) {
           el.classList.add('error');
+          const errorTarget = id === 'inputCelular' ? document.getElementById('phoneGroup') : null;
+          if (errorTarget) errorTarget.classList.add('error');
           if (!hasError) { el.focus(); hasError = true; }
-          setTimeout(() => el.classList.remove('error'), 600);
+          setTimeout(() => {
+            el.classList.remove('error');
+            if (errorTarget) errorTarget.classList.remove('error');
+          }, 600);
         }
       });
       if (hasError) return;

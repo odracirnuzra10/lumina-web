@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.clarity.ms">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Sora:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Meta Pixel + Clarity (non-blocking) -->
 <script>
@@ -552,7 +552,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <!-- DERECHA: Ana María Rosales -->
     <div class="hero-right">
-      <img class="hero-right-photo" src="img/ana-retrato.png" alt="Ana María Rosales — Caso real Protocolo Lumina">
+      <img class="hero-right-photo" src="img/ana-retrato.webp" alt="Ana María Rosales — Caso real Protocolo Lumina" width="501" height="900" fetchpriority="high" decoding="async">
       <div class="hero-photo-overlay"></div>
       <div class="hero-photo-caption">
         <p class="hero-caption-quote">"Nunca me había realizado un tratamiento facial, pero me atreví — y el resultado fue asombroso."</p>
@@ -629,7 +629,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <!-- VIDEO -->
       <div class="endo-video">
         <div style="position:relative;width:100%;padding:75% 0 0 0;border:1px solid rgba(232,180,184,0.12);box-shadow:0 24px 64px rgba(0,0,0,0.5);overflow:hidden;">
-          <iframe src="https://player.vimeo.com/video/1186589095?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="EndoJiwoo Facial — Protocolo Lumina"></iframe>
+          <iframe src="https://player.vimeo.com/video/1186589095?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="EndoJiwoo Facial — Protocolo Lumina"></iframe>
         </div>
         <p style="margin-top:12px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);opacity:0.35;text-align:right;">Caso real · Sin filtros</p>
       </div>
@@ -683,21 +683,21 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <!-- Fotos tal cual — ya recortadas como antes/después cuadradas -->
     <div class="ba-strip">
       <div class="ba-item">
-        <img src="img/11.png" alt="Antes y después Lumina — Luminosidad">
+        <img src="img/11.webp" alt="Antes y después Lumina — Luminosidad" width="800" height="800" loading="lazy" decoding="async">
         <div class="ba-label">
           <span class="ba-zone">Luminosidad · Rostro</span>
           <span class="ba-plan-name">Incheon Elixir</span>
         </div>
       </div>
       <div class="ba-item" style="transition-delay:0.1s;">
-        <img src="img/13.png" alt="Antes y después Lumina — Firmeza">
+        <img src="img/13.webp" alt="Antes y después Lumina — Firmeza" width="800" height="800" loading="lazy" decoding="async">
         <div class="ba-label">
           <span class="ba-zone">Firmeza · Óvalo facial</span>
           <span class="ba-plan-name">Eternal Gangnam</span>
         </div>
       </div>
       <div class="ba-item" style="transition-delay:0.2s;">
-        <img src="img/15.png" alt="Antes y después Lumina — Textura">
+        <img src="img/15.webp" alt="Antes y después Lumina — Textura" width="800" height="800" loading="lazy" decoding="async">
         <div class="ba-label">
           <span class="ba-zone">Textura · Hidratación</span>
           <span class="ba-plan-name">Armonía de Busan</span>
@@ -724,11 +724,11 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <!-- FOTOS: antes/después (el retrato ya está en el hero) -->
     <div class="caso-fotos">
       <div class="caso-ba reveal">
-        <img src="img/ana-antes.png" alt="Ana María — Antes del tratamiento Lumina">
+        <img src="img/ana-antes.webp" alt="Ana María — Antes del tratamiento Lumina" width="368" height="574" loading="lazy" decoding="async">
         <span class="caso-ba-label">Antes</span>
       </div>
       <div class="caso-ba reveal" style="transition-delay:0.12s;">
-        <img src="img/ana-despues.png" alt="Ana María — Después del tratamiento Lumina">
+        <img src="img/ana-despues.webp" alt="Ana María — Después del tratamiento Lumina" width="394" height="614" loading="lazy" decoding="async">
         <span class="caso-ba-label">Después</span>
       </div>
     </div>
@@ -862,7 +862,7 @@ document.getElementById('hamburger').addEventListener('click',()=>{
 </script>
 
 <!-- Vimeo Player SDK -->
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://player.vimeo.com/api/player.js" defer></script>
 
 <!-- CTA Contact Tracking — eventos contacto_web + contacto_whatsapp_2026 -->
 <script>
