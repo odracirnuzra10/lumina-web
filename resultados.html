@@ -20,6 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -74,10 +75,20 @@ window.addEventListener('load', function() {
   --void:#0E0E0E; --onyx:#141414; --cloud:#F0EEE9;
   --petal:#FBF6F4; --cream:#FAF7F4; --mid:#F4EEEB;
   --ink:#1E1818; --ink-body:rgba(30,24,24,0.55); --ink-subtle:rgba(30,24,24,0.28);
-  --body-dark:rgba(240,238,233,0.5); --subtle-dark:rgba(240,238,233,0.2);
+  --body-dark:rgba(240,238,233,0.52); --subtle-dark:rgba(240,238,233,0.2);
+  --panel:#FFFDFC; --panel-soft:#F8F1EE; --panel-border:rgba(196,139,144,0.18);
 }
 html { scroll-behavior:smooth; }
-body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+body {
+  font-family:'Sora',sans-serif; font-size:18px; line-height:1.75; letter-spacing:0;
+  background:var(--void); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+p, li, a, button, span { font-size:inherit; }
+p { max-width:680px; }
+h1, h2, h3 { font-family:'Playfair Display',serif; letter-spacing:0.01em; line-height:1.2; }
+h1 { font-size:clamp(2rem, 5vw, 3.2rem); }
+h2 { font-size:clamp(1.5rem, 3.5vw, 2.2rem); }
+h3 { font-size:clamp(1.2rem, 2.5vw, 1.6rem); }
 
 /* ── NAV DUAL-STATE ── */
 nav {
@@ -95,9 +106,10 @@ nav.scrolled {
 
 .nav-links { display:flex; gap:36px; list-style:none; }
 .nav-links a {
-  font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
-  color:rgba(30,24,24,0.45); text-decoration:none; font-weight:500; transition:color 0.3s;
+  font-size:15px; letter-spacing:0.06em; text-transform:uppercase;
+  color:rgba(30,24,24,0.48); text-decoration:none; font-weight:500; transition:color 0.3s;
 }
+.nav-logo text { fill:var(--ink); }
 nav.scrolled .nav-links a { color:rgba(30,24,24,0.42); }
 .nav-links a:hover { color:var(--rose-deep); }
 nav.scrolled .nav-links a:hover { color:var(--rose-deep); }
@@ -105,15 +117,14 @@ nav.scrolled .nav-links a:hover { color:var(--rose-deep); }
 nav.scrolled .nav-links a.active { color:var(--rose-deep); }
 
 .nav-cta {
-  font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px;
-  text-transform:uppercase; color:#fff; background:#4CAF7D; border:none;
-  padding:12px 26px; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.3s;
+  font-family:'Sora',sans-serif; font-size:17px; font-weight:500; letter-spacing:0.06em;
+  color:#fff; background:#4CAF7D; border:none;
+  padding:16px 40px; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.3s;
 }
-nav.scrolled .nav-cta { color:#fff; background:#4CAF7D; }
 .nav-cta:hover, nav.scrolled .nav-cta:hover { background:#3d9c6b; }
 
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; position:relative; }
-.hamburger span { width:22px; height:1px; background:var(--ink); display:block; transition:all 0.3s; }
+.hamburger span { width:24px; height:2px; background:var(--ink); display:block; transition:all 0.3s; }
 nav.scrolled .hamburger span { background:var(--ink); }
 .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; }
@@ -124,109 +135,206 @@ nav.scrolled .hamburger span { background:var(--ink); }
   background: linear-gradient(135deg, #F9F0EE 0%, #F0E8E5 100%);
   padding:150px 48px 80px; text-align:center;
   position:relative; overflow:hidden;
+  border-bottom:1px solid rgba(196,139,144,0.12);
 }
 .page-header::before {
   content:'빛'; position:absolute; top:50%; left:50%;
   transform:translate(-50%,-50%);
-  font-size:clamp(200px,30vw,380px); color:rgba(196,139,144,0.06);
+  font-size:clamp(200px,30vw,380px); color:rgba(232,180,184,0.06);
   pointer-events:none; user-select:none; line-height:1;
 }
-.pretitle { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--rose-deep); opacity:0.7; margin-bottom:16px; display:block; }
-.pretitle-light { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--rose); opacity:0.55; margin-bottom:16px; display:block; }
-.h1-dark { font-family:'Playfair Display',serif; font-size:clamp(30px,5vw,62px); font-weight:400; color:var(--ink); line-height:1.1; margin-bottom:16px; }
+.pretitle, .pretitle-light { font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--rose); opacity:0.78; margin-bottom:16px; display:block; }
+.h1-dark { font-family:'Playfair Display',serif; font-size:clamp(2rem, 5vw, 3.2rem); font-weight:400; color:var(--ink); line-height:1.1; margin-bottom:20px; }
 .h1-dark em { font-style:italic; color:var(--rose-deep); }
-.sub-dark { font-size:14px; line-height:1.85; color:var(--ink-body); font-weight:300; max-width:500px; margin:0 auto 14px; }
-.disclaimer { font-size:10px; color:var(--ink-subtle); letter-spacing:1px; }
+.sub-dark { font-size:18px; line-height:1.75; color:var(--ink-body); font-weight:300; max-width:680px; margin:0 auto 14px; }
+.disclaimer { font-size:15px; color:var(--ink-subtle); letter-spacing:0.02em; }
 
 /* ── RIVER DIVIDER ── */
 .river { line-height:0; display:block; }
 .river svg { display:block; width:100%; }
 
 /* ── GALLERY SECTION ── */
-.gallery-wrap { background:var(--petal); padding:60px 48px 100px; }
+.gallery-wrap { background:var(--petal); padding:72px 48px 100px; }
 .container { max-width:1280px; margin:0 auto; }
-
-/* ── PHOTO GRID LAYOUTS ── */
-.featured-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
-.gallery-grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:12px; }
-.gallery-wide { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-/* ── BA PHOTO ITEMS — NO CROP ── */
-.ba-item {
-  position:relative; overflow:hidden; cursor:pointer;
-  opacity:0; transform:translateY(16px);
+.before-after-carousel {
+  position:relative; margin:48px auto 0; max-width:1180px;
+}
+.carousel-stage {
+  display:grid; gap:42px;
+}
+.carousel-slide {
+  position:relative; opacity:1; pointer-events:auto;
+  padding:46px 64px 52px;
+  border:1px solid rgba(196,139,144,0.2);
+  background:linear-gradient(180deg,#FFFDFC 0%,#FBF6F4 100%);
+  box-shadow:0 22px 58px rgba(30,24,24,0.1);
   transition:opacity 0.6s ease, transform 0.6s ease;
 }
-.ba-item.visible { opacity:1; transform:translateY(0); }
-.ba-item img {
-  display:block; width:100%; height:auto;
-  transition:transform 0.6s ease, opacity 0.4s;
+.carousel-slide.is-active { opacity:1; pointer-events:auto; position:relative; }
+.carousel-slide:nth-child(even) {
+  background:linear-gradient(180deg,#FAF7F4 0%,#F4EEEB 100%);
 }
-.ba-item:hover img { transform:scale(1.015); opacity:0.92; }
-.overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(14,14,14,0.68) 0%, transparent 50%); pointer-events:none; }
-.ba-info { position:absolute; bottom:0; left:0; right:0; padding:18px 16px; }
-.ba-zone { font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:var(--rose); opacity:0.75; margin-bottom:3px; display:block; }
-.ba-plan { font-family:'Playfair Display',serif; font-size:15px; font-weight:400; color:var(--cloud); line-height:1.2; }
-.ba-tag  { display:inline-block; margin-top:6px; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(240,238,233,0.4); border:1px solid rgba(232,180,184,0.2); padding:3px 8px; }
-.hover-cta { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; background:rgba(14,14,14,0.25); }
-.ba-item:hover .hover-cta { opacity:1; }
-.hover-btn {
-  font-size:9px; letter-spacing:2px; text-transform:uppercase;
-  color:var(--void); background:var(--rose); padding:11px 22px;
-  font-family:'Sora',sans-serif; font-weight:500; text-decoration:none; border:none; cursor:pointer;
+.carousel-seo {
+  display:grid; grid-template-columns:minmax(0, 0.42fr) minmax(0, 0.58fr); gap:34px;
+  align-items:start; margin-bottom:30px; padding:0 0 30px;
+  border-bottom:1px solid rgba(196,139,144,0.18);
+  max-width:none;
 }
+.carousel-seo h2, .carousel-seo h3 {
+  color:var(--ink); margin:0; max-width:420px;
+}
+.carousel-seo h2::before, .carousel-seo h3::before {
+  content:'';
+  display:block;
+  width:54px;
+  height:1px;
+  background:rgba(196,139,144,0.5);
+  margin-bottom:18px;
+}
+.carousel-seo p {
+  color:rgba(30,24,24,0.68); margin:0; max-width:680px;
+}
+.carousel-slide-inner {
+  display:grid; grid-template-columns:1fr auto 1fr; gap:18px; align-items:stretch;
+}
+.carousel-slide-inner.single-case {
+  grid-template-columns:minmax(0, 1fr);
+}
+.case-panel {
+  position:relative; background:#F8F1EE; border:1px solid rgba(196,139,144,0.2);
+  min-height:520px; display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.case-panel.composite {
+  max-width:760px;
+  min-height:620px;
+  margin:0 auto;
+}
+.case-panel img {
+  display:block; width:100%; height:100%; object-fit:contain; cursor:zoom-in;
+}
+.case-label {
+  position:absolute; top:18px; left:18px; z-index:2;
+  font-family:'Sora',sans-serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--rose-deep); background:rgba(251,246,244,0.88); padding:7px 10px; opacity:1;
+}
+.case-panel.after .case-label { top:auto; left:auto; right:18px; bottom:18px; }
+.case-panel.composite .case-label {
+  top:18px; left:18px; right:auto; bottom:auto;
+}
+.case-order {
+  position:absolute; left:18px; bottom:18px; z-index:2;
+  font-family:'Sora',sans-serif; font-size:15px; letter-spacing:0.08em; text-transform:uppercase;
+  color:rgba(30,24,24,0.72); background:rgba(251,246,244,0.9); padding:8px 10px;
+}
+.case-panel.after .case-order {
+  left:auto; right:18px;
+}
+.case-panel.composite .case-order {
+  left:auto; right:18px; bottom:18px;
+}
+.pair-arrow {
+  display:flex; align-items:center; justify-content:center;
+  min-width:54px; color:var(--rose-deep);
+}
+.pair-arrow svg { width:28px; height:28px; stroke:currentColor; fill:none; stroke-width:1.8; }
+.carousel-meta {
+  display:flex; justify-content:space-between; gap:28px; align-items:flex-end;
+  margin-top:26px; padding-top:24px;
+  border-top:1px solid rgba(196,139,144,0.14);
+}
+.carousel-text h3 { color:var(--ink); margin-bottom:8px; }
+.carousel-text p { color:rgba(30,24,24,0.64); margin:0; }
+.carousel-tag {
+  display:inline-block; margin-top:14px; border:1px solid rgba(196,139,144,0.32);
+  color:var(--rose-deep); padding:8px 12px; font-size:15px; letter-spacing:0.08em; text-transform:uppercase;
+  background:rgba(251,246,244,0.68);
+}
+.carousel-counter {
+  display:none;
+  position:absolute; right:22px; bottom:18px; z-index:3;
+  font-family:'Sora',sans-serif; font-size:15px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--rose-deep); opacity:1; background:rgba(251,246,244,0.85); padding:8px 10px;
+}
+.carousel-arrow {
+  display:none;
+  position:absolute; top:50%; transform:translateY(-50%); z-index:4;
+  width:48px; height:48px; border:1px solid var(--rose); border-radius:0;
+  background:rgba(0,0,0,0.55); color:var(--rose); display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:background 0.3s ease, border-color 0.3s ease;
+}
+.carousel-arrow:hover { background:rgba(0,0,0,0.75); border-color:var(--rose-deep); }
+.carousel-arrow.prev { left:16px; }
+.carousel-arrow.next { right:16px; }
+.carousel-arrow svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.8; }
+.section-cta-row { margin-top:28px; display:flex; justify-content:flex-start; }
+
+.lightbox {
+  position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92);
+  display:none; align-items:center; justify-content:center; padding:5vh 5vw;
+}
+.lightbox.is-open { display:flex; }
+.lightbox-image {
+  max-width:90vw; max-height:90vh; object-fit:contain; display:block;
+}
+.lightbox-close {
+  position:absolute; top:24px; right:24px; width:48px; height:48px;
+  background:rgba(0,0,0,0.55); color:var(--rose); border:1px solid var(--rose); border-radius:0;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.lightbox-close svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; }
 
 /* ── STATS — DARK ── */
 .stats-section { background:var(--void); padding:80px 48px; }
 .stats-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:40px; text-align:center; }
 .stat-num { font-family:'Playfair Display',serif; font-size:clamp(30px,4vw,50px); font-weight:400; color:var(--cloud); line-height:1; margin-bottom:8px; }
 .stat-num em { color:var(--rose); font-style:normal; }
-.stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--body-dark); font-weight:300; line-height:1.5; }
+.stat-label { font-size:15px; letter-spacing:0.08em; text-transform:uppercase; color:var(--body-dark); font-weight:300; line-height:1.5; }
 
 /* ── TESTIMONIALS ── */
 .testi-section { background:var(--mid); padding:100px 48px; }
 .testi-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:52px; }
 .testi {
-  background:#fff; padding:36px 32px; position:relative;
+  background:var(--panel); padding:36px 32px; position:relative;
   opacity:0; transform:translateY(16px); transition:opacity 0.5s ease, transform 0.5s ease;
   border:1px solid rgba(196,139,144,0.12);
 }
 .testi.visible { opacity:1; transform:translateY(0); }
 .testi::before { content:'"'; font-family:'Playfair Display',serif; font-size:72px; line-height:1; color:var(--rose-deep); opacity:0.08; position:absolute; top:10px; left:18px; }
 .testi-img { display:block; width:100%; height:auto; margin-bottom:24px; }
-.testi-stars { color:var(--rose-deep); font-size:11px; letter-spacing:3px; margin-bottom:14px; }
-.testi-text { font-size:13px; line-height:1.85; color:var(--ink-body); font-weight:300; font-style:italic; margin-bottom:20px; position:relative; z-index:1; }
-.testi-name { font-size:12px; font-weight:500; color:var(--ink); }
-.testi-plan { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); opacity:0.55; margin-top:3px; }
+.testi-stars { color:var(--rose-deep); font-size:15px; letter-spacing:0.18em; margin-bottom:14px; }
+.testi-text { font-size:18px; line-height:1.75; color:var(--ink-body); font-weight:300; font-style:italic; margin-bottom:20px; position:relative; z-index:1; }
+.testi-name { font-size:18px; font-weight:500; color:var(--ink); }
+.testi-plan { font-size:15px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rose-deep); opacity:0.75; margin-top:3px; }
 
 /* ── CTA FINAL ── */
 .cta-final { background:var(--void); padding:120px 48px; text-align:center; }
 .cta-title { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,52px); font-weight:400; color:var(--cloud); line-height:1.2; margin-bottom:18px; }
 .cta-title em { font-style:italic; color:var(--rose); }
-.cta-sub { font-size:14px; color:var(--body-dark); font-weight:300; max-width:460px; margin:0 auto 44px; line-height:1.85; }
+.cta-sub { font-size:18px; color:var(--body-dark); font-weight:300; max-width:680px; margin:0 auto 44px; line-height:1.85; }
 .btn-rose {
-  font-family:'Sora',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px;
-  text-transform:uppercase; color:var(--void); background:var(--rose); border:none;
-  padding:17px 42px; cursor:pointer; text-decoration:none;
+  font-family:'Sora',sans-serif; font-size:17px; font-weight:500; letter-spacing:0.06em;
+  color:var(--void); background:var(--rose); border:none;
+  padding:16px 40px; cursor:pointer; text-decoration:none;
   display:inline-flex; align-items:center; gap:9px; transition:background 0.3s, transform 0.2s;
 }
 .btn-rose:hover { background:var(--rose-deep); color:#fff; transform:translateY(-2px); }
-.cta-note { margin-top:16px; font-size:10px; color:var(--subtle-dark); letter-spacing:1px; }
+.cta-note { margin-top:16px; font-size:15px; color:var(--subtle-dark); letter-spacing:0.02em; }
 
 /* ── FOOTER ── */
-.footer-wrap { background:var(--onyx); border-top:1px solid rgba(232,180,184,0.06); }
+.footer-wrap { background:var(--onyx); border-top:1px solid rgba(232,180,184,0.14); }
 .footer-inner { max-width:1200px; margin:0 auto; padding:60px 48px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; }
-.footer-tagline { font-size:12px; color:var(--subtle-dark); font-weight:300; line-height:1.7; margin-top:18px; max-width:220px; }
-.footer-col-title { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--rose); opacity:0.7; margin-bottom:18px; display:block; }
+.footer-tagline { font-size:18px; color:rgba(240,238,233,0.72); font-weight:300; line-height:1.7; margin-top:22px; max-width:340px; }
+.footer-col-title { font-size:15px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rose); opacity:0.8; margin-bottom:18px; display:block; }
 .footer-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.footer-links a { font-size:13px; color:rgba(240,238,233,0.75); text-decoration:none; font-weight:300; transition:color 0.3s; }
+.footer-links a { font-size:18px; color:rgba(240,238,233,0.82); text-decoration:none; font-weight:300; transition:color 0.3s; }
 .footer-links a:hover { color:var(--rose); }
-.footer-bottom-inner { max-width:1200px; margin:0 auto; padding:18px 48px; border-top:1px solid rgba(255,255,255,0.03); display:flex; justify-content:space-between; align-items:center; }
-.footer-copy { font-size:10px; color:rgba(240,238,233,0.5); letter-spacing:1px; }
-.footer-kr   { font-size:10px; color:var(--rose); opacity:0.18; letter-spacing:4px; }
+.footer-bottom-inner { max-width:1200px; margin:0 auto; padding:18px 48px; border-top:1px solid rgba(232,180,184,0.1); display:flex; justify-content:space-between; align-items:center; }
+.footer-copy { font-size:15px; color:rgba(240,238,233,0.62); letter-spacing:0.02em; }
+.footer-kr   { font-size:15px; color:var(--rose); opacity:0.58; letter-spacing:0.14em; }
+.footer-symbol { opacity:0.56; }
 
 /* ── STICKY WA ── */
-.sticky-wa { display:none; position:fixed; bottom:20px; right:20px; z-index:800; background:#4CAF7D; color:#fff; border:none; padding:14px 22px; font-family:'Sora',sans-serif; font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; cursor:pointer; text-decoration:none; align-items:center; gap:8px; box-shadow:0 6px 28px rgba(76,175,125,0.38); transition:background 0.3s; }
+.sticky-wa { display:none; position:fixed; bottom:20px; right:20px; z-index:800; background:#4CAF7D; color:#fff; border:none; padding:16px 24px; font-family:'Sora',sans-serif; font-size:17px; font-weight:500; letter-spacing:0.06em; cursor:pointer; text-decoration:none; align-items:center; gap:8px; box-shadow:0 6px 28px rgba(76,175,125,0.38); transition:background 0.3s; }
 .sticky-wa:hover { background:#3d9c6b; }
 
 /* ── HANJI TEXTURE ── */
@@ -242,7 +350,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 /* ── HANGUL WATERMARK en header ── */
 .header-kr-watermark {
   position:absolute; bottom:22px; right:48px;
-  font-size:11px; letter-spacing:5px; color:var(--rose-deep);
+  font-size:15px; letter-spacing:0.14em; color:var(--rose-deep);
   opacity:0.22; text-transform:none; pointer-events:none;
   font-family:'Sora',sans-serif; font-weight:300;
 }
@@ -262,9 +370,9 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .mob-menu.open { display:flex; }
 .mob-menu-close { position:absolute; top:22px; right:22px; background:none; border:none; cursor:pointer; padding:10px; z-index:10; }
 .mob-menu-inner { display:flex; flex-direction:column; align-items:center; gap:32px; }
-.mob-menu-link { font-family:'Sora',sans-serif; font-size:14px; letter-spacing:3.5px; text-transform:uppercase; color:rgba(30,24,24,0.8); text-decoration:none; font-weight:500; padding:8px 0; }
+.mob-menu-link { font-family:'Sora',sans-serif; font-size:18px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(30,24,24,0.8); text-decoration:none; font-weight:500; padding:8px 0; }
 .mob-menu-link:hover { color:var(--rose-deep); }
-.mob-menu-cta { display:inline-flex; align-items:center; gap:10px; margin-top:20px; font-family:'Sora',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; color:#fff; background:#4CAF7D; padding:16px 34px; text-decoration:none; transition:background 0.3s; }
+.mob-menu-cta { display:inline-flex; align-items:center; gap:10px; margin-top:20px; font-family:'Sora',sans-serif; font-size:17px; letter-spacing:0.06em; font-weight:500; color:#fff; background:#4CAF7D; padding:16px 40px; text-decoration:none; transition:background 0.3s; }
 .mob-menu-cta:hover { background:#3d9c6b; }
 
 /* ── RESPONSIVE ── */
@@ -277,9 +385,15 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .nav-logo svg { width:90px; height:auto; }
   .page-header { padding:120px 24px 64px; }
   .gallery-wrap { padding:40px 24px 80px; }
-  .featured-row { grid-template-columns:1fr; }
-  .gallery-grid3 { grid-template-columns:1fr 1fr; }
-  .gallery-wide { grid-template-columns:1fr 1fr; }
+  .carousel-stage { gap:32px; }
+  .carousel-slide { padding:36px 24px 40px; }
+  .carousel-seo { grid-template-columns:1fr; gap:14px; }
+  .carousel-slide-inner { grid-template-columns:1fr; }
+  .case-panel.composite { max-width:none; min-height:520px; }
+  .pair-arrow { min-height:40px; }
+  .pair-arrow svg { transform:rotate(90deg); }
+  .case-panel { min-height:420px; }
+  .carousel-meta { flex-direction:column; align-items:flex-start; padding-right:72px; }
   .stats-grid { grid-template-columns:repeat(2,1fr); gap:28px; }
   .stats-section { padding:60px 24px; }
   .testi-section { padding:70px 24px; }
@@ -289,24 +403,30 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .footer-bottom-inner { padding:16px 24px; flex-direction:column; gap:6px; text-align:center; }
   .sticky-wa { display:inline-flex; }
 }
-@media (max-width:560px) {
-  .gallery-grid3, .gallery-wide { grid-template-columns:1fr; }
+@media (max-width:640px) {
+  .carousel-stage { gap:28px; }
+  .carousel-arrow.prev { left:10px; }
+  .carousel-arrow.next { right:10px; }
+  .carousel-counter { right:16px; bottom:14px; }
+  .case-panel { min-height:340px; }
+  .case-panel.composite { min-height:360px; }
 }
 </style>
-  <title>Resultados Reales · Lifting Facial Coreano Antes y Después · Protocolo Lumina Chile</title>
-  <meta name="description" content="Resultados reales de lifting facial coreano en Chile. Casos antes y después de EndoJiwoo, Endolaser Coreano y HIFU. Testimonios verificados sin filtros. Vitacura, Concón, Los Ángeles.">
+  <title>Endolaser Facial y Endolifting — Resultados Antes y Después | Protocolo Lumina</title>
+  <meta name="description" content="Descubre los resultados reales de Endolaser facial, Endolifting y Endojiwoo en Protocolo Lumina. Fotos antes y después de tratamientos de rejuvenecimiento facial en Chile.">
+  <meta name="keywords" content="endolaser, endolaser facial, endolaser antes y después, endolifting, endolifting facial, endojiwoo, resultados rejuvenecimiento facial, protocolo lumina">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://www.protocololumina.cl/resultados">
+  <meta property="og:title" content="Endolaser Facial y Endolifting — Resultados Antes y Después | Protocolo Lumina">
+  <meta property="og:description" content="Resultados reales de Endolaser, Endolifting facial y Endojiwoo. Fotos antes y después en Protocolo Lumina, Chile.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Resultados Reales · Lifting Facial Coreano · Protocolo Lumina Chile">
-  <meta property="og:description" content="Casos reales antes y después. EndoJiwoo, Endolaser Coreano y HIFU. Testimonios verificados sin filtros.">
   <meta property="og:url" content="https://www.protocololumina.cl/resultados">
   <meta property="og:site_name" content="Protocolo Lumina">
   <meta property="og:image" content="https://www.protocololumina.cl/img/og-lumina.jpg">
   <meta property="og:locale" content="es_CL">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Resultados Reales — Lifting Facial Coreano · Protocolo Lumina">
-  <meta name="twitter:description" content="Antes y después reales. EndoJiwoo, Endolaser Coreano, HIFU. Sin filtros, con consentimiento informado.">
+  <meta name="twitter:description" content="Resultados reales de Endolaser facial, Endolifting y Endojiwoo en Protocolo Lumina, con registro clínico y consentimiento informado.">
   <meta name="geo.region" content="CL">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"AggregateRating","itemReviewed":{"@type":"MedicalBusiness","name":"Protocolo Lumina","url":"https://www.protocololumina.cl"},"ratingValue":"5","bestRating":"5","reviewCount":"4"}</script>
 </head>
@@ -326,7 +446,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#1E1818" opacity="0.38" letter-spacing="4">아름다움</text>
       <use href="#star4" x="168" y="44" width="24" height="36" fill="#C48B90"/>
       <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#1E1818" font-weight="500" letter-spacing="3">lumina</text>
-      <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="11" fill="#1E1818" opacity="0.28" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
+      <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="15" fill="#1E1818" opacity="0.28" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
     </svg>
   </a>
   <ul class="nav-links">
@@ -334,20 +454,20 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <li><a href="planes.html">Planes</a></li>
     <li><a href="resultados.html" class="active">Resultados</a></li>
   </ul>
-  <a class="nav-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank">Agenda tu hora</a>
+  <a class="nav-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quiero%20agendar%20mi%20hora" target="_blank">Agenda tu hora</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- MOBILE MENU OVERLAY -->
 <div id="mobileMenu" class="mob-menu">
   <button class="mob-menu-close" onclick="closeMobileMenu()">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1E1818" stroke-width="1.5"><line x1="1" y1="1" x2="19" y2="19"/><line x1="19" y1="1" x2="1" y2="19"/></svg>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F0EBE3" stroke-width="1.5"><line x1="1" y1="1" x2="19" y2="19"/><line x1="19" y1="1" x2="1" y2="19"/></svg>
   </button>
   <div class="mob-menu-inner">
     <a href="index.html" class="mob-menu-link">Inicio</a>
     <a href="planes.html" class="mob-menu-link">Planes</a>
     <a href="resultados.html" class="mob-menu-link">Resultados</a>
-    <a class="mob-menu-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank">
+    <a class="mob-menu-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quiero%20agendar%20mi%20hora" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.523-.809-6.246-2.163l-.436-.35-3.026 1.014 1.014-3.026-.35-.436A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Agenda tu hora
     </a>
@@ -356,9 +476,9 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
 <!-- ══ PAGE HEADER — CLARO ROSADO ══ -->
 <div class="page-header hanji">
-  <span class="pretitle">Lifting Facial · EndoJiwoo · Endolaser Coreano</span>
-  <h1 class="h1-dark">Rejuvenecimiento real, <em>sin cirugía</em></h1>
-  <p class="sub-dark">Resultados documentados de pacientes que completaron su protocolo de lifting facial Lumina. Imágenes sin filtros ni edición.</p>
+  <span class="pretitle">Endolaser facial · Endolifting · Endojiwoo</span>
+  <h1 class="h1-dark">Resultados de Endolaser Facial y Endolifting</h1>
+  <p class="sub-dark">Casos clínicos documentados en Protocolo Lumina con enfoque en firmeza, redefinición del óvalo facial y mejora visible de la calidad de la piel. Cada imagen corresponde a pacientes reales con protocolo indicado según evaluación médica-estética.</p>
   <p class="disclaimer">Fotografías con consentimiento informado · Resultados individuales pueden variar</p>
   <!-- 피부 의 빛 = "la luz de la piel" -->
   <span class="header-kr-watermark">피부 의 빛</span>
@@ -376,115 +496,205 @@ nav.scrolled .hamburger span { background:var(--ink); }
 <!-- ══ GALLERY — PETAL ══ -->
 <div class="gallery-wrap hanji">
   <div class="container">
+    <section class="before-after-carousel reveal" aria-label="Casos antes y después Protocolo Lumina">
+      <div class="carousel-stage" data-total-slides="9">
+        <article class="carousel-slide is-active" data-treatment="Endolaser Facial" data-case-title="Caso clínico Ana María" data-case-copy="Comparativa clínica posterior a protocolo orientado a redefinir el óvalo facial y mejorar firmeza visible en la zona mandibular.">
+          <div class="carousel-seo">
+            <h2>Endolaser Facial — Antes y Después</h2>
+            <p>El Endolaser facial permite trabajar flacidez, contorno mandibular y calidad cutánea con una indicación precisa según el grado de laxitud y la respuesta tisular de cada paciente. En Protocolo Lumina documentamos la evolución clínica para evaluar cambios reales en definición y firmeza.</p>
+          </div>
+          <div class="carousel-slide-inner">
+            <figure class="case-panel before">
+              <span class="case-label">Antes</span>
+              <span class="case-order">Foto 1 de 2</span>
+              <img src="img/ana-antes.webp" alt="Antes de Endolaser facial — Protocolo Lumina" width="368" height="574" decoding="async">
+            </figure>
+            <div class="pair-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </div>
+            <figure class="case-panel after">
+              <span class="case-label">Después</span>
+              <span class="case-order">Foto 2 de 2</span>
+              <img src="img/ana-despues.webp" alt="Después de Endolaser facial — Protocolo Lumina" width="394" height="614" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Caso clínico Ana María</h3>
+              <p>Comparativa clínica posterior a protocolo orientado a redefinir el óvalo facial y mejorar firmeza visible en la zona mandibular.</p>
+              <span class="carousel-tag">Endolaser Facial</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endolaser Facial" data-case-title="Luminosidad e hidratación" data-case-copy="Resultado documentado de Lumina con foco en luminosidad, hidratación y lectura del óvalo facial.">
+          <div class="carousel-seo">
+            <h2>Endolaser: Resultados Reales</h2>
+            <p>Los resultados reales de Endolaser deben analizarse con luz, postura y encuadre comparables para observar con claridad cambios en volumen, tensión de la piel y armonización del tercio inferior del rostro. Por eso cada registro clínico se realiza bajo un protocolo fotográfico consistente.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 2 de 9</span>
+              <img src="img/11.webp" alt="Antes y después de Endolaser facial — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Luminosidad e hidratación</h3>
+              <p>Antes y después publicado en Protocolo Lumina, orientado a mejorar luz, hidratación y apariencia global del rostro.</p>
+              <span class="carousel-tag">Incheon Elixir · 14 sesiones</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endolaser Facial" data-case-title="Firmeza facial y bioestimulación" data-case-copy="Resultado documentado con foco en firmeza, colágeno y soporte facial.">
+          <div class="carousel-seo">
+            <h3>Firmeza facial con bioestimulación</h3>
+            <p>Este caso muestra una evolución orientada a soporte y firmeza visible, trabajando la respuesta progresiva de la piel y la definición facial.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 3 de 9</span>
+              <img src="img/12.webp" alt="Antes y después de Endolaser facial — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Firmeza facial y bioestimulación</h3>
+              <p>Caso de rejuvenecimiento facial enfocado en firmeza, soporte y estímulo de colágeno.</p>
+              <span class="carousel-tag">Eternal Gangnam · Endolaser</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endolifting Facial" data-case-title="Textura y glass skin" data-case-copy="Resultado documentado con foco en textura, luminosidad y calidad superficial de la piel.">
+          <div class="carousel-seo">
+            <h2>Endolifting Facial</h2>
+            <p>El Endolifting facial se indica cuando buscamos un efecto de retracción y soporte que acompañe el proceso natural de rejuvenecimiento sin alterar la expresión. La evaluación personalizada nos permite definir si conviene trabajar firmeza, textura o ambas dimensiones en el mismo protocolo.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 4 de 9</span>
+              <img src="img/13.webp" alt="Antes y después de Endolifting facial — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Textura y glass skin</h3>
+              <p>Resultado real con foco en textura, suavidad visual y luminosidad facial.</p>
+              <span class="carousel-tag">Glow de Seoul · 12 sesiones</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endolifting Facial" data-case-title="Despigmentación y tono uniforme" data-case-copy="Resultado documentado con foco en manchas, tono y aspecto homogéneo.">
+          <div class="carousel-seo">
+            <h3>Despigmentación y tono uniforme</h3>
+            <p>La evolución de tono y pigmentación se evalúa de forma gradual, buscando una piel más uniforme sin perder naturalidad.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 5 de 9</span>
+              <img src="img/14.webp" alt="Antes y después de Endolifting facial — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Despigmentación y tono uniforme</h3>
+              <p>Caso publicado con foco en tono, luminosidad y reducción visual de pigmentación.</p>
+              <span class="carousel-tag">Flor de Busan · Plan despigmentante</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endojiwoo" data-case-title="Firmeza del óvalo facial" data-case-copy="Resultado documentado con foco en contorno y soporte facial.">
+          <div class="carousel-seo">
+            <h2>Endojiwoo — Tratamiento Facial Avanzado</h2>
+            <p>Endojiwoo es un tratamiento facial avanzado que prioriza calidad de piel, luminosidad y una mejora progresiva del aspecto general del rostro. En Lumina suele integrarse con otras tecnologías cuando buscamos una piel más uniforme, revitalizada y con mejor respuesta biológica.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 6 de 9</span>
+              <img src="img/15.webp" alt="Antes y después de Endojiwoo — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Firmeza del óvalo facial</h3>
+              <p>Resultado orientado a mejorar firmeza y lectura del contorno facial.</p>
+              <span class="carousel-tag">Armonía de Busan · 26 sesiones</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endojiwoo" data-case-title="Luminosidad profunda" data-case-copy="Resultado documentado con foco en hidratación profunda y vitalidad de la piel.">
+          <div class="carousel-seo">
+            <h3>Luminosidad profunda</h3>
+            <p>Un protocolo facial puede priorizar hidratación profunda y vitalidad cuando la piel necesita recuperar luz y descanso visual.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 7 de 9</span>
+              <img src="img/16.webp" alt="Antes y después de Endojiwoo — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Luminosidad profunda</h3>
+              <p>Caso publicado con foco en hidratación profunda, luz y calidad de piel.</p>
+              <span class="carousel-tag">Incheon Elixir · 14 sesiones</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endojiwoo" data-case-title="Textura y poros" data-case-copy="Resultado documentado con foco en textura, poros y acabado glass skin.">
+          <div class="carousel-seo">
+            <h3>Textura, poros y acabado glass skin</h3>
+            <p>El trabajo de textura busca una piel más refinada, con mejor lectura de poros y mayor uniformidad visual.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 8 de 9</span>
+              <img src="img/17.webp" alt="Antes y después de Endojiwoo — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Textura y poros</h3>
+              <p>Resultado real orientado a textura, poros y acabado luminoso tipo glass skin.</p>
+              <span class="carousel-tag">Yuna Face · Glass skin</span>
+            </div>
+          </div>
+        </article>
+        <article class="carousel-slide" data-treatment="Endolaser Facial" data-case-title="Rejuvenecimiento global" data-case-copy="Registro comparativo con foco en firmeza, refinamiento del contorno y apariencia rejuvenecida del rostro.">
+          <div class="carousel-seo">
+            <h3>Rejuvenecimiento facial con redefinición de contorno</h3>
+            <p>Este caso complementa la lectura clínica de la página mostrando una evolución global del rostro, con foco en soporte, contorno y mejor calidad visual de la piel.</p>
+          </div>
+          <div class="carousel-slide-inner single-case">
+            <figure class="case-panel composite">
+              <span class="case-label">Antes y después</span>
+              <span class="case-order">Caso 9 de 9</span>
+              <img src="img/18.webp" alt="Antes y después de Endolaser facial — Protocolo Lumina" width="800" height="800" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <div class="carousel-meta">
+            <div class="carousel-text">
+              <h3>Rejuvenecimiento global</h3>
+              <p>Registro comparativo con foco en firmeza, refinamiento del contorno y apariencia rejuvenecida del rostro.</p>
+              <span class="carousel-tag">Eternal Gangnam · 24 sesiones</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- ROW 1: 2 fotos en columnas iguales -->
-    <div class="featured-row">
-      <div class="ba-item reveal">
-        <img src="img/11.webp" alt="Resultado Lumina — Luminosidad e Hidratación" width="800" height="800" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Luminosidad · Hidratación · Óvalo facial</span>
-          <span class="ba-plan">Incheon Elixir</span>
-          <span class="ba-tag">14 Sesiones</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20el%20resultado%20Incheon%20Elixir%20y%20me%20interesa" target="_blank">Quiero este resultado</a>
-        </div>
-      </div>
-      <div class="ba-item reveal" style="transition-delay:0.1s;">
-        <img src="img/12.webp" alt="Resultado Lumina — Firmeza facial" width="800" height="800" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Firmeza · Bioestimulación · Colágeno</span>
-          <span class="ba-plan">Eternal Gangnam</span>
-          <span class="ba-tag">24 Sesiones · Endolaser</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20el%20resultado%20Eternal%20Gangnam%20y%20me%20interesa" target="_blank">Quiero este resultado</a>
-        </div>
-      </div>
+    <div class="section-cta-row reveal">
+      <a class="btn-rose" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quiero%20agendar%20mi%20hora" target="_blank">
+        Agenda tu hora
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
     </div>
-
-    <!-- ROW 2: 3 fotos en columnas -->
-    <div class="gallery-grid3">
-      <div class="ba-item reveal">
-        <img src="img/13.webp" alt="Resultado Lumina — Textura glass skin" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Textura · Glass skin</span>
-          <span class="ba-plan">Glow de Seoul</span>
-          <span class="ba-tag">12 Sesiones</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20el%20resultado%20Glow%20de%20Seoul%20y%20me%20interesa" target="_blank">Me interesa</a>
-        </div>
-      </div>
-      <div class="ba-item reveal" style="transition-delay:0.1s;">
-        <img src="img/14.webp" alt="Resultado Lumina — Despigmentación" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Despigmentación · Tono uniforme</span>
-          <span class="ba-plan">Flor de Busan</span>
-          <span class="ba-tag">Plan despigmentante</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20el%20resultado%20despigmentante%20y%20me%20interesa" target="_blank">Me interesa</a>
-        </div>
-      </div>
-      <div class="ba-item reveal" style="transition-delay:0.2s;">
-        <img src="img/15.webp" alt="Resultado Lumina — Firmeza óvalo facial" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Firmeza · Óvalo facial</span>
-          <span class="ba-plan">Armonía de Busan</span>
-          <span class="ba-tag">26 Sesiones</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20el%20resultado%20Armon%C3%ADa%20de%20Busan%20y%20me%20interesa" target="_blank">Me interesa</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ROW 3: 3 fotos en grid uniforme -->
-    <div class="gallery-grid3" style="margin-top:0;">
-      <div class="ba-item reveal">
-        <img src="img/16.webp" alt="Resultado Lumina — Luminosidad profunda" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Luminosidad · Hidratación profunda</span>
-          <span class="ba-plan">Incheon Elixir</span>
-          <span class="ba-tag">14 Sesiones</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20me%20interesa%20el%20protocolo%20Lumina" target="_blank">Quiero este resultado</a>
-        </div>
-      </div>
-      <div class="ba-item reveal" style="transition-delay:0.1s;">
-        <img src="img/17.webp" alt="Resultado Lumina — Textura y poros" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Textura · Poros · Glass skin</span>
-          <span class="ba-plan">Yuna Face</span>
-          <span class="ba-tag">Glass skin</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20me%20interesa%20el%20protocolo%20Lumina" target="_blank">Me interesa</a>
-        </div>
-      </div>
-      <div class="ba-item reveal" style="transition-delay:0.2s;">
-        <img src="img/18.webp" alt="Resultado Lumina — Rejuvenecimiento total" width="800" height="800" loading="lazy" decoding="async">
-        <div class="overlay"></div>
-        <div class="ba-info">
-          <span class="ba-zone">Firmeza · Rejuvenecimiento · Endolaser</span>
-          <span class="ba-plan">Eternal Gangnam</span>
-          <span class="ba-tag">24 Sesiones</span>
-        </div>
-        <div class="hover-cta">
-          <a class="hover-btn" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20me%20interesa%20el%20protocolo%20Lumina" target="_blank">Me interesa</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -567,13 +777,13 @@ nav.scrolled .hamburger span { background:var(--ink); }
   <div class="container" style="max-width:800px;margin:0 auto;">
     <span class="pretitle-light" style="display:block;text-align:center;">Resultados reales · Sin cirugía</span>
     <h2 class="cta-title">Tu lifting facial<br><em>comienza aquí</em></h2>
-    <p class="cta-sub">EndoJiwoo, Endolaser Coreano, HIFU. Agenda tu evaluación y diseñamos el protocolo de rejuvenecimiento facial exacto para ti.</p>
+    <p class="cta-sub">Endojiwoo, Endolaser facial y Endolifting en una evaluación personalizada para definir el tratamiento indicado para tu piel y tus objetivos.</p>
     <div style="text-align:center;">
-      <a class="btn-rose" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20mi%20evaluaci%C3%B3n" target="_blank">
-        Agenda tu evaluación
+      <a class="btn-rose" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quiero%20agendar%20mi%20hora" target="_blank">
+        Agenda tu hora
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 18 6-6-6-6"/></svg>
       </a>
-      <p class="cta-note">Sin compromiso · Evaluación personalizada · 3 sedes disponibles</p>
+      <p class="cta-note">Evaluación personalizada · 3 sedes disponibles</p>
     </div>
   </div>
 </div>
@@ -591,10 +801,10 @@ nav.scrolled .hamburger span { background:var(--ink); }
   <div class="footer-inner">
     <div>
       <svg width="120" height="62" viewBox="0 0 360 186" xmlns="http://www.w3.org/2000/svg">
-        <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.28" letter-spacing="4">아름다움</text>
-        <use href="#star4" x="168" y="44" width="24" height="36" fill="#E8B4B8" opacity="0.45"/>
-        <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#F0EEE9" opacity="0.45" font-weight="500" letter-spacing="3">lumina</text>
-        <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="11" fill="#F0EEE9" opacity="0.15" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
+        <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.62" letter-spacing="4">아름다움</text>
+        <use href="#star4" x="168" y="44" width="24" height="36" fill="#E8B4B8" opacity="0.9"/>
+        <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#F0EEE9" opacity="0.82" font-weight="500" letter-spacing="3">lumina</text>
+        <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="15" fill="#F0EEE9" opacity="0.45" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
       </svg>
       <p class="footer-tagline">"Donde la oscuridad revela la luz de tu piel."</p>
     </div>
@@ -626,7 +836,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   <div class="footer-bottom-inner">
     <span class="footer-copy">© 2026 Protocolo Lumina® · Todos los derechos reservados</span>
     <div style="display:flex;align-items:center;gap:14px;">
-      <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.18;">
+      <svg class="footer-symbol" width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="1"/>
         <path d="M16 1C16 1 16 16 8.5 16C4.91 16 2 13.09 2 9.5C2 5.91 4.91 3 8.5 3C12.09 3 16 7.46 16 16Z" fill="#E8B4B8" opacity="0.5"/>
         <path d="M16 31C16 31 16 16 23.5 16C27.09 16 30 18.91 30 22.5C30 26.09 27.09 29 23.5 29C19.91 29 16 24.54 16 16Z" fill="#E8B4B8" opacity="0.25"/>
@@ -638,7 +848,14 @@ nav.scrolled .hamburger span { background:var(--ink); }
   </div>
 </div>
 
-<a class="sticky-wa" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank">
+<div class="lightbox" id="imageLightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" id="lightboxClose" aria-label="Cerrar imagen ampliada">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+  </button>
+  <img class="lightbox-image" id="lightboxImage" alt="">
+</div>
+
+<a class="sticky-wa" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20vi%20los%20resultados%20de%20Lumina%20y%20quiero%20agendar%20mi%20hora" target="_blank">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   Agenda tu hora
 </a>
@@ -662,11 +879,51 @@ document.getElementById('hamburger').addEventListener('click', ()=>{
   document.body.style.overflow='hidden';
 });
 
+/* ── Lightbox ── */
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(src, alt) {
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || '';
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow='hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightboxImage.removeAttribute('src');
+  lightboxImage.alt = '';
+  if (!document.getElementById('mobileMenu').classList.contains('open')) {
+    document.body.style.overflow='';
+  }
+}
+
+document.querySelectorAll('.before-after-carousel .case-panel img').forEach((image) => {
+  image.addEventListener('click', () => openLightbox(image.currentSrc || image.src, image.alt));
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
 /* ── Scroll reveal ── */
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold:0.06 });
-document.querySelectorAll('.reveal, .ba-item, .testi').forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal, .testi').forEach(el=>obs.observe(el));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+    closeLightbox();
+  }
+});
 </script>
 
 <!-- CTA Contact Tracking — eventos contacto_web + contacto_whatsapp_2026 -->
@@ -733,6 +990,23 @@ document.querySelectorAll('.reveal, .ba-item, .testi').forEach(el=>obs.observe(e
     });
   });
 })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  "name": "Endolaser Facial",
+  "alternateName": ["Endolaser", "Endolifting Facial", "Endojiwoo"],
+  "description": "Tratamiento de rejuvenecimiento facial con tecnología láser. Resultados visibles desde la primera sesión.",
+  "procedureType": "https://schema.org/TherapeuticProcedure",
+  "followup": "Evaluación personalizada en Protocolo Lumina",
+  "howPerformed": "Aplicación de láser de baja frecuencia sobre tejido facial para estimular colágeno y mejorar firmeza",
+  "provider": {
+    "@type": "MedicalBusiness",
+    "name": "Protocolo Lumina",
+    "url": "https://www.protocololumina.cl"
+  }
+}
 </script>
 </body>
 </html>
