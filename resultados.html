@@ -132,24 +132,59 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
 
-/* ── PAGE HEADER — CLARO ROSADO ── */
+/* ── PAGE HEADER — OSCURO SPLIT (con caso Endojiwoo) ── */
 .page-header {
-  background: linear-gradient(135deg, #F9F0EE 0%, #F0E8E5 100%);
-  padding:150px 48px 80px; text-align:center;
+  background:var(--void);
+  padding:0;
   position:relative; overflow:hidden;
-  border-bottom:1px solid rgba(196,139,144,0.12);
+  border-bottom:1px solid rgba(232,180,184,0.08);
+  min-height:540px;
 }
 .page-header::before {
-  content:'빛'; position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  font-size:clamp(200px,30vw,380px); color:rgba(232,180,184,0.06);
-  pointer-events:none; user-select:none; line-height:1;
+  content:'빛'; position:absolute; top:50%; left:8%;
+  transform:translateY(-50%);
+  font-size:clamp(160px,22vw,300px); color:rgba(232,180,184,0.025);
+  pointer-events:none; user-select:none; line-height:1; z-index:0;
 }
-.pretitle, .pretitle-light { font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--rose); opacity:0.78; margin-bottom:16px; display:block; }
-.h1-dark { font-family:'Playfair Display',serif; font-size:clamp(2rem, 5vw, 3.2rem); font-weight:400; color:var(--ink); line-height:1.1; margin-bottom:20px; }
-.h1-dark em { font-style:italic; color:var(--rose-deep); }
-.sub-dark { font-size:18px; line-height:1.75; color:var(--ink-body); font-weight:300; max-width:680px; margin:0 auto 14px; }
-.disclaimer { font-size:15px; color:var(--ink-subtle); letter-spacing:0.02em; }
+.page-header-split {
+  display:grid; grid-template-columns:1fr 1.05fr;
+  align-items:center;
+  min-height:540px;
+  position:relative; z-index:1;
+}
+.page-header-copy {
+  padding:130px 48px 70px 60px;
+}
+.page-header-photo {
+  position:relative; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  padding:80px 40px 80px 0;
+}
+.page-header-photo img {
+  width:100%; max-width:680px; height:auto; object-fit:contain;
+  display:block;
+}
+.pretitle, .pretitle-light {
+  font-size:13px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--rose); opacity:0.85; margin-bottom:18px; display:block;
+  font-weight:600;
+}
+.h1-dark {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem, 4.5vw, 3.4rem);
+  font-weight:400; color:var(--cloud); line-height:1.05;
+  margin-bottom:20px; letter-spacing:-.015em;
+}
+.h1-dark em { font-style:italic; color:var(--rose); }
+.sub-dark {
+  font-size:17px; line-height:1.7;
+  color:rgba(240,238,233,0.78); font-weight:400;
+  max-width:520px; margin:0 0 14px;
+}
+.disclaimer {
+  font-size:13px; color:rgba(240,238,233,0.42);
+  letter-spacing:0.04em;
+}
 
 /* ── RIVER DIVIDER ── */
 .river { line-height:0; display:block; }
@@ -352,9 +387,10 @@ nav.scrolled .hamburger span { background:var(--ink); }
 /* ── HANGUL WATERMARK en header ── */
 .header-kr-watermark {
   position:absolute; bottom:22px; right:48px;
-  font-size:15px; letter-spacing:0.14em; color:var(--rose-deep);
-  opacity:0.22; text-transform:none; pointer-events:none;
+  font-size:15px; letter-spacing:0.14em; color:var(--rose);
+  opacity:0.30; text-transform:none; pointer-events:none;
   font-family:'Sora',sans-serif; font-weight:300;
+  z-index:2;
 }
 
 /* ── REVEAL ── */
@@ -385,7 +421,13 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .hamburger { display:flex; }
   .nav-cta { display:none; }
   .nav-logo svg { width:90px; height:auto; }
-  .page-header { padding:120px 24px 64px; }
+  .page-header { padding:0; min-height:auto; }
+  .page-header-split { grid-template-columns:1fr; min-height:auto; }
+  .page-header-copy { padding:110px 24px 30px; text-align:center; }
+  .page-header-copy .sub-dark { max-width:none; margin-left:auto; margin-right:auto; }
+  .page-header-photo { padding:0 16px 50px; }
+  .page-header-photo img { max-width:100%; }
+  .header-kr-watermark { font-size:13px; bottom:14px; right:20px; }
   .gallery-wrap { padding:40px 24px 80px; }
   .carousel-stage { gap:34px; }
   .carousel-slide { padding:38px 24px 42px; }
@@ -476,18 +518,25 @@ nav.scrolled .hamburger span { background:var(--ink); }
   </div>
 </div>
 
-<!-- ══ PAGE HEADER — CLARO ROSADO ══ -->
-<div class="page-header hanji">
-  <span class="pretitle">Endolaser facial · Endolifting · Endojiwoo</span>
-  <h1 class="h1-dark">Resultados de Endolaser Facial y Endolifting</h1>
-  <p class="sub-dark">Casos clínicos documentados en Protocolo Lumina con enfoque en firmeza, redefinición del óvalo facial y mejora visible de la calidad de la piel. Cada imagen corresponde a pacientes reales con protocolo indicado según evaluación médica-estética.</p>
-  <p class="disclaimer">Fotografías con consentimiento informado · Resultados individuales pueden variar</p>
+<!-- ══ PAGE HEADER — OSCURO SPLIT con caso Endojiwoo ══ -->
+<div class="page-header">
+  <div class="page-header-split">
+    <div class="page-header-copy">
+      <span class="pretitle">Endolaser facial · Endolifting · Endojiwoo</span>
+      <h1 class="h1-dark">Resultados de <em>Endolaser Facial</em> y Endolifting</h1>
+      <p class="sub-dark">Casos clínicos documentados en Protocolo Lumina con enfoque en firmeza, redefinición del óvalo facial y mejora visible de la calidad de la piel. Cada imagen corresponde a pacientes reales con protocolo indicado según evaluación médica-estética.</p>
+      <p class="disclaimer">Fotografías con consentimiento informado · Resultados individuales pueden variar</p>
+    </div>
+    <div class="page-header-photo">
+      <img src="img/hero-endojiwoo.webp" alt="Caso real Endojiwoo — Lurayen Benavides, 61 años · Protocolo Lumina" width="1200" height="814" fetchpriority="high" decoding="async">
+    </div>
+  </div>
   <!-- 피부 의 빛 = "la luz de la piel" -->
   <span class="header-kr-watermark">피부 의 빛</span>
 </div>
 
-<!-- ══ RIVER: PETAL/ROSA → GALLERY PETAL ══ -->
-<div class="river" style="background:#F0E8E5;">
+<!-- ══ RIVER: HEADER OSCURO → GALLERY PETAL ══ -->
+<div class="river" style="background:var(--void);">
   <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px;">
     <path d="M0,20 C180,4 360,44 540,20 C720,0 900,44 1080,20 C1260,0 1380,34 1440,20 L1440,48 L0,48 Z" fill="#FBF6F4"/>
     <path d="M0,28 C200,10 400,46 600,28 C800,10 1000,46 1200,28 C1320,18 1400,38 1440,28 L1440,48 L0,48 Z" fill="#FBF6F4" opacity="0.5"/>
