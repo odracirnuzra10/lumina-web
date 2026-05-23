@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://www.protocololumina.cl/planes</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.protocololumina.cl/tratamientos</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
   </url>
   <url>
     <loc>https://www.protocololumina.cl/resultados</loc>

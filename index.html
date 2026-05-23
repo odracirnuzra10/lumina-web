@@ -75,11 +75,29 @@ window.addEventListener('load', function() {
   --rose:#E8B4B8; --rose-deep:#C48B90; --rose-light:#F2CDD0;
   --void:#0E0E0E; --onyx:#141414;
   --cloud:#F0EEE9; --petal:#FBF6F4; --mid:#F4EEEB;
-  --ink:#1E1818; --ink-body:rgba(30,24,24,0.55); --ink-subtle:rgba(30,24,24,0.28);
-  --body-dark:rgba(240,238,233,0.52); --subtle-dark:rgba(240,238,233,0.2);
+  --ink:#1E1818; --ink-body:rgba(30,24,24,0.78); --ink-subtle:rgba(30,24,24,0.42);
+  --body-dark:rgba(240,238,233,0.78); --subtle-dark:rgba(240,238,233,0.42);
 }
 html { scroll-behavior:smooth; }
-body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden; font-size:17px; line-height:1.75; }
+
+/* ── TIER PILLS (semáforo verde/amarillo/rojo) ── */
+.tier-pill {
+  display:inline-flex; align-items:center; gap:8px;
+  align-self:flex-start;
+  font-size:11.5px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase;
+  padding:6px 11px; border-radius:3px;
+  margin-bottom:12px;
+  border:1px solid transparent;
+  width:auto; max-width:100%;
+}
+.tier-pill::before {
+  content:''; width:8px; height:8px; border-radius:50%;
+  background:currentColor; opacity:0.9;
+}
+.tier-pill.green  { color:#A6E0BA; background:rgba(59,122,79,0.22);  border-color:rgba(166,224,186,0.32); }
+.tier-pill.yellow { color:#F5D575; background:rgba(181,135,14,0.22); border-color:rgba(245,213,117,0.32); }
+.tier-pill.red    { color:#E89890; background:rgba(178,58,46,0.22);  border-color:rgba(232,152,144,0.32); }
 
 /* ─── NAV ─── */
 /* Starts transparent over dark hero, then becomes light on scroll */
@@ -105,21 +123,21 @@ nav.scrolled .logo-light { display:block; }
 
 .nav-links { display:flex; gap:36px; list-style:none; }
 .nav-links a {
-  font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
-  color:rgba(240,238,233,0.55); text-decoration:none; font-weight:500; transition:color 0.3s;
+  font-size:12px; letter-spacing:2.4px; text-transform:uppercase;
+  color:rgba(240,238,233,0.72); text-decoration:none; font-weight:500; transition:color 0.3s;
 }
-nav.scrolled .nav-links a { color:rgba(30,24,24,0.42); }
+nav.scrolled .nav-links a { color:rgba(30,24,24,0.62); }
 .nav-links a:hover { color:var(--rose); }
 nav.scrolled .nav-links a:hover { color:var(--rose-deep); }
 .nav-links a.active { color:rgba(240,238,233,0.9); }
 nav.scrolled .nav-links a.active { color:var(--rose-deep); }
 
 .nav-cta {
-  font-family:'Sora',sans-serif; font-size:10px; font-weight:500;
-  letter-spacing:2px; text-transform:uppercase;
+  font-family:'Sora',sans-serif; font-size:12px; font-weight:600;
+  letter-spacing:1.8px; text-transform:uppercase;
   color:#fff; background:#4CAF7D; border:none;
-  padding:12px 26px; cursor:pointer; text-decoration:none; display:inline-block;
-  transition:background 0.3s;
+  padding:13px 26px; cursor:pointer; text-decoration:none; display:inline-block;
+  transition:background 0.3s; border-radius:2px;
 }
 .nav-cta:hover { background:#3d9c6b; }
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; position:relative; }
@@ -178,7 +196,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .hero-star { margin-bottom:28px; animation:fadeUp 0.9s ease both 0.35s; }
 .hero-h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,4.5vw,68px); font-weight:400; line-height:1.1; color:var(--cloud); margin:0 0 22px; animation:fadeUp 0.9s ease both 0.5s; }
 .hero-h1 em { font-style:italic; color:var(--rose); }
-.hero-sub { font-size:14px; line-height:1.85; color:var(--body-dark); font-weight:300; max-width:460px; margin:0 0 48px; animation:fadeUp 0.9s ease both 0.65s; }
+.hero-sub { font-size:17px; line-height:1.7; color:var(--body-dark); font-weight:400; max-width:500px; margin:0 0 48px; animation:fadeUp 0.9s ease both 0.65s; }
 .hero-btns { display:flex; gap:14px; align-items:center; flex-wrap:wrap; animation:fadeUp 0.9s ease both 0.8s; }
 .btn-rose { font-family:'Sora',sans-serif; font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--void); background:var(--rose); border:none; padding:17px 42px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:9px; transition:background 0.3s, transform 0.2s; }
 .btn-rose:hover { background:var(--rose-deep); transform:translateY(-2px); }
@@ -228,8 +246,8 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .h2-light { font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,48px); font-weight:400; color:var(--cloud); line-height:1.2; margin-bottom:14px; }
 .h2-light em { font-style:italic; color:var(--rose); }
 
-.body-dark  { font-size:14px; line-height:1.9; color:var(--ink-body);  font-weight:300; max-width:540px; }
-.body-light { font-size:14px; line-height:1.9; color:var(--body-dark); font-weight:300; max-width:540px; }
+.body-dark  { font-size:17px; line-height:1.75; color:var(--ink-body);  font-weight:400; max-width:580px; }
+.body-light { font-size:17px; line-height:1.75; color:var(--body-dark); font-weight:400; max-width:580px; }
 
 /* ─── PROTOCOLO ─── */
 .protocolo-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
@@ -239,7 +257,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .phase:last-child { border-bottom:none; }
 .phase-num { font-size:10px; letter-spacing:2px; color:var(--rose-deep); opacity:0.5; padding-top:3px; }
 .phase-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:400; color:var(--ink); margin-bottom:7px; }
-.phase-desc { font-size:13px; line-height:1.7; color:var(--ink-body); font-weight:300; }
+.phase-desc { font-size:16px; line-height:1.7; color:var(--ink-body); font-weight:400; }
 .phase-tag { display:inline-block; margin-top:8px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); border:1px solid rgba(196,139,144,0.3); padding:3px 9px; }
 
 /* ─── TECNOLOGÍA ─── */
@@ -250,7 +268,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .tech-icon { width:30px; height:30px; margin-bottom:22px; }
 .tech-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:400; color:var(--cloud); margin-bottom:9px; }
 .tech-kr { font-size:9px; letter-spacing:3px; color:var(--rose); opacity:0.25; margin-bottom:12px; display:block; }
-.tech-desc { font-size:12px; line-height:1.7; color:var(--body-dark); font-weight:300; }
+.tech-desc { font-size:15px; line-height:1.7; color:var(--body-dark); font-weight:400; }
 
 /* ─── RESULTADOS PREVIEW ─── */
 /* Fotos cuadradas tal cual, sin recorte adicional */
@@ -269,7 +287,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .testi.visible { opacity:1; transform:translateY(0); }
 .testi::before { content:'"'; font-family:'Playfair Display',serif; font-size:68px; line-height:1; color:var(--rose); opacity:0.08; position:absolute; top:10px; left:18px; }
 .testi-stars { color:var(--rose); opacity:0.65; font-size:10px; letter-spacing:3px; margin-bottom:14px; }
-.testi-text { font-size:13px; line-height:1.85; color:var(--body-dark); font-weight:300; font-style:italic; margin-bottom:18px; position:relative; z-index:1; }
+.testi-text { font-size:16px; line-height:1.7; color:var(--body-dark); font-weight:400; font-style:italic; margin-bottom:18px; position:relative; z-index:1; }
 .testi-name { font-size:12px; font-weight:500; color:var(--cloud); }
 .testi-plan { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--rose); opacity:0.38; margin-top:2px; }
 
@@ -277,7 +295,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .cta-rose { background:linear-gradient(135deg,#F9F0EE 0%,#F0E8E5 100%); padding:130px 48px; text-align:center; border-top:1px solid rgba(196,139,144,0.2); }
 .cta-h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,50px); font-weight:400; color:var(--ink); line-height:1.2; margin-bottom:16px; }
 .cta-h2 em { font-style:italic; color:var(--rose-deep); }
-.cta-sub { font-size:14px; color:var(--ink-body); font-weight:300; max-width:440px; margin:0 auto 40px; line-height:1.85; }
+.cta-sub { font-size:18px; color:var(--ink-body); font-weight:400; max-width:520px; margin:0 auto 40px; line-height:1.65; }
 .cta-note { margin-top:14px; font-size:10px; color:var(--ink-subtle); letter-spacing:1px; }
 
 /* ─── FOOTER ─── */
@@ -286,7 +304,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .footer-tagline { font-size:12px; color:rgba(240,238,233,0.5); font-weight:300; line-height:1.7; margin-top:16px; max-width:220px; }
 .footer-col-title { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--rose); opacity:0.7; margin-bottom:16px; display:block; }
 .footer-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.footer-links a { font-size:13px; color:rgba(240,238,233,0.75); text-decoration:none; font-weight:300; transition:color 0.3s; }
+.footer-links a { font-size:14px; color:rgba(240,238,233,0.82); text-decoration:none; font-weight:400; transition:color 0.3s; }
 .footer-links a:hover { color:var(--rose); }
 .footer-bottom { max-width:1200px; margin:0 auto; padding:18px 48px; border-top:1px solid rgba(255,255,255,0.03); display:flex; justify-content:space-between; align-items:center; }
 .footer-copy { font-size:10px; color:rgba(240,238,233,0.5); letter-spacing:1px; }
@@ -502,6 +520,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   <ul class="nav-links">
     <li><a href="index.html" class="active">Inicio</a></li>
     <li><a href="planes.html">Planes</a></li>
+    <li><a href="/tratamientos">Tratamientos</a></li>
     <li><a href="resultados.html">Resultados</a></li>
   </ul>
   <a class="nav-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20quisiera%20agendar%20una%20evaluaci%C3%B3n%20en%20Protocolo%20Lumina" target="_blank">Agenda tu hora</a>
@@ -516,6 +535,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   <div class="mob-menu-inner">
     <a href="index.html" class="mob-menu-link">Inicio</a>
     <a href="planes.html" class="mob-menu-link">Planes</a>
+    <a href="/tratamientos" class="mob-menu-link">Tratamientos</a>
     <a href="resultados.html" class="mob-menu-link">Resultados</a>
     <a class="mob-menu-cta" href="https://api.whatsapp.com/send?phone=56963222683&text=Hola%2C%20quisiera%20agendar%20una%20evaluaci%C3%B3n%20en%20Protocolo%20Lumina" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.347 0-4.523-.809-6.246-2.163l-.436-.35-3.026 1.014 1.014-3.026-.35-.436A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
@@ -638,25 +658,62 @@ nav.scrolled .hamburger span { background:var(--ink); }
   </div>
 </div>
 
-<!-- ═══ TECNOLOGÍA — OSCURO ═══ -->
+<!-- ═══ TECNOLOGÍAS · 14 + 10 PLANES — OSCURO ═══ -->
 <div class="sec-dark">
   <div class="container">
-    <span class="pretitle-light">Tecnología K-beauty</span>
-    <h2 class="h2-light">Lifting facial con <em>11 tecnologías</em> coreanas</h2>
-    <p class="body-light">EndoJiwoo y Endolaser Coreano como core del protocolo — más HIFU, radiofrecuencia y bioestimulación. Combinadas según tu diagnóstico. Para hombres y mujeres.</p>
+    <span class="pretitle-light">Tecnologías coreanas · Protocolo Lumina</span>
+    <h2 class="h2-light">14 tecnologías. <em>10 planes.</em><br>Un protocolo a tu medida.</h2>
+    <p class="body-light" style="margin-bottom:48px;">Cada plan Lumina combina varias tecnologías coreanas — diseñadas para trabajar juntas porque el envejecimiento facial ataca en paralelo y debe tratarse en paralelo. Estas son las cuatro familias.</p>
+
     <div class="tech-grid">
-      <div class="tech-card"><svg class="tech-icon" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="0.6" opacity="0.3"/><path d="M16 7L17.5 13L16 25L14.5 13Z" fill="#E8B4B8" opacity="0.55"/><path d="M7 16L13 17.5L25 16L13 14.5Z" fill="#E8B4B8" opacity="0.35"/></svg><span class="tech-kr">방사선 리프팅</span><h3 class="tech-name">Sakura Lift (RF)</h3><p class="tech-desc">Radiofrecuencia que estimula colágeno en profundidad. Reafirma el óvalo facial desde la primera sesión.</p></div>
-      <div class="tech-card"><svg class="tech-icon" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="0.6" opacity="0.3"/><circle cx="16" cy="16" r="5" stroke="#E8B4B8" stroke-width="0.8" opacity="0.45"/><line x1="16" y1="4" x2="16" y2="28" stroke="#E8B4B8" stroke-width="0.4" opacity="0.25"/><line x1="4" y1="16" x2="28" y2="16" stroke="#E8B4B8" stroke-width="0.4" opacity="0.25"/></svg><span class="tech-kr">고강도 집속 초음파</span><h3 class="tech-name">Cuky HIFU Facial</h3><p class="tech-desc">Ultrasonido focalizado de alta intensidad. Efecto lifting inmediato y sin cirugía.</p></div>
-      <div class="tech-card" style="position:relative;border-left:2px solid rgba(232,180,184,0.3);"><span style="position:absolute;top:14px;right:14px;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.55;border:1px solid rgba(232,180,184,0.25);padding:3px 7px;font-family:'Sora',sans-serif;">Core</span><svg class="tech-icon" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="0.6" opacity="0.3"/><path d="M11 16Q16 9 21 16Q16 23 11 16Z" fill="#E8B4B8" opacity="0.22"/><circle cx="16" cy="16" r="2" fill="#E8B4B8" opacity="0.65"/></svg><span class="tech-kr">바이오 미니 레이저</span><h3 class="tech-name">Endolaser Coreano</h3><p class="tech-desc">Láser endovascular de origen coreano. Rejuvenecimiento profundo, reducción de flacidez y manchas. Bioestimulación desde adentro.</p></div>
-      <div class="tech-card" style="position:relative;border-left:2px solid rgba(232,180,184,0.3);"><span style="position:absolute;top:14px;right:14px;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.55;border:1px solid rgba(232,180,184,0.25);padding:3px 7px;font-family:'Sora',sans-serif;">Core</span><svg class="tech-icon" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="0.6" opacity="0.3"/><path d="M9 13L12 10L16 13L20 10L23 13" stroke="#E8B4B8" stroke-width="0.8" opacity="0.45" fill="none"/><path d="M9 18L12 15L16 18L20 15L23 18" stroke="#E8B4B8" stroke-width="0.8" opacity="0.28" fill="none"/></svg><span class="tech-kr">엔도지우</span><h3 class="tech-name">EndoJiwoo</h3><p class="tech-desc">Bioestimulación celular coreana — la tecnología de lifting facial más avanzada del protocolo. Reactiva colágeno y firmeza. Exclusivo en Chile.</p></div>
-      <div class="tech-card"><svg class="tech-icon" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#E8B4B8" stroke-width="0.6" opacity="0.3"/><path d="M16 7C16 7 23 13 23 18C23 21.9 19.9 25 16 25C12.1 25 9 21.9 9 18C9 13 16 7 16 7Z" stroke="#E8B4B8" stroke-width="0.8" opacity="0.4" fill="none"/></svg><span class="tech-kr">유나 페이스</span><h3 class="tech-name">Yuna Face</h3><p class="tech-desc">Oxigenación y nutrición molecular. Efecto glass skin: piel translúcida y luminosa.</p></div>
-      <div class="tech-card" style="display:flex;flex-direction:column;justify-content:center;">
-        <span style="font-size:9px;letter-spacing:3px;color:var(--rose);opacity:0.35;text-transform:uppercase;margin-bottom:12px;">Y más</span>
-        <h3 class="tech-name" style="font-size:16px;margin-bottom:9px;">+6 tecnologías</h3>
-        <p class="tech-desc" style="margin-bottom:22px;">Limpieza Coreana, Korean Vitaboost, SkinGym, Nubea Booster, Dahe Beauty, Jeju Olida.</p>
-        <a href="planes.html" style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.6;text-decoration:none;border:1px solid rgba(232,180,184,0.18);padding:9px 16px;display:inline-block;transition:opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6">Ver todos los planes</a>
-      </div>
+
+      <a href="/tratamientos#familia-01" class="tech-card" style="text-decoration:none;color:inherit;cursor:pointer;display:flex;flex-direction:column;">
+        <span class="tier-pill green">Suave</span>
+        <span class="tech-kr" style="margin-bottom:14px;">한국 미용</span>
+        <h3 class="tech-name" style="font-size:22px;margin-bottom:14px;">Limpieza & Glow</h3>
+        <p class="tech-desc" style="margin-bottom:auto;">Limpieza Coreana · Korean Vitaboost · Nubea Booster. El cimiento de todo protocolo: limpia, prepara, enciende.</p>
+        <span style="margin-top:22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.85;font-weight:600;">3 tecnologías →</span>
+      </a>
+
+      <a href="/tratamientos#familia-02" class="tech-card" style="text-decoration:none;color:inherit;cursor:pointer;display:flex;flex-direction:column;">
+        <span class="tier-pill yellow">Regenerativo</span>
+        <span class="tech-kr" style="margin-bottom:14px;">세포 재생</span>
+        <h3 class="tech-name" style="font-size:22px;margin-bottom:14px;">Regeneración celular</h3>
+        <p class="tech-desc" style="margin-bottom:auto;">Bio Minji · Lumijin · Neojin. Tecnologías que reparan la piel desde el nivel celular — no la maquillan.</p>
+        <span style="margin-top:22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.85;font-weight:600;">3 tecnologías →</span>
+      </a>
+
+      <a href="/tratamientos#familia-03" class="tech-card" style="text-decoration:none;color:inherit;cursor:pointer;display:flex;flex-direction:column;border-left:2px solid rgba(232,180,184,0.45);">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;">
+          <span class="tier-pill red" style="margin-bottom:0;">Estructural · Profundo</span>
+          <span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.85;border:1px solid rgba(232,180,184,0.4);padding:4px 9px;font-family:'Sora',sans-serif;font-weight:600;">Core</span>
+        </div>
+        <span class="tech-kr" style="margin-bottom:14px;">리프팅</span>
+        <h3 class="tech-name" style="font-size:22px;margin-bottom:14px;">Lifting estructural</h3>
+        <p class="tech-desc" style="margin-bottom:auto;">Cuky HIFU · Endo Jiwoo · Sakura Ultra-Lift · RejuveSkin. El corazón del protocolo. Lo más cercano al lifting sin cirugía.</p>
+        <span style="margin-top:22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.85;font-weight:600;">4 tecnologías →</span>
+      </a>
+
+      <a href="/tratamientos#familia-04" class="tech-card" style="text-decoration:none;color:inherit;cursor:pointer;display:flex;flex-direction:column;">
+        <span class="tier-pill yellow">Regenerativo</span>
+        <span class="tech-kr" style="margin-bottom:14px;">조화 미용</span>
+        <h3 class="tech-name" style="font-size:22px;margin-bottom:14px;">Armonización & detalle</h3>
+        <p class="tech-desc" style="margin-bottom:auto;">Dahe Beauty · Yuna Face · Fibrojin · Yori Peel. Para los detalles que el lifting no resuelve: expresión, mirada, textura.</p>
+        <span style="margin-top:22px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);opacity:0.85;font-weight:600;">4 tecnologías →</span>
+      </a>
+
     </div>
+
+    <div style="margin-top:56px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn-rose" href="/tratamientos">
+        Conoce las 14 tecnologías
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+      <a class="btn-ghost" href="/planes">
+        Ver los 10 planes
+      </a>
+    </div>
+
   </div>
 </div>
 
@@ -686,7 +743,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
         <img src="img/11.webp" alt="Antes y después Lumina — Luminosidad" width="800" height="800" loading="lazy" decoding="async">
         <div class="ba-label">
           <span class="ba-zone">Luminosidad · Rostro</span>
-          <span class="ba-plan-name">Incheon Elixir</span>
+          <span class="ba-plan-name">Eternal Gangnam</span>
         </div>
       </div>
       <div class="ba-item" style="transition-delay:0.1s;">
@@ -769,7 +826,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <h2 class="h2-light">Lo que dice tu <em>piel</em></h2>
     <div class="testi-grid">
       <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Llegué buscando mejorar la textura y terminé con resultados que nunca imaginé. Mi piel tiene una luminosidad que no tenía desde los 25."</p><div class="testi-name">Valentina M.</div><div class="testi-plan">Eternal Gangnam · Vitacura</div></div>
-      <div class="testi" style="transition-delay:0.1s;"><div class="testi-stars">★★★★★</div><p class="testi-text">"No es un tratamiento genérico — adaptan cada sesión a lo que tu piel necesita. Los resultados con el Incheon Elixir fueron increíbles."</p><div class="testi-name">Catalina R.</div><div class="testi-plan">Incheon Elixir · Concón</div></div>
+      <div class="testi" style="transition-delay:0.1s;"><div class="testi-stars">★★★★★</div><p class="testi-text">"No es un tratamiento genérico — adaptan cada sesión a lo que tu piel necesita. Los resultados con Luz de Jeju fueron increíbles."</p><div class="testi-name">Catalina R.</div><div class="testi-plan">Luz de Jeju · Concón</div></div>
       <div class="testi" style="transition-delay:0.2s;"><div class="testi-stars">★★★★★</div><p class="testi-text">"Vine con desconfianza. Lumina cambió eso completamente. Los resultados son visibles y duraderos. Ya voy en mi segundo protocolo."</p><div class="testi-name">Fernanda L.</div><div class="testi-plan">Armonía de Busan · Los Ángeles</div></div>
     </div>
   </div>

@@ -1,1257 +1,1743 @@
 <!DOCTYPE html>
-<html lang="es-CL">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Recomendación · Análisis Facial → Plan Lumina</title>
 <meta name="robots" content="noindex, nofollow">
+<title>Manual de Recomendación · Análisis Facial → Plan Lumina</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #ffffff;
-    --bg-soft: #f7f7f8;
-    --bg-code: #f4f4f5;
-    --text: #1a1a1a;
-    --text-soft: #4a4a4a;
-    --text-mute: #767676;
-    --line: #e5e5e5;
-    --line-soft: #efefef;
-    --accent: #8B2252;
-    --accent-soft: #fdf2f6;
-    --severe: #c0382b;
-    --severe-bg: #fdf0ee;
-    --moderate: #b8860b;
-    --moderate-bg: #fcf6e5;
-    --mild: #2d7a4f;
-    --mild-bg: #ecf5ee;
-    --info-bg: #fffaf0;
-    --info-border: #e0c97f;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  code, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  :root{
+    --bg:#FAFAF7;
+    --ink:#1A1A1A;
+    --ink-soft:#333;
+    --ink-dim:#5A5A5A;
+    --ink-mute:#8E8E8E;
+    --rule:#E8E5DF;
+    --rule-strong:#CFC9BD;
+    --soft:#F4F1EA;
+    --soft-2:#ECE9E1;
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+    --severe:#B23A2E;
+    --severe-bg:#FBE9E5;
+    --moderate:#B5870E;
+    --moderate-bg:#FBF1D6;
+    --mild:#3B7A4F;
+    --mild-bg:#E5F1E8;
 
-  /* ---------- TOPBAR ---------- */
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: saturate(180%) blur(8px);
-    -webkit-backdrop-filter: saturate(180%) blur(8px);
-    border-bottom: 1px solid var(--line);
-    height: 56px;
-    display: flex;
-    align-items: center;
+    --accent:#B23A2E;
+    --accent-bg:#FBE9E5;
+
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --serif:'Playfair Display',Georgia,serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
   }
-  .topbar-inner {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .brand {
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: -0.01em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .brand .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .brand-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text-mute);
-    padding: 3px 8px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    margin-left: 4px;
-  }
-  .topbar-meta {
-    font-size: 13px;
-    color: var(--text-mute);
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
   }
 
-  /* ---------- LAYOUT ---------- */
-  .layout {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 64px;
+  .layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    max-width:1300px;
+    margin:0 auto;
+    min-height:100vh;
   }
 
-  /* ---------- TOC SIDEBAR ---------- */
-  .toc-sidebar {
-    position: sticky;
-    top: 56px;
-    align-self: start;
-    height: calc(100vh - 56px);
-    overflow-y: auto;
-    padding: 40px 0 40px;
-    font-size: 14px;
+  /* Sidebar */
+  aside.sidebar{
+    border-right:1px solid var(--rule);
+    padding:40px 28px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    background:var(--bg);
   }
-  .toc-title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    margin-bottom: 16px;
-    padding-left: 12px;
+  aside .brand{
+    font-weight:700;
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:4px;
+    letter-spacing:-.01em;
   }
-  .toc-list { list-style: none; }
-  .toc-list a {
-    display: block;
-    padding: 6px 12px;
-    color: var(--text-soft);
-    border-left: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-    text-decoration: none;
-    line-height: 1.45;
+  aside .brand small{
+    display:block;
+    font-weight:400;
+    font-size:12px;
+    color:var(--ink-mute);
+    letter-spacing:.04em;
+    margin-top:4px;
   }
-  .toc-list a:hover { color: var(--text); }
-  .toc-list a.active {
-    color: var(--accent);
-    border-left-color: var(--accent);
-    font-weight: 500;
+  aside .vsn{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-mute);
+    letter-spacing:.04em;
+    margin:16px 0 24px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--rule);
   }
-  .toc-list .nested a { padding-left: 24px; font-size: 13.5px; }
-
-  /* ---------- MAIN ---------- */
-  main {
-    padding: 56px 0 120px;
-    min-width: 0;
-    max-width: 760px;
+  aside .toc-title{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--ink-mute);
+    margin-bottom:12px;
+    font-weight:700;
   }
-
-  /* HERO */
-  .doc-hero { margin-bottom: 64px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
-  .doc-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
+  aside nav ul{list-style:none;}
+  aside nav li{margin-bottom:4px;}
+  aside nav a{
+    display:block;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding:3px 0;
+    line-height:1.45;
+    transition:color .15s;
   }
-  .doc-title {
-    font-size: 40px;
-    line-height: 1.15;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin-bottom: 16px;
+  aside nav a:hover{color:var(--accent);}
+  aside nav .nav-sub a{
+    padding-left:14px;
+    font-size:13px;
+    font-weight:400;
+    color:var(--ink-dim);
   }
-  .doc-sub {
-    font-size: 18px;
-    line-height: 1.55;
-    color: var(--text-soft);
-    max-width: 640px;
-  }
-  .doc-meta-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
-  }
-  .pill {
-    font-size: 12.5px;
-    padding: 4px 10px;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--text-soft);
+  aside nav .nav-dash a{
+    padding-left:26px;
+    font-size:12.5px;
+    font-weight:400;
+    color:var(--ink-mute);
   }
 
-  /* HEADINGS */
-  h2.h-section {
-    font-size: 28px;
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 64px 0 8px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: 72px;
-  }
-  h2.h-section .num {
-    color: var(--text-mute);
-    font-weight: 500;
-    font-size: 22px;
-    margin-right: 8px;
-  }
-  h3.h-sub {
-    font-size: 22px;
-    line-height: 1.3;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    margin: 48px 0 8px;
-    scroll-margin-top: 72px;
-  }
-  h3.h-sub .num {
-    color: var(--text-mute);
-    font-weight: 500;
-    font-size: 18px;
-    margin-right: 6px;
-  }
-  h4.h-param {
-    font-size: 19px;
-    line-height: 1.3;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-bottom: 4px;
-    scroll-margin-top: 72px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  h4.h-param .idx {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  h4 .en {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text-mute);
-    font-weight: 400;
-  }
-  p { margin: 12px 0; color: var(--text-soft); }
-  p strong { color: var(--text); font-weight: 600; }
+  /* Main */
+  main{padding:56px 64px 100px;max-width:940px;}
 
-  .section-intro { font-size: 16.5px; color: var(--text-soft); margin-bottom: 24px; }
-
-  /* PARAMETER BLOCK */
-  .param {
-    margin: 32px 0 40px;
-    padding: 0 0 8px;
-  }
-  .param-meta { font-size: 15px; color: var(--text-soft); margin: 8px 0 20px; }
-  .param-block {
-    margin-top: 16px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .param-block-row {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .param-block-row:last-child { border-bottom: none; }
-  .param-block-row .label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    margin-bottom: 6px;
-  }
-  .param-block-row .body {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.6;
-  }
-  .tech {
-    background: var(--accent-soft);
-    color: var(--accent);
-    padding: 1px 6px;
-    border-radius: 3px;
-    font-weight: 500;
+  .hat{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:6px 12px;
+    border-radius:4px;
+    letter-spacing:.04em;
+    margin-bottom:20px;
+    font-weight:500;
   }
 
-  /* PLANS TABLE */
-  table.plans {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14.5px;
-    margin-top: 4px;
-  }
-  table.plans th, table.plans td {
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--line-soft);
-    vertical-align: top;
-  }
-  table.plans th {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    background: var(--bg-soft);
-    border-bottom: 1px solid var(--line);
-  }
-  table.plans td:first-child { width: 110px; }
-  table.plans td.plan-name { font-weight: 600; color: var(--text); }
-  table.plans tr.is-top td {
-    background: var(--accent-soft);
-  }
-  table.plans tr.is-top td.plan-name { color: var(--accent); }
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: var(--bg-soft);
-    color: var(--text-soft);
-    border: 1px solid var(--line);
-    font-weight: 500;
-  }
-  .badge.b-rec { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-  .badge.b-top { background: var(--accent); color: white; border-color: transparent; }
-
-  /* CALLOUT */
-  .callout {
-    margin: 16px 0;
-    padding: 14px 18px;
-    border-left: 3px solid var(--info-border);
-    background: var(--info-bg);
-    border-radius: 0 6px 6px 0;
-    font-size: 14.5px;
-    color: var(--text);
-    line-height: 1.6;
-  }
-  .callout.note { border-left-color: var(--accent); background: var(--accent-soft); }
-  .callout strong { color: var(--text); }
-  .callout .callout-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    margin-bottom: 4px;
-    display: block;
+  h1.title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:52px;
+    line-height:1.08;
+    letter-spacing:-.02em;
+    margin-bottom:22px;
+    color:var(--ink);
   }
 
-  /* RANGE TABLE */
-  .range-table {
-    margin-top: 16px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .range-row {
-    display: grid;
-    grid-template-columns: 110px 110px 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .range-row:last-child { border-bottom: none; }
-  .range-row > div { padding: 14px 16px; font-size: 14.5px; }
-  .range-row .r-label { font-weight: 600; color: white; }
-  .range-row .r-score { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-soft); border-right: 1px solid var(--line-soft); }
-  .range-row .r-desc { color: var(--text); line-height: 1.55; }
-  .range-row.severe .r-label { background: var(--severe); }
-  .range-row.moderate .r-label { background: var(--moderate); }
-  .range-row.mild .r-label { background: var(--mild); }
-
-  /* CATALOG TABLE */
-  table.catalog {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14.5px;
-    margin-top: 16px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  table.catalog th, table.catalog td {
-    text-align: left;
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--line-soft);
-    vertical-align: top;
-  }
-  table.catalog tr:last-child td { border-bottom: none; }
-  table.catalog th {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    background: var(--bg-soft);
-    border-bottom: 1px solid var(--line);
-  }
-  table.catalog td.t-tag { width: 130px; }
-  table.catalog td.t-name { width: 180px; font-weight: 600; color: var(--text); font-size: 15px; }
-  table.catalog td.t-pitch { color: var(--text-soft); line-height: 1.55; }
-  table.catalog td.t-pitch em { font-style: normal; font-weight: 600; color: var(--text); }
-  table.catalog td.t-ideal { width: 240px; color: var(--text); font-size: 13.5px; line-height: 1.5; background: var(--accent-soft); }
-
-  .group-title {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 40px 0 12px;
-  }
-  .group-title:first-of-type { margin-top: 24px; }
-
-  /* FOOTER */
-  footer.doc-foot {
-    border-top: 1px solid var(--line);
-    margin-top: 64px;
-    padding-top: 24px;
-    font-size: 13px;
-    color: var(--text-mute);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
+  p.lead{
+    font-size:18px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    max-width:740px;
+    margin-bottom:28px;
   }
 
-  /* MOBILE TOC TOGGLE */
-  .toc-mobile-toggle {
-    display: none;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    color: var(--text);
-    font-family: inherit;
+  .stats{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:var(--ink-dim);
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+    margin-bottom:56px;
+    font-weight:500;
   }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 960px) {
-    .layout {
-      grid-template-columns: 1fr;
-      gap: 24px;
-      padding: 0 20px;
-    }
-    .topbar-inner { padding: 0 20px; }
-    .toc-sidebar {
-      position: static;
-      height: auto;
-      padding: 16px 0 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-    }
-    .toc-sidebar.open { max-height: 600px; overflow-y: auto; padding: 16px 0 24px; border-bottom: 1px solid var(--line); }
-    .toc-mobile-toggle { display: inline-flex; align-items: center; gap: 8px; margin: 16px 0 0; }
-    main { padding: 24px 0 80px; }
-    .doc-title { font-size: 32px; }
-    .doc-sub { font-size: 16.5px; }
-    h2.h-section { font-size: 24px; margin-top: 48px; }
-    h3.h-sub { font-size: 19px; }
-    .topbar-meta { display: none; }
-    .range-row { grid-template-columns: 90px 1fr; }
-    .range-row .r-score { grid-column: 1; border-right: none; border-bottom: 1px solid var(--line-soft); }
-    .range-row .r-desc { grid-column: 2; }
-    .range-row .r-label { grid-column: 1 / -1; }
-    table.catalog, table.catalog tbody, table.catalog tr, table.catalog td { display: block; width: 100%; }
-    table.catalog thead { display: none; }
-    table.catalog tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
-    table.catalog td { padding: 6px 16px; border: none; }
-    table.catalog td.t-tag { padding-top: 12px; }
-    table.catalog td.t-name { font-size: 17px; padding-bottom: 4px; }
-    table.catalog td.t-ideal { margin: 8px 16px 12px; padding: 10px 12px; border-radius: 4px; }
+  h2.chap{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:34px;
+    line-height:1.15;
+    margin:72px 0 22px;
+    padding-top:40px;
+    border-top:1px solid var(--rule);
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  h2.chap .num{
+    display:inline-block;
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:14px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:5px 10px;
+    border-radius:4px;
+    margin-right:12px;
+    vertical-align:middle;
+    letter-spacing:.04em;
   }
 
-  /* PRINT */
-  @media print {
-    .topbar, .toc-sidebar, .toc-mobile-toggle { display: none; }
-    .layout { grid-template-columns: 1fr; padding: 0; }
-    main { max-width: 100%; padding: 0; }
-    body { font-size: 11pt; }
-    h2.h-section { page-break-before: always; }
-    .param, .callout, table.catalog tr { page-break-inside: avoid; }
-    table.plans tr.is-top td, .range-row .r-label, .badge.b-top {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+  h3.sec{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:26px;
+    margin:48px 0 16px;
+    letter-spacing:-.015em;
+    color:var(--ink);
+  }
+  h3.sec .num{
+    display:inline-block;
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:13px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:4px 9px;
+    border-radius:4px;
+    margin-right:10px;
+    vertical-align:middle;
+    letter-spacing:.04em;
+  }
+
+  h4.sub{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:20px;
+    margin:38px 0 12px;
+    letter-spacing:-.01em;
+    color:var(--ink);
+    line-height:1.3;
+    text-transform:none;
+  }
+  h4.sub .num{
+    display:inline-block;
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:11.5px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:3px 8px;
+    border-radius:4px;
+    margin-right:10px;
+    vertical-align:middle;
+    letter-spacing:.04em;
+  }
+  h4.sub .en{
+    color:var(--ink-mute);
+    font-weight:400;
+    font-size:14px;
+    letter-spacing:0;
+    margin-left:10px;
+    font-style:italic;
+    text-transform:none;
+  }
+
+  p{margin-bottom:14px;color:var(--ink-soft);font-size:16px;}
+  p strong{color:var(--ink);font-weight:600;}
+  em{font-style:italic;}
+
+  .label-block{
+    display:inline-block;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--ink-dim);
+    background:var(--soft);
+    padding:5px 10px;
+    border-radius:3px;
+    margin:18px 0 8px;
+    font-weight:600;
+  }
+
+  /* Tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0 28px;
+    font-size:14.5px;
+    background:#fff;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  th,td{
+    text-align:left;
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    vertical-align:top;
+    line-height:1.55;
+  }
+  th{
+    font-weight:700;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--ink-dim);
+    background:var(--soft);
+    border-bottom:1px solid var(--rule-strong);
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  td strong{color:var(--ink);font-weight:600;}
+
+  /* Callouts */
+  .note{
+    background:var(--soft);
+    border-left:3px solid var(--accent);
+    padding:18px 22px;
+    margin:20px 0 28px;
+    font-size:15px;
+    color:var(--ink-soft);
+    line-height:1.65;
+    border-radius:0 6px 6px 0;
+  }
+  .note strong{color:var(--ink);font-weight:600;}
+  .note .ntitle{
+    display:inline-block;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--accent);
+    margin-bottom:8px;
+    font-weight:700;
+  }
+
+  /* Ranges — horizontal layout with colored blocks */
+  .ranges{
+    display:flex;
+    flex-direction:column;
+    margin:20px 0 32px;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    background:#fff;
+    overflow:hidden;
+  }
+  .range{
+    display:grid;
+    grid-template-columns:180px 130px 1fr;
+    border-bottom:1px solid var(--rule);
+    min-height:100px;
+    align-items:stretch;
+  }
+  .range:last-child{border-bottom:none;}
+  .range .rname{
+    display:flex;
+    align-items:center;
+    padding:20px 24px;
+    color:#fff;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:-.005em;
+  }
+  .range.sev-severe .rname{background:var(--severe);}
+  .range.sev-moderate .rname{background:var(--moderate);}
+  .range.sev-mild .rname{background:var(--mild);}
+  .range.lvl-1 .rname{background:#8B2A22;}
+  .range.lvl-2 .rname{background:var(--severe);}
+  .range.lvl-3 .rname{background:var(--moderate);}
+  .range.lvl-4 .rname{background:#6E8A55;}
+  .range.lvl-5 .rname{background:var(--mild);}
+  .range .rscore{
+    display:flex;
+    align-items:center;
+    padding:20px 18px;
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--ink-dim);
+    letter-spacing:.04em;
+    border-right:1px solid var(--rule);
+    font-weight:500;
+  }
+  .range .rtext{
+    padding:20px 24px;
+    font-size:15px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .range .rtext strong{color:var(--ink);font-weight:700;}
+
+  /* Steps */
+  .step{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .step:last-child{border-bottom:none;}
+  .step .skey{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14px;
+    color:var(--accent);
+    line-height:1.4;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .step .stxt{font-size:15.5px;color:var(--ink-soft);line-height:1.65;}
+
+  /* Fichas */
+  .ficha{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-radius:10px;
+    padding:30px 32px;
+    margin-bottom:20px;
+  }
+  .ficha-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    padding-bottom:20px;
+    margin-bottom:22px;
+    border-bottom:1px solid var(--rule);
+    flex-wrap:wrap;
+  }
+  .ficha-head .num-com{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:4px 9px;
+    border-radius:4px;
+    letter-spacing:.04em;
+    margin-bottom:10px;
+    display:inline-block;
+    font-weight:500;
+  }
+  .ficha-head .commercial{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:24px;
+    line-height:1.2;
+    letter-spacing:-.015em;
+    color:var(--ink);
+  }
+  .ficha-head .technical{
+    font-size:13.5px;
+    color:var(--ink-dim);
+    margin-top:6px;
+    font-weight:500;
+  }
+  .ficha-head .badge{
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--ink-dim);
+    background:var(--soft);
+    padding:7px 12px;
+    border-radius:4px;
+    white-space:nowrap;
+    align-self:flex-start;
+  }
+  .ficha dl{display:grid;grid-template-columns:170px 1fr;gap:14px 24px;}
+  .ficha dt{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--ink-mute);
+    padding-top:4px;
+    font-weight:700;
+  }
+  .ficha dd{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .ficha dd strong{color:var(--ink);font-weight:600;}
+
+  /* Anatomy layers */
+  .layers{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    margin:18px 0 28px;
+    overflow:hidden;
+  }
+  .layer{
+    display:grid;
+    grid-template-columns:180px 130px 1fr;
+    padding:24px 26px;
+    border-bottom:1px solid var(--rule);
+    align-items:start;
+    gap:8px;
+  }
+  .layer:last-child{border-bottom:none;}
+  .layer .lname{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:18px;
+    color:var(--ink);
+  }
+  .layer .ldepth{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--accent);
+    background:var(--accent-bg);
+    padding:5px 11px;
+    border-radius:4px;
+    display:inline-block;
+    align-self:flex-start;
+    letter-spacing:.03em;
+    font-weight:500;
+  }
+  .layer .ltxt{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .layer .ltxt .tech{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid var(--rule);
+    font-size:13px;
+    color:var(--ink-dim);
+  }
+  .layer .ltxt .tech b{color:var(--accent);font-weight:600;}
+
+  /* Fitzpatrick */
+  .fitz{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin:18px 0 28px;
+  }
+  .fitz-card{
+    background:#fff;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:22px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .fitz-card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:var(--accent);
+  }
+  .fitz-card.tone-safe::before{background:var(--mild);}
+  .fitz-card.tone-mid::before{background:var(--moderate);}
+  .fitz-card.tone-warn::before{background:var(--severe);}
+  .fitz-card .roman{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:30px;
+    color:var(--accent);
+    margin-bottom:10px;
+    letter-spacing:-.01em;
+    line-height:1;
+  }
+  .fitz-card.tone-safe .roman{color:var(--mild);}
+  .fitz-card.tone-mid .roman{color:var(--moderate);}
+  .fitz-card.tone-warn .roman{color:var(--severe);}
+  .fitz-card .fdesc{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.55;
+    margin-bottom:12px;
+  }
+  .fitz-card .frule{
+    font-size:12.5px;
+    color:var(--ink-dim);
+    padding-top:10px;
+    border-top:1px solid var(--rule);
+    line-height:1.55;
+  }
+  .fitz-card .frule b{color:var(--accent);font-weight:700;}
+  .fitz-card.tone-safe .frule b{color:var(--mild);}
+  .fitz-card.tone-mid .frule b{color:var(--moderate);}
+  .fitz-card.tone-warn .frule b{color:var(--severe);}
+
+  /* Glosario */
+  .gloss dt{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:17px;
+    color:var(--ink);
+    margin-top:24px;
+    margin-bottom:6px;
+  }
+  .gloss dd{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.65;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--rule);
+  }
+  .gloss dd strong{color:var(--ink);font-weight:600;}
+
+  /* Lists */
+  ul.body{margin:8px 0 20px 22px;}
+  ul.body li{font-size:15.5px;color:var(--ink-soft);margin-bottom:8px;line-height:1.65;}
+  ul.body li strong{color:var(--ink);font-weight:600;}
+  ol.body{margin:8px 0 20px 22px;}
+  ol.body li{font-size:15.5px;color:var(--ink-soft);margin-bottom:8px;line-height:1.65;}
+
+  /* Footer */
+  footer.docfoot{
+    margin-top:96px;
+    padding-top:28px;
+    border-top:1px solid var(--rule);
+    font-size:13px;
+    color:var(--ink-mute);
+    letter-spacing:.02em;
+  }
+
+  /* Print */
+  @media print{
+    @page{size:Letter;margin:18mm 16mm;}
+    body{font-size:11pt;line-height:1.55;background:#fff;}
+    .layout{display:block;max-width:none;}
+    aside.sidebar{display:none;}
+    main{padding:0;max-width:none;}
+    h1.title{font-size:28pt;}
+    h2.chap{font-size:20pt;margin:0 0 12pt;padding-top:0;border-top:none;page-break-before:always;}
+    h2.chap:first-of-type{page-break-before:auto;}
+    h3.sec{font-size:16pt;margin:24pt 0 8pt;page-break-after:avoid;}
+    h4.sub{font-size:14pt;margin:18pt 0 6pt;page-break-after:avoid;}
+    p,li,dd,.note,.range,.layer,.fitz-card,.step{page-break-inside:avoid;}
+    .ficha{page-break-inside:avoid;break-inside:avoid;}
+    table{page-break-inside:auto;}
+    tr,th,td{page-break-inside:avoid;}
+    thead{display:table-header-group;}
+    .stats{margin-bottom:20pt;}
+    .fitz{grid-template-columns:repeat(3,1fr);gap:8pt;}
+    .range{min-height:0;}
+    .range .rname{color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .range .rscore{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .ranges,.layers,table,.note,.ficha,.fitz-card,.hat,.h2.chap .num,h3.sec .num,h4.sub .num{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    a{color:inherit;text-decoration:none;}
+    footer.docfoot{page-break-before:avoid;margin-top:36pt;}
+  }
+
+  /* Mobile */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    aside.sidebar{display:none;}
+    main{padding:32px 22px 80px;}
+    h1.title{font-size:36px;}
+    h2.chap{font-size:28px;}
+    h3.sec{font-size:22px;}
+    .fitz{grid-template-columns:1fr;}
+    .layer{grid-template-columns:1fr;gap:8px;}
+    .ficha dl{grid-template-columns:1fr;gap:4px 0;}
+    .ficha dt{margin-top:14px;}
+    .step{grid-template-columns:1fr;gap:8px;}
+    .range{grid-template-columns:1fr;min-height:0;}
+    .range .rscore{border-right:none;border-bottom:1px solid var(--rule);padding:12px 20px;}
+    .range .rname{padding:14px 20px;}
+    table{font-size:13px;}
+    th,td{padding:10px 12px;}
   }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <span class="dot"></span>
-      Protocolo Lumina
-      <span class="brand-tag">Manual interno</span>
-    </div>
-    <div class="topbar-meta">v2.0 · 2026 · Equipo de ventas</div>
-  </div>
-</header>
-
 <div class="layout">
 
-  <!-- TOC -->
-  <aside class="toc-sidebar" id="toc">
+  <aside class="sidebar">
+    <div class="brand">Protocolo Lumina <small>Manual interno</small></div>
+    <div class="vsn">v3.0 · 2026 · Equipo</div>
+
     <div class="toc-title">En esta página</div>
-    <ul class="toc-list">
-      <li><a href="#cap-1" class="active">1. Cómo leer el análisis facial</a></li>
-      <li class="nested"><a href="#cap-1a">1.A Concón / Los Ángeles</a></li>
-      <li class="nested"><a href="#parametros-cl">— Los 6 parámetros</a></li>
-      <li class="nested"><a href="#p-tono">— Tono</a></li>
-      <li class="nested"><a href="#p-hidratacion">— Hidratación / Sebo</a></li>
-      <li class="nested"><a href="#p-arrugas">— Arrugas</a></li>
-      <li class="nested"><a href="#p-sensibilidad">— Sensibilidad</a></li>
-      <li class="nested"><a href="#p-manchas">— Manchas</a></li>
-      <li class="nested"><a href="#p-poros">— Poros</a></li>
-      <li class="nested"><a href="#rangos-cl">— 3 rangos</a></li>
-      <li class="nested"><a href="#cap-1b">1.B Vitacura</a></li>
-      <li class="nested"><a href="#vistas-vit">— 5 vistas de la máquina</a></li>
-      <li class="nested"><a href="#parametros-vit">— 17 parámetros · 6 familias</a></li>
-      <li class="nested"><a href="#vit-hidratacion">— Hidratación &amp; Barrera</a></li>
-      <li class="nested"><a href="#vit-pigmentacion">— Pigmentación</a></li>
-      <li class="nested"><a href="#vit-envejecimiento">— Envejecimiento</a></li>
-      <li class="nested"><a href="#vit-sensibilidad">— Sensibilidad vascular</a></li>
-      <li class="nested"><a href="#vit-poros">— Poros &amp; Sebo</a></li>
-      <li class="nested"><a href="#vit-externos">— Agentes externos</a></li>
-      <li class="nested"><a href="#rangos-vit">— 5 niveles</a></li>
-      <li class="nested"><a href="#baumann-vit">— Diagnóstico Baumann</a></li>
-      <li class="nested"><a href="#guion-vit">— Guion de cabina</a></li>
-      <li><a href="#cap-2">2. Catálogo de planes</a></li>
-      <li class="nested"><a href="#g-principales">2.1 Principales</a></li>
-      <li class="nested"><a href="#g-mantencion">2.2 Mantención</a></li>
-      <li class="nested"><a href="#g-especializados">2.3 Especializados</a></li>
-    </ul>
+    <nav>
+      <ul>
+        <li><a href="#cap-1"><strong>1. Cómo leer el análisis facial</strong></a></li>
+        <li class="nav-sub"><a href="#cap-1a">1.A Concón / Los Ángeles</a></li>
+        <li class="nav-dash"><a href="#parametros-cl">→ Los 6 parámetros</a></li>
+        <li class="nav-dash"><a href="#p-tono">→ Tono</a></li>
+        <li class="nav-dash"><a href="#p-hidratacion">→ Hidratación / Sebo</a></li>
+        <li class="nav-dash"><a href="#p-arrugas">→ Arrugas</a></li>
+        <li class="nav-dash"><a href="#p-sensibilidad">→ Sensibilidad</a></li>
+        <li class="nav-dash"><a href="#p-manchas">→ Manchas</a></li>
+        <li class="nav-dash"><a href="#p-poros">→ Poros</a></li>
+        <li class="nav-dash"><a href="#rangos-cl">→ 3 rangos</a></li>
+        <li class="nav-sub"><a href="#cap-1b">1.B Vitacura</a></li>
+        <li class="nav-dash"><a href="#vistas-vit">→ 5 vistas de la máquina</a></li>
+        <li class="nav-dash"><a href="#parametros-vit">→ 17 parámetros · 6 familias</a></li>
+        <li class="nav-dash"><a href="#vit-hidratacion">→ Hidratación &amp; Barrera</a></li>
+        <li class="nav-dash"><a href="#vit-pigmentacion">→ Pigmentación</a></li>
+        <li class="nav-dash"><a href="#vit-envejecimiento">→ Envejecimiento</a></li>
+        <li class="nav-dash"><a href="#vit-sensibilidad">→ Sensibilidad vascular</a></li>
+        <li class="nav-dash"><a href="#vit-poros">→ Poros &amp; Sebo</a></li>
+        <li class="nav-dash"><a href="#vit-externos">→ Agentes externos</a></li>
+        <li class="nav-dash"><a href="#rangos-vit">→ 5 niveles</a></li>
+        <li class="nav-dash"><a href="#baumann-vit">→ Diagnóstico Baumann</a></li>
+        <li class="nav-dash"><a href="#guion-vit">→ Guion de cabina</a></li>
+        <li><a href="#cap-2"><strong>2. Catálogo de planes</strong></a></li>
+        <li class="nav-sub"><a href="#g-principales">2.1 Principales</a></li>
+        <li class="nav-sub"><a href="#g-mantencion">2.2 Mantención</a></li>
+        <li class="nav-sub"><a href="#g-especializados">2.3 Especializados</a></li>
+        <li><a href="#cap-3"><strong>3. Catálogo de tecnologías</strong></a></li>
+        <li class="nav-sub"><a href="#t-limpieza">→ Limpieza Coreana</a></li>
+        <li class="nav-sub"><a href="#t-vitaboost">→ Korean Vitaboost</a></li>
+        <li class="nav-sub"><a href="#t-nubea">→ Nubea Booster</a></li>
+        <li class="nav-sub"><a href="#t-dahe">→ Dahe Beauty</a></li>
+        <li class="nav-sub"><a href="#t-sakura">→ Sakura Ultra-Lift</a></li>
+        <li class="nav-sub"><a href="#t-fibrojin">→ Fibrojin</a></li>
+        <li class="nav-sub"><a href="#t-lumijin">→ Lumijin</a></li>
+        <li class="nav-sub"><a href="#t-neojin">→ Neojin</a></li>
+        <li class="nav-sub"><a href="#t-yuna">→ Yuna Face</a></li>
+        <li class="nav-sub"><a href="#t-hifu">→ Cuky HIFU</a></li>
+        <li class="nav-sub"><a href="#t-biominji">→ Bio Minji</a></li>
+        <li class="nav-sub"><a href="#t-endojiwoo">→ Endo Jiwoo</a></li>
+        <li class="nav-sub"><a href="#t-yoripeel">→ Yori Peel</a></li>
+        <li class="nav-sub"><a href="#t-rejuveskin">→ RejuveSkin</a></li>
+        <li><a href="#cap-4"><strong>4. Anatomía y fototipos</strong></a></li>
+        <li class="nav-sub"><a href="#anatomia">4.1 Capas de la piel</a></li>
+        <li class="nav-sub"><a href="#fototipos">4.2 Fototipos Fitzpatrick</a></li>
+        <li class="nav-sub"><a href="#contraindicaciones">4.3 Contraindicaciones</a></li>
+        <li><a href="#cap-5"><strong>5. Evaluación en cabina</strong></a></li>
+        <li class="nav-sub"><a href="#eval-flow">5.1 Los 5 pasos</a></li>
+        <li class="nav-sub"><a href="#eval-checklist">5.2 12 problemas observables</a></li>
+        <li class="nav-sub"><a href="#eval-objetivos">5.3 9 objetivos → plan</a></li>
+        <li class="nav-sub"><a href="#eval-biotipo">5.4 Biotipo de piel</a></li>
+        <li class="nav-sub"><a href="#eval-foto">5.5 Registro fotográfico</a></li>
+        <li class="nav-sub"><a href="#eval-analisis">5.6 Análisis simplificado</a></li>
+        <li class="nav-sub"><a href="#eval-cierre">5.7 Regla final</a></li>
+        <li><a href="#cap-6"><strong>6. Glosario técnico</strong></a></li>
+      </ul>
+    </nav>
   </aside>
 
   <main>
+    <div class="hat">Índice · Manual de recomendación</div>
+    <h1 class="title">Del análisis facial al plan correcto.</h1>
+    <p class="lead">Para cada uno de los seis parámetros que mide la máquina, el camino clínico que lo trata y los planes Lumina recomendados según el grado de intervención requerido. Esta versión incorpora el catálogo técnico completo de las 14 tecnologías, las capas anatómicas donde actúan, los fototipos Fitzpatrick, las contraindicaciones clínicas y el workflow operacional de evaluación en cabina.</p>
+    <div class="stats">
+      <span>6 + 17 parámetros</span>
+      <span>10 planes vigentes</span>
+      <span>14 tecnologías</span>
+      <span>5 pasos de evaluación</span>
+      <span>3 + 5 rangos de severidad</span>
+      <span>Vitacura · Concón · Los Ángeles</span>
+    </div>
 
-    <button class="toc-mobile-toggle" id="tocToggle" type="button" aria-expanded="false">
-      ☰ Índice
-    </button>
+    <!-- =========================
+         CAPITULO 1
+    ========================= -->
+    <h2 class="chap" id="cap-1"><span class="num">1.</span>Cómo leer el análisis facial</h2>
+    <p>Tenemos dos máquinas distintas en operación. <strong>Vitacura</strong> usa un dermatoscopio avanzado de 5 modos de luz que mide 17 parámetros agrupados; <strong>Concón y Los Ángeles</strong> usan la máquina de seis parámetros 0-100. La lectura clínica final converge en los mismos 10 planes Lumina, pero el camino para llegar a ellos cambia. Cada local trabaja con la sección que corresponde.</p>
 
-    <!-- HERO -->
-    <section class="doc-hero">
-      <div class="doc-eyebrow">Manual de recomendación</div>
-      <h1 class="doc-title">Del análisis facial al plan correcto.</h1>
-      <p class="doc-sub">
-        Para cada uno de los seis parámetros que mide la máquina, el camino clínico que lo trata y los planes Lumina recomendados según el grado de intervención requerido.
-      </p>
-      <div class="doc-meta-grid">
-        <span class="pill">6 parámetros</span>
-        <span class="pill">10 planes vigentes</span>
-        <span class="pill">3 + 5 rangos de severidad</span>
-        <span class="pill">Vitacura · Concón · Los Ángeles</span>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         CAPÍTULO 1
-         ============================================================ -->
-    <h2 class="h-section" id="cap-1"><span class="num">1.</span>Cómo leer el análisis facial</h2>
-    <p class="section-intro">
-      Tenemos dos máquinas distintas en operación. <strong>Vitacura</strong> usa un dermatoscopio avanzado de 5 modos de luz que mide 17 parámetros agrupados; <strong>Concón y Los Ángeles</strong> usan la máquina de seis parámetros 0-100. La lectura clínica final converge en los mismos 10 planes Lumina, pero el camino para llegar a ellos cambia. Cada local trabaja con la sección que corresponde.
-    </p>
-
-    <div class="callout note">
-      <span class="callout-label">Cómo usar este capítulo</span>
+    <div class="note">
+      <span class="ntitle">Cómo usar este capítulo</span>
       Si trabajas en <strong>Concón</strong> o <strong>Los Ángeles</strong>, lee la sección 1.A. Si trabajas en <strong>Vitacura</strong>, lee la sección 1.B. El catálogo de planes del Capítulo 2 es común a los tres locales — la traducción "diagnóstico → plan" es lo único que difiere.
     </div>
 
-    <!-- SECCIÓN 1.A — CONCÓN / LOS ÁNGELES -->
-    <h3 class="h-sub" id="cap-1a"><span class="num">1.A</span>Análisis Concón / Los Ángeles</h3>
-    <p class="section-intro">
-      La máquina entrega seis parámetros con puntaje de 0 a 100. Cada uno tiene un camino clínico propio y un plan recomendado según la profundidad de intervención que requiera.
-    </p>
+    <h3 class="sec" id="cap-1a"><span class="num">1.A</span>Análisis Concón / Los Ángeles</h3>
+    <p>La máquina entrega seis parámetros con puntaje de 0 a 100. Cada uno tiene un camino clínico propio y un plan recomendado según la profundidad de intervención que requiera.</p>
 
-    <!-- 1.A.1 PARÁMETROS -->
-    <h4 class="h-param" id="parametros-cl"><span class="idx">1.A.1</span>Los seis parámetros</h4>
-    <p>
-      Para cada parámetro: lo que mide, el camino clínico que lo trata, y los planes Lumina que aplican esa tecnología. Los planes se presentan de menor a mayor profundidad.
-    </p>
+    <h4 class="sub" id="parametros-cl"><span class="num">1.A.1</span>Los seis parámetros</h4>
+    <p>Para cada parámetro: lo que mide, el camino clínico que lo trata, y los planes Lumina que aplican esa tecnología. Los planes se presentan de menor a mayor profundidad.</p>
 
-    <!-- TONO -->
-    <div class="param">
-      <h4 class="h-param" id="p-tono"><span class="idx">01</span>Tono <span class="en">Skin Tone</span></h4>
-      <p class="param-meta">
-        Mide la luminosidad y uniformidad del color de la piel. Score bajo = piel apagada, fatigada, sin vitalidad. Causas típicas: estrés, mala oxigenación celular, exposición solar acumulada.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            La luminosidad se devuelve con <span class="tech">polinucleótidos profundos (Bio Minji)</span> que rejuvenecen a nivel celular y restauran el tono uniforme. Se requiere un plan que incluya esta tecnología.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge b-rec">Recomendado</span></td><td class="plan-name">Eternal Gangnam</td><td>Incluye Bio Minji</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Top</span></td><td class="plan-name">Armonía de Busan</td><td>Bio Minji + todas las tecnologías</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <h4 class="sub" id="p-tono"><span class="num">01</span>Tono <span class="en">Skin Tone</span></h4>
+    <p>Mide la luminosidad y uniformidad del color de la piel. Score bajo = piel apagada, fatigada, sin vitalidad. Causas típicas: estrés, mala oxigenación celular, exposición solar acumulada.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>La luminosidad se devuelve con polinucleótidos profundos (Bio Minji) que rejuvenecen a nivel celular y restauran el tono uniforme. Se requiere un plan que incluya esta tecnología.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Recomendado</td><td><strong>Eternal Gangnam</strong></td><td>Incluye Bio Minji</td></tr>
+        <tr><td>Top</td><td><strong>Armonía de Busan</strong></td><td>Bio Minji + todas las tecnologías</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="p-hidratacion"><span class="num">02</span>Hidratación / Sebo <span class="en">Water and Oil</span></h4>
+    <p>Evalúa el balance entre hidratación cutánea y producción de sebo. Score bajo indica desbalance: piel oleosa con núcleo deshidratado. Patrón muy frecuente en LATAM por clima variable y dieta alta en azúcares.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Para piel seca o con núcleo deshidratado: polinucleótidos (Bio Minji) o dermapen con activos hidratantes (Korean Vitaboost). La elección del plan depende del nivel de profundidad que se quiera atacar y del grado de envejecimiento asociado.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Entry</td><td><strong>Glow de Seoul</strong></td><td>Korean Vitaboost</td></tr>
+        <tr><td>Top</td><td><strong>Armonía de Busan</strong></td><td>Vitaboost + Bio Minji</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="p-arrugas"><span class="num">03</span>Arrugas <span class="en">Wrinkles</span></h4>
+    <p>Detecta líneas finas, surcos dinámicos y pérdida de elasticidad superficial. Entre 60 y 70: líneas finas iniciando — momento exacto para intervención preventiva. Esperar a que baje de 60 es esperar a que sea estructural.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Vía principal: radiofrecuencia fraccionada con péptidos de oro (Rejuveskin). Es la tecnología clave anti-envejecimiento. El plan se elige según el grado de rejuvenecimiento que se busque alcanzar.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Entry</td><td><strong>Glow de Seoul</strong></td><td>Sin Rejuveskin · preventivo</td></tr>
+        <tr><td>Potente</td><td><strong>Luz de Jeju · Armonía de Busan</strong></td><td>Con Rejuveskin · correctivo</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="p-sensibilidad"><span class="num">04</span>Sensibilidad <span class="en">Sensitivity</span></h4>
+    <p>Mide reactividad vascular: estrías rojas, telangiectasias, microinflamación crónica. Score bajo indica piel reactiva, propensa a rosácea y barrera cutánea debilitada.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>La sensibilidad <strong>no determina el plan</strong>: cualquier plan Lumina se adapta con activos específicos para piel sensible. La elección depende del objetivo paralelo de rejuvenecimiento que la cliente quiera alcanzar — no del score de sensibilidad en sí.</p>
+    <div class="note">
+      <span class="ntitle">Lectura para el equipo</span>
+      El plan se elige por los otros parámetros (tono, arrugas, manchas, poros) y luego el equipo médico calibra los activos para no irritar la barrera cutánea. Si el score de sensibilidad es muy bajo, se inicia con sesiones de fortalecimiento antes de avanzar a tecnologías intensas.
+    </div>
+
+    <h4 class="sub" id="p-manchas"><span class="num">05</span>Manchas <span class="en">Stains</span></h4>
+    <p>Identifica hiperpigmentación: melasma, manchas solares, post-inflamatorias, pecas, manchas de embarazo (cloasma). Único parámetro donde aún en zona "leve" el reporte puede sugerir prevención: si dice "time to pay attention to spots" estamos en transición.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Protocolo despigmentante completo: limpiezas despigmentantes, peeling de algas y aplicación de activos despigmentantes con dermapen (Korean Vitaboost). Si se busca potenciar con bioestimulación profunda, se incluye EndoJiwoo.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Económico</td><td><strong>Claridad de Haneul</strong></td><td>Despigmentante puro · sin EndoJiwoo</td></tr>
+        <tr><td>Avanzado</td><td><strong>Flor de Busan</strong></td><td>Con EndoJiwoo + Rejuveskin</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="p-poros"><span class="num">06</span>Poros <span class="en">Pores</span></h4>
+    <p>Mide tamaño, dilatación y obstrucción de poros. Score severo (&lt;50) indica acumulación de sebo y queratinocitos. Si no se trata, evoluciona a acné inflamatorio y cicatrices atróficas. Se trabaja siempre en conjunto con regulación sebácea.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Vía clínica: radiofrecuencia fraccionada (Rejuveskin) + dermapen (Korean Vitaboost). El plan se elige según el objetivo paralelo de rejuvenecimiento — desde foco puro en poros hasta plan ultra completo.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Foco poros</td><td><strong>Claridad de Haneul</strong></td><td>Solo enfocado en poros</td></tr>
+        <tr><td>+ Rejuv</td><td><strong>Luz de Jeju</strong></td><td>Poros + EndoJiwoo · rejuvenecimiento</td></tr>
+        <tr><td>Ultra</td><td><strong>Armonía de Busan</strong></td><td>Solución más completa</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="rangos-cl"><span class="num">1.A.2</span>Los tres rangos</h4>
+    <p>Cada score se interpreta con código de color visible en el reporte. Esta es la traducción clínica de cada uno.</p>
+    <div class="ranges">
+      <div class="range sev-severe">
+        <div class="rname">Severo</div>
+        <div class="rscore">00 – 49</div>
+        <div class="rtext"><strong>Bandera roja.</strong> Requiere intervención. La probabilidad de empeoramiento sin tratamiento es alta. Es el punto de mayor urgencia clínica — y también donde la cliente ya intuye que tiene el problema.</div>
+      </div>
+      <div class="range sev-moderate">
+        <div class="rname">Moderado</div>
+        <div class="rscore">50 – 79</div>
+        <div class="rtext"><strong>Zona de prevención inteligente.</strong> La piel ya muestra signos pero todavía hay margen. Aquí está la conversación más rentable: convencer a la cliente de actuar antes de que sea problema mayor.</div>
+      </div>
+      <div class="range sev-mild">
+        <div class="rname">Leve</div>
+        <div class="rscore">80 – 100</div>
+        <div class="rtext"><strong>Zona saludable.</strong> No es excusa para no vender — es argumento para mantención. Felicita primero, luego vende sostenibilidad. "Lo bien que estás aquí no se mantiene solo."</div>
       </div>
     </div>
 
-    <!-- HIDRATACIÓN -->
-    <div class="param">
-      <h4 class="h-param" id="p-hidratacion"><span class="idx">02</span>Hidratación / Sebo <span class="en">Water and Oil</span></h4>
-      <p class="param-meta">
-        Evalúa el balance entre hidratación cutánea y producción de sebo. Score bajo indica desbalance: piel oleosa con núcleo deshidratado. Patrón muy frecuente en LATAM por clima variable y dieta alta en azúcares.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Para piel seca o con núcleo deshidratado: <span class="tech">polinucleótidos (Bio Minji)</span> o <span class="tech">dermapen con activos hidratantes (Korean Vitaboost)</span>. La elección del plan depende del nivel de profundidad que se quiera atacar y del grado de envejecimiento asociado.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Entry</span></td><td class="plan-name">Glow de Seoul</td><td>Korean Vitaboost</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Top</span></td><td class="plan-name">Armonía de Busan</td><td>Vitaboost + Bio Minji</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h3 class="sec" id="cap-1b"><span class="num">1.B</span>Análisis Vitacura</h3>
+    <p>La máquina de Vitacura es un dermatoscopio multiespectral de 5 modos de luz (luz blanca, polarización positiva, polarización negativa, Wood, UV) que devuelve <strong>17 parámetros</strong> organizados en cinco vistas y dos índices globales: <strong>edad cutánea predicha</strong> y <strong>tipo de piel Baumann (4 letras)</strong>. Da más profundidad clínica — y por eso requiere una lectura distinta a la de Concón/LA.</p>
 
-    <!-- ARRUGAS -->
-    <div class="param">
-      <h4 class="h-param" id="p-arrugas"><span class="idx">03</span>Arrugas <span class="en">Wrinkles</span></h4>
-      <p class="param-meta">
-        Detecta líneas finas, surcos dinámicos y pérdida de elasticidad superficial. Entre 60 y 70: líneas finas iniciando — momento exacto para intervención preventiva. Esperar a que baje de 60 es esperar a que sea estructural.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Vía principal: <span class="tech">radiofrecuencia fraccionada con péptidos de oro (Rejuveskin)</span>. Es la tecnología clave anti-envejecimiento. El plan se elige según el grado de rejuvenecimiento que se busque alcanzar.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Entry</span></td><td class="plan-name">Glow de Seoul</td><td>Sin Rejuveskin · preventivo</td></tr>
-                <tr><td><span class="badge b-rec">Potente</span></td><td class="plan-name">Luz de Jeju · Armonía de Busan</td><td>Con Rejuveskin · correctivo</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SENSIBILIDAD -->
-    <div class="param">
-      <h4 class="h-param" id="p-sensibilidad"><span class="idx">04</span>Sensibilidad <span class="en">Sensitivity</span></h4>
-      <p class="param-meta">
-        Mide reactividad vascular: estrías rojas, telangiectasias, microinflamación crónica. Score bajo indica piel reactiva, propensa a rosácea y barrera cutánea debilitada.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            La sensibilidad <strong>no determina el plan</strong>: cualquier plan Lumina se adapta con activos específicos para piel sensible. La elección depende del objetivo paralelo de rejuvenecimiento que la cliente quiera alcanzar — no del score de sensibilidad en sí.
-          </div>
-        </div>
-      </div>
-      <div class="callout">
-        <span class="callout-label">Lectura para el equipo</span>
-        El plan se elige por los otros parámetros (tono, arrugas, manchas, poros) y luego el equipo médico calibra los activos para no irritar la barrera cutánea. Si el score de sensibilidad es muy bajo, se inicia con sesiones de fortalecimiento antes de avanzar a tecnologías intensas.
-      </div>
-    </div>
-
-    <!-- MANCHAS -->
-    <div class="param">
-      <h4 class="h-param" id="p-manchas"><span class="idx">05</span>Manchas <span class="en">Stains</span></h4>
-      <p class="param-meta">
-        Identifica hiperpigmentación: melasma, manchas solares, post-inflamatorias, pecas, manchas de embarazo (cloasma). Único parámetro donde aún en zona "leve" el reporte puede sugerir prevención: si dice "time to pay attention to spots" estamos en transición.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Protocolo despigmentante completo: <span class="tech">limpiezas despigmentantes</span>, <span class="tech">peeling de algas</span> y aplicación de <span class="tech">activos despigmentantes con dermapen (Korean Vitaboost)</span>. Si se busca potenciar con bioestimulación profunda, se incluye EndoJiwoo.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Económico</span></td><td class="plan-name">Claridad de Haneul</td><td>Despigmentante puro · sin EndoJiwoo</td></tr>
-                <tr><td><span class="badge b-rec">Avanzado</span></td><td class="plan-name">Flor de Busan</td><td>Con EndoJiwoo + Rejuveskin</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- POROS -->
-    <div class="param">
-      <h4 class="h-param" id="p-poros"><span class="idx">06</span>Poros <span class="en">Pores</span></h4>
-      <p class="param-meta">
-        Mide tamaño, dilatación y obstrucción de poros. Score severo (&lt;50) indica acumulación de sebo y queratinocitos. Si no se trata, evoluciona a acné inflamatorio y cicatrices atróficas. Se trabaja siempre en conjunto con regulación sebácea.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Vía clínica: <span class="tech">radiofrecuencia fraccionada (Rejuveskin)</span> + <span class="tech">dermapen (Korean Vitaboost)</span>. El plan se elige según el objetivo paralelo de rejuvenecimiento — desde foco puro en poros hasta plan ultra completo.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Foco poros</span></td><td class="plan-name">Claridad de Haneul</td><td>Solo enfocado en poros</td></tr>
-                <tr><td><span class="badge b-rec">+ Rejuv</span></td><td class="plan-name">Luz de Jeju</td><td>Poros + EndoJiwoo · rejuvenecimiento</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Ultra</span></td><td class="plan-name">Armonía de Busan</td><td>Solución más completa</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 1.A.2 RANGOS -->
-    <h4 class="h-param" id="rangos-cl"><span class="idx">1.A.2</span>Los tres rangos</h4>
-    <p>
-      Cada score se interpreta con código de color visible en el reporte. Esta es la traducción clínica de cada uno.
-    </p>
-
-    <div class="range-table">
-      <div class="range-row severe">
-        <div class="r-label">Severo</div>
-        <div class="r-score">00 — 49</div>
-        <div class="r-desc"><strong>Bandera roja.</strong> Requiere intervención. La probabilidad de empeoramiento sin tratamiento es alta. Es el punto de mayor urgencia clínica — y también donde la cliente ya intuye que tiene el problema.</div>
-      </div>
-      <div class="range-row moderate">
-        <div class="r-label">Moderado</div>
-        <div class="r-score">50 — 79</div>
-        <div class="r-desc"><strong>Zona de prevención inteligente.</strong> La piel ya muestra signos pero todavía hay margen. Aquí está la conversación más rentable: convencer a la cliente de actuar antes de que sea problema mayor.</div>
-      </div>
-      <div class="range-row mild">
-        <div class="r-label">Leve</div>
-        <div class="r-score">80 — 100</div>
-        <div class="r-desc"><strong>Zona saludable.</strong> No es excusa para no vender — es argumento para mantención. Felicita primero, luego vende sostenibilidad. "Lo bien que estás aquí no se mantiene solo."</div>
-      </div>
-    </div>
-
-    <!-- SECCIÓN 1.B — VITACURA -->
-    <h3 class="h-sub" id="cap-1b"><span class="num">1.B</span>Análisis Vitacura</h3>
-    <p class="section-intro">
-      La máquina de Vitacura es un dermatoscopio multiespectral de 5 modos de luz (luz blanca, polarización positiva, polarización negativa, Wood, UV) que devuelve <strong>17 parámetros</strong> organizados en cinco vistas y dos índices globales: <strong>edad cutánea predicha</strong> y <strong>tipo de piel Baumann (4 letras)</strong>. Da más profundidad clínica — y por eso requiere una lectura distinta a la de Concón/LA.
-    </p>
-
-    <div class="callout note">
-      <span class="callout-label">Cambio de mentalidad respecto a Concón/LA</span>
+    <div class="note">
+      <span class="ntitle">Cambio de mentalidad respecto a Concón/LA</span>
       La máquina de Concón/LA mide <strong>seis parámetros independientes</strong> y la lectura es parámetro por parámetro. La de Vitacura mide <strong>diecisiete parámetros agrupados en familias</strong> — y entrega un <strong>diagnóstico Baumann (4 letras)</strong> que ya consolida toda la lectura en una sola firma. La conversación con la cliente parte de esa firma; los parámetros individuales son la evidencia que la respalda.
     </div>
 
-    <!-- 1.B.1 VISTAS -->
-    <h4 class="h-param" id="vistas-vit"><span class="idx">1.B.1</span>Las cinco vistas de la máquina</h4>
-    <p>
-      En pantalla aparecen cinco pestañas. Cada una agrupa parámetros que se miden con el mismo modo de luz. Lo importante no es memorizarlas — es saber qué pestaña abrir cuando la cliente pregunta por un problema específico.
-    </p>
-
-    <table class="catalog">
-      <thead>
-        <tr><th>Pestaña</th><th>Qué muestra</th><th>Cuándo abrirla con la cliente</th></tr>
-      </thead>
+    <h4 class="sub" id="vistas-vit"><span class="num">1.B.1</span>Las cinco vistas de la máquina</h4>
+    <p>En pantalla aparecen cinco pestañas. Cada una agrupa parámetros que se miden con el mismo modo de luz. Lo importante no es memorizarlas — es saber qué pestaña abrir cuando la cliente pregunta por un problema específico.</p>
+    <table>
+      <thead><tr><th>Pestaña</th><th>Qué muestra</th><th>Cuándo abrirla con la cliente</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="t-tag"><span class="badge">01</span></td>
-          <td class="t-name">Toma de imágenes</td>
-          <td class="t-pitch">Las cinco fotos base con distintos modos de luz: <em>luz blanca</em>, <em>polarización positiva</em>, <em>polarización negativa</em>, <em>Wood</em> y <em>UV</em>. Es la materia prima del análisis.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">02</span></td>
-          <td class="t-name">Contenido de humedad</td>
-          <td class="t-pitch">Mide <em>humedad</em> y <em>pH</em> de la piel. Define si la piel es seca, mixta o grasa.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">03</span></td>
-          <td class="t-name">Detección superficial</td>
-          <td class="t-pitch">Lo que se ve a simple vista: <em>arrugas</em>, <em>poros grandes</em>, <em>puntos negros</em>, <em>mancha mixta</em>, <em>pigmento superficial</em>, <em>porfirina</em>, <em>grasa</em>, <em>acné</em>.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">04</span></td>
-          <td class="t-name">Detección profunda</td>
-          <td class="t-pitch">Lo que está debajo: <em>colágeno</em>, <em>pigmento marrón</em>, <em>pigmento profundo</em>, <em>barrera cutánea</em>, <em>sensibilidad</em> y <em>eritema</em>. Aquí está la evidencia clínica para vender planes profundos.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">05</span></td>
-          <td class="t-name">Pronóstico de la piel</td>
-          <td class="t-pitch">Edad cutánea predicha vs. edad real, y simulación de evolución. Es la pestaña con mayor impacto emocional — úsala cuando la cliente duda en contratar.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">06</span></td>
-          <td class="t-name">Análisis exhaustivo</td>
-          <td class="t-pitch">Resumen consolidado: tipo de piel Baumann, score global, propuesta de cuidado. Es lo que se le imprime/envía a la cliente.</td>
-        </tr>
+        <tr><td>01</td><td>Toma de imágenes</td><td>Las cinco fotos base con distintos modos de luz: <em>luz blanca</em>, <em>polarización positiva</em>, <em>polarización negativa</em>, <em>Wood</em> y <em>UV</em>. Es la materia prima del análisis.</td></tr>
+        <tr><td>02</td><td>Contenido de humedad</td><td>Mide <em>humedad</em> y <em>pH</em> de la piel. Define si la piel es seca, mixta o grasa.</td></tr>
+        <tr><td>03</td><td>Detección superficial</td><td>Lo que se ve a simple vista: <em>arrugas</em>, <em>poros grandes</em>, <em>puntos negros</em>, <em>mancha mixta</em>, <em>pigmento superficial</em>, <em>porfirina</em>, <em>grasa</em>, <em>acné</em>.</td></tr>
+        <tr><td>04</td><td>Detección profunda</td><td>Lo que está debajo: <em>colágeno</em>, <em>pigmento marrón</em>, <em>pigmento profundo</em>, <em>barrera cutánea</em>, <em>sensibilidad</em> y <em>eritema</em>. Aquí está la evidencia clínica para vender planes profundos.</td></tr>
+        <tr><td>05</td><td>Pronóstico de la piel</td><td>Edad cutánea predicha vs. edad real, y simulación de evolución. Es la pestaña con mayor impacto emocional — úsala cuando la cliente duda en contratar.</td></tr>
+        <tr><td>06</td><td>Análisis exhaustivo</td><td>Resumen consolidado: tipo de piel Baumann, score global, propuesta de cuidado. Es lo que se le imprime/envía a la cliente.</td></tr>
       </tbody>
     </table>
 
-    <!-- 1.B.2 PARÁMETROS · 6 FAMILIAS -->
-    <h4 class="h-param" id="parametros-vit"><span class="idx">1.B.2</span>Los diecisiete parámetros, agrupados en seis familias clínicas</h4>
-    <p>
-      Los 17 parámetros se reducen a seis decisiones clínicas. Esta es la traducción que importa para vender plan, no la lista alfabética que sale en el reporte.
-    </p>
+    <h4 class="sub" id="parametros-vit"><span class="num">1.B.2</span>Los diecisiete parámetros, agrupados en seis familias clínicas</h4>
+    <p>Los 17 parámetros se reducen a seis decisiones clínicas. Esta es la traducción que importa para vender plan, no la lista alfabética que sale en el reporte.</p>
 
-    <!-- F1 HIDRATACIÓN & BARRERA -->
-    <div class="param">
-      <h4 class="h-param" id="vit-hidratacion"><span class="idx">F1</span>Hidratación &amp; Barrera <span class="en">Humedad · pH · Barrera</span></h4>
-      <p class="param-meta">
-        Mide tres cosas: hidratación cutánea (% de agua en estrato córneo), pH de superficie y estado funcional de la barrera. Score bajo aquí explica casi todo lo demás: piel deshidratada con barrera comprometida pierde luminosidad, se vuelve sensible, se pigmenta más fácil y envejece más rápido. Es la base sobre la que se construye cualquier plan.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            <span class="tech">Polinucleótidos (Bio Minji)</span> para reparación profunda celular y <span class="tech">dermapen con activos hidratantes (Korean Vitaboost)</span> para rehidratación y reconstrucción de barrera. En pieles muy comprometidas (Level 1-2) se inicia con sesiones de fortalecimiento de barrera antes de subir intensidad.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Entry</span></td><td class="plan-name">Glow de Seoul</td><td>Korean Vitaboost · primer acercamiento</td></tr>
-                <tr><td><span class="badge b-rec">Hidratante+</span></td><td class="plan-name">Glow de Asan</td><td>Hidratación profunda · primeras líneas finas</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Top</span></td><td class="plan-name">Armonía de Busan</td><td>Vitaboost + Bio Minji</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <h4 class="sub" id="vit-hidratacion"><span class="num">F1</span>Hidratación &amp; Barrera <span class="en">Humedad · pH · Barrera</span></h4>
+    <p>Mide tres cosas: hidratación cutánea (% de agua en estrato córneo), pH de superficie y estado funcional de la barrera. Score bajo aquí explica casi todo lo demás: piel deshidratada con barrera comprometida pierde luminosidad, se vuelve sensible, se pigmenta más fácil y envejece más rápido. Es la base sobre la que se construye cualquier plan.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Polinucleótidos (Bio Minji) para reparación profunda celular y dermapen con activos hidratantes (Korean Vitaboost) para rehidratación y reconstrucción de barrera. En pieles muy comprometidas (Level 1-2) se inicia con sesiones de fortalecimiento de barrera antes de subir intensidad.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Entry</td><td><strong>Glow de Seoul</strong></td><td>Korean Vitaboost · primer acercamiento</td></tr>
+        <tr><td>Hidratante+</td><td><strong>Glow de Asan</strong></td><td>Hidratación profunda · primeras líneas finas</td></tr>
+        <tr><td>Top</td><td><strong>Armonía de Busan</strong></td><td>Vitaboost + Bio Minji</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="vit-pigmentacion"><span class="num">F2</span>Pigmentación <span class="en">Mapa térmico · superficial · marrón · profundo · mancha mixta</span></h4>
+    <p>La máquina separa pigmentación en cinco capas: mapa térmico de pigmentos (vista global), pigmento superficial (lo más reciente, fotodaño), pigmento marrón (intermedio, hormonal), pigmento profundo (acumulado, dérmico) y mancha mixta (combinaciones). Esta separación es lo que diferencia a la máquina Vitacura: permite saber si la mancha es <strong>tratable con despigmentante puro</strong> o si necesita <strong>bioestimulación profunda</strong> porque ya es dérmica.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Si pigmento superficial es lo dominante: protocolo despigmentante (limpiezas despigmentantes + peeling de algas + Korean Vitaboost con activos despigmentantes). Si predomina pigmento marrón o profundo, o hay mancha mixta: se suma EndoJiwoo para bioestimulación dérmica. Cuando además hay envejecimiento, se entra a Flor de Busan.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Económico</td><td><strong>Claridad de Haneul</strong></td><td>Pigmento superficial puro · sin EndoJiwoo</td></tr>
+        <tr><td>Avanzado</td><td><strong>Flor de Busan</strong></td><td>Pigmento marrón / profundo / mancha mixta · EndoJiwoo + Rejuveskin</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="vit-envejecimiento"><span class="num">F3</span>Envejecimiento estructural <span class="en">Arrugas · colágeno · edad cutánea predicha</span></h4>
+    <p>Tres parámetros que se leen juntos. <em>Arrugas</em> mide líneas finas y surcos visibles; <em>colágeno</em> mide densidad dérmica (lo que sostiene la piel desde abajo); la <em>edad cutánea predicha</em> es el dato más persuasivo del reporte: la máquina dice qué edad aparenta la piel hoy. Cuando la edad predicha supera a la edad real, eso solo justifica entrar a Eternal Gangnam o Armonía de Busan.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Vía principal: radiofrecuencia fraccionada con péptidos de oro (Rejuveskin) + EndoJiwoo para bioestimulación. En grados avanzados se suma Endolaser Coreano y HIFU. La selección de plan depende de cuánto rejuvenecimiento se busque alcanzar.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Entry</td><td><strong>Glow de Asan</strong></td><td>Primeras líneas finas · sin Rejuveskin</td></tr>
+        <tr><td>Premium</td><td><strong>Eternal Gangnam</strong></td><td>Endolaser + EndoJiwoo + HIFU + Bio Minji</td></tr>
+        <tr><td>Top</td><td><strong>Armonía de Busan</strong></td><td>Todas las tecnologías</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="vit-sensibilidad"><span class="num">F4</span>Sensibilidad vascular <span class="en">Mapa térmico de sensibilidad · gráfico de eritropoyetina · porfirina</span></h4>
+    <p>Tres parámetros que miden reactividad cutánea. El <em>mapa térmico de sensibilidad</em> muestra zonas de microinflamación crónica; el <em>gráfico de eritropoyetina sensible</em> mide enrojecimiento difuso; la <em>porfirina</em> mide carga bacteriana cutánea (Cutibacterium acnes). En conjunto definen si la piel tolera tecnologías intensas o necesita rampa.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>La sensibilidad <strong>no determina el plan</strong>: cualquier plan Lumina se adapta con activos calmantes específicos. Lo que sí determina es el <strong>ritmo de progresión</strong>: scores muy bajos (Level 1-2) requieren 2-3 sesiones de fortalecimiento de barrera antes de entrar a tecnologías profundas. Si hay porfirina alta concurrente, se suma protocolo de regulación bacteriana.</p>
+    <div class="note">
+      <span class="ntitle">Lectura para el equipo</span>
+      El plan se elige por las otras familias (pigmentación, envejecimiento, poros). El equipo médico calibra los activos según la sensibilidad detectada. <strong>Vender el plan completo de entrada, no fragmentar.</strong> La cliente no compra "primero la barrera, después lo otro" — compra el plan, y el orden de aplicación lo define el médico en sesión 1.
     </div>
 
-    <!-- F2 PIGMENTACIÓN -->
-    <div class="param">
-      <h4 class="h-param" id="vit-pigmentacion"><span class="idx">F2</span>Pigmentación <span class="en">Mapa térmico · superficial · marrón · profundo · mancha mixta</span></h4>
-      <p class="param-meta">
-        La máquina separa pigmentación en cinco capas: mapa térmico de pigmentos (vista global), pigmento superficial (lo más reciente, fotodaño), pigmento marrón (intermedio, hormonal), pigmento profundo (acumulado, dérmico) y mancha mixta (combinaciones). Esta separación es lo que diferencia a la máquina Vitacura: permite saber si la mancha es <strong>tratable con despigmentante puro</strong> o si necesita <strong>bioestimulación profunda</strong> porque ya es dérmica.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Si pigmento superficial es lo dominante: <span class="tech">protocolo despigmentante</span> (limpiezas despigmentantes + peeling de algas + Korean Vitaboost con activos despigmentantes). Si predomina pigmento marrón o profundo, o hay mancha mixta: se suma <span class="tech">EndoJiwoo</span> para bioestimulación dérmica. Cuando además hay envejecimiento, se entra a Flor de Busan.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Económico</span></td><td class="plan-name">Claridad de Haneul</td><td>Pigmento superficial puro · sin EndoJiwoo</td></tr>
-                <tr><td><span class="badge b-rec">Avanzado</span></td><td class="plan-name">Flor de Busan</td><td>Pigmento marrón / profundo / mancha mixta · EndoJiwoo + Rejuveskin</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <h4 class="sub" id="vit-poros"><span class="num">F5</span>Poros &amp; Sebo <span class="en">Poros grandes · puntos negros · grasa · acné</span></h4>
+    <p>Cuatro parámetros que se leen como un solo eje. <em>Poros grandes</em> mide dilatación; <em>puntos negros</em> mide oxidación de queratinocitos; <em>grasa</em> mide producción sebácea; <em>acné</em> es el desenlace inflamatorio. Si no se trata el conjunto, evoluciona a cicatrices atróficas — y esas ya no son reversibles con planes Lumina, requieren cirugía. Argumento para no esperar.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>Radiofrecuencia fraccionada (Rejuveskin) + dermapen (Korean Vitaboost) con regulación sebácea. El plan se elige según el objetivo paralelo de rejuvenecimiento — desde foco puro en poros hasta plan ultra completo.</p>
+    <div class="label-block">Planes recomendados</div>
+    <table>
+      <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Foco poros</td><td><strong>Claridad de Haneul</strong></td><td>Solo enfocado en poros y sebo</td></tr>
+        <tr><td>+ Rejuv</td><td><strong>Luz de Jeju</strong></td><td>Poros + EndoJiwoo · rejuvenecimiento</td></tr>
+        <tr><td>Ultra</td><td><strong>Armonía de Busan</strong></td><td>Solución más completa</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="vit-externos"><span class="num">F6</span>Agentes externos <span class="en">Agente fluorescente</span></h4>
+    <p>Detecta residuos de químicos en la piel: cosméticos con agentes blanqueadores agresivos, contaminantes ambientales, residuos de filtros UV químicos no metabolizados. No es una decisión de plan — es una conversación de hábitos previa al plan.</p>
+    <div class="label-block">Camino clínico</div>
+    <p>No requiere tecnología nueva. Antes de iniciar cualquier plan Lumina, se hace una limpieza profunda coreana (incluida en todos los planes) y se ajustan los productos de uso diario de la cliente. Es la oportunidad para vender el plan adecuado y descartar el ruido cosmético.</p>
+
+    <h4 class="sub" id="rangos-vit"><span class="num">1.B.3</span>Los cinco niveles de severidad</h4>
+    <p>La máquina Vitacura usa una escala de Level 1 a Level 5 (en vez de los 3 rangos de Concón/LA). Cada parámetro entrega un Score 0-100 y se clasifica automáticamente:</p>
+    <div class="ranges five">
+      <div class="range lvl-1">
+        <div class="rname">Level 1</div>
+        <div class="rscore">00 – 19</div>
+        <div class="rtext"><strong>Crítico.</strong> La piel ya muestra daño avanzado en este parámetro. La cliente lo nota a diario en el espejo. Conversación de urgencia clínica — y el plan más profundo disponible.</div>
+      </div>
+      <div class="range lvl-2">
+        <div class="rname">Level 2</div>
+        <div class="rscore">20 – 39</div>
+        <div class="rtext"><strong>Severo.</strong> Bandera roja. Requiere intervención. Sin tratamiento avanza rápido al Level 1. Donde la conversación deja de ser preventiva y entra a correctiva.</div>
+      </div>
+      <div class="range lvl-3">
+        <div class="rname">Level 3</div>
+        <div class="rscore">40 – 59</div>
+        <div class="rtext"><strong>Moderado.</strong> Zona de prevención inteligente, pero ya no es preventiva pura — la piel <em>ya</em> muestra signos. Aquí está la conversación más rentable: actuar antes de que sea Level 2.</div>
+      </div>
+      <div class="range lvl-4">
+        <div class="rname">Level 4</div>
+        <div class="rscore">60 – 79</div>
+        <div class="rtext"><strong>Aceptable.</strong> Funcional. La cliente probablemente no nota el problema todavía. Argumento para mantención preventiva — antes que el parámetro caiga a Level 3.</div>
+      </div>
+      <div class="range lvl-5">
+        <div class="rname">Level 5</div>
+        <div class="rscore">80 – 100</div>
+        <div class="rtext"><strong>Excelente.</strong> Zona saludable. Felicita primero, luego vende sostenibilidad. "Lo bien que estás aquí no se mantiene solo."</div>
       </div>
     </div>
-
-    <!-- F3 ENVEJECIMIENTO -->
-    <div class="param">
-      <h4 class="h-param" id="vit-envejecimiento"><span class="idx">F3</span>Envejecimiento estructural <span class="en">Arrugas · colágeno · edad cutánea predicha</span></h4>
-      <p class="param-meta">
-        Tres parámetros que se leen juntos. <em>Arrugas</em> mide líneas finas y surcos visibles; <em>colágeno</em> mide densidad dérmica (lo que sostiene la piel desde abajo); la <em>edad cutánea predicha</em> es el dato más persuasivo del reporte: la máquina dice qué edad aparenta la piel hoy. Cuando la edad predicha supera a la edad real, eso solo justifica entrar a Eternal Gangnam o Armonía de Busan.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            Vía principal: <span class="tech">radiofrecuencia fraccionada con péptidos de oro (Rejuveskin)</span> + <span class="tech">EndoJiwoo</span> para bioestimulación. En grados avanzados se suma <span class="tech">Endolaser Coreano</span> y HIFU. La selección de plan depende de cuánto rejuvenecimiento se busque alcanzar.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Entry</span></td><td class="plan-name">Glow de Asan</td><td>Primeras líneas finas · sin Rejuveskin</td></tr>
-                <tr><td><span class="badge b-rec">★ Popular</span></td><td class="plan-name">Incheon Elixir</td><td>Flacidez incipiente · EndoJiwoo</td></tr>
-                <tr><td><span class="badge">Premium</span></td><td class="plan-name">Eternal Gangnam</td><td>Endolaser + EndoJiwoo + HIFU + Bio Minji</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Top</span></td><td class="plan-name">Armonía de Busan</td><td>Todas las tecnologías</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- F4 SENSIBILIDAD VASCULAR -->
-    <div class="param">
-      <h4 class="h-param" id="vit-sensibilidad"><span class="idx">F4</span>Sensibilidad vascular <span class="en">Mapa térmico de sensibilidad · gráfico de eritropoyetina · porfirina</span></h4>
-      <p class="param-meta">
-        Tres parámetros que miden reactividad cutánea. El <em>mapa térmico de sensibilidad</em> muestra zonas de microinflamación crónica; el <em>gráfico de eritropoyetina sensible</em> mide enrojecimiento difuso; la <em>porfirina</em> mide carga bacteriana cutánea (Cutibacterium acnes). En conjunto definen si la piel tolera tecnologías intensas o necesita rampa.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            La sensibilidad <strong>no determina el plan</strong>: cualquier plan Lumina se adapta con activos calmantes específicos. Lo que sí determina es el <strong>ritmo de progresión</strong>: scores muy bajos (Level 1-2) requieren 2-3 sesiones de fortalecimiento de barrera antes de entrar a tecnologías profundas. Si hay porfirina alta concurrente, se suma protocolo de regulación bacteriana.
-          </div>
-        </div>
-      </div>
-      <div class="callout">
-        <span class="callout-label">Lectura para el equipo</span>
-        El plan se elige por las otras familias (pigmentación, envejecimiento, poros). El equipo médico calibra los activos según la sensibilidad detectada. <strong>Vender el plan completo de entrada, no fragmentar.</strong> La cliente no compra "primero la barrera, después lo otro" — compra el plan, y el orden de aplicación lo define el médico en sesión 1.
-      </div>
-    </div>
-
-    <!-- F5 POROS & SEBO -->
-    <div class="param">
-      <h4 class="h-param" id="vit-poros"><span class="idx">F5</span>Poros &amp; Sebo <span class="en">Poros grandes · puntos negros · grasa · acné</span></h4>
-      <p class="param-meta">
-        Cuatro parámetros que se leen como un solo eje. <em>Poros grandes</em> mide dilatación; <em>puntos negros</em> mide oxidación de queratinocitos; <em>grasa</em> mide producción sebácea; <em>acné</em> es el desenlace inflamatorio. Si no se trata el conjunto, evoluciona a cicatrices atróficas — y esas ya no son reversibles con planes Lumina, requieren cirugía. Argumento para no esperar.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            <span class="tech">Radiofrecuencia fraccionada (Rejuveskin)</span> + <span class="tech">dermapen (Korean Vitaboost)</span> con regulación sebácea. El plan se elige según el objetivo paralelo de rejuvenecimiento — desde foco puro en poros hasta plan ultra completo.
-          </div>
-        </div>
-        <div class="param-block-row">
-          <div class="label">Planes recomendados</div>
-          <div class="body">
-            <table class="plans">
-              <thead><tr><th>Nivel</th><th>Plan</th><th>Detalle</th></tr></thead>
-              <tbody>
-                <tr><td><span class="badge">Foco poros</span></td><td class="plan-name">Claridad de Haneul</td><td>Solo enfocado en poros y sebo</td></tr>
-                <tr><td><span class="badge b-rec">+ Rejuv</span></td><td class="plan-name">Luz de Jeju</td><td>Poros + EndoJiwoo · rejuvenecimiento</td></tr>
-                <tr class="is-top"><td><span class="badge b-top">Ultra</span></td><td class="plan-name">Armonía de Busan</td><td>Solución más completa</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- F6 AGENTES EXTERNOS -->
-    <div class="param">
-      <h4 class="h-param" id="vit-externos"><span class="idx">F6</span>Agentes externos <span class="en">Agente fluorescente</span></h4>
-      <p class="param-meta">
-        Detecta residuos de químicos en la piel: cosméticos con agentes blanqueadores agresivos, contaminantes ambientales, residuos de filtros UV químicos no metabolizados. No es una decisión de plan — es una conversación de hábitos previa al plan.
-      </p>
-      <div class="param-block">
-        <div class="param-block-row">
-          <div class="label">Camino clínico</div>
-          <div class="body">
-            No requiere tecnología nueva. Antes de iniciar cualquier plan Lumina, se hace una <span class="tech">limpieza profunda coreana</span> (incluida en todos los planes) y se ajustan los productos de uso diario de la cliente. Es la oportunidad para vender el plan adecuado y descartar el ruido cosmético.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 1.B.3 RANGOS · 5 NIVELES -->
-    <h4 class="h-param" id="rangos-vit"><span class="idx">1.B.3</span>Los cinco niveles de severidad</h4>
-    <p>
-      La máquina Vitacura usa una escala de Level 1 a Level 5 (en vez de los 3 rangos de Concón/LA). Cada parámetro entrega un Score 0-100 y se clasifica automáticamente:
-    </p>
-
-    <div class="range-table">
-      <div class="range-row severe">
-        <div class="r-label">Level 1</div>
-        <div class="r-score">00 — 19</div>
-        <div class="r-desc"><strong>Crítico.</strong> La piel ya muestra daño avanzado en este parámetro. La cliente lo nota a diario en el espejo. Conversación de urgencia clínica — y el plan más profundo disponible.</div>
-      </div>
-      <div class="range-row severe">
-        <div class="r-label">Level 2</div>
-        <div class="r-score">20 — 39</div>
-        <div class="r-desc"><strong>Severo.</strong> Bandera roja. Requiere intervención. Sin tratamiento avanza rápido al Level 1. Donde la conversación deja de ser preventiva y entra a correctiva.</div>
-      </div>
-      <div class="range-row moderate">
-        <div class="r-label">Level 3</div>
-        <div class="r-score">40 — 59</div>
-        <div class="r-desc"><strong>Moderado.</strong> Zona de prevención inteligente, pero ya no es preventiva pura — la piel <em>ya</em> muestra signos. Aquí está la conversación más rentable: actuar antes de que sea Level 2.</div>
-      </div>
-      <div class="range-row moderate">
-        <div class="r-label">Level 4</div>
-        <div class="r-score">60 — 79</div>
-        <div class="r-desc"><strong>Aceptable.</strong> Funcional. La cliente probablemente no nota el problema todavía. Argumento para mantención preventiva — antes que el parámetro caiga a Level 3.</div>
-      </div>
-      <div class="range-row mild">
-        <div class="r-label">Level 5</div>
-        <div class="r-score">80 — 100</div>
-        <div class="r-desc"><strong>Excelente.</strong> Zona saludable. Felicita primero, luego vende sostenibilidad. "Lo bien que estás aquí no se mantiene solo."</div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <span class="callout-label">Diferencia clave con Concón/LA</span>
+    <div class="note">
+      <span class="ntitle">Diferencia clave con Concón/LA</span>
       En Concón/LA hay 3 rangos (Severo / Moderado / Leve). En Vitacura hay 5 (Level 1 a 5). Lo que en Concón/LA es "Severo 00-49", en Vitacura se separa en <strong>Level 1 (crítico)</strong> y <strong>Level 2 (severo)</strong>. Esa separación es lo que permite vender Eternal Gangnam vs. Armonía de Busan: misma cliente con todos los parámetros en zona "Severo" en Concón puede tener 3 parámetros en Level 2 y 1 en Level 1 en Vitacura — y ese Level 1 es el que justifica subir el plan al máximo.
     </div>
 
-    <!-- 1.B.4 BAUMANN -->
-    <h4 class="h-param" id="baumann-vit"><span class="idx">1.B.4</span>El diagnóstico Baumann (4 letras)</h4>
-    <p>
-      Junto al score global, la máquina entrega una firma de 4 letras que es el <strong>tipo de piel Baumann</strong>: el sistema de clasificación dermatológica más usado en estética clínica. Cada letra representa un eje binario:
-    </p>
-
-    <table class="catalog">
-      <thead>
-        <tr><th>Eje</th><th>Letra</th><th>Significado</th><th>Implicación de plan</th></tr>
-      </thead>
+    <h4 class="sub" id="baumann-vit"><span class="num">1.B.4</span>El diagnóstico Baumann (4 letras)</h4>
+    <p>Junto al score global, la máquina entrega una firma de 4 letras que es el <strong>tipo de piel Baumann</strong>: el sistema de clasificación dermatológica más usado en estética clínica. Cada letra representa un eje binario:</p>
+    <table>
+      <thead><tr><th>Eje</th><th>Letra</th><th>Significado</th><th>Implicación de plan</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="t-tag"><span class="badge">Eje 1</span></td>
-          <td class="t-name">O / D</td>
-          <td class="t-pitch"><em>Oily / Dry</em> — oleosa o seca. Determinado por el parámetro Humedad y por Grasa.</td>
-          <td class="t-ideal">D → priorizar hidratación profunda (Bio Minji + Vitaboost). O → priorizar regulación sebácea y poros.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Eje 2</span></td>
-          <td class="t-name">S / R</td>
-          <td class="t-pitch"><em>Sensitive / Resistant</em> — sensible o resistente. Determinado por sensibilidad, eritema, barrera y porfirina.</td>
-          <td class="t-ideal">S → calibración suave de activos en sesión 1, sin cambiar el plan vendido. R → tolera tecnologías intensas desde el inicio.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Eje 3</span></td>
-          <td class="t-name">P / N</td>
-          <td class="t-pitch"><em>Pigmented / Non-pigmented</em> — pigmentada o no. Determinado por mapa térmico, pigmento superficial, marrón, profundo y mancha mixta.</td>
-          <td class="t-ideal">P → entra Flor de Busan o Claridad de Haneul como columna vertebral. N → no se vende despigmentante.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Eje 4</span></td>
-          <td class="t-name">W / T</td>
-          <td class="t-pitch"><em>Wrinkled / Tight</em> — arrugada o tensa. Determinado por arrugas, colágeno y edad cutánea predicha.</td>
-          <td class="t-ideal">W → entra rejuvenecimiento (Incheon Elixir / Eternal Gangnam / Armonía de Busan). T → mantención.</td>
-        </tr>
+        <tr><td>Eje 1</td><td><strong>O / D</strong></td><td><em>Oily / Dry</em> — oleosa o seca. Determinado por el parámetro Humedad y por Grasa.</td><td>D — priorizar hidratación profunda (Bio Minji + Vitaboost). O — priorizar regulación sebácea y poros.</td></tr>
+        <tr><td>Eje 2</td><td><strong>S / R</strong></td><td><em>Sensitive / Resistant</em> — sensible o resistente. Determinado por sensibilidad, eritema, barrera y porfirina.</td><td>S — calibración suave de activos en sesión 1, sin cambiar el plan vendido. R — tolera tecnologías intensas desde el inicio.</td></tr>
+        <tr><td>Eje 3</td><td><strong>P / N</strong></td><td><em>Pigmented / Non-pigmented</em> — pigmentada o no. Determinado por mapa térmico, pigmento superficial, marrón, profundo y mancha mixta.</td><td>P — entra Flor de Busan o Claridad de Haneul como columna vertebral. N — no se vende despigmentante.</td></tr>
+        <tr><td>Eje 4</td><td><strong>W / T</strong></td><td><em>Wrinkled / Tight</em> — arrugada o tensa. Determinado por arrugas, colágeno y edad cutánea predicha.</td><td>W — entra rejuvenecimiento (Eternal Gangnam / Armonía de Busan). T — mantención.</td></tr>
       </tbody>
     </table>
-
-    <div class="callout note">
-      <span class="callout-label">Atajo de venta</span>
-      La firma Baumann <strong>ya te dice qué plan vender</strong> antes de mirar parámetro por parámetro. Tres ejemplos típicos de Vitacura:
-      <br><br>
+    <div class="note">
+      <span class="ntitle">Atajo de venta</span>
+      La firma Baumann <strong>ya te dice qué plan vender</strong> antes de mirar parámetro por parámetro. Tres ejemplos típicos de Vitacura:<br><br>
       · <strong>DSPW</strong> (Seca, Sensible, Pigmentada, Envejecimiento) — los cuatro problemas a la vez. <strong>Armonía de Busan</strong>. Solución más completa o queda corto.<br>
       · <strong>OSPT</strong> (Oleosa, Sensible, Pigmentada, Tensa) — joven con manchas y poros. <strong>Flor de Busan</strong> o <strong>Claridad de Haneul</strong>.<br>
       · <strong>DRNW</strong> (Seca, Resistente, No pigmentada, Envejecimiento) — paciente puramente anti-edad. <strong>Eternal Gangnam</strong>.
     </div>
 
-    <!-- 1.B.5 GUION DE CABINA -->
-    <h4 class="h-param" id="guion-vit"><span class="idx">1.B.5</span>Guion de lectura en cabina</h4>
-    <p>
-      Orden de exposición en la cabina cuando la cliente está sentada al lado de la pantalla. No es el orden de las pestañas — es el orden que más vende.
-    </p>
+    <h4 class="sub" id="guion-vit"><span class="num">1.B.5</span>Guion de lectura en cabina</h4>
+    <p>Orden de exposición en la cabina cuando la cliente está sentada al lado de la pantalla. No es el orden de las pestañas — es el orden que más vende.</p>
+    <div class="step"><div class="skey">Paso 1<br>Pronóstico de la piel</div><div class="stxt">Empezar por <strong>edad cutánea predicha</strong>. Es la pestaña con mayor impacto emocional. Si la edad predicha supera a la real, ya entraste con la venta hecha. Si es igual o menor, felicita y pivota a sostenibilidad.</div></div>
+    <div class="step"><div class="skey">Paso 2<br>Análisis exhaustivo</div><div class="stxt">Mostrar las 4 letras y traducirlas a palabras: "tu piel es seca, sensible, pigmentada y con signos de envejecimiento". La cliente se reconoce en la descripción — y eso valida el reporte antes de mostrar números.</div></div>
+    <div class="step"><div class="skey">Paso 3<br>Detección profunda</div><div class="stxt">Aquí están los parámetros que justifican un plan profundo: colágeno, pigmento marrón/profundo, barrera, sensibilidad. Es donde se ve la evidencia clínica de lo que ya nombramos en pasos 1 y 2. Mostrar 2-3 parámetros en Level 1-2 es suficiente, no agobiar.</div></div>
+    <div class="step"><div class="skey">Paso 4<br>Detección superficial</div><div class="stxt">Solo abrirla si hay parámetros visibles que respalden la conversación (arrugas, poros, manchas). Si la piel se ve mejor de lo que está por dentro, <strong>saltar esta pestaña</strong> y volver a la profunda.</div></div>
+    <div class="step"><div class="skey">Paso 5<br>Propuesta de plan</div><div class="stxt">Entrar al plan correspondiente del Capítulo 2 con la frase puente: <em>"con tu firma DSPW y una edad cutánea de 56 contra los 49 reales, el plan que cierra los cuatro frentes a la vez es Armonía de Busan"</em>. La firma Baumann + edad predicha es lo que cierra.</div></div>
+    <div class="note">
+      <span class="ntitle">Lo que NO hay que hacer</span>
+      No leer los 17 parámetros uno por uno. La cliente se satura, deja de procesar, y la conversación pierde fuerza. <strong>Tres parámetros bien elegidos en Level 1-2 cierran cualquier venta.</strong> El resto del reporte queda como respaldo escrito que se le envía después por correo.
+    </div>
 
-    <div class="param-block">
-      <div class="param-block-row">
-        <div class="label">Paso 1 · Pronóstico de la piel</div>
-        <div class="body">
-          Empezar por <strong>edad cutánea predicha</strong>. Es la pestaña con mayor impacto emocional. Si la edad predicha supera a la real, ya entraste con la venta hecha. Si es igual o menor, felicita y pivota a sostenibilidad.
+    <!-- =========================
+         CAPITULO 2
+    ========================= -->
+    <h2 class="chap" id="cap-2"><span class="num">2.</span>Catálogo de planes Lumina</h2>
+    <p>Referencia rápida del catálogo. Tres categorías: principales, mantención y especializados. Memoriza la última columna — es lo que conecta diagnóstico con plan.</p>
+
+    <h4 class="sub" id="g-principales">2.1 · Principales · Rejuvenecimiento facial</h4>
+    <table>
+      <thead><tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr></thead>
+      <tbody>
+        <tr><td>Entry</td><td><strong>Glow de Seoul</strong></td><td>Primer acercamiento al protocolo. Oxigenación, nutrición y limpieza coreana profunda. Logra el efecto <em>glass skin</em> con luminosidad inmediata.</td><td>Pieles jóvenes con falta de luminosidad, oleosidad y poros tapados sin manchas.</td></tr>
+        <tr><td>Hidratante</td><td><strong>Glow de Asan</strong></td><td>Hidratación profunda, mejora textura y rellena arrugas superficiales. Incluye Nubea Booster y Sakura Lift.</td><td>Primeras líneas finas, piel deshidratada o con primeros signos de manchas en transición.</td></tr>
+        <tr><td>Premium</td><td><strong>Eternal Gangnam</strong></td><td>Lifting facial profundo con <em>Endolaser Coreano</em>, EndoJiwoo y HIFU. Incluye Bio Minji para luminosidad celular.</td><td>Cliente con flacidez establecida o quien busca un reset antiedad significativo sin cirugía.</td></tr>
+        <tr><td>Top</td><td><strong>Armonía de Busan</strong></td><td>El más completo. Endolaser + EndoJiwoo + HIFU + bio armonización total + todas las tecnologías Lumina (Bio Minji, Rejuveskin, Korean Vitaboost).</td><td>Cliente que quiere transformación máxima y dispone del presupuesto. Resultado WOW.</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="g-mantencion">2.2 · Mantención · Post tratamiento principal</h4>
+    <table>
+      <thead><tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr></thead>
+      <tbody>
+        <tr><td>Mantención</td><td><strong>Luz de Jeju</strong></td><td>Mantención con foco en luminosidad profunda y revitalización celular. Incluye <em>EndoJiwoo</em> y <em>Rejuveskin</em>.</td><td>Cliente que terminó plan principal y quiere prolongar resultados. También válido para enfocar arrugas + poros con rejuvenecimiento.</td></tr>
+        <tr><td>Mantención</td><td><strong>Radancia de Daejeon</strong></td><td>Específico para mantener resultados post Endolaser. Renovación profunda y fortalecimiento cutáneo.</td><td>Egreso natural de Eternal Gangnam o Armonía de Busan.</td></tr>
+        <tr><td>Mantención</td><td><strong>Aura de Suwon</strong></td><td>Mantención de firmeza facial y frescura. Versión más accesible para egreso de planes básicos.</td><td>Egreso natural de Glow de Seoul o Glow de Asan.</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="sub" id="g-especializados">2.3 · Especializados · Despigmentación</h4>
+    <table>
+      <thead><tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr></thead>
+      <tbody>
+        <tr><td>Avanzado</td><td><strong>Flor de Busan</strong></td><td>Despigmentante avanzado con <em>EndoJiwoo</em> y <em>Rejuveskin</em>. Limpiezas despigmentantes, peeling de algas y activos despigmentantes con dermapen.</td><td>Cliente con melasma confirmado, manchas hormonales o post-embarazo establecidas.</td></tr>
+        <tr><td>Despigmentante</td><td><strong>Claridad de Haneul</strong></td><td>Despigmentante para tono irregular y manchas superficiales. Sin EndoJiwoo — versión más accesible.</td><td>Cliente con manchas iniciando, pecas que quiere atenuar o tono desigual. También válido como foco poros sin rejuvenecimiento.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- =========================
+         CAPITULO 3 - TECNOLOGIAS
+    ========================= -->
+    <h2 class="chap" id="cap-3"><span class="num">3.</span>Catálogo de tecnologías Lumina</h2>
+    <p>Cada plan Lumina combina varias tecnologías. Cada tecnología tiene un nombre comercial propio y una tecnología clínica real detrás. El equipo debe conocer ambas: el nombre comercial para hablar con la cliente, la tecnología real para entender qué se está vendiendo. Las 14 fichas siguen un formato estandarizado.</p>
+
+    <div class="note">
+      <span class="ntitle">Cómo leer una ficha</span>
+      <strong>Nombre comercial</strong> es lo que se le dice a la cliente. <strong>Tecnología real</strong> es lo que está detrás. <strong>Capa</strong> es la profundidad anatómica donde actúa (ver Capítulo 4.1). <strong>Indicaciones</strong> es a quién va dirigido. <strong>Contraindicaciones</strong> es a quién NO se aplica (ver Capítulo 4.3). <strong>Objeción frecuente</strong> es la pregunta típica de la cliente con su respuesta validada.
+    </div>
+
+    <!-- 01 -->
+    <article class="ficha" id="t-limpieza">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 01 · Base de todos los planes</div>
+          <div class="commercial">Limpieza Facial Coreana</div>
+          <div class="technical">Doble limpieza + extracción + vaporización + mascarilla</div>
+        </div>
+        <div class="badge">Incluida en todos los planes</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Protocolo de limpieza profunda inspirado en dermatología coreana. Doble limpieza (oil + foam), exfoliación enzimática, vaporización con extracción manual de comedones, mascarilla nutritiva y sellado con activos.</dd>
+        <dt>Mecanismo</dt><dd>Desobstrucción mecánica y química del estrato córneo. Remueve sebo oxidado, células muertas y biofilm bacteriano. Restablece pH cutáneo (4.5-5.5) y prepara la piel para tecnologías profundas.</dd>
+        <dt>Capa que actúa</dt><dd>Epidermis (0 – 0,1 mm).</dd>
+        <dt>Indicaciones</dt><dd>Toda piel. Imprescindible antes de cualquier tecnología avanzada — la piel mal preparada no responde igual.</dd>
+        <dt>Contraindicaciones</dt><dd>Lesiones activas (herpes, foliculitis), rosácea en brote, dermatitis severa.</dd>
+        <dt>Sesiones</dt><dd>Incluida en todos los planes. Recomendada cada 21-28 días como mantención.</dd>
+        <dt>Resultado esperado</dt><dd>Luminosidad inmediata, textura uniforme, sensación de "piel respirada". Efecto visible desde la primera sesión.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿No es lo mismo que una limpieza facial común?"</em> — No: el protocolo coreano dura 75 minutos, tiene 9 pasos y prepara la piel a nivel de barrera, no solo la limpia.</dd>
+      </dl>
+    </article>
+
+    <!-- 02 -->
+    <article class="ficha" id="t-vitaboost">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 02 · Dermapen</div>
+          <div class="commercial">Korean VITABOOST</div>
+          <div class="technical">Mesoterapia vitaminada con dermapen</div>
+        </div>
+        <div class="badge">Glow de Seoul +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Mesoterapia coreana inyectada con dermapen (microagujas eléctricas). Cóctel de vitaminas (C, B, E), minerales, aminoácidos, antioxidantes y activos revitalizantes seleccionados según diagnóstico.</dd>
+        <dt>Mecanismo</dt><dd>Las microagujas (0,5 – 2 mm) crean canales transepidérmicos que permiten que los activos lleguen directo a la dermis papilar, donde actúan sobre fibroblastos y queratinocitos. Doble efecto: estímulo mecánico de regeneración + entrega controlada de activos.</dd>
+        <dt>Capa que actúa</dt><dd>Epidermis y dermis superficial (0,5 – 2 mm).</dd>
+        <dt>Indicaciones</dt><dd>Piel apagada, deshidratada, fatigada, primeras líneas finas, tono irregular, melasma superficial (con activos despigmentantes), preparación pre-evento.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, anticoagulantes, herpes activo, queloides, infecciones cutáneas, isotretinoína últimos 6 meses.</dd>
+        <dt>Sesiones</dt><dd>4 a 6 sesiones cada 15-21 días según plan. Mantención cada 2-3 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Mejora visible de luminosidad y textura desde la sesión 2. Efecto glow sostenido tras protocolo completo.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Duele?"</em> — Aplicamos crema anestésica 30 min antes. Sensación de microvibración, no de dolor. Posterior: leve enrojecimiento 24-48h.</dd>
+      </dl>
+    </article>
+
+    <!-- 03 -->
+    <article class="ficha" id="t-nubea">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 03 · Inyectable</div>
+          <div class="commercial">NUBEA BOOSTER</div>
+          <div class="technical">Skinbooster con ácido hialurónico no reticulado</div>
+        </div>
+        <div class="badge">Glow de Asan +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Skinbooster coreano basado en ácido hialurónico no reticulado de bajo peso molecular. A diferencia de un filler, no genera volumen — entrega hidratación profunda intradérmica.</dd>
+        <dt>Mecanismo</dt><dd>El ácido hialurónico atrae y retiene moléculas de agua (capacidad: 1000 veces su peso). Inyectado en dermis media, mejora la hidratación estructural, estimula fibroblastos por presencia y aumenta densidad cutánea.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis media (1,5 – 2,5 mm).</dd>
+        <dt>Indicaciones</dt><dd>Piel deshidratada estructural, primeras líneas finas, falta de glow interno, preparación para eventos, post-verano.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, alergia a hialurónico (rarísima), enfermedad autoinmune activa, anticoagulantes.</dd>
+        <dt>Sesiones</dt><dd>1 a 3 sesiones espaciadas cada 4 semanas. Duración del efecto: 6-9 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Glow interno notorio desde la sesión 1. Mejora sostenida de hidratación y elasticidad.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Me va a inflar la cara?"</em> — No, no es filler. No genera volumen. Solo hidrata desde adentro. La cara se ve fresca, no rellena.</dd>
+      </dl>
+    </article>
+
+    <!-- 04 -->
+    <article class="ficha" id="t-dahe">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 04 · Inyectable</div>
+          <div class="commercial">DAHE BEAUTY</div>
+          <div class="technical">Toxina botulínica tipo A</div>
+        </div>
+        <div class="badge">Servicio complementario</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Aplicación médica de toxina botulínica tipo A en zonas de expresión, con enfoque coreano de naturalidad armónica (no congelado).</dd>
+        <dt>Mecanismo</dt><dd>Bloquea temporalmente la liberación de acetilcolina en la unión neuromuscular, lo que impide la contracción del músculo. Sin contracción, la arruga dinámica no se forma y la arruga existente se atenúa.</dd>
+        <dt>Capa que actúa</dt><dd>Músculo subcutáneo (variable: frontal, glabela, periorbital, periooral).</dd>
+        <dt>Indicaciones</dt><dd>Arrugas dinámicas: frente, entrecejo, patas de gallo. Bruxismo. Hiperhidrosis. Lifting químico (técnica baby botox).</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, miastenia gravis, ELA, infección zona aplicación, anticoagulantes (relativa), alergia a la proteína.</dd>
+        <dt>Sesiones</dt><dd>Aplicación única cada 4-6 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Efecto visible a los 3-7 días, peak a los 14 días. Duración 4-6 meses según metabolismo.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"No quiero quedar como muñeca"</em> — Aplicamos protocolo coreano de baby botox: dosis bajas, distribuidas, preservando expresión natural. Tú decides los milímetros de movimiento que conservas.</dd>
+      </dl>
+    </article>
+
+    <!-- 05 -->
+    <article class="ficha" id="t-sakura">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 05 · Tensado</div>
+          <div class="commercial">Sakura Ultra-Lift</div>
+          <div class="technical">Radiofrecuencia bipolar + ultrasonido</div>
+        </div>
+        <div class="badge">Glow de Asan +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Combinación de radiofrecuencia bipolar (no fraccionada) y ultrasonido convencional para lifting no invasivo. Sesión más suave que HIFU, ideal para inicio o mantención.</dd>
+        <dt>Mecanismo</dt><dd>La RF bipolar calienta la dermis a 40-43 °C, contrayendo las fibras de colágeno existentes y estimulando neocolagénesis. El ultrasonido potencia penetración de activos y agrega masaje vibracional profundo.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis (1 – 4 mm). No llega al SMAS.</dd>
+        <dt>Indicaciones</dt><dd>Flacidez incipiente, prevención de envejecimiento, mantención post-HIFU, pieles que no toleran tecnologías agresivas.</dd>
+        <dt>Contraindicaciones</dt><dd>Marcapasos, embarazo, implantes metálicos en zona, dispositivos cardíacos.</dd>
+        <dt>Sesiones</dt><dd>6 a 10 sesiones semanales.</dd>
+        <dt>Resultado esperado</dt><dd>Mejora gradual de firmeza y textura. Efecto acumulativo: peak a los 3 meses post-protocolo.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿No es lo mismo que el HIFU?"</em> — No. HIFU llega al SMAS (4,5 mm), Sakura llega solo a dermis (4 mm). Son complementarios: HIFU para lifting estructural, Sakura para mantención y refinamiento.</dd>
+      </dl>
+    </article>
+
+    <!-- 06 -->
+    <article class="ficha" id="t-fibrojin">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 06 · Plasma</div>
+          <div class="commercial">FIBROJIN</div>
+          <div class="technical">Fibroblast / plasma pen</div>
+        </div>
+        <div class="badge">Servicio complementario</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Tecnología de arco de plasma (ionización de gases atmosféricos) que produce micro-impactos controlados en la epidermis para retracción cutánea y regeneración dérmica.</dd>
+        <dt>Mecanismo</dt><dd>El arco eléctrico sublimiza puntualmente el tejido epidérmico sin contacto directo, generando microcostras que al cicatrizar contraen y tensan la piel. Estimula intensamente fibroblastos por respuesta inflamatoria controlada.</dd>
+        <dt>Capa que actúa</dt><dd>Epidermis con retracción de dermis superficial.</dd>
+        <dt>Indicaciones</dt><dd>Blefaroplastia no quirúrgica (párpado caído), arrugas periorales (código de barras), líneas glabelares, retracción de pieles flácidas localizadas.</dd>
+        <dt>Contraindicaciones</dt><dd>Fototipos V-VI (alto riesgo de hiperpigmentación), embarazo, queloides, isotretinoína, diabetes mal controlada.</dd>
+        <dt>Sesiones</dt><dd>1 a 3 sesiones espaciadas 30-45 días. Recuperación 7-10 días con microcostras visibles.</dd>
+        <dt>Resultado esperado</dt><dd>Tensado visible desde la primera sesión, peak a las 6 semanas. Equivalente a mini-blefaroplastia.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Cuánto tiempo de recuperación?"</em> — 7 a 10 días con microcostras (puntitos) en la zona. Cubrible con maquillaje desde el día 5. No incapacita.</dd>
+      </dl>
+    </article>
+
+    <!-- 07 -->
+    <article class="ficha" id="t-lumijin">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 07 · Bioestimulador</div>
+          <div class="commercial">LUMIJIN</div>
+          <div class="technical">Xela Rederm — succinato sódico + ácido hialurónico</div>
+        </div>
+        <div class="badge">Servicio complementario</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Bioestimulador inyectable que combina ácido hialurónico no reticulado con succinato sódico (potente antioxidante mitocondrial). Tratamiento de revitalización profunda con efecto regenerativo celular.</dd>
+        <dt>Mecanismo</dt><dd>El succinato sódico mejora el metabolismo energético celular (ciclo de Krebs), aumentando la producción de ATP en fibroblastos. El hialurónico hidrata y crea matriz para reparación. Resultado: piel más densa, hidratada y luminosa con efecto antioxidante sostenido.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis (1,5 – 3 mm).</dd>
+        <dt>Indicaciones</dt><dd>Pieles fatigadas por estrés crónico, fumadores, post-bronceado, daño solar acumulado, pacientes 35+.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, anticoagulantes, enfermedad autoinmune.</dd>
+        <dt>Sesiones</dt><dd>2 a 3 sesiones cada 21 días. Mantención cada 6 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Glow profundo y textura mejorada desde la sesión 1. Densidad cutánea visible al mes.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿En qué se diferencia de una mesoterapia común?"</em> — La mesoterapia entrega vitaminas. Lumijin entrega activadores mitocondriales — energía celular real. La piel no solo se nutre, se enciende desde dentro.</dd>
+      </dl>
+    </article>
+
+    <!-- 08 -->
+    <article class="ficha" id="t-neojin">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 08 · Bioestimulador</div>
+          <div class="commercial">NEOJIN</div>
+          <div class="technical">Lenisna — polilactato + ácido hialurónico</div>
+        </div>
+        <div class="badge">Servicio complementario</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Bioestimulador inyectable de polilactato (Poly-L-Lactic Acid, PLLA) combinado con ácido hialurónico. Bioestimulador progresivo de colágeno para rejuvenecimiento estructural.</dd>
+        <dt>Mecanismo</dt><dd>El polilactato se degrada lentamente y actúa como andamio que los fibroblastos reconocen como "lesión", activando producción sostenida de colágeno tipo I y III. El hialurónico aporta hidratación inmediata mientras el colágeno se construye.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis profunda (2 – 4 mm).</dd>
+        <dt>Indicaciones</dt><dd>Flacidez moderada a severa, pérdida estructural facial, postura post-bajada de peso, óvalo facial debilitado.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, enfermedad autoinmune activa, queloides, infecciones cutáneas.</dd>
+        <dt>Sesiones</dt><dd>2 a 3 sesiones cada 30-45 días. Resultados progresivos a 3-6 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Reestructuración facial progresiva. Efecto sostenido 18-24 meses.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Cuándo veo resultados?"</em> — A diferencia de un filler que se ve al día, Neojin construye colágeno propio: a las 6 semanas notas firmeza, a los 3 meses ves el cambio estructural, a los 6 meses está en su peak.</dd>
+      </dl>
+    </article>
+
+    <!-- 09 -->
+    <article class="ficha" id="t-yuna">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 09 · Inyectable</div>
+          <div class="commercial">YUNA FACE</div>
+          <div class="technical">Ácido hialurónico reticulado / fillers</div>
+        </div>
+        <div class="badge">Servicio complementario</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Tratamiento de armonización facial con ácido hialurónico reticulado (cross-linked). Genera volumen estructural, no solo hidratación. Enfoque coreano: soporte de tercios faciales, no exceso volumétrico.</dd>
+        <dt>Mecanismo</dt><dd>El hialurónico reticulado mantiene volumen porque sus moléculas están cross-linked entre sí, resistiendo la degradación enzimática. Inyectado a profundidades específicas (supraperióstico, dermis profunda, hipodermis) restaura volumen perdido o crea proyección donde antes no había.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis profunda e hipodermis (3 – 8 mm) según zona.</dd>
+        <dt>Indicaciones</dt><dd>Pérdida de volumen malar, ojeras profundas, mentón retraído, contorno mandibular debilitado, surco nasogeniano marcado, labios.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, alergia (rara), enfermedad autoinmune activa, infección zona, expectativa irreal.</dd>
+        <dt>Sesiones</dt><dd>Aplicación única por zona. Duración: 12-18 meses según producto y zona.</dd>
+        <dt>Resultado esperado</dt><dd>Cambio estructural visible al instante. Asentamiento final a las 2 semanas.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"No quiero verme operada"</em> — Trabajamos por tercios y proyecciones, no por relleno. Filosofía coreana: que se vea la mejor versión de ti, no otra cara.</dd>
+      </dl>
+    </article>
+
+    <!-- 10 -->
+    <article class="ficha" id="t-hifu">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 10 · Lifting estructural</div>
+          <div class="commercial">CUKY HIFU</div>
+          <div class="technical">High Intensity Focused Ultrasound (HIFU)</div>
+        </div>
+        <div class="badge">Eternal Gangnam +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Ultrasonido focalizado de alta intensidad. Única tecnología no invasiva que llega al SMAS (la capa muscular profunda que en cirugía se tracciona para hacer un lifting). El estándar de oro en lifting no quirúrgico.</dd>
+        <dt>Mecanismo</dt><dd>Concentra ondas de ultrasonido en puntos focales precisos a 3 profundidades selectivas (1,5 mm dermis superficial, 3 mm dermis profunda, 4,5 mm SMAS). En el punto focal, la temperatura sube a 60-70 °C creando "puntos de coagulación térmica" que contraen instantáneamente el colágeno existente y activan la cascada de neocolagénesis. Estudios muestran +40% de colágeno a los 3 meses post-tratamiento.</dd>
+        <dt>Capas que actúa</dt><dd>Dermis superficial (1,5 mm) · Dermis profunda (3 mm) · SMAS (4,5 mm).</dd>
+        <dt>Indicaciones</dt><dd>Flacidez establecida, pérdida de óvalo facial, jowls, papada, contorno mandibular caído, cuello laxo, lifting de cejas.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, marcapasos, implantes metálicos en zona, infecciones activas, cáncer activo, fillers recientes (esperar 4 semanas).</dd>
+        <dt>Sesiones</dt><dd>1 sesión completa cada 12-18 meses. Resultados progresivos a 3-6 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Lifting visible desde la semana 4. Peak a los 3 meses. Resultado sostenido hasta 18 meses.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Es lo mismo que el láser?"</em> — No. El láser trabaja en superficie. El HIFU es la única tecnología no invasiva que llega al SMAS, la misma capa que se opera en un lifting quirúrgico. Es lo más cercano a un lifting sin bisturí.</dd>
+      </dl>
+    </article>
+
+    <!-- 11 -->
+    <article class="ficha" id="t-biominji">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 11 · Regenerativo celular</div>
+          <div class="commercial">BIO MINJI</div>
+          <div class="technical">Polinucleótidos (PDRN) / exosomas</div>
+        </div>
+        <div class="badge">Eternal Gangnam +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Medicina regenerativa coreana basada en polinucleótidos (PDRN — polideoxirribonucleótidos extraídos típicamente de ADN purificado de trucha o de Panax ginseng). Estándar global en rejuvenecimiento biológico.</dd>
+        <dt>Mecanismo</dt><dd>El PDRN actúa por dos vías simultáneas: (1) activa receptores de adenosina A2A en fibroblastos, queratinocitos y células endoteliales, disparando la cascada natural de reparación; (2) los fragmentos de PDRN entregan nucleótidos como bloques de construcción para que las células reparen su propio ADN vía la salvage pathway. Estimula angiogénesis, regenera barrera cutánea, mejora calidad cutánea desde nivel celular.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis (1,5 – 3 mm).</dd>
+        <dt>Indicaciones</dt><dd>Piel apagada, fatigada, daño solar acumulado, pieles sensibles que necesitan reparación, post-tratamientos agresivos, anti-edad biológico, melasma resistente.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, alergia a derivados (rarísima), enfermedad autoinmune activa.</dd>
+        <dt>Sesiones</dt><dd>3 a 5 sesiones cada 21-30 días. Mantención cada 6 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Mejora de calidad cutánea visible desde la sesión 2. Efecto profundo y sostenido — no es "glow temporal", es reparación real.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Por qué es más caro que una mesoterapia?"</em> — La mesoterapia nutre. Bio Minji repara el ADN celular y activa receptores específicos de regeneración. Es la diferencia entre regar una planta y rejuvenecer la raíz.</dd>
+      </dl>
+    </article>
+
+    <!-- 12 -->
+    <article class="ficha" id="t-endojiwoo">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 12 · Mínimamente invasivo</div>
+          <div class="commercial">ENDO JIWOO</div>
+          <div class="technical">Endolaser coreano / Endolift — láser 1470 nm intradérmico</div>
+        </div>
+        <div class="badge">Eternal Gangnam +</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Endolaser coreano. Introduce una microfibra óptica láser (longitud de onda 1470 nm) por debajo de la piel para tensado cutáneo desde dentro, remodelación de tejidos y reducción de grasa localizada. Lifting coreano avanzado sin cirugía.</dd>
+        <dt>Mecanismo</dt><dd>La fibra óptica emite energía láser que es absorbida por agua y grasa intersticial. Calienta dermis profunda e hipodermis a temperaturas controladas (45-55 °C), provocando contracción inmediata del colágeno + neocolagénesis sostenida + reducción de adipocitos en zonas seleccionadas.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis profunda e hipodermis (3 – 8 mm).</dd>
+        <dt>Indicaciones</dt><dd>Flacidez de óvalo facial, papada, jowls, cuello, contorno mandibular. Reducción de grasa submentoniana.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, anticoagulantes, marcapasos, queloides, isotretinoína últimos 6 meses, expectativa de lifting quirúrgico.</dd>
+        <dt>Sesiones</dt><dd>1 sesión por zona, cada 12-18 meses. Anestesia local. Recuperación: 3-7 días con leve inflamación.</dd>
+        <dt>Resultado esperado</dt><dd>Tensado visible desde semana 2, peak a los 3 meses. Sostenido 18-24 meses.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Es cirugía?"</em> — No, es mínimamente invasivo. Se hace con anestesia local, sin bisturí, sin cortes. La fibra entra por un microorificio. Vuelves a casa el mismo día.</dd>
+      </dl>
+    </article>
+
+    <!-- 13 -->
+    <article class="ficha" id="t-yoripeel">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 13 · Peeling biológico</div>
+          <div class="commercial">YORI PEEL</div>
+          <div class="technical">Peeling biológico de algas marinas (spicules)</div>
+        </div>
+        <div class="badge">Planes despigmentantes</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Peeling biológico coreano basado en microagujas naturales (spicules) extraídas de algas marinas. Renovación cutánea profunda con activos vehiculizados por las propias spicules.</dd>
+        <dt>Mecanismo</dt><dd>Las spicules (microagujas de sílice biológica) se incrustan en la epidermis y dermis superficial, generando estímulo mecánico de regeneración + entrega controlada de activos despigmentantes/renovadores. Provoca descamación visible a los 3-5 días post-aplicación con renovación celular acelerada.</dd>
+        <dt>Capa que actúa</dt><dd>Epidermis y dermis papilar (0,1 – 0,5 mm).</dd>
+        <dt>Indicaciones</dt><dd>Manchas superficiales, textura irregular, pequeñas cicatrices, fotodaño, renovación general, piel apagada con queratinización irregular.</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, rosácea activa, pieles muy sensibles, isotretinoína, fototipos V-VI (cuidado).</dd>
+        <dt>Sesiones</dt><dd>3 a 5 sesiones cada 30-45 días. Descamación visible 3-5 días post-aplicación.</dd>
+        <dt>Resultado esperado</dt><dd>Renovación profunda visible a los 7 días post-descamación. Mejora notoria de textura y luminosidad.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Me voy a pelar mucho?"</em> — Sí, hay descamación visible entre los días 3 y 7. Es parte del mecanismo: la piel vieja se va, la nueva aparece. Es agendable para periodos sin eventos sociales.</dd>
+      </dl>
+    </article>
+
+    <!-- 14 -->
+    <article class="ficha" id="t-rejuveskin">
+      <div class="ficha-head">
+        <div>
+          <div class="num-com">Tecnología 14 · RF fraccionada</div>
+          <div class="commercial">RejuveSkin</div>
+          <div class="technical">Radiofrecuencia fraccionada con microagujas</div>
+        </div>
+        <div class="badge">Múltiples planes</div>
+      </div>
+      <dl>
+        <dt>Qué es</dt><dd>Radiofrecuencia fraccionada con microagujas y péptidos de oro. Combina dos vectores de estímulo: perforación mecánica controlada + entrega de energía RF directa en dermis. Tecnología clave anti-envejecimiento del catálogo Lumina.</dd>
+        <dt>Mecanismo</dt><dd>Microagujas de profundidad ajustable (0,5 – 3,5 mm) atraviesan epidermis sin daño térmico superficial y liberan energía RF directo en la dermis reticular. Esto provoca coagulación controlada → cicatrización dérmica → neocolagénesis + neoelastogénesis + neoangiogénesis. Independiente de cromóforo: segura para todos los fototipos.</dd>
+        <dt>Capa que actúa</dt><dd>Dermis reticular (1 – 3,5 mm).</dd>
+        <dt>Indicaciones</dt><dd>Arrugas, líneas finas, poros dilatados, cicatrices de acné, estrías, flacidez incipiente, mejora global de calidad cutánea. Apta para todos los fototipos (incluyendo IV-V).</dd>
+        <dt>Contraindicaciones</dt><dd>Embarazo, lactancia, marcapasos, anticoagulantes, queloides, infecciones activas, isotretinoína últimos 6 meses, implantes metálicos en zona.</dd>
+        <dt>Sesiones</dt><dd>4 a 6 sesiones cada 21-30 días. Mantención cada 6-12 meses.</dd>
+        <dt>Resultado esperado</dt><dd>Mejora de textura desde sesión 2. Cambio estructural visible a los 3 meses post-protocolo. Reducción visible de poros y arrugas.</dd>
+        <dt>Objeción frecuente</dt><dd><em>"¿Es lo mismo que el dermapen?"</em> — No. El dermapen solo perfora. RejuveSkin perfora Y entrega energía de radiofrecuencia directo a la dermis. Doble estímulo, doble resultado. Es la diferencia entre regar y fertilizar.</dd>
+      </dl>
+    </article>
+
+    <div class="note">
+      <span class="ntitle">Lectura final del catálogo</span>
+      Las 14 tecnologías son parte de <strong>un ecosistema integrado</strong>. Cada plan Lumina combina varias de ellas para atacar el envejecimiento desde distintas capas y mecanismos simultáneamente. <strong>El protocolo gana al tratamiento aislado.</strong> Por eso vendemos planes, no sesiones sueltas.
+    </div>
+
+    <!-- =========================
+         CAPITULO 4 - ANATOMIA + FOTOTIPOS + CONTRAINDICACIONES
+    ========================= -->
+    <h2 class="chap" id="cap-4"><span class="num">4.</span>Anatomía, fototipos y contraindicaciones</h2>
+    <p>Para entender por qué un plan funciona y otro no, primero hay que saber dónde actúa cada tecnología y a qué piel se está aplicando. Esta sección consolida la base clínica que todo el equipo debe conocer para no recomendar lo que no corresponde.</p>
+
+    <h3 class="sec" id="anatomia"><span class="num">4.1</span>Las capas de la piel</h3>
+    <p>Ninguna tecnología Lumina trabaja "en la piel" en general — todas trabajan a una profundidad específica, sobre una capa específica, con un efecto específico.</p>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="lname">Epidermis</div>
+        <div class="ldepth">0 – 0,1 mm</div>
+        <div class="ltxt">
+          Capa más superficial. Es la barrera frente al exterior y donde vive el tono de la piel. Contiene melanocitos (productores de melanina) y queratinocitos (células protectoras que se renuevan cada 28 días). Aquí ocurre la pigmentación superficial, los puntos negros, la oxidación y el aspecto apagado.
+          <div class="tech">Tecnologías que actúan aquí: <b>Limpieza Coreana · Yori Peel · Korean Vitaboost</b></div>
         </div>
       </div>
-      <div class="param-block-row">
-        <div class="label">Paso 2 · Análisis exhaustivo (firma Baumann)</div>
-        <div class="body">
-          Mostrar las 4 letras y traducirlas a palabras: "tu piel es seca, sensible, pigmentada y con signos de envejecimiento". La cliente se reconoce en la descripción — y eso valida el reporte antes de mostrar números.
+      <div class="layer">
+        <div class="lname">Dermis</div>
+        <div class="ldepth">0,1 – 4 mm</div>
+        <div class="ltxt">
+          Capa de soporte. Aquí están los fibroblastos (las células que producen colágeno y elastina), los vasos sanguíneos y las fibras estructurales. Cuando hablamos de "rejuvenecimiento real" hablamos de esta capa. Las arrugas estructurales, la flacidez incipiente y la pigmentación profunda viven aquí.
+          <div class="tech">Tecnologías que actúan aquí: <b>Rejuveskin · Bio Minji · Nubea Booster · Lumijin · Neojin</b></div>
         </div>
       </div>
-      <div class="param-block-row">
-        <div class="label">Paso 3 · Detección profunda</div>
-        <div class="body">
-          Aquí están los parámetros que justifican un plan profundo: colágeno, pigmento marrón/profundo, barrera, sensibilidad. Es donde se ve la evidencia clínica de lo que ya nombramos en pasos 1 y 2. Mostrar 2-3 parámetros en Level 1-2 es suficiente, no agobiar.
+      <div class="layer">
+        <div class="lname">Hipodermis</div>
+        <div class="ldepth">4 – 10 mm</div>
+        <div class="ltxt">
+          Tejido graso subcutáneo. Aporta volumen, sostiene la dermis y modela los contornos faciales. La pérdida de hipodermis (por edad o por bajas bruscas de peso) es lo que da el aspecto de cara "vaciada". Es donde el endolaser hace su trabajo de remodelación.
+          <div class="tech">Tecnologías que actúan aquí: <b>EndoJiwoo · Yuna Face (filler estructural)</b></div>
         </div>
       </div>
-      <div class="param-block-row">
-        <div class="label">Paso 4 · Detección superficial (solo si refuerza)</div>
-        <div class="body">
-          Solo abrirla si hay parámetros visibles que respalden la conversación (arrugas, poros, manchas). Si la piel se ve mejor de lo que está por dentro, <strong>saltar esta pestaña</strong> y volver a la profunda.
-        </div>
-      </div>
-      <div class="param-block-row">
-        <div class="label">Paso 5 · Propuesta de plan</div>
-        <div class="body">
-          Entrar al plan correspondiente del Capítulo 2 con la frase puente: <em>"con tu firma DSPW y una edad cutánea de 56 contra los 49 reales, el plan que cierra los cuatro frentes a la vez es Armonía de Busan"</em>. La firma Baumann + edad predicha es lo que cierra.
+      <div class="layer">
+        <div class="lname">SMAS</div>
+        <div class="ldepth">4,5 mm</div>
+        <div class="ltxt">
+          Sistema Músculo Aponeurótico Superficial. Es la capa muscular profunda que en cirugía plástica se tracciona para hacer un lifting. La única tecnología no invasiva que llega al SMAS es el HIFU. Cuando se calienta esta capa a 60-70 °C, las fibras de colágeno se contraen al instante y la piel se tensa hacia arriba — efecto lifting real sin bisturí.
+          <div class="tech">Tecnología que actúa aquí: <b>CUKY HIFU (única tecnología Lumina con acceso al SMAS)</b></div>
         </div>
       </div>
     </div>
 
-    <div class="callout">
-      <span class="callout-label">Lo que NO hay que hacer</span>
-      No leer los 17 parámetros uno por uno. La cliente se satura, deja de procesar, y la conversación pierde fuerza. Tres parámetros bien elegidos en Level 1-2 cierran cualquier venta. El resto del reporte queda como respaldo escrito que se le envía después por correo.
+    <div class="note">
+      <span class="ntitle">Lectura para el equipo</span>
+      Cuando una clienta pregunta "¿esto me va a hacer efecto lifting?", la respuesta correcta depende de la capa donde llega la tecnología. Solo el <strong>HIFU</strong> hace lifting estructural. Lo demás mejora calidad de piel, rejuvenece, hidrata, despigmenta — pero no "levanta". Confundir esto es prometer lo que la tecnología no entrega.
     </div>
 
-    <!-- ============================================================
-         CAPÍTULO 2
-         ============================================================ -->
-    <h2 class="h-section" id="cap-2"><span class="num">2.</span>Catálogo de planes Lumina</h2>
-    <p class="section-intro">
-      Referencia rápida del catálogo. Tres categorías: principales, mantención y especializados. Memoriza la última columna — es lo que conecta diagnóstico con plan.
-    </p>
+    <h4 class="sub">El triángulo del envejecimiento</h4>
+    <p>La cara joven tiene forma de triángulo invertido — base ancha en pómulos, vértice en el mentón. La cara envejecida invierte el triángulo: vértice arriba, base abajo (papada, jowls). Esto pasa por tres procesos simultáneos:</p>
+    <ul class="body">
+      <li><strong>Pérdida de colágeno tipo I</strong> (1-1,5% anual desde los 25) — piel más delgada, líneas finas.</li>
+      <li><strong>Pérdida de elastina</strong> — flacidez progresiva.</li>
+      <li><strong>Migración y pérdida de grasa</strong> — la grasa baja, los pómulos se vacían, el mentón cae.</li>
+    </ul>
+    <p>El protocolo Lumina ataca los tres frentes en paralelo: estimulamos colágeno con RF y bioestimuladores, contraemos la matriz con HIFU, y remodelamos grasa con endolaser. Por eso los planes premium combinan tecnologías — porque el envejecimiento ataca en paralelo y debe tratarse en paralelo.</p>
 
-    <div class="group-title" id="g-principales">2.1 — Principales · Rejuvenecimiento facial</div>
-    <table class="catalog">
-      <thead>
-        <tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr>
-      </thead>
+    <h3 class="sec" id="fototipos"><span class="num">4.2</span>Fototipos Fitzpatrick</h3>
+    <p>Clasificación dermatológica estándar mundial (Thomas Fitzpatrick, 1975) que mide cómo reacciona cada piel al sol y a la luz. Define qué tecnologías son seguras y cuáles requieren ajuste o están contraindicadas. En Chile, el 80% de las pacientes son tipo III o IV.</p>
+
+    <div class="fitz">
+      <div class="fitz-card tone-safe">
+        <div class="roman">I</div>
+        <div class="fdesc">Piel muy blanca, pelirroja, ojos claros. Siempre se quema, nunca se broncea. Pecas frecuentes.</div>
+        <div class="frule">Riesgo: <b>quemadura solar inmediata.</b> IPL y láser sin restricción.</div>
+      </div>
+      <div class="fitz-card tone-safe">
+        <div class="roman">II</div>
+        <div class="fdesc">Piel blanca, ojos azules/verdes. Se quema con facilidad, broncea poco.</div>
+        <div class="frule">Tecnologías sin restricción. <b>Cliente Lumina típica del norte.</b></div>
+      </div>
+      <div class="fitz-card tone-safe">
+        <div class="roman">III</div>
+        <div class="fdesc">Piel clara con tono dorado. A veces se quema, broncea gradualmente. <strong>Fototipo más común en Chile.</strong></div>
+        <div class="frule">Todas las tecnologías Lumina aplicables. <b>Sweet spot clínico.</b></div>
+      </div>
+      <div class="fitz-card tone-mid">
+        <div class="roman">IV</div>
+        <div class="fdesc">Piel mate, tono oliva. Rara vez se quema, broncea con facilidad. Latina típica.</div>
+        <div class="frule">Cuidado con IPL agresivo. <b>RF y HIFU sin problema.</b></div>
+      </div>
+      <div class="fitz-card tone-warn">
+        <div class="roman">V</div>
+        <div class="fdesc">Piel oscura. Muy rara vez se quema, siempre broncea intensamente.</div>
+        <div class="frule"><b>IPL contraindicado.</b> Solo RF, HIFU, bioestimuladores. Riesgo de hiperpigmentación.</div>
+      </div>
+      <div class="fitz-card tone-warn">
+        <div class="roman">VI</div>
+        <div class="fdesc">Piel muy oscura, negra. Nunca se quema.</div>
+        <div class="frule"><b>IPL/láser pigmentario contraindicados.</b> Riesgo alto de hipo o hiperpigmentación.</div>
+      </div>
+    </div>
+
+    <h3 class="sec" id="contraindicaciones"><span class="num">4.3</span>Contraindicaciones y diagnóstico inicial</h3>
+    <p>Más allá del análisis con máquina, el equipo médico evalúa siete dimensiones en cabina antes de proponer plan:</p>
+    <table>
+      <thead><tr><th>Dimensión</th><th>Qué se observa</th><th>Implicación de plan</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="t-tag"><span class="badge">Entry</span></td>
-          <td class="t-name">Glow de Seoul</td>
-          <td class="t-pitch">Primer acercamiento al protocolo. Oxigenación, nutrición y limpieza coreana profunda. Logra el efecto <em>glass skin</em> con luminosidad inmediata.</td>
-          <td class="t-ideal">Pieles jóvenes con falta de luminosidad, oleosidad y poros tapados sin manchas.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Hidratante</span></td>
-          <td class="t-name">Glow de Asan</td>
-          <td class="t-pitch">Hidratación profunda, mejora textura y rellena arrugas superficiales. Incluye Nubea Booster y Sakura Lift.</td>
-          <td class="t-ideal">Primeras líneas finas, piel deshidratada o con primeros signos de manchas en transición.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge b-rec">★ Popular</span></td>
-          <td class="t-name">Incheon Elixir</td>
-          <td class="t-pitch">Lifting facial real con bio armonización del óvalo. Incluye <em>EndoJiwoo</em> — bioestimulador coreano avanzado para flacidez incipiente.</td>
-          <td class="t-ideal">Cliente 28-40 que empieza a notar pérdida de óvalo facial pero sin daño avanzado.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Premium</span></td>
-          <td class="t-name">Eternal Gangnam</td>
-          <td class="t-pitch">Lifting facial profundo con <em>Endolaser Coreano</em>, EndoJiwoo y HIFU. Incluye Bio Minji para luminosidad celular.</td>
-          <td class="t-ideal">Cliente con flacidez establecida o quien busca un reset antiedad significativo sin cirugía.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge b-top">Top</span></td>
-          <td class="t-name">Armonía de Busan</td>
-          <td class="t-pitch">El más completo. Endolaser + EndoJiwoo + HIFU + bio armonización total + todas las tecnologías Lumina (Bio Minji, Rejuveskin, Korean Vitaboost).</td>
-          <td class="t-ideal">Cliente que quiere transformación máxima y dispone del presupuesto. Resultado WOW.</td>
-        </tr>
+        <tr><td><strong>Edad cronológica</strong></td><td>Edad real de la paciente.</td><td>Define ruta preventiva o correctiva.</td></tr>
+        <tr><td><strong>Edad cutánea</strong></td><td>Aparente, según máquina y observación.</td><td>Si supera edad real — urgencia clínica.</td></tr>
+        <tr><td><strong>Fototipo</strong></td><td>Escala Fitzpatrick.</td><td>Define qué tecnologías son aplicables.</td></tr>
+        <tr><td><strong>Antecedentes</strong></td><td>Tratamientos previos, alergias, medicamentos, embarazo, isotretinoína reciente.</td><td>Banderas rojas — derivar o postergar.</td></tr>
+        <tr><td><strong>Hábitos solares</strong></td><td>Exposición, uso de protector, broncearse en cabina.</td><td>Define agresividad permitida y compromiso post-tratamiento.</td></tr>
+        <tr><td><strong>Expectativa</strong></td><td>Qué espera lograr la paciente.</td><td>Si expectativa &gt; lo que la tecnología entrega — realinear o derivar.</td></tr>
+        <tr><td><strong>Disposición de tiempo</strong></td><td>Cuántas sesiones está dispuesta a venir.</td><td>Define si el plan es viable o se ajusta a uno más corto.</td></tr>
       </tbody>
     </table>
 
-    <div class="group-title" id="g-mantencion">2.2 — Mantención · Post tratamiento principal</div>
-    <table class="catalog">
-      <thead>
-        <tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr>
-      </thead>
+    <h4 class="sub">Contraindicaciones absolutas — cuándo NO tratar</h4>
+    <p>Si alguna de estas está presente, no se inicia tratamiento — se deriva o se posterga.</p>
+    <ul class="body">
+      <li><strong>Embarazo y lactancia</strong> — toda tecnología que penetre dermis está contraindicada.</li>
+      <li><strong>Isotretinoína (Roacután) los últimos 6 meses</strong> — riesgo de cicatrización anómala.</li>
+      <li><strong>Marcapasos o dispositivos eléctricos implantados</strong> — contraindica RF y HIFU.</li>
+      <li><strong>Cáncer activo o en tratamiento oncológico</strong> — requiere autorización médica oncológica.</li>
+      <li><strong>Lupus, vitíligo activo, enfermedades autoinmunes en brote</strong> — derivar a dermatólogo.</li>
+      <li><strong>Infecciones cutáneas activas</strong> (herpes, impétigo, foliculitis) en la zona a tratar — postergar.</li>
+      <li><strong>Heridas abiertas, queloides recientes</strong> — postergar mínimo 3 meses.</li>
+      <li><strong>Bronceado reciente (último mes)</strong> — riesgo de hiperpigmentación con IPL o láser.</li>
+    </ul>
+
+    <h4 class="sub">Contraindicaciones relativas — requieren ajuste o autorización</h4>
+    <ul class="body">
+      <li><strong>Anticoagulantes orales</strong> — evitar dermapen, fillers e inyectables. RF y HIFU sin problema.</li>
+      <li><strong>Diabetes mal controlada</strong> — cicatrización lenta, evaluar caso a caso.</li>
+      <li><strong>Hipotiroidismo descompensado</strong> — afecta respuesta cutánea.</li>
+      <li><strong>Tratamiento dermatológico activo</strong> — coordinar con dermatólogo tratante.</li>
+      <li><strong>Cirugía plástica reciente (&lt; 6 meses)</strong> — esperar cicatrización completa.</li>
+      <li><strong>Pieles muy sensibles o rosácea activa</strong> — empezar con plan de fortalecimiento de barrera.</li>
+    </ul>
+
+    <!-- =========================
+         CAPITULO 5 - EVALUACION EN CABINA
+    ========================= -->
+    <h2 class="chap" id="cap-5"><span class="num">5.</span>Evaluación en cabina · workflow</h2>
+    <p>Cuando una clienta llega por primera vez, este es el protocolo que el equipo sigue paso a paso. Acompaña al formulario de <strong>Evaluación Lumina</strong> que cada especialista llena en papel durante la consulta. Es la puente entre el catálogo técnico (caps. 1–4) y la decisión de plan (cap. 2).</p>
+
+    <div class="note">
+      <span class="ntitle">Cómo usar este capítulo</span>
+      Cada sección de abajo corresponde a una sección del formulario de evaluación impreso. La numeración acá (5.1 → 5.5) sigue el orden en que se llena el formulario en cabina. Mantener este orden mejora la calidad del diagnóstico y la conversión.
+    </div>
+
+    <h3 class="sec" id="eval-flow"><span class="num">5.1</span>Los cinco pasos de la evaluación</h3>
+    <p>El formulario en papel tiene 5 bloques. Cada uno tiene un objetivo específico — no son trámite administrativo, son herramientas de venta y diagnóstico.</p>
+    <div class="step"><div class="skey">Paso 1<br>Datos del paciente</div><div class="stxt">Nombre completo, especialista a cargo, fecha. Aprovecha este momento para fijar contacto visual y reducir la tensión inicial. La clienta tiene que sentir que es atendida por una profesional, no procesada por un trámite.</div></div>
+    <div class="step"><div class="skey">Paso 2<br>Motivo de consulta</div><div class="stxt"><strong>"¿Por qué vienes a Lumina?"</strong> Anota la respuesta textual — no la traduzcas a tecnicismos. También se registra la rutina de día y de noche para detectar productos contraproducentes y ganar credibilidad clínica al sugerir ajustes.</div></div>
+    <div class="step"><div class="skey">Paso 3<br>Análisis facial</div><div class="stxt">Se ejecuta el análisis con la máquina de la sede y se registran los outputs principales. <strong>Sede Concón y Los Ángeles:</strong> tres campos clave — Envejecimiento de la piel, Contenido de humedad, Puntuación completa. <strong>Sede Vitacura:</strong> firma Baumann (4 letras) + edad cutánea predicha (ver cap. 1.B).</div></div>
+    <div class="step"><div class="skey">Paso 4<br>Clasificación cutánea</div><div class="stxt">Biotipo de piel (I a IV) + checklist de problemas observados (12 ítems) + checklist de objetivos del paciente (9 ítems) + registro fotográfico estándar (4 ángulos). Este paso transforma la consulta en un mapa visual del caso.</div></div>
+    <div class="step"><div class="skey">Paso 5<br>Propuesta de plan</div><div class="stxt">Se marca el plan recomendado de la lista de 10 vigentes y se anotan observaciones específicas (zonas prioritarias, contraindicaciones, ritmo de progresión). El plan que se marca debe ser el que el diagnóstico justifica — no el que la clienta "puede pagar".</div></div>
+
+    <h3 class="sec" id="eval-checklist"><span class="num">5.2</span>Los 12 problemas observables · checklist</h3>
+    <p>La cara de la clienta puede tener uno o más de estos problemas simultáneamente. Marcá todos los que apliquen — cada uno extra es un argumento más para un plan superior. Estos son los 12 ítems del formulario con su interpretación clínica rápida.</p>
+    <table>
+      <thead><tr><th>Problema</th><th>Qué buscar</th><th>Familia de tecnología que lo resuelve</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="t-tag"><span class="badge">Mantención</span></td>
-          <td class="t-name">Luz de Jeju</td>
-          <td class="t-pitch">Mantención con foco en luminosidad profunda y revitalización celular. Incluye <em>EndoJiwoo</em> y <em>Rejuveskin</em>.</td>
-          <td class="t-ideal">Cliente que terminó plan principal y quiere prolongar resultados. También válido para enfocar arrugas + poros con rejuvenecimiento.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Mantención</span></td>
-          <td class="t-name">Radancia de Daejeon</td>
-          <td class="t-pitch">Específico para mantener resultados post Endolaser. Renovación profunda y fortalecimiento cutáneo.</td>
-          <td class="t-ideal">Egreso natural de Eternal Gangnam o Armonía de Busan.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Mantención</span></td>
-          <td class="t-name">Aura de Suwon</td>
-          <td class="t-pitch">Mantención de firmeza facial y frescura. Versión más accesible para egreso de planes básicos.</td>
-          <td class="t-ideal">Egreso natural de Glow de Seoul o Glow de Asan.</td>
-        </tr>
+        <tr><td><strong>Poros dilatados</strong></td><td>Dilatación visible en zona T · oxidación en puntos negros.</td><td>RejuveSkin + Korean Vitaboost</td></tr>
+        <tr><td><strong>Acné activo</strong></td><td>Lesiones inflamatorias actuales · pústulas · pápulas.</td><td>Korean Vitaboost regulador + Yori Peel</td></tr>
+        <tr><td><strong>Manchas / hiperpigmentación</strong></td><td>Melasma, manchas solares, post-inflamatorias.</td><td>Korean Vitaboost despigmentante + Yori Peel + EndoJiwoo</td></tr>
+        <tr><td><strong>Arrugas finas</strong></td><td>Líneas dinámicas · surcos superficiales.</td><td>RejuveSkin + Dahe Beauty</td></tr>
+        <tr><td><strong>Flacidez</strong></td><td>Pérdida de óvalo · jowls · papada · cuello laxo.</td><td>Cuky HIFU + EndoJiwoo + Sakura Ultra-Lift</td></tr>
+        <tr><td><strong>Rosácea</strong></td><td>Eritema persistente, telangiectasias, sensibilidad reactiva.</td><td>Bio Minji + protocolo de fortalecimiento de barrera</td></tr>
+        <tr><td><strong>Cicatrices de acné</strong></td><td>Atróficas (icepick, boxcar, rolling) o hipertróficas.</td><td>RejuveSkin (profundidad ajustable)</td></tr>
+        <tr><td><strong>Textura irregular</strong></td><td>Superficie áspera al tacto · queratinización irregular.</td><td>Yori Peel + Korean Vitaboost</td></tr>
+        <tr><td><strong>Ojeras</strong></td><td>Pigmentación, vascular, estructural. Identificar el tipo.</td><td>Bio Minji + Lumijin + Sakura · si hay flacidez de párpado sumar Fibrojin</td></tr>
+        <tr><td><strong>Pérdida de luminosidad</strong></td><td>Tono apagado, sin vitalidad, piel fatigada.</td><td>Bio Minji + Korean Vitaboost</td></tr>
+        <tr><td><strong>Edema / inflamación</strong></td><td>Retención facial, hinchazón matinal, contorno difuso.</td><td>Sakura Ultra-Lift + drenaje + Bio Minji</td></tr>
+        <tr><td><strong>Sensibilidad cutánea</strong></td><td>Reactividad a productos, ardor, enrojecimiento por contacto.</td><td>No determina el plan · calibra el ritmo de progresión y los activos (ver cap. 1.A · sensibilidad)</td></tr>
       </tbody>
     </table>
 
-    <div class="group-title" id="g-especializados">2.3 — Especializados · Despigmentación</div>
-    <table class="catalog">
-      <thead>
-        <tr><th>Categoría</th><th>Plan</th><th>Qué hace</th><th>Cliente ideal</th></tr>
-      </thead>
+    <h3 class="sec" id="eval-objetivos"><span class="num">5.3</span>Los 9 objetivos del paciente · mapeo a plan</h3>
+    <p>El objetivo principal que la clienta declara guía la elección del plan. Esta tabla muestra el mapeo directo objetivo → plan más alto recomendado. Si la clienta marca más de un objetivo, ofrecer el plan que cubra todos — no fraccionar.</p>
+    <table>
+      <thead><tr><th>Objetivo declarado</th><th>Plan(es) recomendado(s)</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="t-tag"><span class="badge b-rec">Avanzado</span></td>
-          <td class="t-name">Flor de Busan</td>
-          <td class="t-pitch">Despigmentante avanzado con <em>EndoJiwoo</em> y <em>Rejuveskin</em>. Limpiezas despigmentantes, peeling de algas y activos despigmentantes con dermapen.</td>
-          <td class="t-ideal">Cliente con melasma confirmado, manchas hormonales o post-embarazo establecidas.</td>
-        </tr>
-        <tr>
-          <td class="t-tag"><span class="badge">Despigmentante</span></td>
-          <td class="t-name">Claridad de Haneul</td>
-          <td class="t-pitch">Despigmentante para tono irregular y manchas superficiales. Sin EndoJiwoo — versión más accesible.</td>
-          <td class="t-ideal">Cliente con manchas iniciando, pecas que quiere atenuar o tono desigual. También válido como foco poros sin rejuvenecimiento.</td>
-        </tr>
+        <tr><td><strong>Glow / luminosidad</strong></td><td>Glow de Seoul (entry) · Eternal Gangnam (si hay envejecimiento concurrente)</td></tr>
+        <tr><td><strong>Rejuvenecimiento</strong></td><td>Eternal Gangnam · Armonía de Busan (top)</td></tr>
+        <tr><td><strong>Hidratación profunda</strong></td><td>Glow de Asan · Armonía de Busan</td></tr>
+        <tr><td><strong>Disminuir poros</strong></td><td>Claridad de Haneul (foco poros) · Luz de Jeju (+ rejuvenecimiento) · Armonía de Busan (ultra)</td></tr>
+        <tr><td><strong>Mejorar flacidez</strong></td><td>Eternal Gangnam · Armonía de Busan</td></tr>
+        <tr><td><strong>Control de acné</strong></td><td>Glow de Seoul + protocolo regulador · Claridad de Haneul</td></tr>
+        <tr><td><strong>Despigmentación</strong></td><td>Claridad de Haneul (superficial) · Flor de Busan (dérmico / melasma)</td></tr>
+        <tr><td><strong>Redefinición facial</strong></td><td>Eternal Gangnam · Armonía de Busan</td></tr>
+        <tr><td><strong>Mejorar textura</strong></td><td>Luz de Jeju · Glow de Asan · Armonía de Busan</td></tr>
       </tbody>
     </table>
 
-    <footer class="doc-foot">
-      <div>Manual de recomendación · v2.0 · 2026 · Documento interno</div>
-      <div>Vitacura · Concón · Los Ángeles</div>
+    <h3 class="sec" id="eval-biotipo"><span class="num">5.4</span>Biotipo de piel · clasificación operacional</h3>
+    <p>Independiente del Fitzpatrick (cap. 4.2 · respuesta al sol) y del Baumann (cap. 1.B.4 · firma de 4 ejes), el biotipo es la clasificación rápida que usa el equipo en cabina. Define la estrategia base del protocolo.</p>
+    <div class="layers">
+      <div class="layer">
+        <div class="lname">I · Piel Seca</div>
+        <div class="ldepth">Hidratación baja</div>
+        <div class="ltxt">Producción sebácea insuficiente. Tendencia a descamación, líneas finas precoces, sensación de tirantez. <strong>Estrategia:</strong> priorizar hidratación profunda (Nubea Booster, Bio Minji) antes de tecnologías intensas. La barrera se reconstruye primero.</div>
+      </div>
+      <div class="layer">
+        <div class="lname">II · Piel Normal</div>
+        <div class="ldepth">Equilibrio</div>
+        <div class="ltxt">Balance sebo/agua adecuado, textura uniforme, sin reactividad. El biotipo más versátil — tolera la mayoría de tecnologías sin restricción. <strong>Estrategia:</strong> elegir plan por objetivo, no por contraindicación cutánea.</div>
+      </div>
+      <div class="layer">
+        <div class="lname">III · Piel Mixta</div>
+        <div class="ldepth">Zona T grasa</div>
+        <div class="ltxt">Zona T (frente, nariz, mentón) oleosa, mejillas normales o secas. La más frecuente en Chile. <strong>Estrategia:</strong> protocolos diferenciados por zona — regulación sebácea en T, hidratación en mejillas. Korean Vitaboost se adapta bien.</div>
+      </div>
+      <div class="layer">
+        <div class="lname">IV · Piel Grasa</div>
+        <div class="ldepth">Producción alta</div>
+        <div class="ltxt">Brillo permanente, poros dilatados, tendencia a acné comedoniano o inflamatorio. <strong>Estrategia:</strong> regulación sebácea + RejuveSkin para poros + limpiezas más frecuentes. Evitar oclusivos pesados.</div>
+      </div>
+    </div>
+
+    <h3 class="sec" id="eval-foto"><span class="num">5.5</span>Registro fotográfico estándar</h3>
+    <p>Cinco capturas en cada evaluación inicial. La consistencia del registro es lo que permite mostrar la evolución después — y lo que valida el resultado frente a una clienta que duda de su propio cambio.</p>
+    <table>
+      <thead><tr><th>Toma</th><th>Cómo posicionar</th><th>Para qué sirve</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Frente</strong></td><td>Cabeza recta, mentón al ras del horizonte, mirada al lente.</td><td>Visión general · simetría · pigmentación · óvalo facial.</td></tr>
+        <tr><td><strong>Perfil derecho</strong></td><td>Giro 90° a la derecha, oreja visible.</td><td>Contorno mandibular · papada · línea cuello-mentón.</td></tr>
+        <tr><td><strong>Perfil izquierdo</strong></td><td>Giro 90° a la izquierda, oreja visible.</td><td>Contorno mandibular · asimetrías estructurales.</td></tr>
+        <tr><td><strong>Sonrisa</strong></td><td>Sonrisa amplia y natural, frontal.</td><td>Arrugas dinámicas (patas de gallo, nasogeniano, mentolabial).</td></tr>
+        <tr><td><strong>Reposo</strong></td><td>Cara relajada, sin tensión muscular.</td><td>Línea base sin contracción · evolución real del envejecimiento estático.</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <span class="ntitle">Estándares de fotografía clínica</span>
+      Misma luz, mismo fondo, misma distancia y misma posición en cada control. Si cambia cualquiera de las 4 variables, la comparación pierde valor clínico y comercial. <strong>Sin filtros, sin maquillaje, sin retoque.</strong> Una clienta puede notar diferencias por iluminación que no son del tratamiento — eso destruye la confianza.
+    </div>
+
+    <h3 class="sec" id="eval-analisis"><span class="num">5.6</span>Cómo interpretar el análisis facial simplificado</h3>
+    <p>En sedes Concón y Los Ángeles, el formulario registra solo tres campos del analizador — los tres outputs principales que sintetizan los 6 parámetros descritos en cap. 1.A. Esta es la lectura rápida de cada uno.</p>
+    <div class="layers">
+      <div class="layer">
+        <div class="lname">Envejecimiento de la piel</div>
+        <div class="ldepth">Score 0-100</div>
+        <div class="ltxt">Suma compuesta de arrugas + flacidez + colágeno estimado. <strong>&lt;50</strong> → conversación de rejuvenecimiento avanzado (Eternal Gangnam, Armonía de Busan). <strong>50–79</strong> → prevención correctiva (Luz de Jeju, Glow de Asan). <strong>≥80</strong> → mantención (Aura de Suwon, Glow de Seoul).</div>
+      </div>
+      <div class="layer">
+        <div class="lname">Contenido de humedad</div>
+        <div class="ldepth">Score 0-100</div>
+        <div class="ltxt">% de agua en estrato córneo. <strong>&lt;50</strong> → barrera comprometida, priorizar Bio Minji + Vitaboost antes de tecnologías intensas. <strong>50–79</strong> → boost con Nubea Booster o Vitaboost. <strong>≥80</strong> → mantención.</div>
+      </div>
+      <div class="layer">
+        <div class="lname">Puntuación completa</div>
+        <div class="ldepth">Score global</div>
+        <div class="ltxt">Síntesis ponderada de los 6 parámetros. Es la referencia rápida para conversación con la clienta — pero <strong>el plan se decide por los hallazgos específicos</strong>, no por el score global. Un 75 con manchas dérmicas profundas justifica Flor de Busan; un 75 con flacidez establecida justifica Eternal Gangnam.</div>
+      </div>
+    </div>
+
+    <h3 class="sec" id="eval-cierre"><span class="num">5.7</span>De la evaluación al plan · regla final</h3>
+    <p>Llenar el formulario no es lo mismo que cerrar la venta. La evaluación es la munición; el cierre es el momento en que se usa esa munición. Tres reglas operacionales:</p>
+    <ul class="body">
+      <li><strong>Mostrar la pantalla a la clienta.</strong> Que vea con sus propios ojos los hallazgos. El reporte impreso al final es el respaldo escrito — no el momento del impacto.</li>
+      <li><strong>Nombrar 3 hallazgos, no 17.</strong> Tres parámetros bien elegidos en zona severa cierran cualquier venta. Saturar con todos los datos apaga la conversación.</li>
+      <li><strong>Ofrecer el plan más alto que el diagnóstico justifica.</strong> Bajar de antemano "por precio" comunica que el plan no era necesario. La clienta baja si necesita bajar — esa decisión es suya, no del equipo.</li>
+    </ul>
+
+    <!-- =========================
+         CAPITULO 6 - GLOSARIO
+    ========================= -->
+    <h2 class="chap" id="cap-6"><span class="num">6.</span>Glosario técnico</h2>
+    <p>Términos clínicos que todo el equipo debe conocer para mantener consistencia terminológica con clientas que llegan informadas.</p>
+
+    <dl class="gloss">
+      <dt>Adenosina A2A (receptor)</dt>
+      <dd>Receptor celular presente en fibroblastos, queratinocitos y células endoteliales. Al activarse, dispara la cascada natural de reparación cutánea. Es el receptor sobre el que actúa el PDRN (Bio Minji).</dd>
+
+      <dt>Andamio (scaffold)</dt>
+      <dd>Estructura biocompatible que se inyecta en la dermis y que los fibroblastos "leen" como sitio a reparar, activando producción sostenida de colágeno. Mecanismo de los bioestimuladores tipo Neojin (polilactato).</dd>
+
+      <dt>Angiogénesis</dt>
+      <dd>Formación de nuevos vasos sanguíneos. Crítica para la regeneración cutánea: piel mejor irrigada significa piel más oxigenada, mejor color y mejor capacidad de reparación.</dd>
+
+      <dt>Baumann (tipo de piel)</dt>
+      <dd>Sistema de clasificación dermatológica desarrollado por Dra. Leslie Baumann. Define la piel en 4 ejes binarios (Oleosa/Seca, Sensible/Resistente, Pigmentada/No-pigmentada, Arrugada/Tensa) generando 16 tipos posibles. Es el output principal de la máquina de Vitacura.</dd>
+
+      <dt>Colágeno tipo I</dt>
+      <dd>Proteína estructural mayoritaria (90%) de la dermis. Da firmeza y soporte. Se pierde 1-1,5% anual desde los 25 años. Todas las tecnologías "antiage" buscan estimular su producción.</dd>
+
+      <dt>Colágeno tipo III</dt>
+      <dd>Colágeno joven, más elástico y flexible. Predomina en pieles jóvenes y en procesos de cicatrización. Los bioestimuladores reactivan su producción.</dd>
+
+      <dt>Cromóforo</dt>
+      <dd>Molécula que absorbe luz a longitudes de onda específicas. Los principales en piel: melanina (pigmento), hemoglobina (vascular), agua. Define qué tecnología funciona en qué fototipo. La RF y el HIFU son <strong>cromóforo-independientes</strong>, por eso son seguras en fototipos V-VI.</dd>
+
+      <dt>Dermapen</dt>
+      <dd>Dispositivo eléctrico de microagujas que perfora la piel a profundidad controlada. Usado en Korean Vitaboost para vehiculizar activos y estimular regeneración.</dd>
+
+      <dt>Dermis papilar / Dermis reticular</dt>
+      <dd>Dermis papilar es la zona más superficial de la dermis (en contacto con epidermis), donde actúa Korean Vitaboost. Dermis reticular es la zona más profunda, densa en colágeno, donde actúa Rejuveskin y HIFU 3 mm.</dd>
+
+      <dt>Elastina</dt>
+      <dd>Proteína que da elasticidad a la piel (capacidad de volver a su forma original). Se degrada con la edad y el sol. Su pérdida es la causa principal de la flacidez.</dd>
+
+      <dt>Exosomas</dt>
+      <dd>Vesículas extracelulares (30-150 nm) que transportan ARN, proteínas y factores de crecimiento entre células. Última frontera en medicina regenerativa estética. Se utilizan como evolución del PDRN en Bio Minji.</dd>
+
+      <dt>Fibroblastos</dt>
+      <dd>Células de la dermis encargadas de producir colágeno, elastina y ácido hialurónico endógeno. Diana terapéutica de prácticamente todas las tecnologías de rejuvenecimiento.</dd>
+
+      <dt>Fitzpatrick</dt>
+      <dd>Escala de fototipos cutáneos desarrollada por Thomas Fitzpatrick (1975). Clasifica la piel de I a VI según respuesta al sol. Define la seguridad de cada tecnología láser e IPL.</dd>
+
+      <dt>Fototipo</dt>
+      <dd>Clasificación de la piel según contenido de melanina y reacción solar. En Chile predominan III y IV. Determina contraindicaciones de IPL y láser pigmentario.</dd>
+
+      <dt>Fotodaño</dt>
+      <dd>Conjunto de alteraciones cutáneas producidas por radiación UV acumulada: manchas, arrugas, telangiectasias, queratosis, pérdida de elasticidad. Causa principal del envejecimiento extrínseco (80% del envejecimiento facial visible).</dd>
+
+      <dt>HIFU</dt>
+      <dd>High Intensity Focused Ultrasound. Ultrasonido focalizado de alta intensidad. Única tecnología no invasiva que alcanza el SMAS (4,5 mm). Nombre comercial Lumina: CUKY HIFU.</dd>
+
+      <dt>Hialurónico (ácido)</dt>
+      <dd>Polisacárido natural de la dermis con capacidad de retener hasta 1000 veces su peso en agua. Versión <strong>no reticulada</strong> = hidratación (Nubea Booster). Versión <strong>reticulada</strong> = volumen (Yuna Face).</dd>
+
+      <dt>Hipodermis</dt>
+      <dd>Tejido subcutáneo graso. Aporta volumen y modela contornos. Donde actúa el endolaser (EndoJiwoo) y los fillers estructurales profundos.</dd>
+
+      <dt>IPL</dt>
+      <dd>Intense Pulsed Light. Luz pulsada intensa. Tecnología despigmentante por absorción de melanina. Contraindicada en fototipos V-VI por riesgo de quemadura e hiperpigmentación paradójica.</dd>
+
+      <dt>Melanogénesis</dt>
+      <dd>Proceso biológico de producción de melanina por los melanocitos. Se activa por radiación UV, calor, inflamación y hormonas. Cuando está sobreactivada y desordenada, produce melasma.</dd>
+
+      <dt>Melasma</dt>
+      <dd>Hiperpigmentación facial adquirida, simétrica, asociada a factores hormonales (embarazo, anticonceptivos) y exposición solar. Requiere tratamiento despigmentante prolongado + fotoprotección estricta. Plan recomendado: Flor de Busan.</dd>
+
+      <dt>Microagujas (microneedling)</dt>
+      <dd>Técnica de perforación cutánea controlada para estimular neocolagénesis y/o vehiculizar activos. Usadas en Dermapen, RejuveSkin, Yori Peel.</dd>
+
+      <dt>Neocolagénesis</dt>
+      <dd>Producción de colágeno nuevo por estímulo terapéutico. Es el mecanismo final detrás de RF, HIFU, bioestimuladores y láseres. Resultado clínico visible: 8-12 semanas post-estímulo.</dd>
+
+      <dt>Neoelastogénesis</dt>
+      <dd>Producción de elastina nueva. Mecanismo asociado a RF fraccionada (RejuveSkin) y HIFU.</dd>
+
+      <dt>PDRN</dt>
+      <dd>Polideoxirribonucleótido. Fragmentos purificados de ADN (típicamente extraídos de trucha o de Panax ginseng coreano) con efecto regenerativo demostrado. Activa receptores de adenosina A2A y aporta nucleótidos como bloques de reparación. Es la base de Bio Minji.</dd>
+
+      <dt>Polilactato (PLLA)</dt>
+      <dd>Poly-L-Lactic Acid. Biopolímero reabsorbible usado como bioestimulador de colágeno progresivo. Base de Neojin (Lenisna). Resultado a 3-6 meses, duración 18-24 meses.</dd>
+
+      <dt>Queratinocitos</dt>
+      <dd>Células mayoritarias de la epidermis. Forman la barrera protectora. Se renuevan cada 28 días. Su salud determina la luminosidad y la textura visible.</dd>
+
+      <dt>Radiofrecuencia (RF)</dt>
+      <dd>Energía electromagnética de alta frecuencia que calienta la dermis para estimular colágeno. <strong>RF bipolar:</strong> Sakura Ultra-Lift. <strong>RF fraccionada con microagujas:</strong> RejuveSkin.</dd>
+
+      <dt>SMAS</dt>
+      <dd>Superficial Musculo-Aponeurotic System. Capa muscular profunda (4,5 mm) que se tracciona en lifting quirúrgico. Única capa donde llega el HIFU sin cirugía.</dd>
+
+      <dt>Spicules</dt>
+      <dd>Microagujas de sílice biológica extraídas de algas marinas. Usadas en Yori Peel. Estimulan regeneración por estímulo mecánico + entrega de activos.</dd>
+
+      <dt>Telangiectasia</dt>
+      <dd>Dilatación visible de pequeños vasos sanguíneos cutáneos (arañitas). Signo de sensibilidad vascular y rosácea.</dd>
+
+      <dt>Toxina botulínica tipo A</dt>
+      <dd>Neurotoxina que bloquea temporalmente la liberación de acetilcolina en la unión neuromuscular. Base de DAHE Beauty. Duración 4-6 meses.</dd>
+
+      <dt>Xela Rederm</dt>
+      <dd>Bioestimulador inyectable que combina hialurónico no reticulado con succinato sódico (activador mitocondrial). Base de LUMIJIN.</dd>
+    </dl>
+
+    <footer class="docfoot">
+      Manual de recomendación · v3.0 · 2026 · Documento interno<br>
+      Vitacura · Concón · Los Ángeles
     </footer>
 
   </main>
 </div>
-
-<script>
-  // Mobile TOC toggle
-  const toggle = document.getElementById('tocToggle');
-  const toc = document.getElementById('toc');
-  if (toggle && toc) {
-    toggle.addEventListener('click', () => {
-      const open = toc.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    toc.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' && window.innerWidth <= 960) {
-        toc.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // Active section in TOC
-  const links = Array.from(document.querySelectorAll('.toc-list a'));
-  const ids = links.map(a => a.getAttribute('href').slice(1));
-  const targets = ids.map(id => document.getElementById(id)).filter(Boolean);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-      }
-    });
-  }, { rootMargin: '-72px 0px -70% 0px', threshold: 0 });
-
-  targets.forEach(t => observer.observe(t));
-</script>
 
 </body>
 </html>
