@@ -166,10 +166,12 @@ nav.scrolled .hamburger span { background:var(--ink); }
 }
 .hero-right {
   position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--void);
 }
 .hero-right-photo {
-  width:100%; height:100%; object-fit:cover; object-position:center top;
-  display:block; filter:brightness(0.88) saturate(0.92);
+  width:100%; height:100%; object-fit:contain; object-position:center center;
+  display:block;
 }
 .hero-photo-overlay {
   position:absolute; inset:0;
@@ -446,10 +448,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .hero-left{padding:110px 24px 48px; text-align:center; align-items:center;}
   .hero-h1{text-align:center;}
   .hero-right{height:360px;}
-  .hero-right-photo{object-fit:cover; object-position:center 28%; height:100%; filter:brightness(0.88) saturate(0.92);}
-  .hero-photo-overlay{background:linear-gradient(to top, rgba(14,14,14,0.82) 0%, rgba(14,14,14,0.2) 55%, transparent 100%);}
-  .hero-photo-caption{bottom:20px;left:20px;right:20px;}
-  .hero-caption-quote{max-width:100%; font-size:13px;}
+  .hero-right-photo{object-fit:contain; object-position:center center; height:100%;}
   .sec-light,.sec-dark,.sec-mid,.sec-rose{padding:70px 24px;}
   .protocolo-grid{grid-template-columns:1fr;gap:52px;}
   .tech-grid{grid-template-columns:1fr;}
@@ -570,17 +569,9 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <p class="hero-trust">Lifting Facial <em>✦</em> EndoJiwoo <em>✦</em> Endolaser Coreano</p>
     </div>
 
-    <!-- DERECHA: Ana María Rosales -->
+    <!-- DERECHA: Caso real Endojiwoo — Lurayen Benavides -->
     <div class="hero-right">
-      <img class="hero-right-photo" src="img/ana-retrato.webp" alt="Ana María Rosales — Caso real Protocolo Lumina" width="501" height="900" fetchpriority="high" decoding="async">
-      <div class="hero-photo-overlay"></div>
-      <div class="hero-photo-caption">
-        <p class="hero-caption-quote">"Nunca me había realizado un tratamiento facial, pero me atreví — y el resultado fue asombroso."</p>
-        <div class="hero-caption-meta">
-          <span class="hero-caption-name">Ana María Rosales</span>
-          <span class="hero-caption-data">57 años · San Bernardo · Primera vez</span>
-        </div>
-      </div>
+      <img class="hero-right-photo" src="img/hero-endojiwoo.webp" alt="Lurayen Benavides — Caso real Endojiwoo · Protocolo Lumina" width="1200" height="1188" fetchpriority="high" decoding="async">
     </div>
 
   </div>
