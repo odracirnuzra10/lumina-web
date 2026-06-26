@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/online",
+      "destination": "https://www.protocololumina.cl/resultados",
+      "permanent": true
+    }
+  ]
 }
