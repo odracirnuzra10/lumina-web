@@ -786,6 +786,22 @@
       font-weight: 500;
     }
 
+    /* Recap de selección (paso 3) */
+    .recap-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      align-self: flex-start;
+      background: var(--teal-light);
+      color: var(--text);
+      border: 1px solid rgba(30, 24, 24, 0.15);
+      border-radius: 999px;
+      padding: 0.4rem 0.95rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+    }
+
     /* Success Overlay */
     .success-overlay {
       position: fixed;
@@ -1001,8 +1017,8 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
-        /* Foto completa, no cortada */
+        object-fit: cover;
+        /* Llena la caja: evita bordes negros durante el crossfade */
         opacity: 0;
         transition: opacity 0.7s;
       }
@@ -1110,6 +1126,34 @@
 
       .day-btn .day-num {
         font-size: 1.2rem;
+      }
+
+      /* Header compacto en pasos 2-3: libera pantalla para el formulario */
+      .mobile-header-wrapper.compact .mobile-carousel {
+        display: none;
+      }
+
+      .mobile-header-wrapper.compact .mobile-hero {
+        padding: 0.45rem 0.8rem;
+      }
+
+      .mobile-header-wrapper.compact .mobile-info {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+
+      .mobile-header-wrapper.compact .mobile-info > img {
+        max-height: 30px !important;
+        margin-bottom: 0 !important;
+      }
+
+      .mobile-header-wrapper.compact .mobile-info .m-price-new {
+        display: none;
+      }
+
+      .recap-chip {
+        align-self: center;
       }
     }
 
@@ -1433,7 +1477,7 @@
           <!-- STEP 1 -->
           <div class="step active" id="step1">
             <div class="viewers" style="width: 100%; justify-content: center;">
-              <span class="viewers-count" id="viewersCount">4</span> personas viendo esta oferta
+              <span>✨</span> +300 casos reales en nuestras 3 sedes
             </div>
             <div class="step-label" style="text-align: center; width: 100%;">PASO 1 DE 3</div>
             <h2 class="step-title" style="text-align: center; width: 100%;">¿DÓNDE TE GUSTARÍA <em>EVALUARTE</em>?</h2>
@@ -1505,28 +1549,30 @@
             <div class="step-label">PASO 3 DE 3</div>
             <div class="step-title">ÚLTIMO <em>PASO</em></div>
             <div class="step-sub">Déjanos tus datos y te escribimos por WhatsApp para coordinar tu hora.</div>
+            <div class="recap-chip" id="recapChip" style="display:none"></div>
             <div class="form-group">
               <label>Nombre</label>
-              <input type="text" id="inputNombre" placeholder="Escribe tu nombre" autocomplete="name" oninput="checkForm()" onkeydown="formKeyDown(event, &#39;inputCelular&#39;)">
+              <input type="text" id="inputNombre" placeholder="Escribe tu nombre" autocomplete="name" onkeydown="formKeyDown(event, &#39;inputCelular&#39;)">
             </div>
             <div class="form-group">
               <label>Celular</label>
               <div class="phone-group" id="phoneGroup">
                 <span class="phone-prefix" aria-hidden="true">+56</span>
-                <input type="tel" id="inputCelular" placeholder="9 XXXX XXXX" inputmode="numeric" maxlength="11" autocomplete="tel-national" oninput="formatPhone(this); checkForm()" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
+                <input type="tel" id="inputCelular" placeholder="9 XXXX XXXX" inputmode="numeric" maxlength="11" autocomplete="tel-national" oninput="formatPhone(this)" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
               </div>
             </div>
             <div class="form-group">
               <label>Correo</label>
-              <input type="email" id="inputCorreo" placeholder="Tu correo electrónico" autocomplete="email" oninput="checkForm()" onkeydown="formKeyDown(event, null)">
+              <input type="email" id="inputCorreo" placeholder="Tu correo electrónico" autocomplete="email" onkeydown="formKeyDown(event, null)">
             </div>
-            <button class="wa-btn disabled" id="btnSubmit" onclick="handleSubmit()">
+            <button class="wa-btn enabled" id="btnSubmit" onclick="handleSubmit()">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
               </svg>
               Enviar y agendar mi hora
             </button>
             <div class="form-note">Sin compromiso. Te respondemos en minutos.</div>
+            <div class="form-note" style="margin-top: 0.3rem; opacity: 0.75;">🔒 Tus datos están protegidos y solo se usan para coordinar tu evaluación (Ley 19.628)</div>
           </div>
         </div>
       </div>
@@ -1577,17 +1623,18 @@
     setInterval(() => updateCarousel((carouselIndex + 1) % 5), 3500);
     document.querySelectorAll('#dotsDesktop .dot').forEach(d => d.addEventListener('click', () => updateCarousel(+d.dataset.i)));
 
-    const viewersEl = document.getElementById('viewersCount');
-    let viewerCount = 3;
-    setInterval(() => {
-      const dir = Math.random() > 0.5 ? 1 : -1;
-      viewerCount = Math.min(8, Math.max(2, viewerCount + dir));
-      viewersEl.style.opacity = '0';
-      setTimeout(() => { viewersEl.textContent = viewerCount; viewersEl.style.opacity = '1'; }, 300);
-    }, 5000);
-
     function goToStep(num, direction) {
-      if (num > 1) window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const hdr = document.querySelector('.mobile-header-wrapper');
+      if (hdr) hdr.classList.toggle('compact', num > 1);
+      if (num === 3) {
+        const chip = document.getElementById('recapChip');
+        if (chip) {
+          const parts = [(selectedSede || '').split(' — ')[0], selectedDay, selectedSlot].filter(Boolean);
+          chip.textContent = '📍 ' + parts.join(' · ');
+          chip.style.display = parts.length ? 'inline-flex' : 'none';
+        }
+      }
       const prev = document.getElementById('step' + currentStep);
       const next = document.getElementById('step' + num);
       prev.classList.remove('active');
@@ -1595,7 +1642,11 @@
       next.classList.remove('exit-left', 'exit-right');
       next.style.transform = direction === 'back' ? 'translateX(-60px)' : 'translateX(60px)';
       next.style.opacity = '0';
-      requestAnimationFrame(() => { next.classList.add('active'); next.style.transform = ''; next.style.opacity = ''; });
+      requestAnimationFrame(() => {
+        // Garantiza un solo paso activo aunque un rAF anterior haya quedado diferido (tab en background)
+        document.querySelectorAll('.step.active').forEach(s => { if (s !== next) s.classList.remove('active'); });
+        next.classList.add('active'); next.style.transform = ''; next.style.opacity = '';
+      });
       currentStep = num;
       updateProgress();
       setTimeout(() => prev.classList.remove('exit-left', 'exit-right'), 500);
@@ -1678,22 +1729,34 @@
       }
     }
 
-    function formatPhone(input) {
-      let val = input.value.replace(/\D/g, '');
-      if (val.startsWith('56')) val = val.substring(2);
-      val = val.substring(0, 9);
-
-      let f = val.charAt(0) || '';
-      if (val.length > 1) f += ' ' + val.substring(1, 5);
-      if (val.length > 5) f += ' ' + val.substring(5);
-      input.value = f;
+    function normalizePhoneDigits(rawValue) {
+      let digits = rawValue.replace(/\D/g, '');
+      if (digits.startsWith('569')) digits = digits.substring(2);
+      else if (digits.startsWith('56')) digits = digits.substring(2);
+      if (digits && !digits.startsWith('9')) digits = '9' + digits;
+      return digits.substring(0, 9);
     }
 
-    function checkForm() {
-      const n = document.getElementById('inputNombre').value.trim();
-      const c = document.getElementById('inputCelular').value.replace(/\D/g, '');
-      const e = document.getElementById('inputCorreo').value.trim();
-      document.getElementById('btnSubmit').className = 'wa-btn ' + (n && c.length === 9 && e.includes('@') ? 'enabled' : 'disabled');
+    function formatLocalPhoneValue(digits) {
+      if (!digits) return '';
+      let formatted = digits.substring(0, 1);
+      if (digits.length > 1) formatted += ' ' + digits.substring(1, 5);
+      if (digits.length > 5) formatted += ' ' + digits.substring(5, 9);
+      return formatted;
+    }
+
+    function getPhoneDigits() {
+      return normalizePhoneDigits(document.getElementById('inputCelular').value);
+    }
+
+    function getFullPhoneNumber() {
+      const digits = getPhoneDigits();
+      return digits.length === 9 ? '+56 ' + formatLocalPhoneValue(digits) : '';
+    }
+
+    function formatPhone(input) {
+      const digits = normalizePhoneDigits(input.value);
+      input.value = formatLocalPhoneValue(digits);
     }
 
     function formKeyDown(e, nextId) {
@@ -1702,14 +1765,15 @@
 
     function handleSubmit() {
       const nombre = document.getElementById('inputNombre').value.trim();
-      const celularInput = document.getElementById('inputCelular').value.trim();
-      const celular = celularInput ? '+56 ' + celularInput : '';
+      const celularDigits = getPhoneDigits();
+      const celular = getFullPhoneNumber();
       const correo = document.getElementById('inputCorreo').value.trim();
       let hasError = false;
       ['inputNombre', 'inputCelular', 'inputCorreo'].forEach(id => {
         const el = document.getElementById(id);
         const v = el.value.trim();
-        if (!v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && v.replace(/\D/g, '').length < 9)) {
+        const invalid = !v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && (celularDigits.length !== 9 || !celularDigits.startsWith('9')));
+        if (invalid) {
           el.classList.add('error');
           const errorTarget = id === 'inputCelular' ? document.getElementById('phoneGroup') : null;
           if (errorTarget) errorTarget.classList.add('error');
@@ -1720,7 +1784,14 @@
           }, 600);
         }
       });
-      if (hasError) return;
+      if (hasError) return false;
+
+      // Guard anti doble-envío: un solo lead por sesión
+      if (window.__leadSubmitted) {
+        document.getElementById('successOverlay').classList.add('visible');
+        return false;
+      }
+      window.__leadSubmitted = true;
 
       const sede = selectedSede || 'Por confirmar';
       const sedeKey = sedeSlug[selectedSede] || selectedSede;
@@ -1785,9 +1856,13 @@
         body: JSON.stringify(payload)
       }).catch(e => console.error(e));
 
-      const waMsg = encodeURIComponent('Quiero confirmar mi evaluación P3\n\nNombre: ' + nombre + '\nCelular: ' + celular + '\nCorreo: ' + correo + '\nSede: ' + sede + '\nDisponibilidad: ' + disp);
-      document.getElementById('successWaLink').href = 'https://wa.me/56963222683?text=' + waMsg;
+      const waMsg = encodeURIComponent('Quiero confirmar mi evaluación P3 en Lumina\n\nNombre: ' + nombre + '\nCelular: ' + celular + '\nCorreo: ' + correo + '\nSede: ' + sede + '\nDisponibilidad: ' + disp);
+      const waLink = document.getElementById('successWaLink');
+      waLink.href = 'https://wa.me/56963222683?text=' + waMsg;
       document.getElementById('successOverlay').classList.add('visible');
+      // Abre WhatsApp de inmediato (mismo gesto del usuario); el overlay queda como respaldo
+      waLink.click();
+      return true;
     }
   </script>
 
@@ -1841,9 +1916,11 @@
     var _origSubmit = window.handleSubmit;
     window.handleSubmit = function(){
       var result = _origSubmit.apply(this, arguments);
-      // __currentEventId es seteado por handleSubmit ANTES de disparar el Pixel
-      var eid = window.__currentEventId || ("eval_" + Date.now());
-      dataLayer.push({ event: "eval_submit_form", sede: _sede(), day: _day(), slot: _slot(), event_id: eid });
+      if(result === true){
+        // __currentEventId es seteado por handleSubmit ANTES de disparar el Pixel
+        var eid = window.__currentEventId || ("eval_" + Date.now());
+        dataLayer.push({ event: "eval_submit_form", sede: _sede(), day: _day(), slot: _slot(), event_id: eid });
+      }
       return result;
     };
   }
