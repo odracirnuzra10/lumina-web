@@ -948,15 +948,17 @@ document.getElementById('hamburger').addEventListener('click',()=>{
       var ctaType = link.getAttribute('data-cro') || '';
 
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'Contact', {
-          content_name: 'CTA - ' + PAGE + ' - ' + dest,
-          content_category: 'facial',
-          clinica: CLINICA,
-          value: 5,
-          currency: 'USD'
-        });
-
+        // `Contact` significa contacto real por WhatsApp. Los CTA que ahora van a
+        // /evaluacion son navegación al embudo, no contacto: para esos alcanza el
+        // dataLayer de más abajo, que ya distingue el destino.
         if (isWa) {
+          fbq('track', 'Contact', {
+            content_name: 'CTA - ' + PAGE + ' - ' + dest,
+            content_category: 'facial',
+            clinica: CLINICA,
+            value: 5,
+            currency: 'USD'
+          });
           fbq('trackCustom', 'Contacto WhatsApp 2026', {
             content_name: 'CTA WhatsApp - ' + CLINICA + ' - ' + PAGE,
             content_category: 'facial',
