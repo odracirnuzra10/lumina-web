@@ -42,7 +42,10 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net/">
   <link rel="dns-prefetch" href="https://www.clarity.ms/">
 
-  <link rel="preload" as="image" href="/evaluacion/img/l5.webp" fetchpriority="high">
+  <!-- Video testimonial del hero (Vimeo) -->
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://i.vimeocdn.com">
+  <link rel="preconnect" href="https://f.vimeocdn.com">
 
   <!-- Non-blocking Fonts -->
 
@@ -161,28 +164,24 @@
       animation: fadeUp 0.7s ease 0.1s both;
     }
 
-    .carousel {
+    .video-wrap {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      padding-top: 75%;
+      /* 4:3, mismo ratio que el embed original de Vimeo */
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
       background: #111111;
     }
 
-    .carousel-img {
+    .video-wrap iframe {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 0.7s ease;
-    }
-
-    .carousel-img.active {
-      opacity: 1;
+      border: 0;
     }
 
     .carousel-caption {
@@ -192,28 +191,6 @@
       color: rgba(255, 255, 255, 0.65);
       font-weight: 300;
       letter-spacing: 0.5px;
-    }
-
-    .dots {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .dot.active {
-      width: 22px;
-      border-radius: 4px;
-      background: #fff;
     }
 
     /* Price Badge */
@@ -919,6 +896,134 @@
       animation: fadeUp 0.5s ease 0.6s both;
     }
 
+    /* Pantalla de confirmación de costo + pago */
+    .pay-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1001;
+      background: #0E0E0E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    .pay-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pay-badge {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.5s ease 0.15s both;
+    }
+
+    .pay-overlay h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 2.6rem;
+      color: #fff;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 0.2rem;
+      animation: fadeUp 0.5s ease 0.25s both;
+    }
+
+    .pay-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 4rem;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      animation: scaleBounce 0.6s ease 0.3s both;
+    }
+
+    .pay-copy {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      text-align: center;
+      max-width: 380px;
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+      animation: fadeUp 0.5s ease 0.4s both;
+    }
+
+    .pay-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #fff;
+      color: #0E0E0E;
+      padding: 1rem 2.2rem;
+      border-radius: 12px;
+      border: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(255, 255, 255, 0.18);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.5s ease 0.5s both;
+    }
+
+    .pay-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(255, 255, 255, 0.28);
+    }
+
+    .pay-note {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.75rem;
+      text-align: center;
+      max-width: 340px;
+      margin-top: 1.2rem;
+      line-height: 1.5;
+      animation: fadeUp 0.5s ease 0.6s both;
+    }
+
+    /* Salida alternativa, deliberadamente discreta: el pago es la ruta principal */
+    .pay-wa-link {
+      display: inline-block;
+      margin-top: 2.4rem;
+      color: rgba(255, 255, 255, 0.38);
+      font-size: 0.7rem;
+      font-weight: 300;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      padding-bottom: 1px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      animation: fadeUp 0.5s ease 0.8s both;
+    }
+
+    .pay-wa-link:hover {
+      color: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
 
@@ -1019,30 +1124,25 @@
         background: #fff;
       }
 
-      .mobile-hero .mobile-carousel {
-        width: 155px;
-        /* Más ancho para el aspecto horizontal */
-        aspect-ratio: 4 / 3;
-        border-radius: 8px;
-        overflow: hidden;
-        position: relative;
-        flex-shrink: 0;
-        background: #111111;
-      }
-
-      .mobile-hero .mobile-carousel img {
-        position: absolute;
-        inset: 0;
+      /* Video testimonial a todo el ancho, encima del bloque de logo/copy */
+      .mobile-video {
+        padding: 0.8rem 1.2rem 0;
+        box-sizing: border-box;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Llena la caja: evita bordes negros durante el crossfade */
-        opacity: 0;
-        transition: opacity 0.7s;
       }
 
-      .mobile-hero .mobile-carousel img.active {
-        opacity: 1;
+      .mobile-video .video-wrap {
+        border-radius: 8px;
+        box-shadow: none;
+      }
+
+      .mobile-video-caption {
+        text-align: center;
+        margin-top: 0.4rem;
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 300;
+        letter-spacing: 0.3px;
       }
 
       .mobile-hero .mobile-info {
@@ -1165,7 +1265,7 @@
       }
 
       /* Header compacto en pasos 2-3: libera pantalla para el formulario */
-      .mobile-header-wrapper.compact .mobile-carousel {
+      .mobile-header-wrapper.compact .mobile-video {
         display: none;
       }
 
@@ -1195,6 +1295,7 @@
 
     @media (min-width: 769px) {
 
+      .mobile-video,
       .mobile-hero,
       .mobile-ticker-wrap {
         display: none !important;
@@ -1422,21 +1523,13 @@
         <img src="/evaluacion/img/logo.webp" alt="Lumina" width="2048" height="1014" decoding="async" style="max-height: 85px; width: auto; display: block; margin: 0 auto 0.5rem;">
       </div>
       <div class="carousel-wrap">
-        <div class="carousel" id="carouselDesktop">
-          <img class="carousel-img active" src="/evaluacion/img/l5.webp" alt="Antes y Después — Caso 5" width="1436" height="1096" fetchpriority="high" decoding="async">
-          <img class="carousel-img" src="/evaluacion/img/l1.webp" alt="Caso 1" width="920" height="700" loading="lazy" decoding="async">
-          <img class="carousel-img" src="/evaluacion/img/l2.webp" alt="Caso 2" width="920" height="700" loading="lazy" decoding="async">
-          <img class="carousel-img" src="/evaluacion/img/l3.webp" alt="Caso 3" width="920" height="700" loading="lazy" decoding="async">
-          <img class="carousel-img" src="/evaluacion/img/l4.webp" alt="Caso 4" width="920" height="700" loading="lazy" decoding="async">
+        <div class="video-wrap">
+          <iframe src="https://player.vimeo.com/video/1218553229?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;title=0&amp;byline=0&amp;portrait=0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="Testimonio Alejandra Guzmán — Protocolo Lumina"></iframe>
         </div>
-        <div class="carousel-caption" id="carouselCaption">Caso exitoso N°312</div>
-        <div class="dots" id="dotsDesktop">
-          <div class="dot active" data-i="0"></div>
-          <div class="dot" data-i="1"></div>
-          <div class="dot" data-i="2"></div>
-          <div class="dot" data-i="3"></div>
-          <div class="dot" data-i="4"></div>
-        </div>
+        <div class="carousel-caption">Alejandra Guzmán — 52 años — Vitacura — Plan: Armonía de Busan</div>
       </div>
       <div class="price-badge">
         <div class="label" style="font-size: 1.15rem; line-height: 1.3; text-transform: none; font-weight: 600;">la
@@ -1469,14 +1562,16 @@
     <!-- RIGHT COLUMN -->
     <div class="right-col">
       <div class="mobile-header-wrapper">
-        <div class="mobile-hero">
-          <div class="mobile-carousel" id="carouselMobile">
-            <img src="/evaluacion/img/l5.webp" alt="Antes y Después — Caso 5" class="active" width="1436" height="1096" fetchpriority="high" decoding="async">
-            <img src="/evaluacion/img/l1.webp" alt="Caso 1" width="920" height="700" loading="lazy" decoding="async">
-            <img src="/evaluacion/img/l2.webp" alt="Caso 2" width="920" height="700" loading="lazy" decoding="async">
-            <img src="/evaluacion/img/l3.webp" alt="Caso 3" width="920" height="700" loading="lazy" decoding="async">
-            <img src="/evaluacion/img/l4.webp" alt="Caso 4" width="920" height="700" loading="lazy" decoding="async">
+        <div class="mobile-video">
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1218553229?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;title=0&amp;byline=0&amp;portrait=0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Testimonio Alejandra Guzmán — Protocolo Lumina"></iframe>
           </div>
+          <div class="mobile-video-caption">Alejandra Guzmán — 52 años — Vitacura — Plan: Armonía de Busan</div>
+        </div>
+        <div class="mobile-hero">
           <div class="mobile-info">
             <img src="/evaluacion/img/logo.webp" alt="Lumina" width="2048" height="1014" decoding="async" style="max-height: 48px; width: auto; display: block; margin-bottom: 6px;">
             <div class="m-price-new" style="font-size: 0.9rem; font-family: &#39;Outfit&#39;, sans-serif; text-transform: none; line-height: 1.2; margin-top: 4px; font-weight: 600;">
@@ -1620,6 +1715,20 @@
     </div>
   </div>
 
+  <!-- Payment Overlay — confirmación de costo de la evaluación P3 -->
+  <div class="pay-overlay" id="payOverlay">
+    <div class="pay-badge">Último paso</div>
+    <h2>TU EVALUACIÓN P3</h2>
+    <div class="pay-price">$27.990</div>
+    <p class="pay-copy">La evaluación P3 tiene un costo de $27.990. En ella realizaremos un análisis 3D de tu rostro
+      para ver el mejor programa para rejuvenecer tu rostro.</p>
+    <a class="pay-btn" id="payLink" href="https://mpago.la/2sofhq8" target="_blank" rel="noopener"
+      onclick="handlePayClick()">Confirmar y pagar $27.990</a>
+    <div class="pay-note">🔒 Pago seguro a través de MercadoPago. Al confirmar, dejamos tu hora reservada y te
+      escribimos por WhatsApp para coordinar los detalles.</div>
+    <a class="pay-wa-link" href="#" onclick="skipToWhatsapp(); return false;">Prefiero coordinar por WhatsApp</a>
+  </div>
+
   <!-- Success Overlay -->
   <div class="success-overlay" id="successOverlay">
     <div class="success-check">
@@ -1644,8 +1753,6 @@
     let selectedSede = '';
     let selectedDay = '';
     let selectedSlot = '';
-    let carouselIndex = 0;
-    const captions = ['Caso exitoso N°312', 'Caso exitoso N°117', 'Caso exitoso N°204', 'Caso exitoso N°89', 'Caso exitoso N°156'];
 
     // Mapeo de sedes → slug para Meta Pixel
     const sedeSlug = {
@@ -1653,16 +1760,6 @@
       'Los Ángeles — Av. Gabriela Mistral 269': 'losangeles',
       'Vitacura — Los Abedules 3085': 'vitacura'
     };
-
-    function updateCarousel(idx) {
-      carouselIndex = idx;
-      document.querySelectorAll('#carouselDesktop .carousel-img').forEach((img, i) => img.classList.toggle('active', i === idx));
-      document.querySelectorAll('#dotsDesktop .dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-      document.getElementById('carouselCaption').textContent = captions[idx];
-      document.querySelectorAll('#carouselMobile img').forEach((img, i) => img.classList.toggle('active', i === idx));
-    }
-    setInterval(() => updateCarousel((carouselIndex + 1) % 5), 3500);
-    document.querySelectorAll('#dotsDesktop .dot').forEach(d => d.addEventListener('click', () => updateCarousel(+d.dataset.i)));
 
     function goToStep(num, direction) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1829,7 +1926,7 @@
 
       // Guard anti doble-envío: un solo lead por sesión
       if (window.__leadSubmitted) {
-        document.getElementById('successOverlay').classList.add('visible');
+        document.getElementById('payOverlay').classList.add('visible');
         return false;
       }
       window.__leadSubmitted = true;
@@ -1897,13 +1994,83 @@
         body: JSON.stringify(payload)
       }).catch(e => console.error(e));
 
+      // Reutilizado por handlePayClick() para no releer el DOM al confirmar el pago
+      window.__leadPayload = payload;
+
       const waMsg = encodeURIComponent('Quiero confirmar mi evaluación P3 en Lumina\n\nNombre: ' + nombre + '\nCelular: ' + celular + '\nCorreo: ' + correo + '\nSede: ' + sede + '\nDisponibilidad: ' + disp);
       const waLink = document.getElementById('successWaLink');
       waLink.href = 'https://wa.me/56963222683?text=' + waMsg;
-      document.getElementById('successOverlay').classList.add('visible');
-      // Abre WhatsApp de inmediato (mismo gesto del usuario); el overlay queda como respaldo
-      waLink.click();
+      // Pantalla de costo de la evaluación; el pago es la ruta principal y WhatsApp la alternativa
+      document.getElementById('payOverlay').classList.add('visible');
       return true;
+    }
+
+    // Clic en "Confirmar y pagar": marca al lead como calificado y deja que el href
+    // navegue solo a MercadoPago (sin preventDefault, para conservar el gesto del usuario).
+    function handlePayClick() {
+      if (window.__payClicked) return true;
+      window.__payClicked = true;
+
+      const lead = window.__leadPayload || {};
+      const payEventId = 'pago_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      window.__payEventId = payEventId;
+
+      // Meta Pixel — Purchase (intención de pago: se dispara al clic, no al pago confirmado)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Purchase', {
+          content_name: 'Protocolo Lumina',
+          content_category: 'facial',
+          clinica: 'lumina',
+          sede: lead.sede_slug || '',
+          content_ids: ['lumina_evaluacion_p3'],
+          value: 27990,
+          currency: 'CLP'
+        }, { eventID: payEventId });
+      }
+
+      // n8n → Clinera. sendBeacon/keepalive porque la pestaña pierde foco al ir a MercadoPago.
+      const payPayload = Object.assign({}, lead, {
+        etiqueta: 'pago evaluacion',
+        monto: 27990,
+        moneda: 'CLP',
+        metodo_pago: 'mercadopago',
+        lead_event_id: lead.event_id || window.__currentEventId || '',
+        event_id: payEventId,
+        timestamp: Date.now()
+      });
+      const payBody = JSON.stringify(payPayload);
+      let sent = false;
+      if (navigator.sendBeacon) {
+        try {
+          sent = navigator.sendBeacon('https://n8n.oacg.cl/webhook/lead-capture', new Blob([payBody], { type: 'application/json' }));
+        } catch (e) { sent = false; }
+      }
+      if (!sent) {
+        fetch('https://n8n.oacg.cl/webhook/lead-capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payBody,
+          keepalive: true
+        }).catch(e => console.error(e));
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'eval_pago_evaluacion',
+        sede: lead.sede_slug || '',
+        event_id: payEventId,
+        lead_event_id: lead.event_id || window.__currentEventId || '',
+        value: 27990,
+        currency: 'CLP'
+      });
+      return true;
+    }
+
+    // Ruta alternativa: quien prefiere coordinar por WhatsApp en vez de pagar en línea
+    function skipToWhatsapp() {
+      document.getElementById('payOverlay').classList.remove('visible');
+      document.getElementById('successOverlay').classList.add('visible');
+      document.getElementById('successWaLink').click();
     }
   </script>
 
