@@ -1798,7 +1798,7 @@
             <div class="recap-chip" id="recapChipPrecio" style="display:none"></div>
             <div class="price-notice price-notice--solo">
               <div class="price-notice-head">La evaluación P3 tiene un costo de <strong>$27.990</strong></div>
-              <div class="price-notice-sub">Incluye el análisis 3D de tu rostro para definir el mejor programa para rejuvenecerlo. Se paga al confirmar tu hora.</div>
+              <div class="price-notice-sub">Incluye el análisis facial 3D con IA para definir el mejor programa para rejuvenecer tu rostro. Se paga al confirmar tu hora.</div>
               <div class="descuento">Si contratas un plan, los $27.990 se descuentan del valor del plan.</div>
             </div>
             <button class="confirm-btn" onclick="goToStep(3, &#39;forward&#39;)">Confirmo</button>
@@ -2143,6 +2143,36 @@
 
       // Reutilizado por handlePayClick() para no releer el DOM al confirmar el pago
       window.__leadPayload = payload;
+
+      // Link de pago propio de esta paciente. Lleva su ID de lead adentro
+      // (external_reference), que es lo único que después le permite al webhook de
+      // MercadoPago saber QUIÉN pagó: el link fijo es igual para todas y MercadoPago
+      // sólo informa el nombre de la cuenta con que se pagó, que muchas veces no es
+      // el de ella.
+      //
+      // Se pide acá y no al hacer clic para que el botón nunca espere una red, y se
+      // reemplaza el href apenas llega. El reintento no es paranoia: lead-capture
+      // responde apenas recibe el POST, así que la fila en Baserow puede todavía no
+      // existir cuando preguntamos. Si no llega, el botón se queda con el link fijo
+      // de siempre — la ruta de pago no se rompe nunca por esto.
+      function pedirLinkDePago(intento) {
+        fetch('https://n8n.oacg.cl/webhook/link-pago-evaluacion', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({}, payload, { etiqueta: 'link pago evaluacion' }))
+        })
+          .then(r => r.ok ? r.json() : null)
+          .then(d => {
+            if (d && d.init_point) {
+              document.getElementById('payLink').href = d.init_point;
+              window.__payLinkPropio = true;
+            } else if (intento < 3) {
+              setTimeout(() => pedirLinkDePago(intento + 1), 2500);
+            }
+          })
+          .catch(() => { if (intento < 3) setTimeout(() => pedirLinkDePago(intento + 1), 2500); });
+      }
+      setTimeout(() => pedirLinkDePago(1), 1500);
 
       const waMsg = encodeURIComponent('Quiero confirmar mi evaluación P3 en Lumina\n\nNombre: ' + nombre + '\nCelular: ' + celular + '\nCorreo: ' + correo + '\nSede: ' + sede + '\nDisponibilidad: ' + disp);
       const waLink = document.getElementById('successWaLink');
