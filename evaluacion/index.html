@@ -1067,24 +1067,46 @@
       animation: scaleBounce 0.6s ease 0.3s both;
     }
 
-    /* La muestra del análisis y el botón, uno al lado del otro en escritorio. Al
-       apilarse en móvil la imagen queda ARRIBA por el orden del DOM: primero ve qué
-       recibe por los $27.990, después aprieta. */
+    /* Grid con áreas nombradas para poder ordenar distinto en cada pantalla sin duplicar
+       el contenido: en escritorio la imagen ocupa la columna izquierda y todo el texto va
+       a su derecha; en móvil se apila con el estado y el precio arriba (lo primero que
+       tiene que leer), la imagen en medio y el botón al final, pegado al pulgar. */
     .pay-fila {
-      display: flex;
-      flex-wrap: wrap;
-      /* En escritorio el botón se alinea con la BASE de la imagen, no con su centro:
-         centrado quedaba flotando en el aire al lado de una figura alta. Apilado en
-         móvil da lo mismo, porque cada uno ocupa su propia línea. */
-      align-items: flex-end;
-      justify-content: center;
-      gap: 1.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 460px);
+      grid-template-areas:
+        "title"
+        "price"
+        "nota"
+        "img"
+        "cta";
+      justify-items: center;
       animation: fadeUp 0.5s ease 0.5s both;
     }
 
+    .pay-fila>h2 {
+      grid-area: title;
+    }
+
+    .pay-fila>.pay-price {
+      grid-area: price;
+    }
+
+    .pay-fila>.pay-descuento {
+      grid-area: nota;
+    }
+
+    .pay-fila>.pay-muestra {
+      grid-area: img;
+    }
+
+    .pay-fila>.pay-btn {
+      grid-area: cta;
+    }
+
     .pay-muestra {
-      margin: 0;
-      width: 220px;
+      margin: 0 0 1.4rem;
+      width: 340px;
       max-width: 76vw;
     }
 
@@ -1170,6 +1192,39 @@
     .pay-wa-link:hover {
       color: rgba(255, 255, 255, 0.7);
       border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Escritorio: dos columnas. La imagen manda el alto y el bloque de texto queda
+       centrado a su derecha — las filas 1fr de arriba y abajo hacen ese centrado sin
+       tener que envolver el texto en otro div. */
+    @media (min-width: 769px) {
+      .pay-fila {
+        grid-template-columns: auto minmax(0, 460px);
+        grid-template-rows: 1fr auto auto auto auto 1fr;
+        grid-template-areas:
+          "img ."
+          "img title"
+          "img price"
+          "img nota"
+          "img cta"
+          "img .";
+        column-gap: 2.4rem;
+        justify-items: start;
+        align-items: center;
+      }
+
+      .pay-fila>.pay-muestra {
+        margin-bottom: 0;
+      }
+
+      .pay-fila>h2 {
+        text-align: left;
+        margin-bottom: 0.8rem;
+      }
+
+      .pay-fila>.pay-descuento {
+        margin-bottom: 1.6rem;
+      }
     }
 
     /* ===== MOBILE ===== */
@@ -1895,20 +1950,20 @@
 
   <!-- Payment Overlay — confirmación de costo de la evaluación P3 -->
   <div class="pay-overlay" id="payOverlay">
-    <h2>TU EVALUACIÓN P3 ESTÁ PENDIENTE DE PAGO PARA SER CONFIRMADA</h2>
-    <div class="pay-price">$27.990</div>
-    <!-- El descuento del plan ya se explica en #stepPrecio, dos pantallas antes. Acá,
-         con la tarjeta en la mano, lo que reduce la fricción es la seguridad del cobro. -->
-    <div class="pay-descuento">🔒 Pago seguro con MercadoPago</div>
-    <!-- Muestra QUÉ recibe por los $27.990, justo donde decide pagar. En escritorio va al
-         lado del botón; en móvil se apila arriba, porque en una columna de 390px ponerlos
-         lado a lado deja el botón demasiado angosto para el pulgar. -->
+    <!-- La muestra del análisis va junto al texto, no aparte: enseña QUÉ recibe por los
+         $27.990 justo donde decide pagar. El orden visual lo pone el grid (.pay-fila),
+         distinto en escritorio y en móvil; el del DOM es el de lectura. -->
     <div class="pay-fila">
       <figure class="pay-muestra">
         <img src="/evaluacion/img/analisis-ia.webp" alt="Ejemplo de análisis facial con IA de Protocolo Lumina"
           width="760" height="760" loading="lazy" decoding="async">
         <figcaption>Ana María Segovia · 52 años · Concón</figcaption>
       </figure>
+      <h2>TU EVALUACIÓN P3 ESTÁ PENDIENTE DE PAGO PARA SER CONFIRMADA</h2>
+      <div class="pay-price">$27.990</div>
+      <!-- El descuento del plan ya se explica en #stepPrecio, dos pantallas antes. Acá,
+           con la tarjeta en la mano, lo que reduce la fricción es la seguridad del cobro. -->
+      <div class="pay-descuento">🔒 Pago seguro con MercadoPago</div>
       <a class="pay-btn" id="payLink" href="https://mpago.la/2sofhq8" target="_blank" rel="noopener"
         onclick="handlePayClick()">Confirma y paga por MercadoPago<img class="pay-btn-logo"
           src="/evaluacion/img/mercadopago.webp" alt="" width="88" height="88" aria-hidden="true"></a>
@@ -2153,8 +2208,10 @@
           content_category: 'facial',
           clinica: 'lumina',
           sede: sedeKey,
-          value: 10,
-          currency: 'USD',
+          // Valor real del lead en pesos, la misma moneda que el Purchase de $27.990:
+          // así Meta optimiza sobre plata comparable y no sobre un número inventado.
+          value: 2000,
+          currency: 'CLP',
           content_ids: ['lumina_evaluacion_p3']
         }, { eventID: eventId });
       }
