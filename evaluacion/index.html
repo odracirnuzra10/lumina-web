@@ -1102,6 +1102,15 @@
       text-align: center;
     }
 
+    /* El logo va DESPUÉS del texto y decorativo: la frase ya nombra a MercadoPago, así
+       que repetirlo en el alt se lo leería dos veces a quien usa lector de pantalla. */
+    .pay-btn-logo {
+      height: 1.5em;
+      width: auto;
+      flex: none;
+      margin-left: 0.15rem;
+    }
+
     .pay-btn {
       display: inline-flex;
       align-items: center;
@@ -1898,7 +1907,8 @@
         <figcaption>Ana María Segovia · 52 años · Concón</figcaption>
       </figure>
       <a class="pay-btn" id="payLink" href="https://mpago.la/2sofhq8" target="_blank" rel="noopener"
-        onclick="handlePayClick()">Confirma y paga por MercadoPago</a>
+        onclick="handlePayClick()">Confirma y paga por MercadoPago<img class="pay-btn-logo"
+          src="/evaluacion/img/mercadopago.webp" alt="" width="88" height="88" aria-hidden="true"></a>
     </div>
     <a class="pay-wa-link" href="#" onclick="skipToWhatsapp(); return false;">Prefiero coordinar por WhatsApp</a>
   </div>
