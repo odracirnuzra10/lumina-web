@@ -1081,8 +1081,8 @@
 
     .pay-muestra {
       margin: 0;
-      width: 190px;
-      max-width: 60vw;
+      width: 270px;
+      max-width: 76vw;
     }
 
     .pay-muestra img {
@@ -1885,7 +1885,9 @@
   <div class="pay-overlay" id="payOverlay">
     <h2>TU EVALUACIÓN P3 ESTÁ PENDIENTE DE PAGO PARA SER CONFIRMADA</h2>
     <div class="pay-price">$27.990</div>
-    <div class="pay-descuento">Si contratas un plan, se descuenta del valor del plan.</div>
+    <!-- El descuento del plan ya se explica en #stepPrecio, dos pantallas antes. Acá,
+         con la tarjeta en la mano, lo que reduce la fricción es la seguridad del cobro. -->
+    <div class="pay-descuento">🔒 Pago seguro con MercadoPago</div>
     <!-- Muestra QUÉ recibe por los $27.990, justo donde decide pagar. En escritorio va al
          lado del botón; en móvil se apila arriba, porque en una columna de 390px ponerlos
          lado a lado deja el botón demasiado angosto para el pulgar. -->
@@ -1896,9 +1898,8 @@
         <figcaption>Ana María Segovia · 52 años · Concón</figcaption>
       </figure>
       <a class="pay-btn" id="payLink" href="https://mpago.la/2sofhq8" target="_blank" rel="noopener"
-        onclick="handlePayClick()">Confirmar y pagar</a>
+        onclick="handlePayClick()">Confirma y paga por MercadoPago</a>
     </div>
-    <div class="pay-note">🔒 Pago seguro con MercadoPago</div>
     <a class="pay-wa-link" href="#" onclick="skipToWhatsapp(); return false;">Prefiero coordinar por WhatsApp</a>
   </div>
 
