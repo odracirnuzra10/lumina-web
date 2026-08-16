@@ -1073,7 +1073,10 @@
     .pay-fila {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      /* En escritorio el botón se alinea con la BASE de la imagen, no con su centro:
+         centrado quedaba flotando en el aire al lado de una figura alta. Apilado en
+         móvil da lo mismo, porque cada uno ocupa su propia línea. */
+      align-items: flex-end;
       justify-content: center;
       gap: 1.4rem;
       animation: fadeUp 0.5s ease 0.5s both;
@@ -1081,7 +1084,7 @@
 
     .pay-muestra {
       margin: 0;
-      width: 270px;
+      width: 220px;
       max-width: 76vw;
     }
 
