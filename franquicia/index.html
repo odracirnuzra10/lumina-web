@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BLOQUEANTE DE PUBLICACIÓN — LEER ANTES DE INDEXAR
+     Esta página ofrece licenciar las marcas "Protocolo Lumina" y
+     "Método Hebe". Mientras no esté confirmada su inscripción en INAPI,
+     la página queda fuera de buscadores (franquicias.md §5.1).
+     Para publicar: cambiar el robots de abajo a "index, follow".
+     El tráfico de Meta Ads funciona igual con noindex.
+     ═══════════════════════════════════════════════════════════════════ -->
+<meta name="robots" content="noindex, nofollow">
+
+<title>Franquicias Protocolo Lumina — Opera tu propia clínica facial coreana</title>
+<meta name="description" content="Franquicia de estética facial y corporal en Chile. No es una licencia de marca: recibes los equipos, los protocolos, el software de gestión y la agencia de marketing incluidos mientras dures en la red. Inversión desde CLP 100 millones.">
+<meta name="author" content="Protocolo Lumina">
+<link rel="canonical" href="https://www.protocololumina.cl/franquicia">
+
+<meta property="og:title" content="Franquicias Protocolo Lumina — Opera tu propia clínica facial coreana">
+<meta property="og:description" content="No es una licencia de marca. Es la operación completa: equipos, protocolos, software de gestión y la agencia que te genera la demanda. Inversión desde CLP 100 millones.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.protocololumina.cl/franquicia">
+<meta property="og:site_name" content="Protocolo Lumina">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<script>document.documentElement.classList.add('js')</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- ═══ Google Tag Manager ═══ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TZC56NQ5');</script>
+
+<!-- ═══ Meta Pixel (no bloqueante, igual que el resto del sitio) ═══ -->
+<script>
+window.addEventListener('load',function(){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','271117138864148');fbq('track','PageView');
+});
+window.luminaTrack=function(n,p){
+  window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:n,clinica:'lumina'},p||{}));
+  if(typeof fbq!=='undefined')fbq('trackCustom',n,p||{});
+};
+window.luminaAttr=function(){try{var K='lumina_attr',s=window.sessionStorage,c=s.getItem(K);if(c)return JSON.parse(c);var q=new URLSearchParams(location.search),d={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(p){var v=q.get(p);if(v)d[p]=v});d.landing_page=location.pathname;d.landing_referrer=document.referrer||'';s.setItem(K,JSON.stringify(d));return d}catch(e){return{}}};window.luminaAttr();
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   PROTOCOLO LUMINA — FRANQUICIAS
+   Identidad tomada del sitio real (protocololumina.cl): rosa sobre
+   negro cálido, Playfair para el registro editorial y Sora para el
+   texto. Registro de documento de negocio, no de spa.
+   ═══════════════════════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  /* Paleta Protocolo Lumina */
+  --rose:#E8B4B8;--rose-deep:#C48B90;--rose-light:#F2CDD0;
+  /* Rosa oscurecido solo para texto sobre fondo claro (AA) */
+  --rose-ink:#96585E;--rose-em:#B4767E;
+  --void:#0E0E0E;--onyx:#141414;--onyx-2:#1C1A1A;
+  --cloud:#F0EEE9;--petal:#FBF6F4;--mid:#F4EEEB;
+  --ink:#1E1818;--ink-body:rgba(30,24,24,.78);--ink-subtle:rgba(30,24,24,.66);
+  --body-dark:rgba(240,238,233,.78);--subtle-dark:rgba(240,238,233,.56);
+  --rule:rgba(30,24,24,.13);--rule-2:rgba(30,24,24,.24);
+  --rule-dark:rgba(240,238,233,.13);
+  /* Oro tenue para el registro financiero */
+  --gold:#B08D57;--gold-ink:#7E6231;--gold-soft:#F5EFE4;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Sora',-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--petal);color:var(--ink);font-size:17px;line-height:1.75;font-weight:300;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+::selection{background:var(--rose-light);color:var(--void)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px)}
+.section{padding:clamp(64px,8vw,116px) 0;position:relative}
+.section--rule{border-top:1px solid var(--rule)}
+.tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.005em}
+h1 em,h2 em{font-style:italic;color:var(--rose-em)}
+p{color:var(--ink-body)}
+
+.eyebrow{display:block;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:3.4px;text-transform:uppercase;color:var(--rose-ink);margin-bottom:20px}
+.eyebrow--dark{color:var(--rose)}
+
+/* ── Encabezado de sección: estrella + índice, como el logo ── */
+.shead{margin-bottom:clamp(34px,4.4vw,56px);max-width:900px}
+.shead-ix{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.shead-ix svg{width:11px;height:17px;flex-shrink:0}
+.shead-ix span{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:3.4px;text-transform:uppercase;color:var(--rose-ink)}
+.slab .shead-ix span{color:var(--rose)}
+.shead h2{font-size:clamp(30px,4.6vw,54px)}
+.shead-sub{font-size:clamp(15.5px,1.5vw,17px);color:var(--ink-subtle);line-height:1.72;margin-top:22px;max-width:640px;font-weight:300}
+.slab .shead h2{color:var(--cloud)}
+.slab .shead h2 em{color:var(--rose)}
+.slab .shead-sub{color:var(--subtle-dark)}
+
+/* ── CTA — el rosa está reservado para esto ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--void);background:var(--rose);border:none;padding:19px 44px;transition:background .3s,transform .2s;text-align:center;line-height:1.2}
+.btn:hover{background:var(--rose-deep);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn--nav{padding:13px 26px;font-size:10px;letter-spacing:1.8px}
+.slab .btn:focus-visible{outline-color:var(--rose)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px}
+.slab a:focus-visible,.foot a:focus-visible{outline-color:var(--rose)}
+.cta-block{margin-top:36px}
+.cta-micro{font-size:12.5px;color:var(--ink-subtle);margin-top:16px;line-height:1.6;letter-spacing:.2px}
+.slab .cta-micro,.hero .cta-micro,.form-sec .cta-micro{color:var(--subtle-dark)}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:900;background:rgba(14,14,14,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,180,184,.1);padding:14px 0;transition:box-shadow .3s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:16px}
+.nav-logo svg{height:56px;width:auto}
+.nav-tag{font-size:9.5px;letter-spacing:3.2px;text-transform:uppercase;color:var(--subtle-dark);padding-left:16px;border-left:1px solid var(--rule-dark)}
+.nav-r{display:flex;align-items:center;gap:24px}
+.nav-back{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--subtle-dark);transition:color .3s}
+.nav-back:hover{color:var(--rose)}
+
+/* ── HERO — oscuro, como el del sitio ── */
+.hero{background:var(--void);color:var(--cloud);position:relative;overflow:hidden;padding:clamp(64px,8vw,116px) 0 0}
+.hero-kr{position:absolute;top:-2%;right:-3%;font-family:var(--sans);font-size:clamp(150px,26vw,380px);font-weight:300;color:var(--rose);opacity:.045;letter-spacing:-.02em;pointer-events:none;user-select:none;line-height:1}
+.hero .wrap{position:relative;z-index:1}
+.hero-star{margin-bottom:26px}
+.hero-star svg{width:19px;height:29px}
+.hero h1{font-size:clamp(36px,6vw,72px);color:var(--cloud);max-width:15ch;margin-bottom:28px;line-height:1.08}
+.hero h1 em{color:var(--rose)}
+.hero-sub{font-size:clamp(16px,1.7vw,19px);color:var(--body-dark);line-height:1.7;max-width:620px;font-weight:300}
+.hero-sub b{color:var(--cloud);font-weight:400}
+
+/* Micro-prueba */
+.proofbar{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-dark);margin-top:clamp(52px,6vw,88px)}
+.proof{padding:30px 34px 0 0;border-right:1px solid var(--rule-dark)}
+.proof:last-child{border-right:none;padding-right:0}
+.proof:not(:first-child){padding-left:34px}
+.proof-k{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1;color:var(--rose);display:block;margin-bottom:14px}
+.proof-t{font-size:13.5px;color:var(--cloud);font-weight:400;line-height:1.45;letter-spacing:.2px}
+.proof-d{font-size:13px;color:var(--subtle-dark);line-height:1.6;margin-top:6px;font-weight:300}
+
+/* ── §01 Dato duro ── */
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,60px);align-items:end}
+.fig{border-top:1px solid var(--rule-2);padding-top:26px}
+.fig-v{font-family:var(--serif);font-size:clamp(44px,7.6vw,90px);line-height:.96;color:var(--ink);display:block;letter-spacing:-.02em}
+.fig-u{font-size:10px;letter-spacing:3.2px;text-transform:uppercase;color:var(--rose-ink);font-weight:500;display:block;margin-top:16px}
+.fig-l{font-size:15px;color:var(--ink-subtle);line-height:1.65;margin-top:14px;max-width:340px;font-weight:300}
+.note{border-left:1px solid var(--gold);background:var(--gold-soft);padding:24px 28px;margin-top:clamp(34px,4vw,50px);max-width:780px}
+.note p{font-size:15px;color:var(--ink-body);line-height:1.7;font-weight:300}
+.note b{color:var(--ink);font-weight:500}
+.sedes{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);margin-top:clamp(38px,4.6vw,58px)}
+.sede{padding:26px 26px 0 0;border-right:1px solid var(--rule)}
+.sede:last-child{border-right:none;padding-right:0}
+.sede:not(:first-child){padding-left:26px}
+.sede-n{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);color:var(--ink);line-height:1.2}
+.sede-d{font-size:12.5px;color:var(--ink-subtle);margin-top:8px;letter-spacing:.3px;font-weight:300}
+
+/* ── §02 Modalidades ── */
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);align-items:stretch}
+.mod{background:var(--mid);padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;position:relative;border:1px solid transparent;transition:border-color .3s,transform .3s}
+.mod:hover{border-color:var(--rule-2);transform:translateY(-2px)}
+.mod--best{background:var(--void);border-color:var(--void)}
+.mod--best:hover{border-color:var(--void)}
+.mod-flag{position:absolute;top:-1px;right:clamp(26px,3vw,36px);background:var(--rose);color:var(--void);font-size:9px;letter-spacing:2.4px;text-transform:uppercase;font-weight:500;padding:7px 14px}
+.mod-k{font-size:9.5px;letter-spacing:3.2px;text-transform:uppercase;color:var(--ink-subtle);font-weight:500;margin-bottom:14px}
+.mod--best .mod-k{color:var(--subtle-dark)}
+.mod h3{font-size:clamp(22px,2.4vw,28px);margin-bottom:12px;color:var(--ink)}
+.mod--best h3{color:var(--cloud)}
+.mod-d{font-size:14.5px;color:var(--ink-subtle);line-height:1.65;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:22px;font-weight:300}
+.mod--best .mod-d{color:var(--body-dark);border-color:var(--rule-dark)}
+.mod-count{font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--rose-ink);font-weight:500;margin-bottom:14px}
+.mod--best .mod-count{color:var(--rose)}
+.mod-eq{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
+.mod-eq span{font-size:12.5px;color:var(--ink-body);background:var(--petal);padding:7px 12px;line-height:1.2;font-weight:300}
+.mod--best .mod-eq span{background:rgba(240,238,233,.07);color:var(--body-dark)}
+.mod-note{font-size:13px;color:var(--ink-subtle);line-height:1.6;margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);font-weight:300}
+.mod--best .mod-note{color:var(--subtle-dark);border-color:var(--rule-dark)}
+
+/* Franja de "incluido en las tres" */
+.incl{margin-top:clamp(26px,3vw,36px);border:1px solid var(--rule);padding:clamp(26px,3vw,38px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(26px,3.4vw,48px);align-items:center;background:var(--mid)}
+.incl>*{min-width:0}
+.incl-k{font-size:9.5px;letter-spacing:3.2px;text-transform:uppercase;color:var(--rose-ink);font-weight:500;margin-bottom:14px}
+.incl p{font-size:15.5px;color:var(--ink-body);line-height:1.7;max-width:560px;font-weight:300}
+.incl p b{color:var(--ink);font-weight:500}
+.incl-logos{display:flex;align-items:center;gap:clamp(20px,2.6vw,32px);flex-shrink:0;flex-wrap:wrap;min-width:0}
+
+/* Logos de partner. Clinera trae variante clara y oscura; Metricads es un
+   tile opaco que se lee sobre cualquiera de las dos superficies. */
+.brandmark{height:30px;width:auto;flex-shrink:0}
+.brandmark--tile{height:40px;width:40px;border-radius:9px}
+
+/* Precio */
+.price{margin-top:clamp(26px,3vw,36px);border-top:1px solid var(--rule);padding-top:clamp(26px,3vw,34px);display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 24px}
+.price-v{font-family:var(--serif);font-size:clamp(27px,3.6vw,42px);color:var(--ink);line-height:1.15;letter-spacing:-.015em}
+.price-d{font-size:14px;color:var(--ink-subtle);max-width:460px;line-height:1.6;font-weight:300}
+
+/* ── §03 Acompañamiento — el bloque de mayor peso ── */
+.slab{background:var(--void);color:var(--cloud);position:relative;overflow:hidden}
+.slab-kr{position:absolute;bottom:-4%;left:-2%;font-family:var(--sans);font-size:clamp(140px,22vw,320px);font-weight:300;color:var(--rose);opacity:.04;pointer-events:none;user-select:none;line-height:1}
+.slab>.wrap{position:relative;z-index:1}
+.slab-lead b{color:var(--cloud);font-weight:400}
+
+.blk{margin-top:clamp(48px,5.6vw,80px)}
+.blk-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding-bottom:20px;border-bottom:1px solid var(--rule-dark);margin-bottom:clamp(26px,3.2vw,38px)}
+.blk-h h3{font-size:clamp(22px,2.6vw,32px);color:var(--cloud)}
+.blk-h span{font-size:12px;color:var(--subtle-dark);letter-spacing:1.6px;text-transform:uppercase;font-weight:300}
+
+/* Antes de abrir */
+.pre{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(30px,4.4vw,68px)}
+.pre-i{display:grid;grid-template-columns:36px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--rule-dark);align-items:start}
+.pre-n{font-family:var(--serif);font-size:17px;color:var(--rose);line-height:1.5;font-variant-numeric:tabular-nums}
+.pre-t{font-size:15.5px;font-weight:400;color:var(--cloud);line-height:1.45;letter-spacing:.1px}
+.pre-d{font-size:14px;color:var(--body-dark);line-height:1.65;margin-top:7px;font-weight:300}
+
+/* Operando */
+.ops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.op{background:var(--onyx-2);padding:clamp(26px,3vw,36px);display:flex;flex-direction:column}
+.op-logo{height:48px;display:flex;align-items:center;margin-bottom:24px}
+.op-logo .brandmark{height:34px}
+.op-logo .brandmark--tile{height:46px;width:46px;border-radius:10px}
+.op-badge{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:9.5px;letter-spacing:2.6px;text-transform:uppercase;font-weight:500;color:var(--rose);border:1px solid rgba(232,180,184,.3);padding:7px 13px;margin-bottom:18px}
+.op-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.op h4{font-family:var(--serif);font-size:clamp(19px,2vw,23px);font-weight:400;color:var(--cloud);margin-bottom:12px;line-height:1.25}
+.op p{font-size:14.5px;color:var(--body-dark);line-height:1.68;font-weight:300}
+.op-fine{font-size:13px;color:var(--subtle-dark);line-height:1.6;margin-top:18px;padding-top:18px;border-top:1px solid var(--rule-dark)}
+.op--plain{background:transparent;border:1px dashed var(--rule-dark);grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.46fr) minmax(0,1fr);gap:clamp(14px,3vw,40px);align-items:center;padding:clamp(22px,2.4vw,28px) clamp(26px,3vw,36px)}
+.op--plain h4{margin-bottom:0}
+.op--plain p{color:var(--subtle-dark)}
+
+.contrast{margin-top:clamp(30px,3.6vw,44px);border-left:1px solid var(--rose);padding:8px 0 8px 26px;max-width:780px}
+.contrast p{font-size:clamp(15px,1.6vw,17px);color:var(--body-dark);line-height:1.72;font-weight:300}
+.contrast b{color:var(--cloud);font-weight:400}
+
+/* ── §04 Payback ── */
+.pay{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,4vw,60px);align-items:end}
+.pay .fig-v{font-size:clamp(40px,6.6vw,78px)}
+.honest{margin-top:clamp(38px,4.6vw,58px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(30px,4.4vw,60px);border-top:1px solid var(--rule)}
+.honest-i{padding:26px 0;border-bottom:1px solid var(--rule)}
+.honest-k{display:inline-flex;align-items:center;gap:9px;font-size:9.5px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold-ink);margin-bottom:12px}
+.honest-k::before{content:'';width:16px;height:1px;background:var(--gold)}
+.honest-i h4{font-family:var(--serif);font-size:19px;font-weight:400;margin-bottom:10px;line-height:1.35;color:var(--ink)}
+.honest-i p{font-size:14.5px;color:var(--ink-subtle);line-height:1.65;font-weight:300}
+
+/* ── §05 Qué se paga cada mes ── */
+.pays{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.4vw,28px);align-items:start}
+.paycard{padding:clamp(26px,3vw,36px);border:1px solid var(--rule);background:var(--mid)}
+.paycard--in{background:var(--void);border-color:var(--void)}
+.paycard-k{font-size:9.5px;letter-spacing:3.2px;text-transform:uppercase;font-weight:500;color:var(--ink-subtle);padding-bottom:20px;border-bottom:1px solid var(--rule);margin-bottom:6px}
+.paycard--in .paycard-k{color:var(--rose);border-color:var(--rule-dark)}
+.li{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline}
+.li:last-child{border-bottom:none;padding-bottom:0}
+.paycard--in .li{border-color:var(--rule-dark)}
+.li-t{font-size:15.5px;font-weight:400;line-height:1.4;color:var(--ink)}
+.li-d{font-size:13.5px;color:var(--ink-subtle);line-height:1.6;margin-top:7px;grid-column:1/-1;font-weight:300}
+.paycard--in .li-t{color:var(--cloud)}
+.paycard--in .li-d{color:var(--body-dark)}
+.li-v{font-family:var(--serif);font-size:clamp(23px,2.6vw,32px);color:var(--ink);white-space:nowrap;line-height:1}
+.li-v--txt{font-family:var(--sans);font-size:13.5px;font-weight:400;color:var(--ink-subtle);letter-spacing:.4px}
+.paycard--in .li-v{color:var(--rose)}
+.pay-why{margin-top:clamp(26px,3vw,36px);max-width:820px}
+.pay-why p{font-size:15.5px;color:var(--ink-body);line-height:1.72;font-weight:300}
+.pay-why b{color:var(--ink);font-weight:500}
+
+/* ── §06 Territorio ── */
+.terr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,4.4vw,68px);align-items:start}
+.terr-lead{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);line-height:1.35;color:var(--ink);max-width:460px}
+.terr p{font-size:15px;color:var(--ink-subtle);line-height:1.72;font-weight:300}
+.terr p+p{margin-top:16px}
+
+/* ── §07 Formulario ── */
+.form-sec{background:var(--void);color:var(--cloud);position:relative;overflow:hidden}
+.form-sec>.wrap{position:relative;z-index:1}
+.form-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(34px,5vw,76px);align-items:start}
+.form-side h2{font-size:clamp(30px,4.4vw,50px);color:var(--cloud);margin-bottom:22px}
+.form-side h2 em{color:var(--rose)}
+.form-side>p{font-size:clamp(15.5px,1.6vw,17.5px);color:var(--body-dark);line-height:1.7;max-width:440px;font-weight:300}
+.form-tr{margin-top:clamp(28px,3.2vw,38px);border-top:1px solid var(--rule-dark)}
+.form-tr div{padding:16px 0;border-bottom:1px solid var(--rule-dark);font-size:14px;color:var(--body-dark);display:flex;align-items:center;gap:12px;font-weight:300}
+.form-tr svg{color:var(--rose);flex-shrink:0}
+form{background:var(--onyx-2);padding:clamp(26px,3.2vw,42px)}
+.f{margin-bottom:20px}
+.f label{display:block;font-size:9.5px;font-weight:500;letter-spacing:2.6px;text-transform:uppercase;color:var(--subtle-dark);margin-bottom:9px}
+.f input,.f select{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule-dark);padding:12px 0;font-size:16px;color:var(--cloud);transition:border-color .3s;appearance:none;font-weight:300;border-radius:0}
+.f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23E8B4B8' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center;padding-right:28px;cursor:pointer}
+.f select option{background:var(--onyx);color:var(--cloud)}
+.f input::placeholder{color:rgba(240,238,233,.38)}
+.f input:focus,.f select:focus{outline:none;border-bottom-color:var(--rose)}
+.f-hint{font-size:12px;color:var(--subtle-dark);margin-top:9px;line-height:1.5;font-weight:300}
+form .btn{width:100%;margin-top:10px}
+.form-micro{font-size:12px;color:var(--subtle-dark);text-align:center;margin-top:16px;line-height:1.6;font-weight:300}
+.form-ok{display:none;border-left:1px solid var(--rose);background:rgba(232,180,184,.09);padding:18px 22px;font-size:14px;color:var(--body-dark);line-height:1.6;margin-bottom:22px;font-weight:300}
+.form-ok.on{display:block}
+
+/* ── Footer ── */
+.foot{background:var(--onyx);border-top:1px solid rgba(232,180,184,.06);padding:clamp(44px,5vw,66px) 0 30px}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;align-items:flex-start;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.04)}
+.foot-top svg{height:58px;width:auto}
+.foot-c{font-size:13.5px;color:var(--body-dark);line-height:1.85;font-weight:300}
+.foot-c a{border-bottom:1px solid var(--rule-dark)}
+.foot-c a:hover{color:var(--rose);border-color:var(--rose)}
+.foot-legal{font-size:12px;line-height:1.7;margin-top:28px;max-width:820px;color:var(--subtle-dark);font-weight:300}
+.foot-bottom{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.foot-copy{font-size:10px;color:var(--subtle-dark);letter-spacing:1px}
+.foot-kr{font-size:10px;color:var(--rose);opacity:.3;letter-spacing:4px}
+
+/* ── Sticky CTA mobile ── */
+.sticky{display:none;position:fixed;left:0;right:0;bottom:0;z-index:950;background:rgba(14,14,14,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(232,180,184,.22);padding:11px 20px calc(13px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.sticky.on{transform:translateY(0)}
+.sticky .btn{width:100%;max-width:420px;margin:0 auto;padding:16px 22px}
+.sticky-t{font-size:10px;color:var(--subtle-dark);text-align:center;margin-top:8px;letter-spacing:.6px}
+
+/* ── Reveal ── */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .btn:hover{transform:none}
+}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .mods{grid-template-columns:1fr;gap:24px}
+  .mod--best{order:-1}
+  .incl{grid-template-columns:1fr;gap:26px}
+  .ops{grid-template-columns:1fr}
+  .terr{grid-template-columns:1fr;gap:24px}
+  .form-grid{grid-template-columns:1fr;gap:38px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .nav-tag,.nav-back{display:none}
+  .nav-logo svg{height:46px}
+  .proofbar,.sedes{grid-template-columns:1fr;margin-top:40px}
+  .proof,.sede{border-right:none;border-bottom:1px solid var(--rule-dark);padding:22px 0}
+  .proof:not(:first-child),.sede:not(:first-child){padding-left:0}
+  .proof:last-child,.sede:last-child{border-bottom:none}
+  .sede{border-bottom-color:var(--rule)}
+  .figs,.pay{grid-template-columns:1fr;gap:34px}
+  .pre,.honest,.pays{grid-template-columns:1fr}
+  .op--plain{grid-template-columns:1fr;gap:10px}
+  .li{grid-template-columns:1fr;gap:8px}
+  .li-v{font-size:26px}
+  .incl-logos{gap:18px}
+  .brandmark{height:28px}
+  .brandmark--tile{height:38px;width:38px}
+  .sticky{display:block}
+  body{padding-bottom:82px}
+  .btn{width:100%}
+  .nav .btn--nav{width:auto}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZC56NQ5" height="0" width="0" style="display:none;visibility:hidden" title="GTM"></iframe></noscript>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="star4" viewBox="0 0 24 36"><path d="M12 0C12.8 10 14 12 24 18C14 24 12.8 26 12 36C11.2 26 10 24 0 18C10 12 11.2 10 12 0Z"/></symbol>
+</svg>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav" aria-label="Navegación">
+  <div class="wrap">
+    <a href="/" class="nav-logo" aria-label="Protocolo Lumina — Inicio">
+      <svg width="108" height="56" viewBox="0 0 360 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Protocolo Lumina">
+        <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.4" letter-spacing="4">아름다움</text>
+        <use href="#star4" x="168" y="44" width="24" height="36" fill="#E8B4B8"/>
+        <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#F0EEE9" font-weight="500" letter-spacing="3">lumina</text>
+        <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="11" fill="#F0EEE9" opacity="0.3" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
+      </svg>
+      <span class="nav-tag">Franquicias</span>
+    </a>
+    <div class="nav-r">
+      <a href="/" class="nav-back">Ir al sitio de pacientes</a>
+      <a href="#solicitud" class="btn btn--nav" data-cro="primary-cta" data-loc="nav" data-cta-label>Agenda una conversación</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" data-cro="hero">
+  <div class="hero-kr" aria-hidden="true">빛</div>
+  <div class="wrap">
+    <span class="eyebrow eyebrow--dark">Franquicias Protocolo Lumina</span>
+    <div class="hero-star" aria-hidden="true"><svg viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg></div>
+    <h1 data-cro="hero-headline">Opera tu propia clínica facial con un protocolo que <em>ya funciona</em></h1>
+    <p class="hero-sub">No es una licencia de marca. Es la operación completa: los equipos, los protocolos clínicos, el software con el que se gestiona la clínica y la agencia que te genera la demanda. <b>Todo dentro de la franquicia, no como extras.</b></p>
+    <div class="cta-block">
+      <a href="#solicitud" class="btn" data-cro="primary-cta" data-loc="hero" data-cta-label>Agenda una conversación</a>
+      <p class="cta-micro" data-cta-micro>Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas</p>
+    </div>
+
+    <div class="proofbar">
+      <div class="proof">
+        <span class="proof-k tnum">3</span>
+        <div class="proof-t">Sedes propias en operación</div>
+        <div class="proof-d">Vitacura, Concón y Los Ángeles. Nuestras, no de terceros.</div>
+      </div>
+      <div class="proof">
+        <span class="proof-k tnum">≈60</span>
+        <div class="proof-t">Personas trabajando en la red</div>
+        <div class="proof-d">Equipo clínico, comercial y de operaciones ya en marcha.</div>
+      </div>
+      <div class="proof">
+        <span class="proof-k">Propia</span>
+        <div class="proof-t">Operación real, no un manual</div>
+        <div class="proof-d">Cada protocolo que recibes se ejecuta hoy en nuestras sedes.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ 01 · EL DATO ═══ -->
+<section class="section" id="dato" data-section="dato">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>01 · El dato que sostiene todo</span></div>
+      <h2>Partamos por el número, no por el <em>discurso</em></h2>
+      <p class="shead-sub">Este es el dato de operación de una sede propia de Método Hebe, la marca corporal del grupo que opera dentro de las mismas sedes que Lumina. No es una proyección de plan de negocios.</p>
+    </div>
+
+    <div class="figs rv">
+      <div class="fig">
+        <span class="fig-v tnum">$25.000.000</span>
+        <span class="fig-u">CLP por mes</span>
+        <p class="fig-l">Facturación promedio mensual de una sede propia de Método Hebe.</p>
+      </div>
+      <div class="fig">
+        <span class="fig-v tnum">36%</span>
+        <span class="fig-u">Margen operativo aproximado</span>
+        <p class="fig-l">Margen operativo cercano al 36% sobre esa misma operación.</p>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <p><b>Con una aclaración que te debemos:</b> esa es una sede madura. Una sede nueva no parte en ese nivel — tiene una curva de maduración por delante. Por eso más abajo te mostramos el payback con la rampa declarada y no con el mejor escenario posible.</p>
+    </div>
+
+    <div class="sedes rv">
+      <div class="sede"><div class="sede-n">Vitacura</div><div class="sede-d">Santiago</div></div>
+      <div class="sede"><div class="sede-n">Concón</div><div class="sede-d">Región de Valparaíso</div></div>
+      <div class="sede"><div class="sede-n">Los Ángeles</div><div class="sede-d">Región del Biobío</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 · MODALIDADES ═══ -->
+<section class="section section--rule" id="modalidades" data-section="modalidades">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>02 · Las tres modalidades</span></div>
+      <h2>Tres formas de entrar a la <em>red</em></h2>
+      <p class="shead-sub">Puedes operar solo estética facial, solo estética corporal, o las dos marcas en un mismo local. Las tres son franquicias completas: cambia el alcance, no el acompañamiento.</p>
+    </div>
+
+    <div class="mods rv">
+      <article class="mod">
+        <div class="mod-k">Estética facial</div>
+        <h3>Solo Protocolo Lumina</h3>
+        <p class="mod-d">La marca facial de la red, con sus cuatro equipos.</p>
+        <div class="mod-count">4 equipos</div>
+        <div class="mod-eq">
+          <span>Endojiwoo</span><span>CUKY HIFU</span><span>FacialKM</span><span>Kimi Face</span>
+        </div>
+        <p class="mod-note">Operas solo la línea facial, bajo la marca Protocolo Lumina.</p>
+      </article>
+
+      <article class="mod mod--best">
+        <div class="mod-flag">Recomendada</div>
+        <div class="mod-k">Facial + corporal</div>
+        <h3>Ambas marcas</h3>
+        <p class="mod-d">Las dos operaciones en un mismo local: estética facial y estética corporal, con los nueve equipos.</p>
+        <div class="mod-count">9 equipos</div>
+        <div class="mod-eq">
+          <span>Endojiwoo</span><span>CUKY HIFU</span><span>FacialKM</span><span>Kimi Face</span><span>iZed</span><span>HIFU</span><span>CarboxCK</span><span>CrioDD</span><span>inBody</span>
+        </div>
+        <p class="mod-note">Es la que recomendamos: las dos marcas ya conviven así en nuestras sedes propias.</p>
+      </article>
+
+      <article class="mod">
+        <div class="mod-k">Estética corporal</div>
+        <h3>Solo Método Hebe</h3>
+        <p class="mod-d">La marca hermana, con la que partió la red y la que sostiene el dato de arriba.</p>
+        <div class="mod-count">5 equipos</div>
+        <div class="mod-eq">
+          <span>iZed</span><span>HIFU</span><span>CarboxCK</span><span>CrioDD</span><span>inBody</span>
+        </div>
+        <p class="mod-note">Operas solo la línea corporal, bajo la marca Método Hebe.</p>
+      </article>
+    </div>
+
+    <div class="incl rv">
+      <div>
+        <div class="incl-k">Incluido en las tres modalidades</div>
+        <p>Durante <b>toda la vigencia de la franquicia y sin costo adicional</b>: el software de gestión Clinera y la gestión de marketing de Metricads. Más 3 meses de capacitación en el modelo de negocio antes de abrir.</p>
+      </div>
+      <div class="incl-logos">
+        <img class="brandmark" src="/img/logo-clinera.png" alt="Clinera" width="640" height="149" loading="lazy" decoding="async">
+        <img class="brandmark brandmark--tile" src="/img/logo-metricads.png" alt="Metricads" width="225" height="225" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <div class="price rv">
+      <span class="price-v tnum">Inversión desde CLP 100 millones</span>
+      <span class="price-d">El monto de cada modalidad y el detalle del paquete los vemos en la reunión, con tu zona y tu escenario sobre la mesa.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 · ACOMPAÑAMIENTO — el bloque central de la página ═══ -->
+<section class="section slab" id="acompanamiento" data-section="acompanamiento" data-cro="acompanamiento">
+  <div class="slab-kr" aria-hidden="true">규약</div>
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg><span>03 · Acompañamiento punta a punta</span></div>
+      <h2>La franquicia no termina el día que <em>abres</em></h2>
+      <p class="shead-sub slab-lead">La objeción real no es si el modelo funciona — el número de arriba responde eso. La objeción real es si te acompañan después de firmar. Acá está, punto por punto, <b>lo que recibes antes de abrir y lo que sigues recibiendo mientras operes.</b></p>
+    </div>
+
+    <!-- ── Antes de abrir ── -->
+    <div class="blk rv">
+      <div class="blk-h">
+        <h3>Antes de abrir</h3>
+        <span>Seis frentes que resolvemos contigo</span>
+      </div>
+      <div class="pre">
+        <div class="pre-i">
+          <span class="pre-n">01</span>
+          <div>
+            <div class="pre-t">Importación de los equipos</div>
+            <p class="pre-d">Traemos los equipos con todos sus trámites, gestionados de punta a punta. No tienes que aprender de importación.</p>
+          </div>
+        </div>
+        <div class="pre-i">
+          <span class="pre-n">02</span>
+          <div>
+            <div class="pre-t">Permisos y autorización sanitaria</div>
+            <p class="pre-d">Gestionamos los permisos y la autorización sanitaria del local. La marca aporta hasta $500.000 de ese costo.</p>
+          </div>
+        </div>
+        <div class="pre-i">
+          <span class="pre-n">03</span>
+          <div>
+            <div class="pre-t">Local, distribución y decoración</div>
+            <p class="pre-d">Asesoría para elegir el local, definir cómo se distribuye por dentro y resolver su decoración.</p>
+          </div>
+        </div>
+        <div class="pre-i">
+          <span class="pre-n">04</span>
+          <div>
+            <div class="pre-t">Capacitación en protocolos clínicos</div>
+            <p class="pre-d">Los mismos protocolos que se ejecutan hoy en nuestras sedes, enseñados a tu equipo.</p>
+          </div>
+        </div>
+        <div class="pre-i">
+          <span class="pre-n">05</span>
+          <div>
+            <div class="pre-t">Capacitación del equipo de ventas</div>
+            <p class="pre-d">Cómo se cierra una venta en este rubro. Tu equipo comercial entrenado antes de abrir la puerta.</p>
+          </div>
+        </div>
+        <div class="pre-i">
+          <span class="pre-n">06</span>
+          <div>
+            <div class="pre-t">Capacitación en el modelo de negocio</div>
+            <p class="pre-d">Tres meses de formación en el modelo con el que opera la red, no un manual entregado el primer día.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Operando ── -->
+    <div class="blk rv">
+      <div class="blk-h">
+        <h3>Operando — para siempre, no por unos meses</h3>
+        <span>Mientras dure la franquicia</span>
+      </div>
+
+      <div class="ops">
+        <article class="op">
+          <div class="op-logo"><img class="brandmark" src="/img/logo-clinera-blanco.png" alt="Clinera" width="640" height="149" loading="lazy" decoding="async"></div>
+          <span class="op-badge">Incluido mientras dure la franquicia</span>
+          <h4>El sistema con el que se gestiona tu clínica</h4>
+          <p>Clinera es la agenda, la ficha del paciente y el punto de venta de la clínica. Va incluido, sin costo de licencia, todo el tiempo que estés en la red.</p>
+          <p class="op-fine">Lo único que pagas aparte son los créditos de IA que consumas por sobre tu plan.</p>
+        </article>
+
+        <article class="op">
+          <div class="op-logo"><img class="brandmark brandmark--tile" src="/img/logo-metricads.png" alt="Metricads" width="225" height="225" loading="lazy" decoding="async"></div>
+          <span class="op-badge">Incluido mientras dure la franquicia</span>
+          <h4>La agencia que te genera la demanda</h4>
+          <p>Metricads gestiona tu marketing digital sin fee de gestión. Tú pones la pauta publicitaria; la gestión de esa pauta va incluida en la franquicia.</p>
+          <p class="op-fine">Es la agencia del grupo, fundada en 2017. No es un proveedor que tengas que salir a buscar.</p>
+        </article>
+
+        <!-- TODO: ampliar soporte recurrente cuando esté definido -->
+        <article class="op op--plain">
+          <h4>Protocolos y actualizaciones de la red</h4>
+          <p>Lo que la red va incorporando, llega a tu sede.</p>
+        </article>
+      </div>
+
+      <div class="contrast">
+        <p>La mayoría de las franquicias te incluye el software y el marketing unos meses y después te los cobra aparte. <b>Acá van incluidos mientras dures en la red.</b> Eso es lo que convierte el royalty en acceso a un sistema, y no en un peaje por usar un logo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA intermedio -->
+<section class="section" style="padding-top:clamp(48px,5.4vw,72px);padding-bottom:clamp(48px,5.4vw,72px)">
+  <div class="wrap" style="text-align:center">
+    <a href="#solicitud" class="btn" data-cro="primary-cta" data-loc="post_acompanamiento" data-cta-label>Agenda una conversación</a>
+    <p class="cta-micro" data-cta-micro>Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas</p>
+  </div>
+</section>
+
+<!-- ═══ 04 · PAYBACK ═══ -->
+<section class="section section--rule" id="payback" data-section="payback">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>04 · Cómo se recupera la inversión</span></div>
+      <h2>El payback, con las advertencias <em>puestas</em></h2>
+      <p class="shead-sub">Un candidato serio desconfía de la proyección optimista, y hace bien. Preferimos darte el rango honesto y decirte qué lo mueve.</p>
+    </div>
+
+    <div class="pay rv">
+      <div class="fig">
+        <span class="fig-v tnum">23–34</span>
+        <span class="fig-u">Meses de payback estimado</span>
+        <p class="fig-l">Para el paquete completo. El rango se mueve según cómo se estructure la operación.</p>
+      </div>
+      <div class="fig">
+        <span class="fig-v tnum">≈30</span>
+        <span class="fig-u">Meses · referencia del sector</span>
+        <p class="fig-l">Lo que tarda en recuperarse, en torno, una franquicia de servicios.</p>
+      </div>
+    </div>
+
+    <div class="honest rv">
+      <div class="honest-i">
+        <div class="honest-k">La rampa</div>
+        <h4>Una sede nueva no factura desde el mes 1 como una sede madura</h4>
+        <p>Toma meses llegar al nivel de referencia que viste arriba, y ese tramo hay que financiarlo. Cualquiera que te diga lo contrario te está vendiendo otra cosa.</p>
+      </div>
+      <div class="honest-i">
+        <div class="honest-k">La inversión total</div>
+        <h4>No es solo el fee de la franquicia</h4>
+        <p>Al monto de la franquicia hay que sumarle el local, su habilitación y el capital de trabajo. Ese es el número que importa cuando calculas tu retorno.</p>
+      </div>
+      <div class="honest-i">
+        <div class="honest-k">Por qué te lo decimos así</div>
+        <h4>Porque el candidato que nos sirve hace este cálculo antes de firmar</h4>
+        <p>Si el número no te calza, preferimos saberlo en la primera conversación y no después de que hayas puesto la plata.</p>
+      </div>
+      <div class="honest-i">
+        <div class="honest-k">Lo que no vas a encontrar acá</div>
+        <h4>Ni plazos de apertura ni retornos garantizados</h4>
+        <p>El rango de payback es una estimación sobre una operación real, no una promesa. El resultado de tu sede depende también de cómo la operes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 · QUÉ SE PAGA CADA MES ═══ -->
+<section class="section section--rule" id="pagos" data-section="pagos">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>05 · Qué se paga cada mes</span></div>
+      <h2>El único cobro de la marca es el <em>royalty</em></h2>
+      <p class="shead-sub">Todo lo demás o va incluido, o es inversión que va directo a generar tus propios pacientes. Esto es todo lo que sale de tu caja cada mes.</p>
+    </div>
+
+    <div class="pays rv">
+      <div class="paycard">
+        <div class="paycard-k">Lo que pagas cada mes</div>
+        <div class="li">
+          <div class="li-t">Royalty</div>
+          <div class="li-v tnum">5%</div>
+          <p class="li-d">Sobre la venta bruta. Es el único cobro que hace la marca.</p>
+        </div>
+        <div class="li">
+          <div class="li-t">Inversión publicitaria</div>
+          <div class="li-v tnum">$2.000.000</div>
+          <p class="li-d">Mínimo mensual para un local de 3 box. Va íntegra a pauta: no es un cobro de la marca, es tu presupuesto de medios.</p>
+        </div>
+        <div class="li">
+          <div class="li-t">Créditos de IA de Clinera</div>
+          <div class="li-v li-v--txt">Según consumo</div>
+          <p class="li-d">Solo los créditos que consumas por sobre tu plan. El sistema en sí no se cobra.</p>
+        </div>
+      </div>
+
+      <div class="paycard paycard--in">
+        <div class="paycard-k">Lo que no pagas nunca</div>
+        <div class="li">
+          <div class="li-t">Clinera</div>
+          <div class="li-v tnum">$0</div>
+          <p class="li-d">El sistema de gestión, agenda y punto de venta. Sin costo de licencia, mientras dure la franquicia.</p>
+        </div>
+        <div class="li">
+          <div class="li-t">Metricads</div>
+          <div class="li-v tnum">$0</div>
+          <p class="li-d">La gestión de tu marketing digital. Sin fee de agencia, mientras dure la franquicia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-why rv">
+      <p><b>¿Por qué la marca te exige una inversión publicitaria mínima?</b> Porque de ahí sale tu demanda. Una sede sin pauta es una sede sin pacientes, y una sede sin pacientes termina arrastrando a la red completa. Ese mínimo no llega a la marca: llega a tus propios avisos. Es una obligación que te protege.</p>
+    </div>
+
+    <div class="cta-block rv" style="text-align:center;margin-top:clamp(44px,5vw,68px)">
+      <a href="#solicitud" class="btn" data-cro="primary-cta" data-loc="post_pagos" data-cta-label>Agenda una conversación</a>
+      <p class="cta-micro" data-cta-micro>Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 · TERRITORIO ═══ -->
+<!-- TODO: definir criterio de asignación y detalle de zonas antes de publicar cifras acá -->
+<section class="section section--rule" id="territorio" data-section="territorio">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>06 · Territorio</span></div>
+      <h2>Tu zona es <em>tuya</em></h2>
+    </div>
+    <div class="terr rv">
+      <p class="terr-lead">Cada franquicia opera con exclusividad territorial en la zona que se le asigna.</p>
+      <div>
+        <p>El criterio de asignación y el detalle de cada zona los definimos contigo en la reunión, caso a caso: depende de tu ciudad, de la densidad y de lo que ya tenga la red.</p>
+        <p>Por eso el primer dato que te pedimos abajo es tu ciudad o zona de interés. Es lo primero que revisamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 · FORMULARIO ═══ -->
+<section class="section form-sec" id="solicitud" data-section="solicitud" data-cro="form">
+  <div class="slab-kr" aria-hidden="true">빛</div>
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="form-side rv">
+        <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg><span style="color:var(--rose)">07 · Conversemos</span></div>
+        <h2>Agenda una <em>conversación</em></h2>
+        <p>Cinco datos. Con eso revisamos si tu zona está disponible y si el modelo te calza. Si calza, agendamos.</p>
+        <div class="form-tr">
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sin compromiso: es una conversación exploratoria.</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Te respondemos en 24 horas.</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>El detalle de inversión y de tu zona se ve ahí, no acá.</div>
+        </div>
+      </div>
+
+      <form id="form-franquicia" autocomplete="on" aria-labelledby="form-title">
+        <h3 id="form-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Solicitud de información de franquicia</h3>
+
+        <div class="form-ok" id="form-stub" role="status"></div>
+
+        <div class="f">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre y apellido" required>
+        </div>
+        <div class="f">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" placeholder="+56 9 ..." required>
+        </div>
+        <div class="f">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="tu@correo.cl" required>
+        </div>
+        <div class="f">
+          <label for="zona">Ciudad o zona de interés</label>
+          <input type="text" id="zona" name="zona" autocomplete="address-level2" placeholder="Dónde quieres abrir" required>
+        </div>
+        <div class="f">
+          <label for="rango">Rango de inversión disponible</label>
+          <select id="rango" name="rango_inversion" required>
+            <option value="" selected disabled>Selecciona un rango</option>
+            <option value="menos-100">Menos de CLP 100 millones</option>
+            <option value="100-150">Entre CLP 100 y 150 millones</option>
+            <option value="150-250">Entre CLP 150 y 250 millones</option>
+            <option value="mas-250">Más de CLP 250 millones</option>
+          </select>
+          <p class="f-hint">La inversión parte en CLP 100 millones. Nos sirve saber tu rango antes de la reunión.</p>
+        </div>
+
+        <button type="submit" class="btn" data-cro="primary-cta" data-loc="formulario" data-cta-label>Agenda una conversación</button>
+        <p class="form-micro" data-cta-micro>Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="/" aria-label="Protocolo Lumina">
+        <svg width="112" height="58" viewBox="0 0 360 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Protocolo Lumina">
+          <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.28" letter-spacing="4">아름다움</text>
+          <use href="#star4" x="168" y="44" width="24" height="36" fill="#E8B4B8" opacity="0.45"/>
+          <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#F0EEE9" opacity="0.45" font-weight="500" letter-spacing="3">lumina</text>
+          <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="11" fill="#F0EEE9" opacity="0.15" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
+        </svg>
+      </a>
+      <div class="foot-c">
+        Programa de franquicias · Chile<br>
+        <a href="https://protocololumina.cl">protocololumina.cl</a> · <a href="https://metodohebe.cl" target="_blank" rel="noopener">metodohebe.cl</a>
+      </div>
+    </div>
+    <p class="foot-legal">Las cifras de facturación y margen corresponden a la operación de sedes propias de Método Hebe —la marca corporal que opera dentro de las mismas sedes que Protocolo Lumina— y se entregan como referencia. No constituyen una proyección ni una garantía de resultados para un franquiciado; el rango de payback es una estimación. Protocolo Lumina y Método Hebe son marcas del grupo OACG, al que también pertenecen Clinera y Metricads.</p>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2026 PROTOCOLO LUMINA® · TODOS LOS DERECHOS RESERVADOS</span>
+      <span class="foot-kr">빛 의 규 약</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ STICKY CTA MOBILE ═══ -->
+<div class="sticky" id="sticky">
+  <a href="#solicitud" class="btn" data-cro="primary-cta" data-loc="sticky_mobile" data-cta-label>Agenda una conversación</a>
+  <div class="sticky-t">Sin compromiso · Respuesta en 24 horas</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   Copy del CTA en una sola constante — para poder testearlo sin tocar
+   el markup. El HTML ya trae el texto por defecto, así que la página
+   funciona igual sin JS.
+   ═══════════════════════════════════════════════════════════════════ */
+const CTA_COPY  = 'Agenda una conversación';
+const CTA_MICRO = 'Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas';
+
+document.querySelectorAll('[data-cta-label]').forEach(function(el){el.textContent=CTA_COPY});
+document.querySelectorAll('[data-cta-micro]').forEach(function(el){el.textContent=CTA_MICRO});
+
+/* ── Barra fija de CTA en mobile: aparece pasado el hero, se esconde
+      cuando el formulario ya está a la vista ── */
+var sticky=document.getElementById('sticky'),
+    hero=document.querySelector('.hero'),
+    solicitud=document.getElementById('solicitud'),
+    formOnScreen=false;
+
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){formOnScreen=e.isIntersecting});
+  },{threshold:0}).observe(solicitud);
+}
+window.addEventListener('scroll',function(){
+  var pastHero=window.scrollY>hero.offsetHeight*0.5;
+  sticky.classList.toggle('on',pastHero&&!formOnScreen);
+},{passive:true});
+
+/* ── Reveal progresivo ── */
+var reveals=document.querySelectorAll('.rv'),
+    reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if('IntersectionObserver' in window && !reduce){
+  var io=new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}
+    });
+  },{rootMargin:'0px 0px -6% 0px',threshold:0.06});
+  reveals.forEach(function(el){io.observe(el)});
+}else{
+  reveals.forEach(function(el){el.classList.add('in')});
+}
+
+/* ── Medición de CTAs (un solo CTA, varias ubicaciones) ── */
+document.addEventListener('click',function(e){
+  var cta=e.target.closest&&e.target.closest('[data-cro="primary-cta"]');
+  if(!cta)return;
+  if(window.luminaTrack)luminaTrack('franquicia_cta_click',{location:cta.dataset.loc||'sin_ubicacion',cta_copy:CTA_COPY});
+},true);
+
+/* ═══════════════════════════════════════════════════════════════════
+   TODO: CONECTAR EL ENVÍO DEL FORMULARIO
+   Hoy este handler NO manda nada a ninguna parte. Falta definir el
+   destino del lead (endpoint propio, CRM o webhook) y recién ahí se
+   reemplaza el bloque de abajo por el POST real.
+   Mientras tanto falla en voz alta a propósito: así es imposible
+   publicar la página creyendo que los leads están llegando.
+   ═══════════════════════════════════════════════════════════════════ */
+var formFranquicia=document.getElementById('form-franquicia');
+formFranquicia.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!formFranquicia.reportValidity())return;
+
+  var data=Object.fromEntries(new FormData(formFranquicia).entries());
+  data.attribution=(window.luminaAttr&&window.luminaAttr())||{};
+
+  console.warn('[TODO] Formulario de franquicia sin endpoint: el lead NO se envió.',data);
+
+  if(window.luminaTrack)luminaTrack('franquicia_form_submit',{rango_inversion:data.rango_inversion||'',zona:data.zona||''});
+
+  var stub=document.getElementById('form-stub');
+  stub.textContent='⚠ Este formulario todavía no está conectado a ningún destino. Falta el endpoint de envío — revisa la consola.';
+  stub.classList.add('on');
+  stub.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+});
+</script>
+</body>
+</html>
