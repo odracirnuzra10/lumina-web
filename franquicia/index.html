@@ -94,7 +94,6 @@ button{cursor:pointer;border:none;background:none}
 .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.005em}
-h1 em,h2 em{font-style:italic;color:var(--rose-em)}
 p{color:var(--ink-body)}
 
 .eyebrow{display:block;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:3.4px;text-transform:uppercase;color:var(--rose-ink);margin-bottom:20px}
@@ -305,6 +304,8 @@ form .btn{width:100%;margin-top:10px}
 .form-micro{font-size:12px;color:var(--subtle-dark);text-align:center;margin-top:16px;line-height:1.6;font-weight:300}
 .form-ok{display:none;border-left:1px solid var(--rose);background:rgba(232,180,184,.09);padding:18px 22px;font-size:14px;color:var(--body-dark);line-height:1.6;margin-bottom:22px;font-weight:300}
 .form-ok.on{display:block}
+.form-ok a{color:var(--rose);font-weight:400;text-decoration:underline;text-underline-offset:2px}
+.form-ok--err{border-left-color:#E8B4B8;background:rgba(232,180,184,.16)}
 
 /* ── Footer ── */
 .foot{background:var(--onyx);border-top:1px solid rgba(232,180,184,.06);padding:clamp(44px,5vw,66px) 0 30px}
@@ -398,8 +399,8 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <span class="eyebrow eyebrow--dark">Franquicias Protocolo Lumina</span>
     <div class="hero-star" aria-hidden="true"><svg viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg></div>
-    <h1 data-cro="hero-headline">Opera tu propia clínica facial con un protocolo que <em>ya funciona</em></h1>
-    <p class="hero-sub">No es una licencia de marca. Es la operación completa: los equipos, los protocolos clínicos, el software con el que se gestiona la clínica y la agencia que te genera la demanda. <b>Todo dentro de la franquicia, no como extras.</b></p>
+    <h1 data-cro="hero-headline">Una sucursal factura entre $25 y $100 millones al mes. Abre la tuya.</h1>
+    <p class="hero-sub">No es una licencia de marca. Recibes la operación completa: los equipos, los protocolos clínicos, el software con el que se gestiona la clínica y la agencia que te trae los pacientes. <b>Todo incluido mientras dures en la red.</b></p>
     <div class="cta-block">
       <a href="#solicitud" class="btn" data-cro="primary-cta" data-loc="hero" data-cta-label>Agenda una conversación</a>
       <p class="cta-micro" data-cta-micro>Sin compromiso · Es una conversación exploratoria · Te respondemos en 24 horas</p>
@@ -430,25 +431,25 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>01 · El dato que sostiene todo</span></div>
-      <h2>Partamos por el número, no por el <em>discurso</em></h2>
-      <p class="shead-sub">Este es el dato de operación de una sede propia de Método Hebe, la marca corporal del grupo que opera dentro de las mismas sedes que Lumina. No es una proyección de plan de negocios.</p>
+      <h2>Entre $25 y $100 millones al mes, por sucursal</h2>
+      <p class="shead-sub">Es lo que facturan hoy las sucursales propias de la red — las mismas donde Protocolo Lumina opera junto a Método Hebe. La diferencia entre el piso y el techo la hacen el sector donde está el local y su capacidad. Dato de operación, no proyección de plan de negocios.</p>
     </div>
 
     <div class="figs rv">
       <div class="fig">
-        <span class="fig-v tnum">$25.000.000</span>
-        <span class="fig-u">CLP por mes</span>
-        <p class="fig-l">Facturación promedio mensual de una sede propia de Método Hebe.</p>
+        <span class="fig-v tnum">$25 a $100</span>
+        <span class="fig-u">Millones al mes, por sucursal</span>
+        <p class="fig-l">Lo que vende una sucursal según su sector y su capacidad instalada.</p>
       </div>
       <div class="fig">
         <span class="fig-v tnum">36%</span>
         <span class="fig-u">Margen operativo aproximado</span>
-        <p class="fig-l">Margen operativo cercano al 36% sobre esa misma operación.</p>
+        <p class="fig-l">El margen operativo con el que trabaja la red sobre esa facturación.</p>
       </div>
     </div>
 
     <div class="note rv">
-      <p><b>Con una aclaración que te debemos:</b> esa es una sede madura. Una sede nueva no parte en ese nivel — tiene una curva de maduración por delante. Por eso más abajo te mostramos el payback con la rampa declarada y no con el mejor escenario posible.</p>
+      <p><b>Ojo con el techo del rango:</b> los $100 millones son de una sucursal madura y bien ubicada. Una sucursal nueva no parte ahí — tiene una curva de maduración por delante. Por eso más abajo te mostramos el payback con la rampa declarada y no con el mejor escenario posible.</p>
     </div>
 
     <div class="sedes rv">
@@ -464,7 +465,7 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>02 · Las tres modalidades</span></div>
-      <h2>Tres formas de entrar a la <em>red</em></h2>
+      <h2>Elige con qué entras a la red</h2>
       <p class="shead-sub">Puedes operar solo estética facial, solo estética corporal, o las dos marcas en un mismo local. Las tres son franquicias completas: cambia el alcance, no el acompañamiento.</p>
     </div>
 
@@ -528,7 +529,7 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg><span>03 · Acompañamiento punta a punta</span></div>
-      <h2>La franquicia no termina el día que <em>abres</em></h2>
+      <h2>La franquicia no termina el día que abres</h2>
       <p class="shead-sub slab-lead">La objeción real no es si el modelo funciona — el número de arriba responde eso. La objeción real es si te acompañan después de firmar. Acá está, punto por punto, <b>lo que recibes antes de abrir y lo que sigues recibiendo mientras operes.</b></p>
     </div>
 
@@ -635,8 +636,8 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>04 · Cómo se recupera la inversión</span></div>
-      <h2>El payback, con las advertencias <em>puestas</em></h2>
-      <p class="shead-sub">Un candidato serio desconfía de la proyección optimista, y hace bien. Preferimos darte el rango honesto y decirte qué lo mueve.</p>
+      <h2>Recuperas la inversión entre el mes 23 y el 34</h2>
+      <p class="shead-sub">Ese es el rango del paquete completo, y depende de cómo estructures la operación. Te lo damos con las advertencias puestas: un candidato serio desconfía de la proyección optimista, y hace bien.</p>
     </div>
 
     <div class="pay rv">
@@ -682,7 +683,7 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>05 · Qué se paga cada mes</span></div>
-      <h2>El único cobro de la marca es el <em>royalty</em></h2>
+      <h2>El único cobro de la marca es el royalty</h2>
       <p class="shead-sub">Todo lo demás o va incluido, o es inversión que va directo a generar tus propios pacientes. Esto es todo lo que sale de tu caja cada mes.</p>
     </div>
 
@@ -738,12 +739,12 @@ form .btn{width:100%;margin-top:10px}
   <div class="wrap">
     <div class="shead rv">
       <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#C48B90"/></svg><span>06 · Territorio</span></div>
-      <h2>Tu zona es <em>tuya</em></h2>
+      <h2>Tu zona es tuya, y hoy están todas libres</h2>
     </div>
     <div class="terr rv">
-      <p class="terr-lead">Cada franquicia opera con exclusividad territorial en la zona que se le asigna.</p>
+      <p class="terr-lead">Cada franquicia opera con exclusividad territorial en la zona que se le asigna. Este es el primer lote: hoy no hay ninguna zona tomada.</p>
       <div>
-        <p>El criterio de asignación y el detalle de cada zona los definimos contigo en la reunión, caso a caso: depende de tu ciudad, de la densidad y de lo que ya tenga la red.</p>
+        <p>Todavía no hay franquiciados en la red, así que el mapa está entero. El criterio de asignación y el detalle de cada zona los definimos contigo en la reunión, caso a caso: depende de tu ciudad, de la densidad y de lo que ya tenga la red.</p>
         <p>Por eso el primer dato que te pedimos abajo es tu ciudad o zona de interés. Es lo primero que revisamos.</p>
       </div>
     </div>
@@ -757,8 +758,8 @@ form .btn{width:100%;margin-top:10px}
     <div class="form-grid">
       <div class="form-side rv">
         <div class="shead-ix"><svg aria-hidden="true" viewBox="0 0 24 36"><use href="#star4" fill="#E8B4B8"/></svg><span style="color:var(--rose)">07 · Conversemos</span></div>
-        <h2>Agenda una <em>conversación</em></h2>
-        <p>Cinco datos. Con eso revisamos si tu zona está disponible y si el modelo te calza. Si calza, agendamos.</p>
+        <h2>Agenda una conversación</h2>
+        <p>Cinco datos y listo. Con eso revisamos si tu zona sigue libre y si el modelo te calza. Si calza, agendamos esta semana.</p>
         <div class="form-tr">
           <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sin compromiso: es una conversación exploratoria.</div>
           <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Te respondemos en 24 horas.</div>
@@ -823,7 +824,7 @@ form .btn{width:100%;margin-top:10px}
         <a href="https://protocololumina.cl">protocololumina.cl</a> · <a href="https://metodohebe.cl" target="_blank" rel="noopener">metodohebe.cl</a>
       </div>
     </div>
-    <p class="foot-legal">Las cifras de facturación y margen corresponden a la operación de sedes propias de Método Hebe —la marca corporal que opera dentro de las mismas sedes que Protocolo Lumina— y se entregan como referencia. No constituyen una proyección ni una garantía de resultados para un franquiciado; el rango de payback es una estimación. Protocolo Lumina y Método Hebe son marcas del grupo OACG, al que también pertenecen Clinera y Metricads.</p>
+    <p class="foot-legal">El rango de facturación y el margen corresponden a la operación de sucursales propias de la red —las mismas donde Protocolo Lumina opera junto a Método Hebe— y se entregan como referencia; el monto que alcance cada sucursal depende de su sector y de su capacidad. No constituyen una proyección ni una garantía de resultados para un franquiciado; el rango de payback es una estimación. Protocolo Lumina y Método Hebe son marcas del grupo OACG, al que también pertenecen Clinera y Metricads.</p>
     <div class="foot-bottom">
       <span class="foot-copy">© 2026 PROTOCOLO LUMINA® · TODOS LOS DERECHOS RESERVADOS</span>
       <span class="foot-kr">빛 의 규 약</span>
@@ -888,29 +889,74 @@ document.addEventListener('click',function(e){
 },true);
 
 /* ═══════════════════════════════════════════════════════════════════
-   TODO: CONECTAR EL ENVÍO DEL FORMULARIO
-   Hoy este handler NO manda nada a ninguna parte. Falta definir el
-   destino del lead (endpoint propio, CRM o webhook) y recién ahí se
-   reemplaza el bloque de abajo por el POST real.
-   Mientras tanto falla en voz alta a propósito: así es imposible
-   publicar la página creyendo que los leads están llegando.
+   ENVÍO DEL LEAD
+   Va al webhook de n8n, igual que el resto de los formularios del sitio.
+   Desde ahí n8n lo enruta a ricardo@oacg.cl.
+
+   TODO: crear el webhook `franquicia-lead` en n8n.oacg.cl y apuntarlo al
+   correo. Mientras no exista, el POST falla y el formulario cae al
+   respaldo por mail — el lead nunca se pierde en silencio, pero el
+   candidato ve un paso extra. Conviene crearlo antes de pautar.
    ═══════════════════════════════════════════════════════════════════ */
+var LEAD_WEBHOOK='https://n8n.oacg.cl/webhook/franquicia-lead';
+var LEAD_EMAIL='ricardo@oacg.cl';
+
 var formFranquicia=document.getElementById('form-franquicia');
+var enviando=false;
+
+function mostrarAviso(html,ok){
+  var box=document.getElementById('form-stub');
+  box.innerHTML=html;
+  box.classList.toggle('form-ok--err',!ok);
+  box.classList.add('on');
+  box.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+}
+
+// Respaldo: si el webhook no responde, el candidato manda el mismo dato por
+// correo con un clic. Preferimos un paso extra antes que perder el lead.
+function enlaceDeRespaldo(d){
+  var cuerpo=['Nombre: '+d.nombre,'Teléfono: '+d.telefono,'Email: '+d.email,
+              'Ciudad o zona: '+d.zona,'Rango de inversión: '+d.rango_inversion,
+              '','Enviado desde '+location.href].join('\n');
+  return 'mailto:'+LEAD_EMAIL+'?subject='+encodeURIComponent('Franquicia Protocolo Lumina — '+d.nombre)+
+         '&body='+encodeURIComponent(cuerpo);
+}
+
 formFranquicia.addEventListener('submit',function(e){
   e.preventDefault();
-  if(!formFranquicia.reportValidity())return;
+  if(enviando||!formFranquicia.reportValidity())return;
 
-  var data=Object.fromEntries(new FormData(formFranquicia).entries());
-  data.attribution=(window.luminaAttr&&window.luminaAttr())||{};
+  var d=Object.fromEntries(new FormData(formFranquicia).entries());
+  var boton=formFranquicia.querySelector('button[type=submit]');
+  enviando=true; boton.disabled=true; boton.textContent='Enviando…';
 
-  console.warn('[TODO] Formulario de franquicia sin endpoint: el lead NO se envió.',data);
+  var payload={
+    nombre:d.nombre, telefono:d.telefono, email:d.email,
+    zona:d.zona, rango_inversion:d.rango_inversion,
+    fuente:'Landing Franquicias — Protocolo Lumina',
+    marca:'lumina', tipo_lead:'franquicia',
+    destino:LEAD_EMAIL,
+    'landing url':location.href,
+    'fecha de creacion':new Date().toLocaleString('es-CL',{timeZone:'America/Santiago'}),
+    atribucion:(window.luminaAttr&&window.luminaAttr())||{}
+  };
 
-  if(window.luminaTrack)luminaTrack('franquicia_form_submit',{rango_inversion:data.rango_inversion||'',zona:data.zona||''});
+  if(window.luminaTrack)luminaTrack('franquicia_form_submit',{rango_inversion:d.rango_inversion||'',zona:d.zona||''});
 
-  var stub=document.getElementById('form-stub');
-  stub.textContent='⚠ Este formulario todavía no está conectado a ningún destino. Falta el endpoint de envío — revisa la consola.';
-  stub.classList.add('on');
-  stub.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+  fetch(LEAD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){ if(!r.ok)throw new Error('HTTP '+r.status); return r; })
+    .then(function(){
+      formFranquicia.reset();
+      boton.textContent=CTA_COPY;
+      mostrarAviso('<b>Listo.</b> Recibimos tus datos y te escribimos dentro de 24 horas.',true);
+    })
+    .catch(function(err){
+      console.error('[franquicia] el webhook no respondió, se ofrece el respaldo por mail',err);
+      boton.disabled=false; boton.textContent=CTA_COPY;
+      mostrarAviso('No pudimos enviar tus datos ahora. <a href="'+enlaceDeRespaldo(d)+
+                   '">Mándanoslos por correo</a> y te respondemos igual dentro de 24 horas.',false);
+    })
+    .then(function(){ enviando=false; });
 });
 </script>
 </body>
