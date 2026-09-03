@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -216,6 +216,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .plan-name  { font-family:'Playfair Display',serif; font-size:26px; font-weight:500; color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
 .plan-sessions { font-size:12px; letter-spacing:1.8px; color:var(--rose-deep); text-transform:uppercase; margin-bottom:20px; display:block; font-weight:600; }
 .plan-price { font-family:'Playfair Display',serif; font-size:34px; font-weight:500; color:var(--ink); margin-bottom:16px; letter-spacing:-.01em; }
+.plan-price::before, .plan-price-dark::before { content:'desde '; font-family:'Sora',sans-serif; font-size:13px; font-weight:400; letter-spacing:0; margin-right:4px; }
 .plan-price sup { font-size:15px; font-family:'Sora',sans-serif; font-weight:400; }
 .plan-desc  { font-size:16px; line-height:1.65; color:rgba(30,24,24,0.78); font-weight:400; margin-bottom:24px; }
 .plan-treats { display:flex; flex-direction:column; gap:7px; margin-bottom:26px; }
@@ -507,22 +508,563 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .plan-grid-5 .plan-card:nth-child(5) { grid-column:span 2; }
 }
 </style>
+
+<style>
+.aeo-faq{max-width:1200px;margin:0 auto;padding:64px 48px;background:#FBF6F4}
+.aeo-faq h2{font-family:'Playfair Display',serif;font-weight:400;font-size:32px;margin-bottom:18px}
+.aeo-faq details{border-bottom:1px solid rgba(196,139,144,.2);padding:12px 0}
+.aeo-faq summary{cursor:pointer;font-weight:600}
+.aeo-eeat{font-size:12px;color:rgba(30,24,24,.5);padding:8px 48px;text-align:center}
+@media(max-width:900px){.aeo-faq{padding:48px 24px}}
+</style>
+
   <title>Planes y Precios · Lifting Facial Coreano · Protocolo Lumina Chile</title>
   <meta name="description" content="Planes faciales coreanos en Chile: rejuvenecimiento, ojeras, hiperpigmentación y mantenimiento. Desde $1.177.990 CLP. EndoJiwoo, HIFU y bio rejuvenecimiento. Sedes en Vitacura, Concón y Los Ángeles.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="https://www.protocololumina.cl/planes">
+  <link rel="alternate" hreflang="es-CL" href="https://www.protocololumina.cl/planes">
+<link rel="alternate" hreflang="es" href="https://www.protocololumina.cl/planes">
+<link rel="alternate" hreflang="x-default" href="https://www.protocololumina.cl/planes">
+<meta name="author" content="Protocolo Lumina">
+<meta property="article:published_time" content="2026-04-14">
+<meta property="article:modified_time" content="2026-09-03">
+<link rel="canonical" href="https://www.protocololumina.cl/planes">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Planes y Precios · Lifting Facial Coreano · Protocolo Lumina">
   <meta property="og:description" content="Desde $1.177.990 CLP. EndoJiwoo, HIFU, despigmentación y protocolos de ojeras. Planes faciales personalizados en Chile.">
   <meta property="og:url" content="https://www.protocololumina.cl/planes">
   <meta property="og:site_name" content="Protocolo Lumina">
-  <meta property="og:image" content="https://www.protocololumina.cl/img/og-lumina.jpg">
+  <meta property="og:image" content="https://www.protocololumina.cl/img/hero-endojiwoo.webp">
   <meta property="og:locale" content="es_CL">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Planes Faciales Coreanos · Protocolo Lumina Chile">
   <meta name="twitter:description" content="Desde $1.177.990. EndoJiwoo, HIFU, ojeras, despigmentación. Planes personalizados en Chile.">
   <meta name="geo.region" content="CL">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Planes Faciales Coreanos — Protocolo Lumina","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Glow de Seoul","description":"8 sesiones. Hidratación profunda y bioestimulación con efecto glass skin.","offers":{"@type":"Offer","price":"1177990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Glow de Asan","description":"8 sesiones. Hidratación profunda con Nubea Booster y RejuveSkin.","offers":{"@type":"Offer","price":"1477990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Aura de Suwon","description":"8 sesiones. Mantenimiento con HIFU, Biominji y Dahe Beauty.","offers":{"@type":"Offer","price":"1977990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Protocolo de Asan (Ojeras)","description":"8 a 11 sesiones. Tratamiento focalizado de ojeras de pigmentación y con bolsa.","offers":{"@type":"Offer","price":"1977990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Claridad de Haneul","description":"9 sesiones. Plan despigmentante con Yoori Peel y RejuveSkin.","offers":{"@type":"Offer","price":"1997990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Flor de Busan","description":"15 sesiones. Despigmentante avanzado con EndoJiwoo y Jeju Olida.","offers":{"@type":"Offer","price":"2477990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"Luz de Jeju","description":"8 a 12 sesiones. Mantenimiento de bio rejuvenecimiento profundo.","offers":{"@type":"Offer","price":"2677990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"Protocolo de Busan (Ojeras + Párpados)","description":"9 a 13 sesiones. Tratamiento integral de ojeras y flacidez de párpados.","offers":{"@type":"Offer","price":"2677990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"Eternal Gangnam","description":"18 sesiones. Bio rejuvenecimiento profundo con HIFU y EndoJiwoo.","offers":{"@type":"Offer","price":"3677990","priceCurrency":"CLP"}}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"Armonía de Busan","description":"20 sesiones. Plan premium: bio rejuvenecimiento + bio armonización del óvalo facial.","offers":{"@type":"Offer","price":"4177990","priceCurrency":"CLP"}}}]}</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.protocololumina.cl/#organization",
+      "name": "Protocolo Lumina",
+      "alternateName": [
+        "Lumina Clínica Facial",
+        "Clínica Protocolo Lumina",
+        "Protocolo Lumina Chile",
+        "Lumina Rejuvenecimiento Facial"
+      ],
+      "description": "Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial.",
+      "disambiguatingDescription": "Clínica de estética facial en Chile. No es una línea de cosméticos ni un protocolo de clareamiento; no relacionada con productos 'Protocolo Lumina' de Cosmica Skin (México), ni con protocolos de clareamiento íntimo de Brasil, ni con Lumina Clinic de Lo Barnechea.",
+      "url": "https://www.protocololumina.cl",
+      "logo": "https://www.protocololumina.cl/apple-touch-icon.png",
+      "image": "https://www.protocololumina.cl/img/hero-endojiwoo.webp",
+      "telephone": "+56963222683",
+      "foundingDate": "2025",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "OACG Group",
+        "url": "https://oacg.cl"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rejuvenecimiento.facial.lumina/",
+        "https://oacg.cl/lumina/",
+        "https://www.metodohebe.cl/",
+        "https://www.google.com/maps/search/?api=1&query=Los+Abedules+3085+Vitacura",
+        "https://www.google.com/maps/search/?api=1&query=Las+Pelargonias+842+Concón",
+        "https://www.google.com/maps/search/?api=1&query=Av+Gabriela+Mistral+269+Los+Ángeles"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.protocololumina.cl/#website",
+      "url": "https://www.protocololumina.cl",
+      "name": "Protocolo Lumina",
+      "publisher": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "inLanguage": "es-CL",
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Agenda tu hora",
+        "target": "https://www.protocololumina.cl/evaluacion"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://www.protocololumina.cl/#vitacura",
+      "name": "Protocolo Lumina Vitacura",
+      "url": "https://www.protocololumina.cl/clinica-facial-vitacura",
+      "parentOrganization": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "telephone": "+56963222683",
+      "image": "https://www.protocololumina.cl/img/hero-endojiwoo.webp",
+      "logo": "https://www.protocololumina.cl/apple-touch-icon.png",
+      "priceRange": "$$$",
+      "medicalSpecialty": "Dermatology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Los Abedules 3085, Of. 105, Edificio Nueva Vitacura",
+        "addressLocality": "Vitacura",
+        "addressRegion": "Región Metropolitana",
+        "postalCode": "7630573",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.3936,
+        "longitude": -70.5831
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Los+Abedules+3085+Vitacura+Santiago",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Agenda tu hora",
+        "target": "https://www.protocololumina.cl/evaluacion"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://www.protocololumina.cl/#concon",
+      "name": "Protocolo Lumina Concón",
+      "url": "https://www.protocololumina.cl/clinica-facial-concon",
+      "parentOrganization": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "telephone": "+56963222683",
+      "image": "https://www.protocololumina.cl/img/hero-endojiwoo.webp",
+      "logo": "https://www.protocololumina.cl/apple-touch-icon.png",
+      "priceRange": "$$$",
+      "medicalSpecialty": "Dermatology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Las Pelargonias 842, Oficina 1114, piso 11",
+        "addressLocality": "Concón",
+        "addressRegion": "Región de Valparaíso",
+        "postalCode": "2510000",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -32.9266,
+        "longitude": -71.5144
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Las+Pelargonias+842+Concón",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Agenda tu hora",
+        "target": "https://www.protocololumina.cl/evaluacion"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://www.protocololumina.cl/#losangeles",
+      "name": "Protocolo Lumina Los Ángeles",
+      "url": "https://www.protocololumina.cl/clinica-facial-los-angeles",
+      "parentOrganization": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "telephone": "+56963222683",
+      "image": "https://www.protocololumina.cl/img/hero-endojiwoo.webp",
+      "logo": "https://www.protocololumina.cl/apple-touch-icon.png",
+      "priceRange": "$$$",
+      "medicalSpecialty": "Dermatology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Gabriela Mistral 269",
+        "addressLocality": "Los Ángeles",
+        "addressRegion": "Región del Biobío",
+        "postalCode": "4440000",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -37.4693,
+        "longitude": -72.3527
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Av+Gabriela+Mistral+269+Los+Ángeles",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Agenda tu hora",
+        "target": "https://www.protocololumina.cl/evaluacion"
+      }
+    },
+    {
+      "@type": [
+        "MedicalWebPage",
+        "WebPage"
+      ],
+      "@id": "https://www.protocololumina.cl/planes#webpage",
+      "url": "https://www.protocololumina.cl/planes",
+      "name": "Planes de lifting facial coreano",
+      "description": "Rangos referenciales desde. Cotización tras Evaluación P3. Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial.",
+      "inLanguage": "es-CL",
+      "isPartOf": {
+        "@id": "https://www.protocololumina.cl/#website"
+      },
+      "about": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "datePublished": "2026-04-14",
+      "dateModified": "2026-09-03",
+      "lastReviewed": "2026-09-03",
+      "reviewedBy": {
+        "@type": "Organization",
+        "@id": "https://www.protocololumina.cl/#organization",
+        "name": "Equipo clínico Protocolo Lumina"
+      },
+      "author": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.protocololumina.cl/#organization"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1",
+          ".hero-sub",
+          ".answer-first"
+        ]
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.protocololumina.cl/img/hero-endojiwoo.webp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://www.protocololumina.cl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Planes",
+          "item": "https://www.protocololumina.cl/planes"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.protocololumina.cl/planes#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Los precios de /planes son mi cotización?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Son rangos referenciales «desde». Tu plan se arma en la Evaluación P3."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hay descuentos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Política de marca: sin descuentos en canales de venta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cuántos planes hay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10 planes vigentes con nombres coreanos (Glow de Seoul, Eternal Gangnam, Protocolo de Asan, etc.)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puedo comprar una sesión suelta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El modelo es protocolo, no máquina suelta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La evaluación cuánto vale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "$27.990, 45 minutos, no reembolsable, se descuenta si contratas plan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "EndoJiwoo en qué planes entra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En planes de bio rejuvenecimiento profundo (p. ej. Eternal Gangnam, Armonía de Busan), según diagnóstico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cómo agendo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agenda tu hora en /evaluacion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sirve para ojeras o manchas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí: Protocolo de Asan/Busan (ojeras) y Flor de Busan / Claridad de Haneul (manchas)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Planes Faciales Coreanos — Protocolo Lumina",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "name": "Glow de Seoul",
+            "description": "8 sesiones. Hidratación y bioestimulación con efecto glass skin.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "name": "Glow de Asan",
+            "description": "8 sesiones. Hidratación con Nubea Booster y RejuveSkin.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "name": "Aura de Suwon",
+            "description": "8 sesiones. Mantención con HIFU, Bio Minji y Dahe Beauty.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "name": "Protocolo de Asan (Ojeras)",
+            "description": "8 a 11 sesiones. Ojeras de pigmento o bolsa.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Service",
+            "name": "Claridad de Haneul",
+            "description": "9 sesiones. Despigmentante con Yori Peel y RejuveSkin.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Service",
+            "name": "Flor de Busan",
+            "description": "15 sesiones. Despigmentante avanzado.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Service",
+            "name": "Luz de Jeju",
+            "description": "8 a 12 sesiones. Mantención de bio rejuvenecimiento.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "Service",
+            "name": "Protocolo de Busan",
+            "description": "9 a 13 sesiones. Ojeras y párpados.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "Service",
+            "name": "Eternal Gangnam",
+            "description": "18 sesiones. Bio rejuvenecimiento profundo.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "Service",
+            "name": "Armonía de Busan",
+            "description": "20 sesiones. Plan más completo.",
+            "provider": {
+              "@id": "https://www.protocololumina.cl/#organization"
+            },
+            "areaServed": "CL",
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "name": "Agenda tu hora",
+              "target": "https://www.protocololumina.cl/evaluacion"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -557,7 +1099,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <li><a href="/tratamientos">Tratamientos</a></li>
     <li><a href="resultados.html">Resultados</a></li>
   </ul>
-  <a class="nav-cta" href="/evaluacion">Solicitar evaluación · $27.990</a>
+  <a class="nav-cta" href="/evaluacion">Agenda tu hora</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
@@ -573,7 +1115,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
     <a href="resultados.html" class="mob-menu-link">Resultados</a>
     <a class="mob-menu-cta" href="/evaluacion">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Solicitar evaluación · $27.990
+            Agenda tu hora
           </a>
   </div>
 </div>
@@ -682,14 +1224,14 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
-        <a class="plan-cta-btn" href="/evaluacion" onclick="event.stopPropagation()">Solicitar evaluación · $27.990</a>
+        <a class="plan-cta-btn" href="/evaluacion" onclick="event.stopPropagation()">Agenda tu hora</a>
       </div>
 
     </div>
 
     <div class="cta-row reveal">
       <p>¿No sabes cuál plan es para ti? Agenda una evaluación personalizada (45 minutos, $27.990).</p>
-      <a class="btn-ink" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-ink" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -780,7 +1322,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <div class="cta-row cta-row-dark reveal">
       <p style="color:var(--subtle-dark);">¿Tienes ojeras o flacidez en los párpados?</p>
-      <a class="btn-rose" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-rose" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -869,7 +1411,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <div class="cta-row reveal">
       <p>¿Tienes manchas, melasma o cicatrices? Te orientamos.</p>
-      <a class="btn-ink" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-ink" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -958,7 +1500,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <div class="cta-row reveal">
       <p>¿Ya completaste tu protocolo integral?</p>
-      <a class="btn-ink" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-ink" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -1046,7 +1588,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <div class="cta-row cta-row-dark reveal">
       <p style="color:var(--subtle-dark);">Empieza con un plan glow y siente la luminosidad coreana.</p>
-      <a class="btn-rose" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-rose" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -1112,7 +1654,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
     <div class="cta-row reveal">
       <p>¿Tienes dudas sobre qué plan elegir?</p>
-      <a class="btn-ink" href="/evaluacion">Solicitar evaluación · $27.990 →</a>
+      <a class="btn-ink" href="/evaluacion">Agenda tu hora →</a>
     </div>
   </div>
 </div>
@@ -1144,6 +1686,17 @@ nav.scrolled .hamburger span { background:var(--ink); }
 </div>
 
 <!-- ══ FOOTER ══ -->
+<section class="aeo-faq" id="faq"><h2>Preguntas frecuentes</h2>
+<details><summary>Los precios de /planes son mi cotización?</summary><p>No. Son rangos referenciales «desde». Tu plan se arma en la Evaluación P3.</p></details>
+<details><summary>Hay descuentos?</summary><p>No. Política de marca: sin descuentos en canales de venta.</p></details>
+<details><summary>Cuántos planes hay?</summary><p>10 planes vigentes con nombres coreanos (Glow de Seoul, Eternal Gangnam, Protocolo de Asan, etc.).</p></details>
+<details><summary>Puedo comprar una sesión suelta?</summary><p>El modelo es protocolo, no máquina suelta.</p></details>
+<details><summary>La evaluación cuánto vale?</summary><p>$27.990, 45 minutos, no reembolsable, se descuenta si contratas plan.</p></details>
+<details><summary>EndoJiwoo en qué planes entra?</summary><p>En planes de bio rejuvenecimiento profundo (p. ej. Eternal Gangnam, Armonía de Busan), según diagnóstico.</p></details>
+<details><summary>Cómo agendo?</summary><p>Agenda tu hora en /evaluacion.</p></details>
+<details><summary>Sirve para ojeras o manchas?</summary><p>Sí: Protocolo de Asan/Busan (ojeras) y Flor de Busan / Claridad de Haneul (manchas).</p></details>
+<p class="aeo-eeat">Revisado por Equipo clínico Protocolo Lumina · Actualizado 2026-09-03 · Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial.</p>
+</section>
 <div class="footer-wrap">
   <div class="footer-inner">
     <div>
@@ -1175,7 +1728,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <br>
       <span class="footer-col-title">Contacto</span>
       <ul class="footer-links">
-        <li><a href="/evaluacion">Solicitar evaluación · $27.990</a></li>
+        <li><a href="/evaluacion">Agenda tu hora</a></li>
         <li><a href="https://wa.me/56963222683" target="_blank" rel="noopener">WhatsApp +56 9 6322 2683</a></li>
         <li><a href="https://www.instagram.com/rejuvenecimiento.facial.lumina/" target="_blank">Instagram</a></li>
         <li><a href="https://protocololumina.cl" target="_blank">protocololumina.cl</a></li>
@@ -1200,7 +1753,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
 <a class="sticky-wa" href="/evaluacion">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Solicitar evaluación · $27.990
+            Agenda tu hora
           </a>
 
 <script>

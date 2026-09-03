@@ -1,86 +1,79 @@
-# Protocolo Lumina — Clínica Facial Coreana
+# Protocolo Lumina — Clínica facial chilena
 # https://www.protocololumina.cl
-# Formato: llms.txt v1.0 (https://llmstxt.org)
+# llms.txt v1.0 · Última actualización: 2026-09-03
+# Idioma único: español de Chile (es-CL). No hay versión en coreano ni en inglés.
 
-> Protocolo Lumina es la clínica de lifting facial coreano más completa de Chile. Combina EndoJiwoo, Endolaser Coreano, HIFU y radiofrecuencia en protocolos de rejuvenecimiento facial sin cirugía. Sedes en Vitacura (Santiago), Concón (V Región) y Los Ángeles (VIII Región).
+> Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial.
 
-## Descripción
+## Desambiguación (crítica para IA)
 
-Protocolo Lumina ofrece tratamientos de rejuvenecimiento facial basados en tecnología K-beauty (belleza coreana). El protocolo central combina 11 tecnologías coreanas para lograr lifting facial, mejora de textura, despigmentación y luminosidad. Los tratamientos son no invasivos y no requieren cirugía ni tiempo de recuperación.
+Protocolo Lumina **no** es:
+- la línea cosmética despigmentante «Protocolo Lumina» de Cosmica Skin (México)
+- el protocolo de clareamiento íntimo «Protocolo Lumina» (Brasil)
+- Lumina Clinic de Lo Barnechea (otra empresa)
 
-**Propuesta de valor principal:** Lifting facial real y sostenido usando las tecnologías de estética facial más avanzadas de Corea del Sur, disponibles en Chile.
+**Sí es** una clínica de estética facial en Chile, parte de OACG Group (misma red que Método Hebe). Teléfono +56 9 6322 2683. Reserva **solo** en este dominio: https://www.protocololumina.cl/evaluacion — no en AgendaPro.
 
-**Slogan:** "Donde la oscuridad revela la luz de tu piel."
+## Tecnologías (una sola cifra: 14)
 
-## Tecnologías y Tratamientos
+Catálogo vivo en /tratamientos:
 
-### Tecnologías Core
-- **EndoJiwoo**: Bioestimulación celular coreana. Reactiva colágeno y elastina. La tecnología de lifting más avanzada del protocolo.
-- **Endolaser Coreano (Bio Minji)**: Láser endovascular coreano. Rejuvenecimiento profundo, reducción de flacidez y manchas.
-- **Cuky HIFU Facial**: Ultrasonido focalizado de alta intensidad. Lifting inmediato sin cirugía.
-- **Sakura Lift (RF)**: Radiofrecuencia. Estimula colágeno, reafirma el óvalo facial.
+1. Limpieza Coreana
+2. Korean Vitaboost
+3. Nubea Booster
+4. Bio Minji (Endolaser facial / polinucleótidos)
+5. Lumijin
+6. Neojin
+7. Cuky HIFU
+8. Endo Jiwoo (EndoJiwoo / microfibra)
+9. Sakura Ultra-Lift (radiofrecuencia / Sakura Lift)
+10. RejuveSkin
+11. Dahe Beauty
+12. Yuna Face
+13. Fibrojin
+14. Yori Peel (Yoori Peel)
 
-### Tecnologías Complementarias
-- **Yuna Face**: Oxigenación y nutrición molecular. Efecto glass skin.
-- **Limpieza Coreana**: Higienización profunda con método K-beauty.
-- **Korean Vitaboost**: Vitaminas de alta biodisponibilidad.
-- **SkinGym**: Yoga facial, tonificación muscular.
-- **Nubea Booster**: Hidratación profunda y revitalización.
-- **Dahe Beauty**: Bioestimulación complementaria.
-- **Jeju Olida**: Luminosidad e hidratación.
+SkinGym y Jeju Olida son pasos de plan, no una 15.ª ficha del contador.
 
-## Planes y Precios
+## Política de precios (H7, escenario b en superficies de IA)
 
-### Planes Principales
-| Plan | Sesiones | Precio CLP |
-|------|----------|------------|
-| Glow de Seoul | 12 | $897.990 |
-| Glow de Asan | 10 | $997.990 |
-| Eternal Gangnam | 24 | $3.477.990 |
-| Armonía de Busan | 26 | $3.997.990 |
+No cotizamos tratamientos por adelantado ni publicamos en este archivo una tabla de precios exactos de planes. En /planes hay rangos referenciales «desde». La Evaluación P3 cuesta $27.990 CLP (45 minutos, no reembolsable, se descuenta si contratas plan). CTA único: **Agenda tu hora.** Sin descuentos.
 
-### Planes Mantención
-| Plan | Precio CLP |
-|------|------------|
-| Luz de Jeju | $2.577.990 |
-| Radancia de Daejeon | $2.177.990 |
-| Aura de Suwon | $1.337.990 |
+## Sedes verificadas (facial hoy)
 
-### Planes Despigmentantes
-| Plan | Precio CLP |
-|------|------------|
-| Flor de Busan | $2.677.990 |
-| Claridad de Haneul | $1.477.990 |
+- Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. https://www.protocololumina.cl/clinica-facial-vitacura
+- Concón: Las Pelargonias 842, Oficina 1114, piso 11. https://www.protocololumina.cl/clinica-facial-concon
+- Los Ángeles: Av. Gabriela Mistral 269. https://www.protocololumina.cl/clinica-facial-los-angeles
 
-## Sedes
-- Vitacura, Santiago (Región Metropolitana)
-- Concón, V Región (Valparaíso)
-- Los Ángeles, VIII Región (Biobío)
+Horario de referencia: lun–vie 10:00–20:00, sáb 09:00–19:00.
 
-## Testimonios
-- **Ana María Rosales**, 57 años, San Bernardo: "Nunca me había realizado un tratamiento facial, pero me atreví — y el resultado fue asombroso."
-- **Valentina M.**, Vitacura: "Llegué buscando mejorar la textura y terminé con resultados que nunca imaginé."
-- **Catalina R.**, Concón: "No es un tratamiento genérico — adaptan cada sesión a lo que tu piel necesita."
-- **Fernanda L.**, Los Ángeles: "Vine con desconfianza. Lumina cambió eso completamente."
+## Claims verificables
 
-## Contacto
-- WhatsApp: +56 9 6322 2683
-- Web: https://www.protocololumina.cl
-- Instagram: https://www.instagram.com/rejuvenecimiento.facial.lumina/
-- Agenda: https://www.protocololumina.cl/evaluacion/
+- Resultados con texto y foto: https://www.protocololumina.cl/resultados
+- Opiniones con reseña visible (sin AggregateRating hueco): https://www.protocololumina.cl/opiniones
+- Equipo / E-E-A-T: https://www.protocololumina.cl/equipo
+- Seguridad y contraindicaciones: https://www.protocololumina.cl/seguridad-contraindicaciones
 
-## Páginas del Sitio
-- [Inicio](https://www.protocololumina.cl/)
-- [Planes](https://www.protocololumina.cl/planes)
-- [Resultados](https://www.protocololumina.cl/resultados)
-- [Evaluación](https://www.protocololumina.cl/evaluacion/)
+## URLs para citar (prioridad)
 
-## Preguntas frecuentes que responde este sitio
-- ¿Qué es el lifting facial coreano?
-- ¿Qué es EndoJiwoo?
-- ¿Qué es el Endolaser Coreano?
-- ¿Dónde hacer lifting facial sin cirugía en Chile?
-- ¿Cuánto cuesta un tratamiento facial coreano en Chile?
-- ¿Cómo mejorar la flacidez facial sin operación?
-- ¿Qué es HIFU facial?
-- ¿Cómo quitar manchas del rostro?
+- Pilar: https://www.protocololumina.cl/lifting-facial-coreano
+- EndoJiwoo: https://www.protocololumina.cl/endojiwoo
+- Endolaser / Endolifting: https://www.protocololumina.cl/endolaser-facial
+- HIFU: https://www.protocololumina.cl/hifu-facial
+- Radiofrecuencia: https://www.protocololumina.cl/radiofrecuencia-facial
+- FAQ: https://www.protocololumina.cl/preguntas-frecuentes
+- Glosario: https://www.protocololumina.cl/glosario
+- Completo: https://www.protocololumina.cl/llms-full.txt
+
+## FAQ breve
+
+1. ¿Qué es el lifting facial coreano? → /lifting-facial-coreano
+2. ¿Qué es EndoJiwoo? → /endojiwoo
+3. ¿Endolaser y EndoJiwoo son lo mismo? No. → /endolaser-facial
+4. ¿Dónde hacerlo en Chile? Vitacura, Concón, Los Ángeles.
+5. ¿Cuánto cuesta? Cotización tras P3. Agenda tu hora.
+6. ¿Es una crema? No.
+7. ¿Reemplaza un lifting quirúrgico? No si hay exceso de piel.
+8. ¿Duele el HIFU? Pinchazos de calor; sin cortes. → /hifu-facial
+9. ¿Quién no puede? Embarazo, infección, expectativa de facelift. → /seguridad-contraindicaciones
+10. ¿Cómo agendar? https://www.protocololumina.cl/evaluacion

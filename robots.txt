@@ -1,49 +1,89 @@
-# robots.txt — Protocolo Lumina
+# Protocolo Lumina — robots.txt
+# SEO + AEO (crawlers de búsqueda e IA)
+# Última actualización: 2026-09-03
+
 User-agent: Googlebot
 Allow: /
+
 User-agent: Bingbot
 Allow: /
+
 User-agent: GPTBot
 Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
+
 User-agent: anthropic-ai
 Allow: /
+
 User-agent: ClaudeBot
 Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
+
 User-agent: PerplexityBot
 Allow: /
+
 User-agent: Grok
 Allow: /
+
 User-agent: cohere-ai
 Allow: /
+
 User-agent: meta-externalagent
 Allow: /
+
 User-agent: Applebot
 Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
+
 User-agent: CCBot
 Allow: /
+
 User-agent: YouBot
 Allow: /
+
 User-agent: Diffbot
 Allow: /
+
 User-agent: Amazonbot
 Allow: /
-User-agent: AhrefsBot
-Disallow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Medición SEO (H6): Semrush y Ahrefs dejan de estar ciegos
 User-agent: SemrushBot
-Disallow: /
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
 User-agent: MJ12bot
 Disallow: /
+
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin/
 Disallow: /private/
+
 Sitemap: https://www.protocololumina.cl/sitemap.xml
+Sitemap: https://www.protocololumina.cl/sitemap-images.xml
 LLMs: https://www.protocololumina.cl/llms.txt
+LLMs-Full: https://www.protocololumina.cl/llms-full.txt
+# IndexNow key: https://www.protocololumina.cl/lumina-indexnow-2026-09-03.txt
