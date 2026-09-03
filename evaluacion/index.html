@@ -1096,7 +1096,6 @@
         "nota"
         "img";
       justify-items: center;
-      width: 100%;
       animation: fadeUp 0.5s ease 0.5s both;
     }
 
@@ -1242,18 +1241,24 @@
        tener que envolver el texto en otro div. */
     @media (min-width: 769px) {
       .pay-fila {
-        grid-template-columns: auto minmax(0, 460px);
-        grid-template-rows: 1fr auto auto auto auto 1fr;
+        width: max-content;
+        max-width: 100%;
+        grid-template-columns: max-content minmax(240px, 360px);
+        grid-template-rows: auto auto auto auto auto;
         grid-template-areas:
-          "img ."
           "img title"
           "img price"
           "img cta"
           "img nota"
           "img .";
-        column-gap: 2.4rem;
+        column-gap: 0.85rem;
+        justify-content: center;
         justify-items: start;
         align-items: center;
+      }
+
+      .pay-overlay h2 {
+        max-width: 360px;
       }
 
       .pay-fila>.pay-muestra {
@@ -1278,6 +1283,10 @@
       .pay-overlay {
         justify-content: flex-start;
         padding: 1.4rem 1rem 1.6rem;
+      }
+
+      .pay-fila {
+        width: 100%;
       }
 
       .pay-fila>.pay-btn {
