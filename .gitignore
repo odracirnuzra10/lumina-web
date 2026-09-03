@@ -6,3 +6,6 @@ img/ana-retrato.jpg
 .vercel
 .env*.local
 presentacion/*.pdf
+scripts/__pycache__/
+__pycache__/
+*.pyc
