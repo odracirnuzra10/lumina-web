@@ -8,13 +8,13 @@ SEDE_FAQS = [
     ("Atienden lifting facial en esta sede?", "Sí. Protocolo Lumina atiende facial en Vitacura, Concón y Los Ángeles. No es una sede solo corporal de Método Hebe con otro letrero: es la línea facial de la red OACG."),
     ("Qué horario tienen?", "Referencia: lunes a viernes 10:00-20:00, sábado 09:00-19:00. La hora exacta se confirma al agendar."),
     ("Cómo llego?", "Direccion completa y mapa en esta página. Estacionamiento y acceso se confirman por WhatsApp al coordinar la P3."),
-    ("Cuál es el teléfono?", "+56 9 6322 2683, el mismo de Método Hebe. Reserva en protocololumina.cl/evaluación, no en AgendaPro."),
+    ("Cuál es el teléfono?", "+56 9 6322 2683, el mismo de Método Hebe. Reserva en protocololumina.cl/evaluacion, no en AgendaPro."),
     ("Cuánto cuesta la evaluación?", "Evaluación P3: $27.990, 45 minutos, no reembolsable, se descuenta si contratas plan."),
     ("Puedo ver resultados de esta ciudad?", "Los casos de /resultados y /opiniones incluyen pacientes de las tres sedes. No todos los casos se etiquetan por comuna."),
     ("Hay médico a cargo publicado?", "El equipo clínico se detalla en /equipo a medida que se confirman nombres y registros. No publicamos fichas inventadas."),
     ("Es la misma clínica que Método Hebe?", "Misma red y mismas direcciones de edificio. Hebe es corporal metabolico. Lumina es facial coreano. Puedes hacer ambos en el grupo; son marcas distintas."),
     ("Protocolo Lumina es una crema?", "No. Clínica chilena de estética facial. No relacionada con Cosmica Skin México ni clareamiento intimo Brasil ni Lumina Clinic Lo Barnechea."),
-    ("Cómo agendo?", "Agenda tu hora en /evaluación."),
+    ("Cómo agendo?", "Agenda tu hora en /evaluacion."),
 ]
 
 
@@ -63,11 +63,12 @@ def sede_page(path, city, street, region, postal, lat, lng, maps, extra_paras):
             },
             "geo": {"@type": "GeoCoordinates", "latitude": lat, "longitude": lng},
             "hasMap": maps,
+            "sameAs": [maps],
             "openingHoursSpecification": [
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "20:00"},
                 {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "19:00"},
             ],
-            "potentialAction": {"@type": "ReserveAction", "name": "Agenda tu hora", "target": f"{ORIGIN}/evaluación"},
+            "potentialAction": {"@type": "ReserveAction", "name": "Agenda tu hora", "target": f"{ORIGIN}/evaluacion"},
         },
         "related": [
             ("/lifting-facial-coreano", "Pilar", "Lifting facial coreano"),
@@ -85,7 +86,7 @@ def sede_page(path, city, street, region, postal, lat, lng, maps, extra_paras):
             p("Lifting facial coreano completo: las 14 tecnologías, los 10 planes, resultados y seguimiento. No es una sucursal 'solo limpiezas'. Si vienes por criolipolisis o celulitis, esa línea es Método Hebe en el mismo edificio de red; te ordenamos para no mezclar promesas."),
             *extra_paras,
             h2("Cómo agendar sin AgendaPro"),
-            p("El subdominio protocolo_lumina.site.agendapro.com está inactivo y duplicaba entidad en un dominio ajeno. La reserva viva es /evaluación en este sitio. CTA: Agenda tu hora."),
+            p("El subdominio protocolo_lumina.site.agendapro.com está inactivo y duplicaba entidad en un dominio ajeno. La reserva viva es /evaluacion en este sitio. CTA: Agenda tu hora."),
             h2("Entidad"),
             p("Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial. No es cosmética de México ni clareamiento de Brasil ni Lumina Clinic de Lo Barnechea."),
         ]),
@@ -100,7 +101,7 @@ PAGES.append(sede_page(
     "7630573",
     -33.3936,
     -70.5831,
-    "https://www.google.com/maps/search/?api=1&query=Los+Abedules+3085+Vitacura+Santiago",
+    "https://share.google/wxSoyocY9JkxVJaal",
     [
         h2("Por qué Vitacura"),
         p("Es la sede flagship de la red en Santiago. La utilizacion de boxes de la operacion propia se describe en oacg.cl/lumina como alta. Para la paciente de oriente que busca lifting facial coreano sin viajar a la costa ni al Bio Bio, esta es la puerta. Estacionamiento y acceso del edificio se coordinan al confirmar la hora."),
@@ -117,7 +118,7 @@ PAGES.append(sede_page(
     "2510000",
     -32.9266,
     -71.5144,
-    "https://www.google.com/maps/search/?api=1&query=Las+Pelargonias+842+Concon",
+    "https://share.google/97Y38fTRxpdOYHir8",
     [
         h2("Por qué Concón (y no 'solo Concón')"),
         p("Un título antiguo de Google presentaba la marca como rejuvenecimiento facial solo en Concón. Era la web anterior. Hoy la línea facial opera también en Vitacura y Los Ángeles. Concón sigue siendo sede real: V Region, edificio de Las Pelargonias 842, oficina 1114."),
@@ -134,7 +135,7 @@ PAGES.append(sede_page(
     "4440000",
     -37.4693,
     -72.3527,
-    "https://www.google.com/maps/search/?api=1&query=Av+Gabriela+Mistral+269+Los+Angeles+Chile",
+    "https://share.google/88EGAP8LKkqWdWsAr",
     [
         h2("Facial en el Bio Bio"),
         p("Los Ángeles no es una sucursal decorativa. La red OACG opera corporal (Hebe) y facial (Lumina) en Av. Gabriela Mistral 269. Para quien busca lifting facial sin cirugía en el sur y no quiere volar a Santiago, esta es la URL local."),

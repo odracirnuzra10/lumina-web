@@ -252,6 +252,9 @@ URL_STASH = [
     re.compile(r"'https://[^']*'"),
     re.compile(r'"/[a-z0-9][a-z0-9_./-]*"'),
     re.compile(r"'/[a-z0-9][a-z0-9_./-]*'"),
+    re.compile(r"/evaluacion\b"),
+    re.compile(r"/clinica-facial-[a-z-]+"),
+    re.compile(r"f\{ORIGIN\}/[a-z0-9_./-]+"),
 ]
 
 

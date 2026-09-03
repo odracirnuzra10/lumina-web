@@ -26,6 +26,18 @@ REVIEWER = "Equipo clínico Protocolo Lumina"
 PHONE = "+56963222683"
 OG_IMG = f"{ORIGIN}/img/hero-endojiwoo.webp"
 LOGO = f"{ORIGIN}/apple-touch-icon.png"
+IG = "https://www.instagram.com/rejuvenecimiento.facial.lumina/"
+GBP_VITACURA = "https://share.google/wxSoyocY9JkxVJaal"
+GBP_CONCON = "https://share.google/97Y38fTRxpdOYHir8"
+GBP_LOS_ANGELES = "https://share.google/88EGAP8LKkqWdWsAr"
+SAME_AS = [
+    IG,
+    GBP_VITACURA,
+    GBP_CONCON,
+    GBP_LOS_ANGELES,
+    "https://oacg.cl/lumina/",
+    "https://www.metodohebe.cl/",
+]
 
 HOURS = [
     {
@@ -38,7 +50,7 @@ HOURS = [
 ]
 
 
-def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps):
+def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps, gbp):
     return {
         "@type": "MedicalClinic",
         "@id": f"{ORIGIN}/#{slug}",
@@ -50,6 +62,7 @@ def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps):
         "logo": LOGO,
         "priceRange": "$$$",
         "medicalSpecialty": "Dermatology",
+        "sameAs": [gbp, IG],
         "address": {
             "@type": "PostalAddress",
             "streetAddress": street,
@@ -64,7 +77,7 @@ def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps):
         "potentialAction": {
             "@type": "ReserveAction",
             "name": "Agenda tu hora",
-            "target": f"{ORIGIN}/evaluación",
+            "target": f"{ORIGIN}/evaluacion",
         },
     }
 
@@ -89,14 +102,7 @@ def org_graph() -> list[dict]:
             "telephone": PHONE,
             "foundingDate": "2025",
             "parentOrganization": {"@type": "Organization", "name": "OACG Group", "url": "https://oacg.cl"},
-            "sameAs": [
-                "https://www.instagram.com/rejuvenecimiento.facial.lumina/",
-                "https://oacg.cl/lumina/",
-                "https://www.metodohebe.cl/",
-                "https://www.google.com/maps/search/?api=1&query=Los+Abedules+3085+Vitacura",
-                "https://www.google.com/maps/search/?api=1&query=Las+Pelargonias+842+Concón",
-                "https://www.google.com/maps/search/?api=1&query=Av+Gabriela+Mistral+269+Los+Ángeles",
-            ],
+            "sameAs": SAME_AS,
         },
         {
             "@type": "WebSite",
@@ -108,44 +114,47 @@ def org_graph() -> list[dict]:
             "potentialAction": {
                 "@type": "ReserveAction",
                 "name": "Agenda tu hora",
-                "target": f"{ORIGIN}/evaluación",
+                "target": f"{ORIGIN}/evaluacion",
             },
         },
         clinic(
             "vitacura",
             "Protocolo Lumina Vitacura",
-            f"{ORIGIN}/clínica-facial-vitacura",
+            f"{ORIGIN}/clinica-facial-vitacura",
             "Los Abedules 3085, Of. 105, Edificio Nueva Vitacura",
             "Vitacura",
             "Región Metropolitana",
             "7630573",
             -33.3936,
             -70.5831,
-            "https://www.google.com/maps/search/?api=1&query=Los+Abedules+3085+Vitacura+Santiago",
+            GBP_VITACURA,
+            GBP_VITACURA,
         ),
         clinic(
             "concon",
             "Protocolo Lumina Concón",
-            f"{ORIGIN}/clínica-facial-concon",
+            f"{ORIGIN}/clinica-facial-concon",
             "Las Pelargonias 842, Oficina 1114, piso 11",
             "Concón",
             "Región de Valparaíso",
             "2510000",
             -32.9266,
             -71.5144,
-            "https://www.google.com/maps/search/?api=1&query=Las+Pelargonias+842+Concón",
+            GBP_CONCON,
+            GBP_CONCON,
         ),
         clinic(
             "losangeles",
             "Protocolo Lumina Los Ángeles",
-            f"{ORIGIN}/clínica-facial-los-angeles",
+            f"{ORIGIN}/clinica-facial-los-angeles",
             "Av. Gabriela Mistral 269",
             "Los Ángeles",
             "Región del Biobío",
             "4440000",
             -37.4693,
             -72.3527,
-            "https://www.google.com/maps/search/?api=1&query=Av+Gabriela+Mistral+269+Los+Ángeles",
+            GBP_LOS_ANGELES,
+            GBP_LOS_ANGELES,
         ),
     ]
 

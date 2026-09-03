@@ -203,7 +203,7 @@ PAGES.append({
         ("Marcapasos y RF?", "La radiofrecuencia no es un juego con implantes electronicos. Se evalua caso a caso; a menudo se evita."),
         ("Rellenos previos?", "Se declaran. Mapear AH o estimuladores evita planes que inflaman el mismo deposito al día siguiente."),
         ("Garantizan resultados?", "No. Resultados varían. Foto y P3. Consentimiento informado."),
-        ("Dónde leer mas?", "Fichas de tecnología y /equipo. Reserva en /evaluación."),
+        ("Dónde leer mas?", "Fichas de tecnología y /equipo. Reserva en /evaluacion."),
         ("Es YMYL?", "Sí. Por eso hay fechas, revisor organizacional y contraindicaciones visibles, no escondidas en un PDF."),
     ],
     "body": body([

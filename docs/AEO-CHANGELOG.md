@@ -21,8 +21,9 @@ Hallazgo → acción → URL/archivo → cómo verificar.
 | `disambiguatingDescription` + `alternateName` | `#organization` en todas las páginas AEO y home/planes/tratamientos/resultados/evaluacion | Rich Results / vista JSON-LD |
 | México / Brasil / Lo Barnechea | mismos textos | no confundir con Cosmica Skin ni Lumina Clinic |
 | `parentOrganization` OACG | schema | url https://oacg.cl |
-| `sameAs` ≥ 6 | Instagram, oacg.cl/lumina, metodohebe.cl, 3 Google Maps | contar URLs en JSON-LD |
-| Instagram handle | **pendiente Ricardo** (off-site): pasar a `protocololumina` o nombre visible “Protocolo Lumina · Clínica facial Chile” | no se puede cambiar desde el repo |
+| `sameAs` ≥ 6 | Instagram, 3 fichas Google (Vitacura/Concón/Los Ángeles), oacg.cl/lumina, metodohebe.cl | contar URLs en JSON-LD |
+| Instagram | `https://www.instagram.com/rejuvenecimiento.facial.lumina/` (handle actual; cambio de @ pendiente de marca) | `sameAs` |
+| Google Business por sede | Vitacura `share.google/wxSoyocY9JkxVJaal` · Concón `97Y38fTRxpdOYHir8` · Los Ángeles `88EGAP8LKkqWdWsAr` | `hasMap` + `sameAs` de cada `MedicalClinic` |
 
 ## H3 — Schema que puede penalizar (alto)
 
@@ -82,7 +83,7 @@ Ver `docs/H7-PRECIOS.md`. Implementado **(b)** en IA; visibles en `/planes` con 
 
 | Hecho en repo | Pendiente humano |
 |---|---|
-| Cross-link Hebe (PR hermano) | GBP por sede, Doctoralia, Wikidata, TikTok/YouTube, cambio handle IG, desindexar AgendaPro, menciones en medios |
+| Cross-link Hebe (PR hermano); `sameAs` IG + 3 GBP | Wikidata, Doctoralia, TikTok/YouTube, cambio de handle IG a uno con “lumina”, desindexar AgendaPro, menciones en medios |
 
 ## S7 + sección 5 evaluada
 
@@ -109,9 +110,9 @@ Ver `docs/H7-PRECIOS.md`. Implementado **(b)** en IA; visibles en `/planes` con 
 
 ## No hecho (fuera de código o sin dato)
 
-- Cambiar handle de Instagram.
+- Cambiar handle de Instagram a uno con “lumina” (hoy es `rejuvenecimiento.facial.lumina`).
 - Verificar GSC/Bing (hace falta login).
-- Wikidata / GBP / Doctoralia.
+- Wikidata (ítem de clínica) y fichas Doctoralia (clínica + profesionales).
 - Nombres reales de profesionales.
 - legalName (razón social chilena no confirmada; se omite a propósito).
 - Confirmar foundingDate 2025 si Ricardo tiene otra fecha.
