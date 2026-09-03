@@ -2,10 +2,51 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/online", "destination": "/resultados", "permanent": true },
+    { "source": "/reserva", "destination": "/evaluacion", "permanent": true },
+    { "source": "/agenda", "destination": "/evaluacion", "permanent": true },
+    { "source": "/agendar", "destination": "/evaluacion", "permanent": true },
+    { "source": "/planes/", "destination": "/planes", "permanent": true },
+    { "source": "/producto/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/product/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/tienda/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/shop/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/product-category/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/categoria-producto/:path*", "destination": "/planes", "permanent": true },
+    { "source": "/carrito", "destination": "/planes", "permanent": true },
+    { "source": "/cart", "destination": "/planes", "permanent": true },
+    { "source": "/checkout", "destination": "/evaluacion", "permanent": true },
+    { "source": "/mi-cuenta/:path*", "destination": "/", "permanent": true },
+    { "source": "/my-account/:path*", "destination": "/", "permanent": true }
+  ],
+  "headers": [
     {
-      "source": "/online",
-      "destination": "https://www.protocololumina.cl/resultados",
-      "permanent": true
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
     }
   ]
 }
