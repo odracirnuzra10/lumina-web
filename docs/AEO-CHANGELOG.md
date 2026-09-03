@@ -99,6 +99,14 @@ Ver `docs/H7-PRECIOS.md`. Implementado **(b)** en IA; visibles en `/planes` con 
 - `/seguridad-contraindicaciones` publicada.
 - Franquicia: FAQPage B2B, Offer LeaseOut, sigue `noindex` por INAPI.
 
+## Español (calidad YMYL)
+
+| Acción | Dónde | Verificar |
+|---|---|---|
+| Tildes, `¿` en H1/H2/FAQ, sin voseo (`Firmas` no `Firmás`) | páginas AEO + `scripts/aeo_*.py` | H1 `¿Qué es EndoJiwoo?`; grep `Firmás` = 0 |
+| Corrector reutilizable | `scripts/aeo_es.py` (`h2()` lo usa al regenerar) | no tocar `href` ni slugs (`/clinica-facial-concon`) |
+| Bloque “Cómo citar esta página” | páginas que quedaban cortas | sección `extra-block--closing` |
+
 ## No hecho (fuera de código o sin dato)
 
 - Cambiar handle de Instagram.

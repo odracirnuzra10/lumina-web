@@ -64,7 +64,7 @@ def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps):
         "potentialAction": {
             "@type": "ReserveAction",
             "name": "Agenda tu hora",
-            "target": f"{ORIGIN}/evaluacion",
+            "target": f"{ORIGIN}/evaluación",
         },
     }
 
@@ -108,13 +108,13 @@ def org_graph() -> list[dict]:
             "potentialAction": {
                 "@type": "ReserveAction",
                 "name": "Agenda tu hora",
-                "target": f"{ORIGIN}/evaluacion",
+                "target": f"{ORIGIN}/evaluación",
             },
         },
         clinic(
             "vitacura",
             "Protocolo Lumina Vitacura",
-            f"{ORIGIN}/clinica-facial-vitacura",
+            f"{ORIGIN}/clínica-facial-vitacura",
             "Los Abedules 3085, Of. 105, Edificio Nueva Vitacura",
             "Vitacura",
             "Región Metropolitana",
@@ -126,7 +126,7 @@ def org_graph() -> list[dict]:
         clinic(
             "concon",
             "Protocolo Lumina Concón",
-            f"{ORIGIN}/clinica-facial-concon",
+            f"{ORIGIN}/clínica-facial-concon",
             "Las Pelargonias 842, Oficina 1114, piso 11",
             "Concón",
             "Región de Valparaíso",
@@ -138,7 +138,7 @@ def org_graph() -> list[dict]:
         clinic(
             "losangeles",
             "Protocolo Lumina Los Ángeles",
-            f"{ORIGIN}/clinica-facial-los-angeles",
+            f"{ORIGIN}/clínica-facial-los-angeles",
             "Av. Gabriela Mistral 269",
             "Los Ángeles",
             "Región del Biobío",
