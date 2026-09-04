@@ -1,6 +1,7 @@
 # Protocolo Lumina — robots.txt
 # SEO + AEO (crawlers de búsqueda e IA)
-# Última actualización: 2026-09-03
+# Última actualización: 2026-09-04
+# LLM docs: https://www.protocololumina.cl/llms.txt
 
 User-agent: Googlebot
 Allow: /

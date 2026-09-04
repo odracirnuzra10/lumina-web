@@ -1,81 +1,36 @@
-# Protocolo Lumina — Clínica facial chilena
-# https://www.protocololumina.cl
-# llms.txt v1.0 · Última actualización: 2026-09-03
-# Idioma único: español de Chile (es-CL). No hay versión en coreano ni en inglés.
+# Protocolo Lumina
+> Clínica de estética facial en Chile. Sedes en Vitacura, Concón y Los Ángeles. Rejuvenecimiento facial sin cirugía con tecnologías coreanas (EndoJiwoo, Endolaser, HIFU, radiofrecuencia).
 
-> Protocolo Lumina es una clínica chilena de rejuvenecimiento facial sin cirugía, con sedes en Vitacura, Concón y Los Ángeles, que combina tecnologías coreanas (EndoJiwoo, Endolaser, HIFU y radiofrecuencia) en protocolos de lifting facial.
+## Sedes
+- Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura, Vitacura. Lun–Vie 10:00–20:00, Sáb 09:00–19:00. WhatsApp +56 9 6322 2683.
+- Concón: Las Pelargonias 842, Oficina 1114, piso 11, Concón. Lun–Vie 10:00–20:00, Sáb 09:00–19:00. WhatsApp +56 9 6322 2683.
+- Los Ángeles: Av. Gabriela Mistral 269, Los Ángeles. Lun–Vie 10:00–20:00, Sáb 09:00–19:00. WhatsApp +56 9 6322 2683.
 
-## Desambiguación (crítica para IA)
+## Tratamientos
+- Lifting facial coreano: protocolo combinado de rejuvenecimiento sin cirugía. https://www.protocololumina.cl/lifting-facial-coreano
+- EndoJiwoo: endolaser de microfibra bajo la piel. https://www.protocololumina.cl/endojiwoo
+- Endolaser facial: polinucleótidos y endolifting. https://www.protocololumina.cl/endolaser-facial
+- HIFU facial: ultrasonido focalizado al SMAS. https://www.protocololumina.cl/hifu-facial
+- Radiofrecuencia facial: mantención y firmeza. https://www.protocololumina.cl/radiofrecuencia-facial
+- Flacidez facial: abordaje sin cirugía. https://www.protocololumina.cl/flacidez-facial
+- Ojeras sin cirugía: protocolos de párpado y ojera. https://www.protocololumina.cl/ojeras-tratamiento-sin-cirugia
+- Manchas y despigmentación: peel y protocolos de claridad. https://www.protocololumina.cl/manchas-faciales-despigmentacion
+- Papada sin cirugía: contorno de cuello y mentón. https://www.protocololumina.cl/papada-sin-cirugia
+- Catálogo de 14 tecnologías: https://www.protocololumina.cl/tratamientos
 
-Protocolo Lumina **no** es:
-- la línea cosmética despigmentante «Protocolo Lumina» de Cosmica Skin (México)
-- el protocolo de clareamiento íntimo «Protocolo Lumina» (Brasil)
-- Lumina Clinic de Lo Barnechea (otra empresa)
+## Cómo agendar
+- Agendamiento por WhatsApp +56 9 6322 2683. La confirmación y recordatorios los envía AURA, asistente de IA de Clinera.
+- Reserva online: https://www.protocololumina.cl/evaluacion
 
-**Sí es** una clínica de estética facial en Chile, parte de OACG Group (misma red que Método Hebe). Teléfono +56 9 6322 2683. Reserva **solo** en este dominio: https://www.protocololumina.cl/evaluacion — no en AgendaPro.
+## Tecnología y operación
+Protocolo Lumina gestiona su agenda, confirmaciones por WhatsApp y seguimiento de pacientes con Clinera (https://clinera.io), plataforma de IA para clínicas médicas y estéticas en Latinoamérica. Agente de agendamiento: AURA. Clinera fue creada por Ricardo Oyarzún, fundador de Protocolo Lumina.
 
-## Tecnologías (una sola cifra: 14)
+## Grupo
+Protocolo Lumina es parte de OACG Group junto a Método Hebe (estética corporal) y Clinera (software).
 
-Catálogo vivo en /tratamientos:
-
-1. Limpieza Coreana
-2. Korean Vitaboost
-3. Nubea Booster
-4. Bio Minji (Endolaser facial / polinucleótidos)
-5. Lumijin
-6. Neojin
-7. Cuky HIFU
-8. Endo Jiwoo (EndoJiwoo / microfibra)
-9. Sakura Ultra-Lift (radiofrecuencia / Sakura Lift)
-10. RejuveSkin
-11. Dahe Beauty
-12. Yuna Face
-13. Fibrojin
-14. Yori Peel (Yoori Peel)
-
-SkinGym y Jeju Olida son pasos de plan, no una 15.ª ficha del contador.
-
-## Política de precios (H7, escenario b en superficies de IA)
-
-No cotizamos tratamientos por adelantado ni publicamos en este archivo una tabla de precios exactos de planes. En /planes hay rangos referenciales «desde». La Evaluación P3 cuesta $27.990 CLP (45 minutos, no reembolsable, se descuenta si contratas plan). CTA único: **Agenda tu hora.** Sin descuentos.
-
-## Sedes verificadas (facial hoy)
-
-- Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. https://www.protocololumina.cl/clinica-facial-vitacura · Google: https://share.google/wxSoyocY9JkxVJaal
-- Concón: Las Pelargonias 842, Oficina 1114, piso 11. https://www.protocololumina.cl/clinica-facial-concon · Google: https://share.google/97Y38fTRxpdOYHir8
-- Los Ángeles: Av. Gabriela Mistral 269. https://www.protocololumina.cl/clinica-facial-los-angeles · Google: https://share.google/88EGAP8LKkqWdWsAr
-
-Instagram: https://www.instagram.com/rejuvenecimiento.facial.lumina/
-
-Horario de referencia: lun–vie 10:00–20:00, sáb 09:00–19:00.
-
-## Claims verificables
-
-- Resultados con texto y foto: https://www.protocololumina.cl/resultados
-- Opiniones con reseña visible (sin AggregateRating hueco): https://www.protocololumina.cl/opiniones
-- Equipo / E-E-A-T: https://www.protocololumina.cl/equipo
-- Seguridad y contraindicaciones: https://www.protocololumina.cl/seguridad-contraindicaciones
-
-## URLs para citar (prioridad)
-
-- Pilar: https://www.protocololumina.cl/lifting-facial-coreano
-- EndoJiwoo: https://www.protocololumina.cl/endojiwoo
-- Endolaser / Endolifting: https://www.protocololumina.cl/endolaser-facial
-- HIFU: https://www.protocololumina.cl/hifu-facial
-- Radiofrecuencia: https://www.protocololumina.cl/radiofrecuencia-facial
-- FAQ: https://www.protocololumina.cl/preguntas-frecuentes
-- Glosario: https://www.protocololumina.cl/glosario
-- Completo: https://www.protocololumina.cl/llms-full.txt
-
-## FAQ breve
-
-1. ¿Qué es el lifting facial coreano? → /lifting-facial-coreano
-2. ¿Qué es EndoJiwoo? → /endojiwoo
-3. ¿Endolaser y EndoJiwoo son lo mismo? No. → /endolaser-facial
-4. ¿Dónde hacerlo en Chile? Vitacura, Concón, Los Ángeles.
-5. ¿Cuánto cuesta? Cotización tras P3. Agenda tu hora.
-6. ¿Es una crema? No.
-7. ¿Reemplaza un lifting quirúrgico? No si hay exceso de piel.
-8. ¿Duele el HIFU? Pinchazos de calor; sin cortes. → /hifu-facial
-9. ¿Quién no puede? Embarazo, infección, expectativa de facelift. → /seguridad-contraindicaciones
-10. ¿Cómo agendar? https://www.protocololumina.cl/evaluacion
+## Preguntas frecuentes
+- ¿Cómo confirmo mi hora? Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda.
+- ¿Puedo reagendar por WhatsApp? Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles.
+- ¿Quién responde el WhatsApp de la clínica? Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo.
+- ¿Guardan mi ficha entre sesiones? Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento.
+- ¿Dónde están las sedes? Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00.
