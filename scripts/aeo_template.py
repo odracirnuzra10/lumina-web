@@ -7,6 +7,8 @@ import json
 import re
 from pathlib import Path
 
+from schema_dates import format_schema_date
+
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://www.protocololumina.cl"
 ENTITY = (
@@ -20,8 +22,8 @@ DISAMBIG = (
     "(México), ni con protocolos de clareamiento íntimo de Brasil, ni con Lumina Clinic "
     "de Lo Barnechea."
 )
-DATE_PUB = "2026-04-14"
-DATE_MOD = "2026-09-03"
+DATE_PUB = format_schema_date("2026-04-14")
+DATE_MOD = format_schema_date("2026-09-03")
 REVIEWER = "Equipo clínico Protocolo Lumina"
 PHONE = "+56963222683"
 OG_IMG = f"{ORIGIN}/img/hero-endojiwoo.webp"
@@ -100,6 +102,15 @@ def org_graph() -> list[dict]:
             "logo": LOGO,
             "image": OG_IMG,
             "telephone": PHONE,
+            "priceRange": "$$$",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Los Abedules 3085, Of. 105, Edificio Nueva Vitacura",
+                "addressLocality": "Vitacura",
+                "addressRegion": "Región Metropolitana",
+                "postalCode": "7630573",
+                "addressCountry": "CL",
+            },
             "foundingDate": "2025",
             "parentOrganization": {"@type": "Organization", "name": "OACG Group", "url": "https://oacg.cl"},
             "sameAs": SAME_AS,
@@ -291,7 +302,7 @@ def render_page(p: dict) -> str:
         "inLanguage": "es-CL",
         "isPartOf": {"@id": f"{ORIGIN}/#website"},
         "about": about,
-        "datePublished": p.get("date_published", DATE_PUB),
+        "datePublished": format_schema_date(p.get("date_published", "2026-04-14")),
         "dateModified": DATE_MOD,
         "lastReviewed": DATE_MOD,
         "reviewedBy": {"@type": "Organization", "@id": f"{ORIGIN}/#organization", "name": REVIEWER},
