@@ -23,7 +23,7 @@ Hallazgo → acción → URL/archivo → cómo verificar.
 | `parentOrganization` OACG | schema | url https://oacg.cl |
 | `sameAs` ≥ 6 | Instagram, 3 fichas Google (Vitacura/Concón/Los Ángeles), oacg.cl/lumina, metodohebe.cl | contar URLs en JSON-LD |
 | Instagram | `https://www.instagram.com/rejuvenecimiento.facial.lumina/` (handle actual; cambio de @ pendiente de marca) | `sameAs` |
-| Google Business por sede | Vitacura `share.google/wxSoyocY9JkxVJaal` · Concón `97Y38fTRxpdOYHir8` · Los Ángeles `88EGAP8LKkqWdWsAr` | `hasMap` + `sameAs` de cada `MedicalClinic` |
+| Google Business por sede | Share oficiales (2026-09-04): Vitacura `share.google/uKeMlkibRy1TPB7vK` · Concón `CeMMtlyCmwN5K3yxP` · Los Ángeles `GKckpVUP3cGC9XGLq` (reemplazan wxSoyocY9JkxVJaal / 97Y38fTRxpdOYHir8 / 88EGAP8LKkqWdWsAr) | `hasMap` + `sameAs` de cada `MedicalClinic` |
 
 ## H3 — Schema que puede penalizar (alto)
 
