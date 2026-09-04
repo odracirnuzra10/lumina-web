@@ -113,20 +113,6 @@
       position: relative;
     }
 
-    /* FAQ AEO: el schema ya está en JSON-LD. El HTML no puede ocupar layout
-       en el wizard (se filtraba en el hueco del flex y arriba en móvil). */
-    .aeo-faq-sr {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
     /* LEFT COLUMN */
     .left-col {
       width: 50%;
@@ -1823,7 +1809,8 @@
       }
     }
   </style>
-<script type="application/ld+json">{
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -1892,16 +1879,7 @@
       },
       "image": "https://www.protocololumina.cl/img/hero-endojiwoo.webp",
       "logo": "https://www.protocololumina.cl/apple-touch-icon.png",
-      "priceRange": "$$$",
       "medicalSpecialty": "Dermatology",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Los Abedules 3085, Of. 105, Edificio Nueva Vitacura",
-        "addressLocality": "Vitacura",
-        "addressRegion": "Región Metropolitana",
-        "postalCode": "7630573",
-        "addressCountry": "CL"
-      },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": -33.3936,
@@ -2116,7 +2094,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Qué incluye la Evaluación P3?",
+          "name": "¿Qué incluye la Evaluación P3?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Diagnóstico facial presencial de 45 minutos para armar el plan. Incluye análisis facial 3D con IA en el flujo actual. Se paga al confirmar la hora."
@@ -2124,7 +2102,7 @@
         },
         {
           "@type": "Question",
-          "name": "Cuánto dura?",
+          "name": "¿Cuánto dura?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "45 minutos."
@@ -2132,7 +2110,7 @@
         },
         {
           "@type": "Question",
-          "name": "Cuánto cuesta?",
+          "name": "¿Cuánto cuesta?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "$27.990. Si contratas un plan, se descuenta. No es reembolsable."
@@ -2140,7 +2118,7 @@
         },
         {
           "@type": "Question",
-          "name": "Qué llevar?",
+          "name": "¿Qué llevar?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Cara limpia, fármacos, historia de rellenos/toxina/herpes, sede preferida."
@@ -2148,15 +2126,7 @@
         },
         {
           "@type": "Question",
-          "name": "Sedes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vitacura (Los Abedules 3085), Concón (Las Pelargonias 842), Los Ángeles (Av. Gabriela Mistral 269)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Compromiso de comprar plan?",
+          "name": "¿Hay compromiso de comprar un plan?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No."
@@ -2164,7 +2134,7 @@
         },
         {
           "@type": "Question",
-          "name": "Cómo se cotiza el tratamiento?",
+          "name": "¿Cómo se cotiza el tratamiento?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Después de verte. No por adelantado."
@@ -2172,7 +2142,7 @@
         },
         {
           "@type": "Question",
-          "name": "AgendaPro?",
+          "name": "¿Usan AgendaPro?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Reserva en este dominio."
@@ -2180,18 +2150,50 @@
         },
         {
           "@type": "Question",
-          "name": "H1 de esta página?",
+          "name": "¿Quién atiende?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Evaluación facial P3 — Protocolo Lumina."
+            "text": "Equipo clínico de la sede. Ver /equipo."
           }
         },
         {
           "@type": "Question",
-          "name": "Quién atiende?",
+          "name": "¿Cómo confirmo mi hora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Equipo clínico de la sede. Ver /equipo."
+            "text": "Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo reagendar por WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién responde el WhatsApp de la clínica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Guardan mi ficha entre sesiones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde están las sedes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00."
           }
         }
       ]
@@ -2202,7 +2204,8 @@
       "target": "https://www.protocololumina.cl/evaluacion"
     }
   ]
-}</script>
+}
+</script>
 <!-- PUENTE-AEO-GRAPH -->
 <script type="application/ld+json" id="puente-aeo-graph">
 {
@@ -2520,20 +2523,6 @@
       </div>
     </div>
 
-    <div id="faq" class="aeo-faq-sr">
-    <section>
-    <h2>Preguntas frecuentes</h2>
-<details><summary>Qué incluye la Evaluación P3?</summary><p>Diagnóstico facial presencial de 45 minutos para armar el plan. Incluye análisis facial 3D con IA en el flujo actual. Se paga al confirmar la hora.</p></details>
-<details><summary>Cuánto dura?</summary><p>45 minutos.</p></details>
-<details><summary>Cuánto cuesta?</summary><p>$27.990. Si contratas un plan, se descuenta. No es reembolsable.</p></details>
-<details><summary>Qué llevar?</summary><p>Cara limpia, fármacos, historia de rellenos/toxina/herpes, sede preferida.</p></details>
-<details><summary>Sedes?</summary><p>Vitacura (Los Abedules 3085), Concón (Las Pelargonias 842), Los Ángeles (Av. Gabriela Mistral 269).</p></details>
-<details><summary>Compromiso de comprar plan?</summary><p>No.</p></details>
-<details><summary>Cómo se cotiza el tratamiento?</summary><p>Después de verte. No por adelantado.</p></details>
-<details><summary>AgendaPro?</summary><p>No. Reserva en este dominio.</p></details>
-<details><summary>H1 de esta página?</summary><p>Evaluación facial P3 — Protocolo Lumina.</p></details>
-<details><summary>Quién atiende?</summary><p>Equipo clínico de la sede. Ver /equipo.</p></details>
-<p class="aeo-eeat">Revisado por Equipo clínico Protocolo Lumina · Actualizado 2026-09-03</p></section></div>
     <!-- RIGHT COLUMN -->
     <div class="right-col">
       <div class="mobile-header-wrapper">
@@ -3215,62 +3204,22 @@
 })();
 </script>
 <p style="text-align:center;font-size:11px;opacity:.65;padding:12px"><span style="font-size:10px;opacity:.7">Agenda gestionada con <a href="https://clinera.io" rel="noopener" style="color:inherit;text-decoration:underline">Clinera</a></span></p>
-<section id="faq-operacion" class="faq-ops" style="max-width:720px;margin:48px auto;padding:24px 20px;border-top:1px solid #e5e5e5">
-<h2 style="font-size:1.4rem;margin-bottom:16px">Preguntas frecuentes de agendamiento</h2>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee" open><summary style="cursor:pointer;font-weight:600">¿Cómo confirmo mi hora?</summary><p style="margin:10px 0 0;line-height:1.6">Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda.</p></details>
+<section id="faq" class="faq-ops" style="max-width:720px;margin:48px auto;padding:24px 20px;border-top:1px solid #e5e5e5">
+<h2 style="font-size:1.4rem;margin-bottom:16px">Preguntas frecuentes</h2>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee" open><summary style="cursor:pointer;font-weight:600">¿Qué incluye la Evaluación P3?</summary><p style="margin:10px 0 0;line-height:1.6">Diagnóstico facial presencial de 45 minutos para armar el plan. Incluye análisis facial 3D con IA en el flujo actual. Se paga al confirmar la hora.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cuánto dura?</summary><p style="margin:10px 0 0;line-height:1.6">45 minutos.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cuánto cuesta?</summary><p style="margin:10px 0 0;line-height:1.6">$27.990. Si contratas un plan, se descuenta. No es reembolsable.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Qué llevar?</summary><p style="margin:10px 0 0;line-height:1.6">Cara limpia, fármacos, historia de rellenos/toxina/herpes, sede preferida.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Hay compromiso de comprar un plan?</summary><p style="margin:10px 0 0;line-height:1.6">No.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cómo se cotiza el tratamiento?</summary><p style="margin:10px 0 0;line-height:1.6">Después de verte. No por adelantado.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Usan AgendaPro?</summary><p style="margin:10px 0 0;line-height:1.6">No. Reserva en este dominio.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Quién atiende?</summary><p style="margin:10px 0 0;line-height:1.6">Equipo clínico de la sede. Ver /equipo.</p></details>
+<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cómo confirmo mi hora?</summary><p style="margin:10px 0 0;line-height:1.6">Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda.</p></details>
 <details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Puedo reagendar por WhatsApp?</summary><p style="margin:10px 0 0;line-height:1.6">Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles.</p></details>
 <details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Quién responde el WhatsApp de la clínica?</summary><p style="margin:10px 0 0;line-height:1.6">Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo.</p></details>
 <details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Guardan mi ficha entre sesiones?</summary><p style="margin:10px 0 0;line-height:1.6">Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento.</p></details>
 <details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Dónde están las sedes?</summary><p style="margin:10px 0 0;line-height:1.6">Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00.</p></details>
+<p class="aeo-eeat" style="margin-top:16px;font-size:13px;opacity:.75">Revisado por Equipo clínico Protocolo Lumina · Actualizado 2026-09-03</p>
 <p style="margin-top:18px"><a href="/clinica/como-confirmamos-tu-hora-por-whatsapp">Cómo confirmamos tu hora por WhatsApp</a></p>
 </section>
-<script type="application/ld+json" id="faq-operacion-schema">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://www.protocololumina.cl/evaluacion#faq-operacion",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Cómo confirmo mi hora?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Puedo reagendar por WhatsApp?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Quién responde el WhatsApp de la clínica?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Guardan mi ficha entre sesiones?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Dónde están las sedes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00."
-      }
-    }
-  ]
-}
-</script>
 </body></html>
