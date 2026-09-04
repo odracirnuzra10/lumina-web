@@ -27,9 +27,9 @@ PHONE = "+56963222683"
 OG_IMG = f"{ORIGIN}/img/hero-endojiwoo.webp"
 LOGO = f"{ORIGIN}/apple-touch-icon.png"
 IG = "https://www.instagram.com/rejuvenecimiento.facial.lumina/"
-GBP_VITACURA = "https://share.google/wxSoyocY9JkxVJaal"
-GBP_CONCON = "https://share.google/97Y38fTRxpdOYHir8"
-GBP_LOS_ANGELES = "https://share.google/88EGAP8LKkqWdWsAr"
+GBP_VITACURA = "https://share.google/uKeMlkibRy1TPB7vK"
+GBP_CONCON = "https://share.google/CeMMtlyCmwN5K3yxP"
+GBP_LOS_ANGELES = "https://share.google/GKckpVUP3cGC9XGLq"
 SAME_AS = [
     IG,
     GBP_VITACURA,

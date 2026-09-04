@@ -101,7 +101,7 @@ PAGES.append(sede_page(
     "7630573",
     -33.3936,
     -70.5831,
-    "https://share.google/wxSoyocY9JkxVJaal",
+    "https://share.google/uKeMlkibRy1TPB7vK",
     [
         h2("Por qué Vitacura"),
         p("Es la sede flagship de la red en Santiago. La utilizacion de boxes de la operacion propia se describe en oacg.cl/lumina como alta. Para la paciente de oriente que busca lifting facial coreano sin viajar a la costa ni al Bio Bio, esta es la puerta. Estacionamiento y acceso del edificio se coordinan al confirmar la hora."),
@@ -118,7 +118,7 @@ PAGES.append(sede_page(
     "2510000",
     -32.9266,
     -71.5144,
-    "https://share.google/97Y38fTRxpdOYHir8",
+    "https://share.google/CeMMtlyCmwN5K3yxP",
     [
         h2("Por qué Concón (y no 'solo Concón')"),
         p("Un título antiguo de Google presentaba la marca como rejuvenecimiento facial solo en Concón. Era la web anterior. Hoy la línea facial opera también en Vitacura y Los Ángeles. Concón sigue siendo sede real: V Region, edificio de Las Pelargonias 842, oficina 1114."),
@@ -135,7 +135,7 @@ PAGES.append(sede_page(
     "4440000",
     -37.4693,
     -72.3527,
-    "https://share.google/88EGAP8LKkqWdWsAr",
+    "https://share.google/GKckpVUP3cGC9XGLq",
     [
         h2("Facial en el Bio Bio"),
         p("Los Ángeles no es una sucursal decorativa. La red OACG opera corporal (Hebe) y facial (Lumina) en Av. Gabriela Mistral 269. Para quien busca lifting facial sin cirugía en el sur y no quiere volar a Santiago, esta es la URL local."),

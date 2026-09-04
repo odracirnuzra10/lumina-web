@@ -5,6 +5,10 @@ https://www.clinera.io/casos/protocolo-lumina
 
 `/clinica/por-que-respondemos-en-minutos` apunta a esa URL.
 
+GBP en schema (2026-09-04): share oficiales de Ricardo en `sameAs`/`hasMap`
+(Vitacura `uKeMlkibRy1TPB7vK` · Concón `CeMMtlyCmwN5K3yxP` · Los Ángeles
+`GKckpVUP3cGC9XGLq`). No inventar `?cid=` numérico.
+
 Lo que sigue no se cierra desde este repo.
 
 ---
