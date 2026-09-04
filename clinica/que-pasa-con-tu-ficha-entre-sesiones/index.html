@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-CL">
 <head>
-<!-- FAQPage: no agregado. Esta página no tiene preguntas/respuestas visibles en el HTML; no se inventan Question/Answer. /evaluacion sí tiene FAQPage. -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +46,36 @@
         "@id": "https://www.protocololumina.cl/#organization"
       },
       "mainEntityOfPage": "https://www.protocololumina.cl/clinica/que-pasa-con-tu-ficha-entre-sesiones"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.protocololumina.cl/clinica/que-pasa-con-tu-ficha-entre-sesiones#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa con mi ficha entre sesiones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre sesiones queda tu ficha facial completa: fotos de evolución, notas del profesional y el plan facial acordado. En la próxima visita no repetimos el diagnóstico desde cero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién puede ver mi ficha?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Solo el equipo de tu sede usa esos datos para seguir el protocolo. No se publica ni se comparte fuera del equipo tratante."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Si atiendes en otra sede, se pierde el historial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Si atiendes en otra sede de la red, el historial sigue disponible para quien te evalúa. Esa información vive en Clinera."
+          }
+        }
+      ]
     }
   ]
 }
@@ -353,6 +382,17 @@
     <a class="btn-ink" href="/evaluacion">Agenda tu hora</a>
   </div>
 </section>
+
+<style>
+.clinica-faq{padding:8px 0 48px}
+.clinica-faq .wrap{max-width:820px}
+.clinica-faq h2{font-size:clamp(22px,3vw,30px);margin:0 0 18px}
+.clinica-faq details{border-bottom:1px solid var(--line,#e8ecec);padding:14px 0}
+.clinica-faq summary{cursor:pointer;font-weight:600;font-size:15.5px;line-height:1.4;list-style:none}
+.clinica-faq summary::-webkit-details-marker{display:none}
+.clinica-faq details p{margin:10px 0 0;font-size:15px;color:var(--ink-2,#36474a);line-height:1.7}
+</style>
+<section class="clinica-faq" id="faq"><div class="wrap"><h2>Preguntas frecuentes</h2><details open><summary>¿Qué pasa con mi ficha entre sesiones?</summary><p>Entre sesiones queda tu ficha facial completa: fotos de evolución, notas del profesional y el plan facial acordado. En la próxima visita no repetimos el diagnóstico desde cero.</p></details><details><summary>¿Quién puede ver mi ficha?</summary><p>Solo el equipo de tu sede usa esos datos para seguir el protocolo. No se publica ni se comparte fuera del equipo tratante.</p></details><details><summary>¿Si atiendes en otra sede, se pierde el historial?</summary><p>No. Si atiendes en otra sede de la red, el historial sigue disponible para quien te evalúa. Esa información vive en Clinera.</p></details></div></section>
 <footer class="aeo-foot">
   <div class="wrap">
     <div>

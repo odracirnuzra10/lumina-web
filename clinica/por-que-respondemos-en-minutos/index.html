@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-CL">
 <head>
-<!-- FAQPage: no agregado. Esta página no tiene preguntas/respuestas visibles en el HTML; no se inventan Question/Answer. /evaluacion sí tiene FAQPage. -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +46,36 @@
         "@id": "https://www.protocololumina.cl/#organization"
       },
       "mainEntityOfPage": "https://www.protocololumina.cl/clinica/por-que-respondemos-en-minutos"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.protocololumina.cl/clinica/por-que-respondemos-en-minutos#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Por qué responden en minutos por WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las consultas de horarios, sedes y reagendamiento se atienden en minutos por WhatsApp, también fuera del horario de box. El asistente resuelve lo operativo de la agenda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Atienden fuera del horario de box?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Fuera de lun–vie 10:00–20:00 y sábado 09:00–19:00 puedes escribir igual. El asistente confirma disponibilidad, ubicación y datos de la Evaluación P3."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El asistente indica tratamientos por chat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. No indica tratamientos ni interpreta tu piel por chat. Si la duda es clínica sobre tu piel o el plan, la deriva al equipo humano. Eso se conversa en la evaluación presencial."
+          }
+        }
+      ]
     }
   ]
 }
@@ -353,6 +382,17 @@
     <a class="btn-ink" href="/evaluacion">Agenda tu hora</a>
   </div>
 </section>
+
+<style>
+.clinica-faq{padding:8px 0 48px}
+.clinica-faq .wrap{max-width:820px}
+.clinica-faq h2{font-size:clamp(22px,3vw,30px);margin:0 0 18px}
+.clinica-faq details{border-bottom:1px solid var(--line,#e8ecec);padding:14px 0}
+.clinica-faq summary{cursor:pointer;font-weight:600;font-size:15.5px;line-height:1.4;list-style:none}
+.clinica-faq summary::-webkit-details-marker{display:none}
+.clinica-faq details p{margin:10px 0 0;font-size:15px;color:var(--ink-2,#36474a);line-height:1.7}
+</style>
+<section class="clinica-faq" id="faq"><div class="wrap"><h2>Preguntas frecuentes</h2><details open><summary>¿Por qué responden en minutos por WhatsApp?</summary><p>Las consultas de horarios, sedes y reagendamiento se atienden en minutos por WhatsApp, también fuera del horario de box. El asistente resuelve lo operativo de la agenda.</p></details><details><summary>¿Atienden fuera del horario de box?</summary><p>Sí. Fuera de lun–vie 10:00–20:00 y sábado 09:00–19:00 puedes escribir igual. El asistente confirma disponibilidad, ubicación y datos de la Evaluación P3.</p></details><details><summary>¿El asistente indica tratamientos por chat?</summary><p>No. No indica tratamientos ni interpreta tu piel por chat. Si la duda es clínica sobre tu piel o el plan, la deriva al equipo humano. Eso se conversa en la evaluación presencial.</p></details></div></section>
 <footer class="aeo-foot">
   <div class="wrap">
     <div>
