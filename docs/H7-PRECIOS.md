@@ -1,13 +1,13 @@
 # H7 — Precios públicos legibles por IA
 
-**Estado:** escenario **(b) preparado e implementado en superficies de IA**. Precios visibles en `/planes` **no se eliminaron** (pendiente confirmación de Ricardo).
+**Estado:** **R1 locked = (b)**. Precios actuales se mantienen. “desde” es texto real en el HTML. **No** se ejecuta (c) cero precio. Sin UI de cuotas mensuales.
 
 ## Escenarios
 
 | | llms.txt / llms-full.txt | Schema | `/planes` visible | CTA |
 |---|---|---|---|---|
 | (a) mantener exactos | tabla CLP | `Offer.price` | cifras | — |
-| **(b) este PR** | sin tabla exacta; P3 $27.990 y “cotiza en evaluación” | `Service` + `ReserveAction` “Agenda tu hora”; sin `Offer.price` | cifras + rótulo CSS **desde** | Agenda tu hora |
+| **(b) este PR** | sin tabla exacta; P3 $27.990 y “cotiza en evaluación” | `Service` + `ReserveAction` “Agenda tu hora”; sin `Offer.price` | cifras + rótulo **desde** como texto real en el HTML (no `::before`) | Agenda tu hora |
 | (c) cero precio | igual que b + quitar P3 | igual que b | borrar cifras | Agenda tu hora |
 
 ## Cómo pasar a (c) si Ricardo confirma

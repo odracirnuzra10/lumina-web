@@ -216,7 +216,9 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .plan-name  { font-family:'Playfair Display',serif; font-size:26px; font-weight:500; color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
 .plan-sessions { font-size:12px; letter-spacing:1.8px; color:var(--rose-ink); text-transform:uppercase; margin-bottom:20px; display:block; font-weight:600; }
 .plan-price { font-family:'Playfair Display',serif; font-size:34px; font-weight:500; color:var(--ink); margin-bottom:16px; letter-spacing:-.01em; }
-.plan-price::before, .plan-price-dark::before { content:'desde '; font-family:'Sora',sans-serif; font-size:13px; font-weight:400; letter-spacing:0; margin-right:4px; }
+.plan-price .desde, .plan-price-dark .desde, .modal-price .desde {
+  font-family:'Sora',sans-serif; font-size:13px; font-weight:400; letter-spacing:0; margin-right:4px;
+}
 .plan-price sup { font-size:15px; font-family:'Sora',sans-serif; font-weight:400; }
 .plan-desc  { font-size:16px; line-height:1.65; color:rgba(30,24,24,0.78); font-weight:400; margin-bottom:24px; }
 .plan-treats { display:flex; flex-direction:column; gap:7px; margin-bottom:26px; }
@@ -499,6 +501,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .footer-bottom-inner { padding:16px 24px; flex-direction:column; gap:6px; text-align:center; }
   .sticky-wa { display:inline-flex; }
   .modal { padding:28px 20px; }
+  .plan-price, .plan-price-dark { display:block; }
 }
 @media (max-width:1100px) {
   .plan-grid-5 { grid-template-columns:repeat(4,1fr); }
@@ -1399,7 +1402,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier red">Avanzado · Premium</span>
         <h3 class="plan-name">Eternal Gangnam</h3>
         <span class="plan-sessions" data-count="18">18 Sesiones · Bio rejuvenecimiento</span>
-        <div class="plan-price"><sup>$</sup>3.677.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>3.677.990</div>
         <p class="plan-desc">Plan integral de bio rejuvenecimiento profundo. Combina preparación facial, HIFU, Biominji y EndoJiwoo para resultados visibles desde las primeras sesiones.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1427,7 +1430,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier red">Avanzado · Premium</span>
         <h3 class="plan-name">Armonía de Busan</h3>
         <span class="plan-sessions" data-count="20">20 Sesiones · Plan más completo</span>
-        <div class="plan-price"><sup>$</sup>4.177.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>4.177.990</div>
         <p class="plan-desc">Nuestro plan más completo. Suma bio rejuvenecimiento profundo + bio armonización del óvalo facial con Dahe Beauty, Yuna Face y bioestimulación Neojin.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1499,7 +1502,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier yellow">Profundo · Enfocado</span>
         <h3 class="plan-name-dark">Protocolo de Asan</h3>
         <span class="plan-sessions-dark">Solo ojeras · 8 a 11 sesiones</span>
-        <div class="plan-price-dark"><sup>$</sup>1.977.990</div>
+        <div class="plan-price-dark"><span class="desde">desde </span> <sup>$</sup>1.977.990</div>
         <p class="plan-desc-dark">Tratamiento focalizado en ojeras de pigmentación. Tres opciones disponibles según tipo de ojera, incluyendo opción para ojera con bolsa.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1526,7 +1529,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier yellow">Profundo · Enfocado</span>
         <h3 class="plan-name-dark">Protocolo de Busan</h3>
         <span class="plan-sessions-dark">Ojeras + párpados · 9 a 13 sesiones</span>
-        <div class="plan-price-dark"><sup>$</sup>2.677.990</div>
+        <div class="plan-price-dark"><span class="desde">desde </span> <sup>$</sup>2.677.990</div>
         <p class="plan-desc-dark">Tratamiento integral para ojeras y flacidez de párpados. Tres opciones con sesiones de Fibrojin para tonificar y revitalizar la mirada.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1591,7 +1594,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier yellow">Profundo · Enfocado</span>
         <h3 class="plan-name">Flor de Busan</h3>
         <span class="plan-sessions" data-count="15">15 Sesiones · Despigmentante avanzado</span>
-        <div class="plan-price"><sup>$</sup>2.477.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>2.477.990</div>
         <p class="plan-desc">Plan despigmentante avanzado con bio rejuvenecimiento. Para manchas persistentes, melasma, cicatrices y tono irregular severo.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1616,7 +1619,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier green">Suave · Inicio</span>
         <h3 class="plan-name">Claridad de Haneul</h3>
         <span class="plan-sessions" data-count="9">9 Sesiones · Despigmentante</span>
-        <div class="plan-price"><sup>$</sup>1.997.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>1.997.990</div>
         <p class="plan-desc">Plan despigmentante para tono uniforme y radiante. Ideal como primer acercamiento al protocolo de luminosidad con enfoque en manchas superficiales.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1679,7 +1682,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier yellow">Profundo · Enfocado</span>
         <h3 class="plan-name">Luz de Jeju</h3>
         <span class="plan-sessions">Mantención · 8 a 12 sesiones</span>
-        <div class="plan-price"><sup>$</sup>2.677.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>2.677.990</div>
         <p class="plan-desc">Plan de mantenimiento de bio rejuvenecimiento profundo. Dos opciones para preservar y potenciar resultados con tecnologías de luminosidad y firmeza.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1705,7 +1708,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier green">Suave · Inicio</span>
         <h3 class="plan-name">Aura de Suwon</h3>
         <span class="plan-sessions" data-count="8">8 Sesiones · Mantención</span>
-        <div class="plan-price"><sup>$</sup>1.977.990</div>
+        <div class="plan-price"><span class="desde">desde </span> <sup>$</sup>1.977.990</div>
         <p class="plan-desc">Plan de mantenimiento para conservar firmeza y frescura facial. Ideal para potenciar resultados post protocolos integrales.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1768,7 +1771,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier green">Suave · Inicio</span>
         <h3 class="plan-name-dark">Glow de Seoul</h3>
         <span class="plan-sessions-dark" data-count="8">8 Sesiones · Glow</span>
-        <div class="plan-price-dark"><sup>$</sup>1.177.990</div>
+        <div class="plan-price-dark"><span class="desde">desde </span> <sup>$</sup>1.177.990</div>
         <p class="plan-desc-dark">Mantenimiento de hidratación y bioestimulación. Efecto glass skin con luminosidad y nutrición. Perfecto como primer acercamiento al protocolo Lumina.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -1793,7 +1796,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <span class="plan-tier green">Suave · Inicio</span>
         <h3 class="plan-name-dark">Glow de Asan</h3>
         <span class="plan-sessions-dark" data-count="8">8 Sesiones · Glow</span>
-        <div class="plan-price-dark"><sup>$</sup>1.477.990</div>
+        <div class="plan-price-dark"><span class="desde">desde </span> <sup>$</sup>1.477.990</div>
         <p class="plan-desc-dark">Mantenimiento con hidratación profunda y revitalización celular. Mejora textura, firmeza y luminosidad facial con Nubea Booster y RejuveSkin.</p>
         <div class="plan-stages">
           <div class="plan-stage">
@@ -2055,7 +2058,7 @@ function openModal(id, trigger) {
   lastModalTrigger = trigger || document.activeElement;
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mSessions').textContent = p.sessions;
-  document.getElementById('mPrice').textContent = p.price;
+  document.getElementById('mPrice').innerHTML = '<span class="desde">desde </span> ' + p.price;
   document.getElementById('mDesc').textContent = p.desc;
   const stages = planStages[id];
   document.getElementById('mTreats').innerHTML = stages
