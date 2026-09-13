@@ -53,17 +53,11 @@ Nunca `AggregateRating` suelto ni `Review` oculto. Español de Chile, sin voseo 
 ## Flujo del generador AEO
 
 1. Editar `scripts/aeo_pages_*.py` (nunca el HTML de las 23 a mano).
-2. Regenerar: `python3 scripts/build_aeo.py`.
+2. Regenerar sitemap: `python3 scripts/build_aeo.py` (`--date YYYY-MM-DD` o hoy Santiago).
+3. Polish HTML: `python3 scripts/aeo_es.py` (solo `AEO_DIRS` + `404.html`; **no** toca `scripts/*.py`).
+4. Sobrescribir las 23 HTML desde plantilla: `python3 scripts/build_aeo.py --rebuild-html`. **No** lo uses si las fuentes aún no reproducen el HTML publicado (puente Clinera, leftovers).
 
-**Hasta L1.1 no correr** `scripts/build_aeo.py`. Riesgos actuales:
-
-- Un run **sobrescribe** las 23 HTML AEO.
-- `STATIC` en `scripts/build_aeo.py` omite `/clinica/*` y `/fundador` → un run **borra 4 `<loc>`** del sitemap (hoy 34).
-- `DATE_MOD` está congelado en `scripts/aeo_template.py` (`2026-09-03`).
-- `scripts/aeo_es.py` `main()` reescribe `scripts/aeo_*.py` (bucle de mutación).
-- Over-corrections vivas: `honestás`, `mismás`, `direcciónes`, `evaluaciónes`.
-
-Criterio de L1.1: el builder reproduce `main` **sin diff salvo fechas**, antes de cualquier cambio de copy.
+`STATIC` + `PUENTE` = 34 `<loc>` (core + 23 AEO + 3 `/clinica/*` + `/fundador` sin slash). `DATE_MOD` sale de `--date` o hoy (`schema_dates.format_schema_date`). `sitemap-images.xml` anida varios `image:image` en un `<url>` por `loc`.
 
 ## YMYL / schema (resumen)
 

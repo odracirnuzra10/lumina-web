@@ -24,6 +24,7 @@ DISAMBIG = (
 )
 DATE_PUB = format_schema_date("2026-04-14")
 DATE_MOD = format_schema_date("2026-09-03")
+REBUILD_HTML = False
 REVIEWER = "Equipo clínico Protocolo Lumina"
 PHONE = "+56963222683"
 OG_IMG = f"{ORIGIN}/img/hero-endojiwoo.webp"
@@ -213,7 +214,7 @@ def footer_html() -> str:
       <a href="/endolaser-facial">Endolaser facial</a>
       <a href="/hifu-facial">HIFU facial</a>
       <a href="/radiofrecuencia-facial">Radiofrecuencia</a>
-      <a href="/tratamientos">Las 14 tecnologías</a>
+      <a href="/tratamientos">Las 18 tecnologías</a>
     </div>
     <div>
       <h4>Guías</h4>
@@ -408,5 +409,9 @@ def write_page(p: dict) -> None:
     path = p["path"].strip("/")
     dest_dir = ROOT / path
     dest_dir.mkdir(parents=True, exist_ok=True)
-    (dest_dir / "index.html").write_text(render_page(p), encoding="utf-8")
-    print("wrote", dest_dir / "index.html")
+    dest = dest_dir / "index.html"
+    if dest.exists() and not REBUILD_HTML:
+        print("kept", dest)
+        return
+    dest.write_text(render_page(p), encoding="utf-8")
+    print("wrote", dest)

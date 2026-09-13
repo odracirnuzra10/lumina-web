@@ -7,6 +7,23 @@ from zoneinfo import ZoneInfo
 _CL = ZoneInfo("America/Santiago")
 
 
+def today_santiago() -> date:
+    """Calendar day in America/Santiago. Does not invent a day."""
+    return datetime.now(_CL).date()
+
+
+def date_only(value: str | date | datetime) -> str:
+    """YYYY-MM-DD for sitemap lastmod."""
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=_CL)
+        return value.astimezone(_CL).date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    iso = format_schema_date(value)
+    return iso[:10]
+
+
 def format_schema_date(value: str | date | datetime, wall_time: str = "12:00:00") -> str:
     """Return e.g. '2026-09-04T12:00:00-04:00'. Never invent calendar days."""
     if isinstance(value, datetime):
