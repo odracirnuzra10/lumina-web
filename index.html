@@ -473,6 +473,16 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .ba-strip{grid-template-columns:1fr;}
   .hero-btns{flex-direction:column;align-items:stretch;}
 }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--rose-deep);outline-offset:3px
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-pretitle,.hero-star,.hero-h1,.hero-sub,.hero-btns,.hero-trust,.scroll-hint{
+    animation:none!important;
+  }
+  .ba-item,.testi{opacity:1;transform:none;transition:none}
+}
 </style>
 
 <style>

@@ -282,6 +282,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   text-transform:uppercase; color:var(--void); background:var(--rose); border:none;
   padding:16px 0; cursor:pointer; text-decoration:none;
   display:block; text-align:center; width:100%; transition:background 0.3s; border-radius:2px;
+  appearance:none; -webkit-appearance:none;
 }
 .plan-cta-rose:hover { background:var(--rose-deep); }
 
@@ -506,6 +507,13 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .plan-grid-5 .plan-card:nth-child(3),
   .plan-grid-5 .plan-card:nth-child(4),
   .plan-grid-5 .plan-card:nth-child(5) { grid-column:span 2; }
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--rose-deep);outline-offset:3px
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 
@@ -1510,7 +1518,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
-        <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('protocolo-asan')">Ver opciones</a>
+        <button type="button" class="plan-cta-rose" onclick="event.stopPropagation();openModal('protocolo-asan', this)">Ver opciones</button>
       </div>
 
       <div class="plan-card-dark featured" onclick="openModal('protocolo-busan')">
@@ -1537,7 +1545,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
-        <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('protocolo-busan')">Ver opciones</a>
+        <button type="button" class="plan-cta-rose" onclick="event.stopPropagation();openModal('protocolo-busan', this)">Ver opciones</button>
       </div>
 
     </div>
@@ -1777,7 +1785,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
-        <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('glow-seoul')">Ver detalles</a>
+        <button type="button" class="plan-cta-rose" onclick="event.stopPropagation();openModal('glow-seoul', this)">Ver detalles</button>
       </div>
 
       <div class="plan-card-dark featured" onclick="openModal('glow-asan')">
@@ -1803,7 +1811,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
-        <a class="plan-cta-rose" href="javascript:void(0)" onclick="event.stopPropagation();openModal('glow-asan')">Ver detalles</a>
+        <button type="button" class="plan-cta-rose" onclick="event.stopPropagation();openModal('glow-asan', this)">Ver detalles</button>
       </div>
 
     </div>
@@ -1893,7 +1901,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 <!-- ══ MODAL ══ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modalContent">
-    <button class="modal-close" onclick="closeModalDirect()">×</button>
+    <button type="button" class="modal-close" onclick="closeModalDirect()">×</button>
     <span class="modal-pre">Protocolo Lumina</span>
     <h2 class="modal-name" id="mName">—</h2>
     <span class="modal-sessions" id="mSessions">—</span>
@@ -2041,8 +2049,10 @@ const planStages = {
   ]
 };
 
-function openModal(id) {
+let lastModalTrigger = null;
+function openModal(id, trigger) {
   const p = plans[id]; if(!p) return;
+  lastModalTrigger = trigger || document.activeElement;
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mSessions').textContent = p.sessions;
   document.getElementById('mPrice').textContent = p.price;
@@ -2059,9 +2069,15 @@ function openModal(id) {
   document.getElementById('mCta').href = `https://api.whatsapp.com/send?phone=56963222683&text=${p.wa}`;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  const closeBtn = document.querySelector('#modalOverlay .modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 function closeModal(e) { if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') lastModalTrigger.focus();
+}
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModalDirect(); });
 
 /* ── Session counter animation — cuenta desde 0 al entrar en viewport ── */

@@ -530,6 +530,14 @@ h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
   .footer-inner { grid-template-columns:1fr; gap:36px; }
   .btn-primary, .btn-secondary { width:100%; justify-content:center; padding:18px 24px; }
 }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--rose-deep);outline-offset:3px
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sticky-wa:hover{transform:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 
 <style>
