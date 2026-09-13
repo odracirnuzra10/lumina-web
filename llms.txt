@@ -28,6 +28,9 @@ Protocolo Lumina gestiona su agenda, confirmaciones por WhatsApp y seguimiento d
 ## Grupo
 Protocolo Lumina es parte de OACG Group junto a Método Hebe (estética corporal) y Clinera (software).
 
+## Identidad legal
+Razón social: Protocolo Lumina Limitada. RUT 78.066.765-6.
+
 ## Preguntas frecuentes
 - ¿Cómo confirmo mi hora? Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda.
 - ¿Puedo reagendar por WhatsApp? Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles.
