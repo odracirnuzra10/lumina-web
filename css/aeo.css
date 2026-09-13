@@ -1,6 +1,6 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#E8B4B8;--rose-deep:#C48B90;--rose-light:#F2CDD0;--rose-ink:#96585E;
+  --rose:#E8B4B8;--rose-deep:#C48B90;--rose-light:#F2CDD0;--rose-ink:#8E4F55;
   --void:#0E0E0E;--onyx:#141414;--cloud:#F0EEE9;--petal:#FBF6F4;--mid:#F4EEEB;
   --ink:#1E1818;--ink-body:rgba(30,24,24,.78);--ink-subtle:rgba(30,24,24,.48);
   --serif:'Playfair Display',Georgia,serif;--sans:'Sora',system-ui,sans-serif;
@@ -9,7 +9,7 @@
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--sans);background:var(--petal);color:var(--ink);font-size:17px;line-height:1.75;overflow-x:hidden}
 a{color:var(--rose-ink);text-decoration:none}
-a:hover{color:var(--rose-deep)}
+a:hover{color:var(--rose-ink)}
 img{max-width:100%;height:auto;display:block}
 .wrap{width:var(--wrap);margin:0 auto}
 .narrow{width:var(--narrow);margin:0 auto}
@@ -20,9 +20,9 @@ nav.aeo-nav .wrap{display:flex;align-items:center;justify-content:space-between;
 .logo span{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.28em;opacity:.45;margin-top:2px}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(30,24,24,.62);font-weight:500}
-.nav-links a:hover,.nav-links a.active{color:var(--rose-deep)}
-.nav-cta{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#4CAF7D;padding:12px 22px;border-radius:2px}
-.nav-cta:hover{background:#3d9c6b;color:#fff}
+.nav-links a:hover,.nav-links a.active{color:var(--rose-ink)}
+.nav-cta{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#2E7D52;padding:12px 22px;border-radius:2px}
+.nav-cta:hover{background:#246B44;color:#fff}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
 .hamburger span{width:22px;height:1.5px;background:var(--ink);display:block}
 .mob{display:none;position:fixed;inset:0;background:var(--petal);z-index:880;padding:90px 32px;flex-direction:column;gap:18px}
@@ -32,7 +32,7 @@ nav.aeo-nav .wrap{display:flex;align-items:center;justify-content:space-between;
 .crumbs{font-size:12px;color:var(--ink-subtle);padding:18px 0 0}
 .crumbs a{color:var(--ink-subtle)}
 .hero-aeo{padding:36px 0 28px}
-.kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-deep);font-weight:600;margin-bottom:14px}
+.kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-ink);font-weight:600;margin-bottom:14px}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5vw,52px);line-height:1.12;margin-bottom:18px}
 h1 em{font-style:italic;color:var(--rose-deep)}
 .answer-first{font-size:19px;line-height:1.65;color:var(--ink-body);max-width:68ch;margin-bottom:16px}
@@ -50,7 +50,7 @@ h1 em{font-style:italic;color:var(--rose-deep)}
 .related{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:28px 0}
 .related a{display:block;background:#fff;border:1px solid rgba(196,139,144,.2);padding:16px 18px;color:var(--ink);font-size:15px}
 .related a:hover{border-color:var(--rose-deep)}
-.related a span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:6px}
+.related a span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-ink);margin-bottom:6px}
 
 .faq{margin:48px 0 24px}
 .faq-item{border-bottom:1px solid rgba(196,139,144,.18)}
@@ -80,7 +80,7 @@ th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose
 
 .term{margin:0 0 28px;padding:0 0 20px;border-bottom:1px solid rgba(196,139,144,.14)}
 .review{background:#fff;border:1px solid rgba(196,139,144,.2);padding:22px 24px;margin:0 0 16px}
-.review .stars{color:var(--rose-deep);letter-spacing:2px;font-size:12px;margin-bottom:8px}
+.review .stars{color:var(--ink);letter-spacing:2px;font-size:12px;margin-bottom:8px}
 .review footer{margin-top:12px;font-size:13px;color:var(--ink-subtle)}
 
 footer.aeo-foot{background:var(--onyx);color:rgba(240,238,233,.78);padding:56px 0 24px;font-size:14px}
