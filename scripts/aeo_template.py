@@ -91,6 +91,8 @@ def org_graph() -> list[dict]:
             "@type": "Organization",
             "@id": f"{ORIGIN}/#organization",
             "name": "Protocolo Lumina",
+            "legalName": "Protocolo Lumina Limitada",
+            "taxID": "78.066.765-6",
             "alternateName": [
                 "Lumina Clínica Facial",
                 "Clínica Protocolo Lumina",
@@ -240,7 +242,7 @@ def footer_html() -> str:
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Protocolo Lumina · Clínica facial Chile · Parte de OACG Group</span>
+    <span>© 2026 Protocolo Lumina Limitada · RUT 78.066.765-6 · Clínica facial Chile</span>
     <span>Reserva en protocololumina.cl</span>
   </div>
 </footer>

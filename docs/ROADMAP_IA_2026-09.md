@@ -23,7 +23,7 @@ Eres una IA que implementa **una sola** fila de la sección 3. No re-investigues
 1. Lee `CLAUDE.md` (si existe) y esta sección 1.
 2. En la sección 3, toma el ID de **menor prioridad numérica** (P0 → P3) cuyo `Depende de` esté cerrado (merge en `main` o R marcada hecha).
 3. Si hay empate, elige el ID más bajo (L0.1 antes que L0.2).
-4. Si `Depende de` cita un R **abierto** (R6, R8–R12) y Ricardo no respondió: **para y pregunta**. No asumas. R1–R5 y R7 ya están locked: no preguntar de nuevo.
+4. Si `Depende de` cita un R **abierto** (R6, R9–R12) y Ricardo no respondió: **para y pregunta**. No asumas. R1–R5, R7 y **R8 `legalName`** ya están locked: no preguntar de nuevo.
 5. No abras un segundo ID “porque es chico”.
 
 ### Una tarea = una rama + un PR
@@ -51,7 +51,7 @@ En el PR: ID, qué cambió, comando de `Verificación` pegado con salida, URLs `
 
 Una cosa a la vez. Para y pregunta si:
 
-- falta un R **abierto** (R6 Doctoralia, R8 `legalName`, R9 `foundingDate`, R10 consentimiento Corea, R11 INAPI, R12 booking Clinera). No parar por R1–R5 ni R7.
+- falta un R **abierto** (R6 Doctoralia, R9 `foundingDate`, R10 consentimiento Corea, R11 INAPI, R12 booking Clinera). No parar por R1–R5, R7 ni R8 (`legalName` locked).
 - el generador AEO sigue roto y la tarea pide editar una de las 23 páginas;
 - tendrías que inventar cm, reseñas, direcciones, fechas o registros;
 - el cambio exige editar `vercel.json` y no es L1.7;
@@ -595,7 +595,7 @@ grep -rhoE 'wa.me/[0-9]+|\+569[0-9]+' --include='*.html' --include='*.py' --incl
 
 ## 4. Solo Ricardo
 
-R1–R5 y R7 están **locked 2026-09-13**. No reabrir. Si un L/T depende de un R **abierto** (R6, R8–R12), parar.
+R1–R5, R7 y **R8** (`legalName`) están **locked**. No reabrir. Si un L/T depende de un R **abierto** (R6, R9–R12), parar.
 
 ### Locked
 
@@ -607,13 +607,13 @@ R1–R5 y R7 están **locked 2026-09-13**. No reabrir. Si un L/T depende de un R
 | **R4** | Locked · **solo Hebe** | KPI AUGE (sesiones que arrancan `/evaluacion` con origen AUGE; +20 % relativo; tope WA). Decidido en el repo Hebe | **Cero acción** en Lumina. No inventar un KPI AUGE facial |
 | **R5** | Locked baseline | PageSpeed **móvil** es el baseline. GSC sigue pendiente | Scores en §2. GSC **no bloquea** L1–L5 ni T6 |
 | **R7** | Locked | Mergear [#41](https://github.com/odracirnuzra10/lumina-web/pull/41) (14→18). Adipolite no es Lumina | L0.2 **desbloqueado**. **Otro worker** hace el merge |
+| **R8** | Locked | `legalName` **Protocolo Lumina Limitada** · RUT **78.066.765-6** (`taxID`). No `vatID` (no había slot). No URL Clinera `app.clinera.io/hebe` | Organization `#organization` + pie / llms |
 
 ### Abiertos (la IA no asume)
 
 | ID | Decisión / cuenta | Bloquea |
 |---|---|---|
 | **R6** | Fichas Doctoralia (clínica + personas reales) | Off-site |
-| **R8** | `legalName` (razón social chilena; hoy se omite) | Schema Organization |
 | **R9** | `foundingDate` 2025 en `scripts/aeo_template.py` | Fechas schema |
 | **R10** | Consentimiento testimonio Corea (reel) para web | Review extra en `/opiniones` |
 | **R11** | INAPI marcas → quitar `noindex` de `/franquicia` | Indexación franquicia |
@@ -665,7 +665,7 @@ T0 = **13-sep-2026** (estado verificado). Mes 3 SoM = **1–15 dic 2026**.
 | T+90 / mes 3 | **1–15 dic** | **L5.3** refresh + Share of Model mes 3 · meta 10 % citas con URL | Misma medición en Hebe (repo hermano) |
 | Cierre horizonte | 15 dic | Stop de features; solo hotfix YMYL / generador | — |
 
-P3 (condicional, R abiertos): Person/Superintendencia, `legalName` (R8), index `/franquicia` (R11), booking Clinera (R12). **No** `AggregateRating` (R3).
+P3 (condicional, R abiertos): Person/Superintendencia, index `/franquicia` (R11), booking Clinera (R12). R8 `legalName` ya locked. **No** `AggregateRating` (R3).
 
 ---
 

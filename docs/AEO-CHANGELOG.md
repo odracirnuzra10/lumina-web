@@ -114,5 +114,5 @@ Ver `docs/H7-PRECIOS.md`. Implementado **(b)** en IA; visibles en `/planes` con 
 - Verificar GSC/Bing (hace falta login).
 - Wikidata (ítem de clínica) y fichas Doctoralia (clínica + profesionales).
 - Nombres reales de profesionales.
-- legalName (razón social chilena no confirmada; se omite a propósito).
+- legalName locked: Protocolo Lumina Limitada · RUT 78.066.765-6 (`taxID` en Organization).
 - Confirmar foundingDate 2025 si Ricardo tiene otra fecha.
