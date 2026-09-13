@@ -74,7 +74,7 @@ def faqs_tech(nombre: str) -> list[tuple[str, str]]:
         ),
         (
             f"Cuántas sesiones de {nombre} necesito?",
-            "Depende de flacidez, edad, fototipo y si se combina con otras de las 14 tecnologías. "
+            "Depende de flacidez, edad, fototipo y si se combina con otras de las 18 tecnologías. "
             "No vendemos sesiones sueltas: se indica un plan.",
         ),
         (
@@ -105,7 +105,7 @@ def faqs_tech(nombre: str) -> list[tuple[str, str]]:
         ),
         (
             "Se combina con otras tecnologías?",
-            "Sí. El protocolo combina 14 tecnologías coreanas porque el envejecimiento ataca en paralelo "
+            "Sí. El protocolo combina 18 tecnologías coreanas porque el envejecimiento ataca en paralelo "
             "(flacidez, mancha, textura, volumen).",
         ),
     ]
