@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # Exact first (over-corrections and voseo), then longest unaccented stems.
 EXACT = [
+    ("honestás", "honestas"),
+    ("mismás", "mismas"),
+    ("direcciónes", "direcciones"),
+    ("evaluaciónes", "evaluaciones"),
     ("sesiónes", "sesiones"),
     ("Sesiónes", "Sesiones"),
     ("anestésia", "anestesia"),
@@ -294,8 +298,17 @@ def polish_text(text: str) -> str:
     for a, b in EXACT:
         text = text.replace(a, b)
     for a, b in WORDS:
+        if a == "estas en":
+            text = re.sub(
+                r"(?<![A-Za-zÁÉÍÓÚÜáéíóúüÑñ])estas en",
+                "estás en",
+                text,
+            )
+            continue
         text = _word_swap(text, a, b)
     for a, b in TITLE_FIXES:
+        text = text.replace(a, b)
+    for a, b in EXACT:
         text = text.replace(a, b)
     text = _unstash(text, held)
     return text
@@ -366,12 +379,6 @@ def main() -> None:
         if p.exists() and polish_file(p):
             n += 1
             print("html", p.relative_to(ROOT))
-    for p in (ROOT / "scripts").glob("aeo_*.py"):
-        if p.name == "aeo_es.py":
-            continue
-        if polish_file(p):
-            n += 1
-            print("py", p.name)
     print("changed", n)
 
 

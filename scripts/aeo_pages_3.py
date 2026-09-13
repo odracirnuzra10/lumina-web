@@ -142,7 +142,7 @@ PAGES.append({
     "nav_active": "/tratamientos",
     "kicker": "Comparativa YMYL",
     "title": "Lifting sin cirugía vs lifting quirúrgico: cuando cada uno | Protocolo Lumina",
-    "description": "Diferencias honestás entre ritidectomía y lifting facial coreano (HIFU, EndoJiwoo, RF). Que no puede la energía, que no debería prometer el quirófano, y como decidimos en Chile.",
+    "description": "Diferencias honestas entre ritidectomía y lifting facial coreano (HIFU, EndoJiwoo, RF). Que no puede la energía, que no debería prometer el quirófano, y como decidimos en Chile.",
     "h1": "Lifting sin cirugía vs <em>lifting quirúrgico</em>",
     "h1_text": "Lifting sin cirugía vs lifting quirúrgico",
     "answer": "El lifting quirúrgico (ritidectomía) corta, despega, tensa SMAS y reseca piel. El lifting sin cirugía de Protocolo Lumina no reseca: usa HIFU, EndoJiwoo, radiofrecuencia y bioestimulación. Si hay exceso de piel franco, la energía no es un facelift barato: es la opcion incorrecta. Si la flacidez es leve a moderada, operarte puede ser exceso.",
