@@ -1,4 +1,6 @@
 (function () {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ clinica: 'lumina' });
   var ham = document.getElementById('hamburger');
   var mob = document.getElementById('mobileMenu');
   if (ham && mob) {
