@@ -54,6 +54,11 @@ HOURS = [
 
 
 def clinic(slug, name, url, street, locality, region, postal, lat, lng, maps, gbp):
+    """Única definición tipada de cada sede (`#vitacura` / `#concon` / `#losangeles`).
+
+    El bloque HTML `PUENTE-AEO-GRAPH` solo puede referenciar estos `@id` con
+    `{"@id": "..."}`. No emitir un segundo MedicalClinic con el mismo `@id`.
+    """
     return {
         "@type": "MedicalClinic",
         "@id": f"{ORIGIN}/#{slug}",
