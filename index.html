@@ -75,7 +75,7 @@ window.addEventListener('load', function() {
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 :root {
-  --rose:#E8B4B8; --rose-deep:#C48B90; --rose-light:#F2CDD0;
+  --rose:#E8B4B8; --rose-deep:#C48B90; --rose-light:#F2CDD0; --rose-ink:#8E4F55;
   --void:#0E0E0E; --onyx:#141414;
   --cloud:#F0EEE9; --petal:#FBF6F4; --mid:#F4EEEB;
   --ink:#1E1818; --ink-body:rgba(30,24,24,0.78); --ink-subtle:rgba(30,24,24,0.42);
@@ -131,18 +131,18 @@ nav.scrolled .logo-light { display:block; }
 }
 nav.scrolled .nav-links a { color:rgba(30,24,24,0.62); }
 .nav-links a:hover { color:var(--rose); }
-nav.scrolled .nav-links a:hover { color:var(--rose-deep); }
+nav.scrolled .nav-links a:hover { color:var(--rose-ink); }
 .nav-links a.active { color:rgba(240,238,233,0.9); }
-nav.scrolled .nav-links a.active { color:var(--rose-deep); }
+nav.scrolled .nav-links a.active { color:var(--rose-ink); }
 
 .nav-cta {
   font-family:'Sora',sans-serif; font-size:12px; font-weight:600;
   letter-spacing:1.8px; text-transform:uppercase;
-  color:#fff; background:#4CAF7D; border:none;
+  color:#fff; background:#2E7D52; border:none;
   padding:13px 26px; cursor:pointer; text-decoration:none; display:inline-block;
   transition:background 0.3s; border-radius:2px;
 }
-.nav-cta:hover { background:#3d9c6b; }
+.nav-cta:hover { background:#246B44; }
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; position:relative; }
 .hamburger span { width:22px; height:1px; background:var(--cloud); display:block; transition:background 0.4s; }
 nav.scrolled .hamburger span { background:var(--ink); }
@@ -246,7 +246,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .sec-rose  { background:linear-gradient(135deg,#F9F0EE 0%,#F0E8E5 100%); padding:100px 48px; }
 .container { max-width:1200px; margin:0 auto; }
 
-.pretitle-dark  { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--rose-deep); opacity:0.7;  margin-bottom:14px; display:block; }
+.pretitle-dark  { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--rose-ink); opacity:0.85;  margin-bottom:14px; display:block; }
 .pretitle-light { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--rose);      opacity:0.55; margin-bottom:14px; display:block; }
 
 .h2-dark  { font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,48px); font-weight:400; color:var(--ink);   line-height:1.2; margin-bottom:14px; }
@@ -266,7 +266,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .phase-num { font-size:10px; letter-spacing:2px; color:var(--rose-deep); opacity:0.5; padding-top:3px; }
 .phase-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:400; color:var(--ink); margin-bottom:7px; }
 .phase-desc { font-size:16px; line-height:1.7; color:var(--ink-body); font-weight:400; }
-.phase-tag { display:inline-block; margin-top:8px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-deep); border:1px solid rgba(196,139,144,0.3); padding:3px 9px; }
+.phase-tag { display:inline-block; margin-top:8px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-ink); border:1px solid rgba(142,79,85,0.35); padding:3px 9px; }
 
 /* ─── TECNOLOGÍA ─── */
 .tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(232,180,184,0.08); border:1px solid rgba(232,180,184,0.08); margin-top:52px; }
@@ -286,7 +286,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .ba-item img { display:block; width:100%; height:auto; transition:transform 0.5s ease, opacity 0.4s; }
 .ba-item:hover img { opacity:0.9; transform:scale(1.01); }
 .ba-label { padding:10px 4px 0; }
-.ba-zone { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--rose-deep); opacity:0.7; display:block; margin-bottom:3px; }
+.ba-zone { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--rose-ink); opacity:0.85; display:block; margin-bottom:3px; }
 .ba-plan-name { font-family:'Playfair Display',serif; font-size:15px; font-weight:400; color:var(--ink); }
 
 /* ─── TESTIMONIOS ─── */
@@ -377,7 +377,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .caso-content { padding: 8px 0; }
 .caso-eyebrow {
   font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--rose-deep); opacity: 0.65; margin-bottom: 20px; display: block;
+  color: var(--rose-ink); opacity: 0.85; margin-bottom: 20px; display: block;
 }
 .caso-quote {
   font-family: 'Playfair Display', serif;
@@ -396,7 +396,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .caso-datos {
   font-size: 11px; letter-spacing: 1.5px; color: var(--ink-body); font-weight: 300;
 }
-.caso-stars { color: var(--rose-deep); font-size: 11px; letter-spacing: 3px; margin-bottom: 8px; }
+.caso-stars { color: var(--ink); font-size: 11px; letter-spacing: 3px; margin-bottom: 8px; }
 .caso-tag {
   display: inline-block; margin-top: 18px;
   font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase;
@@ -434,15 +434,15 @@ nav.scrolled .hamburger span { background:var(--ink); }
   text-decoration:none; font-weight:500;
   padding:8px 0;
 }
-.mob-menu-link:hover { color:var(--rose-deep); }
+.mob-menu-link:hover { color:var(--rose-ink); }
 .mob-menu-cta {
   display:inline-flex; align-items:center; gap:10px;
   margin-top:20px; font-family:'Sora',sans-serif; font-size:11px;
   letter-spacing:2px; text-transform:uppercase; font-weight:500;
-  color:#fff; background:#4CAF7D; padding:16px 34px;
+  color:#fff; background:#2E7D52; padding:16px 34px;
   text-decoration:none; border-radius:0; transition:background 0.3s;
 }
-.mob-menu-cta:hover { background:#3d9c6b; }
+.mob-menu-cta:hover { background:#246B44; }
 
 /* RESPONSIVE */
 @media(max-width:900px){

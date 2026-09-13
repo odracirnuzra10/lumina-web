@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 :root {
-  --rose:#E8B4B8; --rose-deep:#C48B90; --rose-light:#F2CDD0;
+  --rose:#E8B4B8; --rose-deep:#C48B90; --rose-light:#F2CDD0; --rose-ink:#8E4F55;
   --void:#0E0E0E; --onyx:#141414;
   --cloud:#F0EEE9; --petal:#FBF6F4; --mid:#F4EEEB;
   --ink:#1E1818;
@@ -72,17 +72,17 @@ nav.scrolled { padding:14px 48px; }
   color:rgba(30,24,24,0.55); text-decoration:none; font-weight:500;
   transition:color 0.3s;
 }
-.nav-links a:hover { color:var(--rose-deep); }
-.nav-links a.active { color:var(--rose-deep); font-weight:600; }
+.nav-links a:hover { color:var(--rose-ink); }
+.nav-links a.active { color:var(--rose-ink); font-weight:600; }
 .nav-cta {
   font-family:'Sora',sans-serif; font-size:12px; font-weight:600;
   letter-spacing:1.8px; text-transform:uppercase;
-  color:#fff; background:#4CAF7D; border:none;
+  color:#fff; background:#2E7D52; border:none;
   padding:14px 26px; cursor:pointer; text-decoration:none; display:inline-block;
   transition:background 0.3s;
   border-radius:2px;
 }
-.nav-cta:hover { background:#3d9c6b; }
+.nav-cta:hover { background:#246B44; }
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; position:relative; }
 .hamburger span { width:24px; height:1.5px; background:var(--ink); display:block; transition:transform 0.4s, opacity 0.3s; }
 .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
@@ -93,7 +93,7 @@ nav.scrolled { padding:14px 48px; }
 .mob-menu { position:fixed; inset:0; z-index:1050; background:var(--petal); display:none; flex-direction:column; padding:90px 40px 40px; }
 .mob-menu.open { display:flex; }
 .mob-menu-link { font-family:'Playfair Display',serif; font-size:32px; color:var(--ink); text-decoration:none; padding:18px 0; border-bottom:1px solid rgba(196,139,144,0.2); }
-.mob-menu-cta { margin-top:28px; padding:18px 24px; background:#4CAF7D; color:#fff; text-decoration:none; font-weight:600; letter-spacing:2px; font-size:13px; text-transform:uppercase; text-align:center; display:flex; align-items:center; justify-content:center; gap:10px; }
+.mob-menu-cta { margin-top:28px; padding:18px 24px; background:#2E7D52; color:#fff; text-decoration:none; font-weight:600; letter-spacing:2px; font-size:13px; text-transform:uppercase; text-align:center; display:flex; align-items:center; justify-content:center; gap:10px; }
 
 /* ─── HERO ─── */
 .hero {
@@ -116,7 +116,7 @@ nav.scrolled { padding:14px 48px; }
 .hero-eyebrow {
   display:inline-block;
   font-size:12px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--rose-deep); font-weight:600;
+  color:var(--rose-ink); font-weight:600;
   padding:8px 14px; background:rgba(232,180,184,0.16);
   border-radius:3px;
   margin-bottom:26px;
@@ -220,7 +220,7 @@ h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
   font-family:'Sora',sans-serif;
   font-size:13px; letter-spacing:2px; text-transform:uppercase;
   font-weight:600;
-  color:var(--rose-deep);
+  color:var(--rose-ink);
   margin-bottom:14px;
 }
 .family.bg-dark .family-marker { color:var(--rose); }
@@ -316,7 +316,7 @@ h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
   display:inline-block;
   font-size:11px; letter-spacing:2px; text-transform:uppercase;
   font-weight:600;
-  color:var(--rose-deep);
+  color:var(--rose-ink);
   background:rgba(232,180,184,0.18);
   padding:5px 11px;
   border-radius:3px;
@@ -491,7 +491,7 @@ h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
 /* Sticky WhatsApp */
 .sticky-wa {
   position:fixed; bottom:24px; right:24px; z-index:800;
-  background:#4CAF7D; color:#fff;
+  background:#2E7D52; color:#fff;
   width:60px; height:60px;
   border-radius:50%; display:flex; align-items:center; justify-content:center;
   text-decoration:none;
