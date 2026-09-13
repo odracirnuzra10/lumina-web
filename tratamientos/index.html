@@ -246,9 +246,8 @@ h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
   border:1px solid transparent;
   width:auto; max-width:100%;
 }
-.tier-pill::before {
-  content:''; width:9px; height:9px; border-radius:50%;
-  background:currentColor; opacity:0.85;
+.tier-dots {
+  font-size:12px; letter-spacing:1px; font-weight:700; line-height:1;
 }
 .tier-pill.green  { color:#2D6A42; background:#E5F1E8; border-color:rgba(59,122,79,0.30); }
 .tier-pill.yellow { color:#8C6708; background:#FBF1D6; border-color:rgba(181,135,14,0.32); }
@@ -1379,9 +1378,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     <div class="intensity-legend">
       <span class="intensity-legend-title">Profundidad del tratamiento</span>
       <div class="intensity-legend-pills">
-        <span class="tier-pill green">Suave · Superficial</span>
-        <span class="tier-pill yellow">Regenerativo · Medio</span>
-        <span class="tier-pill red">Estructural · Profundo</span>
+        <span class="tier-pill green"><span class="tier-dots" aria-hidden="true">●○○</span> Suave · Superficial</span>
+        <span class="tier-pill yellow"><span class="tier-dots" aria-hidden="true">●●○</span> Regenerativo · Medio</span>
+        <span class="tier-pill red"><span class="tier-dots" aria-hidden="true">●●●</span> Estructural · Profundo</span>
       </div>
     </div>
   </div>
@@ -1411,7 +1410,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="family-inner">
     <div class="family-head">
       <div>
-        <span class="tier-pill green">Suave · Superficial</span>
+        <span class="tier-pill green"><span class="tier-dots" aria-hidden="true">●○○</span> Suave · Superficial</span>
         <div class="family-marker">Familia 01</div>
         <h2 class="family-title">Limpieza<br>& <em>Glow</em></h2>
       </div>
@@ -1464,7 +1463,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="family-inner">
     <div class="family-head">
       <div>
-        <span class="tier-pill yellow">Regenerativo · Medio</span>
+        <span class="tier-pill yellow"><span class="tier-dots" aria-hidden="true">●●○</span> Regenerativo · Medio</span>
         <div class="family-marker">Familia 02</div>
         <h2 class="family-title">Regeneración<br><em>celular</em></h2>
       </div>
@@ -1517,7 +1516,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="family-inner">
     <div class="family-head">
       <div>
-        <span class="tier-pill red">Estructural · Profundo</span>
+        <span class="tier-pill red"><span class="tier-dots" aria-hidden="true">●●●</span> Estructural · Profundo</span>
         <div class="family-marker">Familia 03</div>
         <h2 class="family-title">Lifting<br><em>estructural</em></h2>
       </div>
@@ -1603,7 +1602,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="family-inner">
     <div class="family-head">
       <div>
-        <span class="tier-pill yellow">Regenerativo · Medio</span>
+        <span class="tier-pill yellow"><span class="tier-dots" aria-hidden="true">●●○</span> Regenerativo · Medio</span>
         <div class="family-marker">Familia 04</div>
         <h2 class="family-title">Armonización<br>& <em>detalle</em></h2>
       </div>
