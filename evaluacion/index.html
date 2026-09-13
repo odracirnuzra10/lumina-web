@@ -495,11 +495,20 @@
       cursor: pointer;
       transition: all 0.25s ease;
       background: #fff;
+      font: inherit;
+      text-align: left;
+      width: 100%;
+      color: inherit;
     }
 
     .sede-card:hover {
       border-color: var(--teal);
       box-shadow: 0 2px 12px rgba(14, 14, 14, 0.08);
+    }
+
+    .sede-card:focus-visible {
+      outline: 2px solid var(--rose-deep, #C48B90);
+      outline-offset: 3px;
     }
 
     .sede-card.selected {
@@ -705,7 +714,16 @@
 
     .form-group input.error {
       border-color: #e74c3c;
-      animation: shake 0.4s ease;
+    }
+
+    .field-error {
+      min-height: 1.15em;
+      margin: 0.35rem 0 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #b42318;
+      line-height: 1.35;
     }
 
     /* Phone input con prefijo +56 separado */
@@ -727,7 +745,6 @@
 
     .phone-group.error {
       border-color: #e74c3c;
-      animation: shake 0.4s ease;
     }
 
     .phone-prefix {
@@ -2532,33 +2549,33 @@
             <h2 class="step-title" style="text-align: center; width: 100%;">¿DÓNDE TE GUSTARÍA <em>EVALUARTE</em>?</h2>
             <p class="step-sub" style="text-align: center; width: 100%;">Elige la sede más cercana a ti.</p>
             <div class="sede-cards">
-              <div class="sede-card" data-sede="Concón — Las Pelargonias 842" onclick="selectSede(this)">
-                <div class="emoji">🌊</div>
+              <div class="sede-card" role="button" tabindex="0" aria-pressed="false" data-sede="Concón — Las Pelargonias 842" onclick="selectSede(this)" onkeydown="sedeKeyDown(event, this)">
+                <div class="emoji" aria-hidden="true">🌊</div>
                 <div class="info">
                   <h3>Concón</h3>
                   <p>Las Pelargonias 842</p>
                 </div>
-                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <div class="check-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg></div>
               </div>
-              <div class="sede-card" data-sede="Los Ángeles — Av. Gabriela Mistral 269" onclick="selectSede(this)">
-                <div class="emoji">🏔️</div>
+              <div class="sede-card" role="button" tabindex="0" aria-pressed="false" data-sede="Los Ángeles — Av. Gabriela Mistral 269" onclick="selectSede(this)" onkeydown="sedeKeyDown(event, this)">
+                <div class="emoji" aria-hidden="true">🏔️</div>
                 <div class="info">
                   <h3>Los Ángeles</h3>
                   <p>Av. Gabriela Mistral 269</p>
                 </div>
-                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <div class="check-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg></div>
               </div>
-              <div class="sede-card" data-sede="Vitacura — Los Abedules 3085" onclick="selectSede(this)">
-                <div class="emoji">🏙️</div>
+              <div class="sede-card" role="button" tabindex="0" aria-pressed="false" data-sede="Vitacura — Los Abedules 3085" onclick="selectSede(this)" onkeydown="sedeKeyDown(event, this)">
+                <div class="emoji" aria-hidden="true">🏙️</div>
                 <div class="info">
                   <h3>Vitacura</h3>
                   <p>Los Abedules 3085</p>
                 </div>
-                <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <div class="check-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg></div>
               </div>
@@ -2611,7 +2628,7 @@
 
           <!-- STEP 3 -->
           <div class="step" id="step3">
-            <button class="back-btn" onclick="goToStep(2.5, &#39;back&#39;)">
+            <button type="button" class="back-btn" onclick="goToStep(2.5, &#39;back&#39;)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
@@ -2621,29 +2638,34 @@
             <div class="step-title">ÚLTIMO <em>PASO</em></div>
             <div class="step-sub">Déjanos tus datos y te escribimos por WhatsApp para coordinar tu hora.</div>
             <div class="recap-chip" id="recapChip" style="display:none"></div>
+            <form id="datosForm" novalidate>
             <div class="form-group">
-              <label>Nombre</label>
-              <input type="text" id="inputNombre" placeholder="Escribe tu nombre" autocomplete="name" onkeydown="formKeyDown(event, &#39;inputCelular&#39;)">
+              <label for="inputNombre">Nombre</label>
+              <input type="text" id="inputNombre" name="nombre" placeholder="Escribe tu nombre" autocomplete="name" required aria-required="true" aria-invalid="false" aria-describedby="errorNombre" oninput="clearFieldError('inputNombre')" onkeydown="formKeyDown(event, &#39;inputCelular&#39;)">
+              <p class="field-error" id="errorNombre" role="alert"></p>
             </div>
             <div class="form-group">
-              <label>Celular</label>
+              <label for="inputCelular">Celular</label>
               <div class="phone-group" id="phoneGroup">
                 <span class="phone-prefix" aria-hidden="true">+56</span>
-                <input type="tel" id="inputCelular" placeholder="9 XXXX XXXX" inputmode="numeric" maxlength="11" autocomplete="tel-national" oninput="formatPhone(this)" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
+                <input type="tel" id="inputCelular" name="celular" placeholder="9 XXXX XXXX" inputmode="numeric" maxlength="11" autocomplete="tel-national" required aria-required="true" aria-invalid="false" aria-describedby="errorCelular" oninput="formatPhone(this);clearFieldError('inputCelular')" onkeydown="formKeyDown(event, &#39;inputCorreo&#39;)">
               </div>
+              <p class="field-error" id="errorCelular" role="alert"></p>
             </div>
             <div class="form-group">
-              <label>Correo</label>
-              <input type="email" id="inputCorreo" placeholder="Tu correo electrónico" autocomplete="email" onkeydown="formKeyDown(event, null)">
+              <label for="inputCorreo">Correo</label>
+              <input type="email" id="inputCorreo" name="correo" placeholder="Tu correo electrónico" autocomplete="email" required aria-required="true" aria-invalid="false" aria-describedby="errorCorreo" oninput="clearFieldError('inputCorreo')" onkeydown="formKeyDown(event, null)">
+              <p class="field-error" id="errorCorreo" role="alert"></p>
             </div>
-            <button class="wa-btn enabled" id="btnSubmit" onclick="handleSubmit()">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+            <button type="button" class="wa-btn enabled" id="btnSubmit" onclick="handleSubmit()">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
               </svg>
               Enviar y agendar mi hora
             </button>
             <div class="form-note">Sin compromiso. Te respondemos en minutos.</div>
             <div class="form-note" style="margin-top: 0.3rem; opacity: 0.75;">🔒 Tus datos están protegidos y solo se usan para coordinar tu evaluación (Ley 19.628)</div>
+            </form>
           </div>
         </div>
       </div>
@@ -2759,9 +2781,20 @@
       document.getElementById('seg3').className = 'progress-seg ' + (currentStep >= 2.5 ? 'active' : '');
     }
 
+    function sedeKeyDown(e, el) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectSede(el);
+      }
+    }
+
     function selectSede(el) {
-      document.querySelectorAll('.sede-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.sede-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
       el.classList.add('selected');
+      el.setAttribute('aria-pressed', 'true');
       selectedSede = el.dataset.sede;
 
       // Meta Pixel — ViewContent (paso 1 → paso 2)
@@ -2864,25 +2897,60 @@
       if (e.key === 'Enter') { e.preventDefault(); nextId ? document.getElementById(nextId).focus() : handleSubmit(); }
     }
 
+    const fieldErrorIds = {
+      inputNombre: 'errorNombre',
+      inputCelular: 'errorCelular',
+      inputCorreo: 'errorCorreo'
+    };
+
+    function clearFieldError(id) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(fieldErrorIds[id]);
+      if (el) {
+        el.classList.remove('error');
+        el.setAttribute('aria-invalid', 'false');
+      }
+      if (id === 'inputCelular') {
+        const wrap = document.getElementById('phoneGroup');
+        if (wrap) wrap.classList.remove('error');
+      }
+      if (err) err.textContent = '';
+    }
+
+    function setFieldError(id, message) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(fieldErrorIds[id]);
+      if (el) {
+        el.classList.add('error');
+        el.setAttribute('aria-invalid', 'true');
+      }
+      if (id === 'inputCelular') {
+        const wrap = document.getElementById('phoneGroup');
+        if (wrap) wrap.classList.add('error');
+      }
+      if (err) err.textContent = message;
+    }
+
     function handleSubmit() {
       const nombre = document.getElementById('inputNombre').value.trim();
       const celularDigits = getPhoneDigits();
       const celular = getFullPhoneNumber();
       const correo = document.getElementById('inputCorreo').value.trim();
       let hasError = false;
-      ['inputNombre', 'inputCelular', 'inputCorreo'].forEach(id => {
-        const el = document.getElementById(id);
-        const v = el.value.trim();
-        const invalid = !v || (id === 'inputCorreo' && !v.includes('@')) || (id === 'inputCelular' && (celularDigits.length !== 9 || !celularDigits.startsWith('9')));
-        if (invalid) {
-          el.classList.add('error');
-          const errorTarget = id === 'inputCelular' ? document.getElementById('phoneGroup') : null;
-          if (errorTarget) errorTarget.classList.add('error');
-          if (!hasError) { el.focus(); hasError = true; }
-          setTimeout(() => {
-            el.classList.remove('error');
-            if (errorTarget) errorTarget.classList.remove('error');
-          }, 600);
+      const checks = [
+        { id: 'inputNombre', invalid: !nombre, message: 'Escribe tu nombre.' },
+        { id: 'inputCelular', invalid: celularDigits.length !== 9 || !celularDigits.startsWith('9'), message: celularDigits.length === 0 ? 'Escribe tu celular.' : 'Escribe un celular chileno de 9 dígitos.' },
+        { id: 'inputCorreo', invalid: !correo || !correo.includes('@'), message: !correo ? 'Escribe tu correo.' : 'Escribe un correo válido.' }
+      ];
+      checks.forEach(function (item) {
+        if (item.invalid) {
+          setFieldError(item.id, item.message);
+          if (!hasError) {
+            document.getElementById(item.id).focus();
+            hasError = true;
+          }
+        } else {
+          clearFieldError(item.id);
         }
       });
       if (hasError) return false;
@@ -3129,6 +3197,14 @@
       }
       return result;
     };
+  }
+
+  var datosForm = document.getElementById("datosForm");
+  if (datosForm) {
+    datosForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (typeof window.handleSubmit === "function") window.handleSubmit();
+    });
   }
 
   // Wrapper click botón WhatsApp post-submit
