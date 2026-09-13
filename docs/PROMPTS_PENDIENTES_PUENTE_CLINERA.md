@@ -26,3 +26,7 @@ Pedir indexación de `/clinica/*` y `/fundador/`.
 
 Cuando Clinera tenga booking público por marca, sustituir `/evaluacion`
 en los CTAs de `/clinica/*`. Hoy no existe `URL_RESERVA_LUMINA`.
+
+---
+
+**2026-09-13.** `curl -sI` en vivo: **200** en `/`, `/planes`, `/tratamientos`, `/evaluacion`, `/fundador`, `/franquicia`, `/capacitacion`, las tres `/clinica/*`, `llms.txt`, `llms-full.txt`, `sitemap.xml`, `sitemap-images.xml`, `robots.txt`, `/lumina-indexnow-2026-09-03.txt` y `https://www.clinera.io/casos/protocolo-lumina`. **308** `/planes/` → `/planes`, `/fundador/` → `/fundador`, `/reserva` y `/agenda` → `/evaluacion`.
