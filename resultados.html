@@ -455,6 +455,13 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .case-panel { min-height:340px; }
   .case-panel.composite { min-height:360px; }
 }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--rose-deep);outline-offset:3px
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 
 <style>
