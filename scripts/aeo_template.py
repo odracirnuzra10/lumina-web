@@ -306,7 +306,7 @@ def render_page(p: dict) -> str:
         "datePublished": format_schema_date(p.get("date_published", "2026-04-14")),
         "dateModified": DATE_MOD,
         "lastReviewed": DATE_MOD,
-        "reviewedBy": {"@type": "Organization", "@id": f"{ORIGIN}/#organization", "name": REVIEWER},
+        "reviewedBy": {"@id": f"{ORIGIN}/#organization"},
         "author": {"@id": f"{ORIGIN}/#organization"},
         "publisher": {"@id": f"{ORIGIN}/#organization"},
         "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".answer-first", "h1"]},
