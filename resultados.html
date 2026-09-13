@@ -177,6 +177,11 @@ nav.scrolled .hamburger span { background:var(--ink); }
   margin-bottom:20px; letter-spacing:-.015em;
 }
 .h1-dark em { font-style:italic; color:var(--rose); }
+.answer-first {
+  font-size:17px; line-height:1.65;
+  color:rgba(240,238,233,0.88); font-weight:400;
+  max-width:560px; margin:0 0 16px;
+}
 .sub-dark {
   font-size:17px; line-height:1.7;
   color:rgba(240,238,233,0.78); font-weight:400;
@@ -425,7 +430,8 @@ nav.scrolled .hamburger span { background:var(--ink); }
   .page-header { padding:0; min-height:auto; }
   .page-header-split { grid-template-columns:1fr; min-height:auto; }
   .page-header-copy { padding:110px 24px 30px; text-align:center; }
-  .page-header-copy .sub-dark { max-width:none; margin-left:auto; margin-right:auto; }
+  .page-header-copy .sub-dark,
+  .page-header-copy .answer-first { max-width:none; margin-left:auto; margin-right:auto; }
   .page-header-photo { padding:0 16px 50px; }
   .page-header-photo img { max-width:100%; }
   .header-kr-watermark { font-size:13px; bottom:14px; right:20px; }
@@ -745,6 +751,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": [
+          ".answer-first",
           "h1"
         ]
       },
@@ -1143,6 +1150,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     <div class="page-header-copy">
       <span class="pretitle">Endolaser facial · Endolifting · Endojiwoo</span>
       <h1 class="h1-dark">Resultados de <em>Endolaser Facial</em> y Endolifting</h1>
+      <p class="answer-first" id="respuesta">Los resultados de endolaser facial y endolifting en Protocolo Lumina son casos reales de Chile (Vitacura, Concón y Los Ángeles): Endolaser (Bio Minji), Endolifting/EndoJiwoo y el plan completo. No son centímetros ni un filtro. Se indican después de la Evaluación P3. Cada foto tiene consentimiento; el resultado varía.</p>
       <p class="sub-dark">Casos clínicos documentados en Protocolo Lumina con enfoque en firmeza, redefinición del óvalo facial y mejora visible de la calidad de la piel. Cada imagen corresponde a pacientes reales con protocolo indicado según evaluación médica-estética.</p>
       <p class="disclaimer">Fotografías con consentimiento informado · Resultados individuales pueden variar</p>
     </div>
