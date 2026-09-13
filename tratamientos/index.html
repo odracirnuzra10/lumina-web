@@ -139,8 +139,12 @@ h1.hero-h1 {
   line-height:1.05;
   letter-spacing:-.02em;
   color:var(--ink);
-  margin-bottom:26px;
+  margin-bottom:18px;
   max-width:900px;
+}
+.answer-first {
+  font-size:19px; line-height:1.65; color:var(--ink-body);
+  max-width:68ch; margin:0 0 22px;
 }
 h1.hero-h1 em { font-style:italic; color:var(--rose-deep); }
 .hero-sub {
@@ -810,6 +814,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": [
+          ".answer-first",
           "h1"
         ]
       },
@@ -1360,10 +1365,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="hero-inner">
     <span class="hero-eyebrow">Tecnologías · Protocolo Lumina</span>
     <h1 class="hero-h1">Las 18 tecnologías coreanas, <em>una por una.</em></h1>
+    <p class="answer-first" id="respuesta">La limpieza facial coreana en Protocolo Lumina no es un spa suelto: es la ficha Limpieza Coreana (75 minutos, 9 pasos) que prepara la piel dentro del catálogo de 18 tecnologías. Se hace en Vitacura, Concón y Los Ángeles, incluida en los planes tras la Evaluación P3. No reemplaza HIFU, EndoJiwoo ni radiofrecuencia.</p>
     <p class="hero-sub">Cada plan Lumina combina varias de estas tecnologías según tu diagnóstico facial. Acá te explicamos qué hace cada una, qué se siente, y para quién está pensada — sin tecnicismos, con la honestidad que mereces.</p>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="num">14</span>
+        <span class="num">18</span>
         <span class="lbl">Tecnologías</span>
       </div>
       <div class="stat-item">

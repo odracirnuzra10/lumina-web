@@ -63,7 +63,7 @@ PAGES.append({
     "description": "Cuky HIFU en Protocolo Lumina: ultrasonido focalizado al SMAS, la misma capa que se opera en un lifting. Resultados a 3 meses, 1 sesión completa, sedes en Vitacura, Concón y Los Ángeles.",
     "h1": "Qué es el <em>HIFU facial</em>?",
     "h1_text": "Qué es el HIFU facial?",
-    "answer": "HIFU (ultrasonido focalizado de alta intensidad) es una tecnología no invasiva que deposita puntos de coagulacion en dermis profunda y SMAS, la capa que el cirujano tensa en un facelift. En Protocolo Lumina el equipo se llama Cuky HIFU. No corta piel. El resultado se juzga a 3-6 meses, no al día siguiente.",
+    "answer": "El HIFU facial en Chile, en Protocolo Lumina, es Cuky HIFU: ultrasonido focalizado que deposita calor en dermis profunda y SMAS, la misma capa que un facelift tensa con bisturí. No corta piel. Se indica en Vitacura, Concón y Los Ángeles después de la Evaluación P3. El resultado se juzga a 3-6 meses, no al día siguiente.",
     "breadcrumbs": [("/tratamientos", "Tratamientos"), ("/hifu-facial", "HIFU facial")],
     "procedure": proc(
         "/hifu-facial",
@@ -113,7 +113,7 @@ PAGES.append({
     "description": "Radiofrecuencia facial coreana en Protocolo Lumina: Sakura Ultra-Lift (tensado de mantención) y RejuveSkin (microagujas + RF). Diferencia con HIFU, sesiones y contraindicaciones.",
     "h1": "Qué es la <em>radiofrecuencia facial</em> en Lumina?",
     "h1_text": "Qué es la radiofrecuencia facial en Lumina?",
-    "answer": "En Protocolo Lumina la radiofrecuencia no es un unico aparato. Sakura Ultra-Lift (Sakura Lift) es el tensado progresivo de mantención. RejuveSkin combina microagujas, radiofrecuencia y peptidos para textura, poros y calidad. Ninguna de las dos reemplaza al HIFU de SMAS ni a EndoJiwoo. Se indican después de la Evaluación P3 en Vitacura, Concón o Los Ángeles.",
+    "answer": "Sakura Lift (Sakura Ultra-Lift) es la radiofrecuencia facial de mantención de Protocolo Lumina: tensado progresivo de dermis, no un facelift. RejuveSkin suma microagujas y radiofrecuencia para textura y poros. Ninguna reemplaza al HIFU de SMAS ni a EndoJiwoo. En Chile se indica en Vitacura, Concón y Los Ángeles después de la Evaluación P3.",
     "breadcrumbs": [("/tratamientos", "Tratamientos"), ("/radiofrecuencia-facial", "Radiofrecuencia facial")],
     "procedure": proc(
         "/radiofrecuencia-facial",
@@ -127,7 +127,7 @@ PAGES.append({
         ("/hifu-facial", "Mas profundo", "HIFU facial"),
         ("/flacidez-facial", "Problema", "Flacidez"),
         ("/manchas-faciales-despigmentacion", "Piel", "Manchas y peel"),
-        ("/tratamientos", "Catálogo", "14 tecnologías"),
+        ("/tratamientos", "Catálogo", "18 tecnologías"),
     ],
     "citations": [
         "el-Domyati M et al. Radiofrequency facial rejuvenation: evidencia histologica de colágeno.",
@@ -148,6 +148,6 @@ PAGES.append({
         h2("Precio"),
         p("Sin Offer.price en esta página. Rangos desde en /planes. Cotiza en P3. Agenda tu hora."),
         h2("Sedes y entidad"),
-        p("Clínica chilena de rejuvenecimiento facial sin cirugía, tres sedes, 14 tecnologías. No es cosmética Protocolo Lumina de otros países."),
+        p("Clínica chilena de rejuvenecimiento facial sin cirugía, tres sedes, 18 tecnologías. No es cosmética Protocolo Lumina de otros países."),
     ]),
 })
