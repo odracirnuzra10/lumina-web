@@ -20,6 +20,14 @@
       var location = (section && (section.id || (section.dataset && section.dataset.section))) || 'home';
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
+        event: 'contacto_web',
+        cta_destination: 'whatsapp',
+        cta_label: label || 'WhatsApp directo',
+        cta_type: 'whatsapp',
+        click_location: location,
+        clinica: 'lumina'
+      });
+      window.dataLayer.push({
         event: 'contacto_whatsapp_2026',
         cta_label: label || 'WhatsApp directo',
         cta_type: 'whatsapp',
@@ -3127,7 +3135,8 @@
         event_id: payEventId,
         lead_event_id: lead.event_id || window.__currentEventId || '',
         value: 27990,
-        currency: 'CLP'
+        currency: 'CLP',
+        clinica: 'lumina'
       });
       return true;
     }
@@ -3170,7 +3179,7 @@
     window.selectSede = function(){
       _origSede.apply(this, arguments);
       setTimeout(function(){
-        dataLayer.push({ event: "eval_select_sede", sede: _sede() });
+        dataLayer.push({ event: "eval_select_sede", sede: _sede(), clinica: "lumina" });
       }, 100);
     };
   }
@@ -3181,7 +3190,7 @@
     if(!c) return;
     setTimeout(function(){
       var s = _sede(), d = _day(), sl = _slot();
-      if(s && d && sl) dataLayer.push({ event: "eval_select_schedule", sede: s, day: d, slot: sl });
+      if(s && d && sl) dataLayer.push({ event: "eval_select_schedule", sede: s, day: d, slot: sl, clinica: "lumina" });
     }, 150);
   });
 
@@ -3193,7 +3202,7 @@
       if(result === true){
         // __currentEventId es seteado por handleSubmit ANTES de disparar el Pixel
         var eid = window.__currentEventId || ("eval_" + Date.now());
-        dataLayer.push({ event: "eval_submit_form", sede: _sede(), day: _day(), slot: _slot(), event_id: eid });
+        dataLayer.push({ event: "eval_submit_form", sede: _sede(), day: _day(), slot: _slot(), event_id: eid, clinica: "lumina" });
       }
       return result;
     };
@@ -3215,7 +3224,15 @@
         event: "eval_confirm_whatsapp",
         sede: _sede(),
         nombre: n ? n.value : "",
-        event_id: window.__currentEventId || ""
+        event_id: window.__currentEventId || "",
+        clinica: "lumina"
+      });
+      dataLayer.push({
+        event: "contacto_web",
+        cta_destination: "whatsapp",
+        cta_label: "eval_confirm_whatsapp",
+        click_location: "/evaluacion",
+        clinica: "lumina"
       });
     });
   }
