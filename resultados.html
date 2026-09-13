@@ -140,8 +140,8 @@ nav.scrolled .hamburger span { background:var(--ink); }
   border-bottom:1px solid rgba(232,180,184,0.08);
   min-height:540px;
 }
-.page-header::before {
-  content:'빛'; position:absolute; top:50%; left:8%;
+.header-kr-bg {
+  position:absolute; top:50%; left:8%;
   transform:translateY(-50%);
   font-size:clamp(160px,22vw,300px); color:rgba(232,180,184,0.025);
   pointer-events:none; user-select:none; line-height:1; z-index:0;
@@ -154,6 +154,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 }
 .page-header-copy {
   padding:130px 48px 70px 60px;
+  position:relative; z-index:2;
 }
 .page-header-photo {
   position:relative; height:100%;
@@ -390,7 +391,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   font-size:15px; letter-spacing:0.14em; color:var(--rose);
   opacity:0.30; text-transform:none; pointer-events:none;
   font-family:'Sora',sans-serif; font-weight:300;
-  z-index:2;
+  z-index:0;
 }
 
 /* ── REVEAL ── */
@@ -1105,7 +1106,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">
     <svg width="140" height="72" viewBox="0 0 360 186" xmlns="http://www.w3.org/2000/svg">
-      <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#1E1818" opacity="0.38" letter-spacing="4">아름다움</text>
+      <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#1E1818" opacity="0.38" letter-spacing="4" aria-hidden="true">아름다움</text>
       <use href="#star4" x="168" y="44" width="24" height="36" fill="#C48B90"/>
       <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#1E1818" font-weight="500" letter-spacing="3">lumina</text>
       <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="15" fill="#1E1818" opacity="0.28" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
@@ -1149,8 +1150,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
       <img src="img/hero-endojiwoo.webp" alt="Caso real Endojiwoo — Lurayen Benavides, 61 años · Protocolo Lumina" width="1200" height="814" fetchpriority="high" decoding="async">
     </div>
   </div>
+  <span class="header-kr-bg" aria-hidden="true">빛</span>
   <!-- 피부 의 빛 = "la luz de la piel" -->
-  <span class="header-kr-watermark">피부 의 빛</span>
+  <span class="header-kr-watermark" aria-hidden="true">피부 의 빛</span>
 </div>
 
 <!-- ══ RIVER: HEADER OSCURO → GALLERY PETAL ══ -->
@@ -1540,7 +1542,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
   <div class="footer-inner">
     <div>
       <svg width="120" height="62" viewBox="0 0 360 186" xmlns="http://www.w3.org/2000/svg">
-        <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.62" letter-spacing="4">아름다움</text>
+        <text x="180" y="38" text-anchor="middle" font-family="'Sora',sans-serif" font-size="16" fill="#F0EEE9" opacity="0.62" letter-spacing="4" aria-hidden="true">아름다움</text>
         <use href="#star4" x="168" y="44" width="24" height="36" fill="#E8B4B8" opacity="0.9"/>
         <text x="180" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="74" fill="#F0EEE9" opacity="0.82" font-weight="500" letter-spacing="3">lumina</text>
         <text x="180" y="162" text-anchor="middle" font-family="'Sora',sans-serif" font-size="15" fill="#F0EEE9" opacity="0.45" letter-spacing="5">CLÍNICA FACIAL COREANA</text>
@@ -1588,7 +1590,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
         <circle cx="8.5" cy="9.5" r="2.5" fill="#E8B4B8" opacity="0.6"/>
         <circle cx="23.5" cy="22.5" r="2.5" fill="#E8B4B8" opacity="0.2"/>
       </svg>
-      <span class="footer-kr">빛 의 규 약</span>
+      <span class="footer-kr" aria-hidden="true">빛 의 규 약</span>
     </div>
   </div>
 </div>
