@@ -92,7 +92,7 @@ DEPTH["/clinica-facial-concon"] = p3_block("la sede Concón") + ask_block()
 DEPTH["/clinica-facial-los-angeles"] = p3_block("la sede Los Ángeles") + ask_block()
 DEPTH["/equipo"] = ask_block() + [
     h2("Doctoralia, LinkedIn y GBP"),
-    p("Cuando existan URLs reales de cada profesional, van a sameAs del Person. Hasta entonces no enlazamos perfiles genericos. Off-site (Google Business Profile por sede, Wikidata, Doctoralia) es tarea de marca, documentada en docs/AEO-CHANGELOG.md."),
+    p("Off-site (Google Business Profile por sede, Wikidata, Doctoralia) es tarea de marca, documentada en docs/AEO-CHANGELOG.md. En esta página no enlazamos perfiles de tratantes ni inventamos sameAs."),
 ]
 DEPTH["/opiniones"] = ask_block()
 DEPTH["/preguntas-frecuentes"] = []
