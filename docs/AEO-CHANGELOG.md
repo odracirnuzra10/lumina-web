@@ -37,6 +37,7 @@ Hallazgo → acción → URL/archivo → cómo verificar.
 | `Speakable` | cssSelector `.answer-first` / `h1` | JSON-LD |
 | OG image rota (`og-lumina.jpg` no existía) | apunta a `/img/hero-endojiwoo.webp` | |
 | VideoObject Vimeo | home | `player.vimeo.com/video/1186589095` |
+| Un `@id` tipado por sede | home + 28 HTML con graph + puente | `#vitacura` `#concon` `#losangeles` stub en `puente-aeo-graph`; tipados solo en el graph principal. GSC “syntax errors” era script duplicado, no coma/comilla |
 
 ## H4 — E-E-A-T (alto YMYL)
 
