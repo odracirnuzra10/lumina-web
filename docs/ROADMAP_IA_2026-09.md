@@ -10,6 +10,8 @@ Prefijos: **L** Lumina · **T** transversal (misma red OACG) · **R** solo Ricar
 
 Prioridad: **P0 esta semana** · **P1 septiembre** · **P2 oct–nov** · **P3 condicional** (espera R).
 
+**R locked 2026-09-13 (Ricardo):** R1 = precios actuales (b). R2 = GTM-TZC56NQ5 + WA `56963222683` únicos. R3 = más de 5.000 pacientes · 5/5 Google (un par; sin `AggregateRating` ni Review oculto). R4 = solo Hebe (KPI AUGE; cero acción Lumina). R5 = baseline PageSpeed móvil (abajo); GSC sigue pendiente y **no bloquea**. R7 = sí merge [#41](https://github.com/odracirnuzra10/lumina-web/pull/41) (otro worker hace el merge). La IA **no reabre** estos IDs.
+
 ---
 
 ## 0. Prompt maestro para la IA ejecutora
@@ -21,7 +23,7 @@ Eres una IA que implementa **una sola** fila de la sección 3. No re-investigues
 1. Lee `CLAUDE.md` (si existe) y esta sección 1.
 2. En la sección 3, toma el ID de **menor prioridad numérica** (P0 → P3) cuyo `Depende de` esté cerrado (merge en `main` o R marcada hecha).
 3. Si hay empate, elige el ID más bajo (L0.1 antes que L0.2).
-4. Si `Depende de` cita un R y Ricardo no respondió: **para y pregunta**. No asumas.
+4. Si `Depende de` cita un R **abierto** (R6, R8–R12) y Ricardo no respondió: **para y pregunta**. No asumas. R1–R5 y R7 ya están locked: no preguntar de nuevo.
 5. No abras un segundo ID “porque es chico”.
 
 ### Una tarea = una rama + un PR
@@ -49,7 +51,7 @@ En el PR: ID, qué cambió, comando de `Verificación` pegado con salida, URLs `
 
 Una cosa a la vez. Para y pregunta si:
 
-- falta un R (precios, 18 tecnologías, Superintendencia, INAPI, handle IG, `legalName`);
+- falta un R **abierto** (R6 Doctoralia, R8 `legalName`, R9 `foundingDate`, R10 consentimiento Corea, R11 INAPI, R12 booking Clinera). No parar por R1–R5 ni R7.
 - el generador AEO sigue roto y la tarea pide editar una de las 23 páginas;
 - tendrías que inventar cm, reseñas, direcciones, fechas o registros;
 - el cambio exige editar `vercel.json` y no es L1.7;
@@ -61,8 +63,8 @@ Una cosa a la vez. Para y pregunta si:
 
 ### Prohibido (YMYL / schema)
 
-- Nunca `AggregateRating` suelto ni `Review` oculto (sin texto visible emparejado). `/opiniones` puede tener `Review` visible; no reintroducir estrellas schema hasta programa Google por sede (R).
-- No inventar registros de Superintendencia, RUT, cm de pacientes, reseñas, direcciones ni fechas. `scripts/schema_dates.py` formatea; no inventa el día.
+- Nunca `AggregateRating` suelto ni `Review` oculto (sin texto visible emparejado). `/opiniones` puede tener `Review` visible. **R3 locked:** el único par de cifra Lumina es *más de 5.000 pacientes* y *5/5 estrellas en Google* (copy visible). No un segundo par. No pasar esas estrellas a schema.
+- No inventar registros de Superintendencia, RUT, cm de pacientes, reseñas, direcciones ni fechas. `scripts/schema_dates.py` formatea; no inventa el día. No sustituir el par R3 por otra cifra.
 - Español de Chile, **sin voseo** (`Firmas`, no `Firmás`). Tildes y `¿` en H1/H2/FAQ.
 - JSON-LD parseable (`json.loads`). **Un nodo por `@id` por página.** Hoy `#organization` se repite en los 35 HTML (máx. 28 en `tratamientos/index.html`): L1.2 lo deduplica.
 - CTA: límites **B.4** (Hebe, aplican igual): sticky ≤ 15 % del viewport; no antes de `scrollY > 400`; se oculta en el footer; cero pop-ups / exit-intent; máximo 5 puntos de conversión en el `<article>`; `padding-bottom` para no tapar texto.
@@ -142,17 +144,21 @@ Resumen de lo **ya hecho** en `main` (no repetir). Pendiente = sección 3.
 | Crawlers | `robots.txt`: SemrushBot / AhrefsBot Allow; 404 `noindex` | GTM-TZC56NQ5 · WA `56963222683` |
 | AgendaPro | **0** `href` a agendapro.com (solo mención de texto en sedes) | Reserva = `/evaluacion` |
 | Voseo | **0** `Firmás` en HTML (el par está en `scripts/aeo_es.py`) | — |
-| Tecnologías | **14** consistentes en `main` (`llms.txt` línea de catálogo). PR #41 (draft) quiere **18** | R7 |
+| Tecnologías | **14** en `main` hoy. **R7 locked:** mergear [#41](https://github.com/odracirnuzra10/lumina-web/pull/41) (14→18). Otro worker hace el merge; L0.2 desbloqueado | Adipolite no es Lumina |
 | llms | `llms.txt` sin tabla de precios de planes (H7-b). P3 $27.990 sí aparece en copy de evaluación | `docs/H7-PRECIOS.md` |
 | Sitemap | **34** `<loc>`: core + 23 AEO + 3 `/clinica/*` + `/fundador/` | `/clinica/*` y `/fundador` **no** están en `STATIC` del generador |
 | Schema | 68 JSON-LD parsean. `#organization` **duplicado en 35/35 HTML** | — |
 | Generador | **Roto** (ver §1). Over-corrections `honestás` (5), `mismás` (3), `direcciónes` (3), `evaluaciónes` (1) | — |
-| H7 | Escenario **(b)** en IA; cifras visibles en `/planes` con `::before` “desde”. R1 abierto | — |
-| Tracking | `clinica:'lumina'` solo en **5** HTML: `index.html`, `planes.html`, `resultados.html`, `evaluacion/index.html`, `franquicia/index.html` (+ `js/aeo.js` en CTAs AEO) | T6.1 |
-| PR abiertos | #29 `knowsAbout` (conflicto, base vieja). #41 14→18 (draft, limpio) | L0.1 · L0.2 + R7 |
+| H7 / R1 | **R1 locked = (b)** precios actuales. “desde” sigue en `::before` (L1.6 = texto real). No (c). Sin UI de cuotas mensuales nuevas | — |
+| Cifra + estrellas / R3 | Par único locked: *más de 5.000 pacientes* · *5/5 estrellas en Google*. Cero `AggregateRating` / Review oculto | No mezclar con Hebe (30.000) |
+| Tracking / R2 | GTM-TZC56NQ5 y WA `56963222683` **únicos** (no split por marca). Medir en Analytics por URL. `clinica:'lumina'` en 5 HTML + `js/aeo.js`; completar el resto es **opcional** (T6.1) | No nuevo contenedor ni número |
+| PageSpeed móvil / R5 | Lab Lighthouse 12.8.2, 2026-09-13: **home 76** (LCP 3,1 s · CLS 0,014) · **`/planes` 88** (LCP 2,5 s · CLS 0,024). INP lab n/d (Lighthouse no emite INP; PSI field HTTP 429). GSC sigue pendiente: **no bloquea** | Baseline; no gate |
+| PR abiertos | #29 `knowsAbout` (conflicto). #41 14→18 (R7 = mergear; otro worker) | L0.1 · L0.2 |
 | Live `curl -sI` | 200: home, `/planes`, `/tratamientos`, `/evaluacion`, `/fundador`, `/franquicia`, `/capacitacion`, 3 `/clinica/*`, llms, sitemaps, robots, IndexNow, Clinera caso. 308: `/planes/` → `/planes`, `/fundador/` → `/fundador`, `/reserva` y `/agenda` → `/evaluacion` | Ver nota 2026-09-13 |
 
 Hecho también (no reabrir): entity phrase, sedes con calle/geo/`hasMap`, `Speakable`, OG home → `/img/hero-endojiwoo.webp`, IndexNow `lumina-indexnow-2026-09-03.txt`, `lang`/`hreflang` `es-CL` en AEO, `/seguridad-contraindicaciones`, puente Clinera.
+
+PageSpeed R5 (reproducir): `npx lighthouse@12.8.2 URL --only-categories=performance --form-factor=mobile --chrome-flags='--headless --no-sandbox'` contra `https://www.protocololumina.cl/` y `/planes`. INP es métrica de campo; el lab no la emite.
 
 ---
 
@@ -196,20 +202,20 @@ PY
 
 ---
 
-#### L0.2 · Prioridad P0 · Esfuerzo M · Depende de R7 · Archivos `tratamientos/index.html` `index.html` `glosario/index.html` `llms.txt` `llms-full.txt`
+#### L0.2 · Prioridad P0 · Esfuerzo M · Depende de R7 (cerrado 2026-09-13) · Archivos `tratamientos/index.html` `index.html` `glosario/index.html` `llms.txt` `llms-full.txt`
 
-**Prompt para la IA.** Pre-review de [#41](https://github.com/odracirnuzra10/lumina-web/pull/41) (`cursor/update-lumina-technologies-20d6`, **draft**). Tabla de consistencia **antes** de merge:
+**Prompt para la IA.** **R7 locked:** mergear [#41](https://github.com/odracirnuzra10/lumina-web/pull/41). **Otro worker posee el merge** — no mergear #41 desde un PR de L* de este roadmap. Este ID queda **desbloqueado**: el worker de #41 hace pre-review + merge. Tabla de consistencia **antes** de merge:
 
 | Chequeo | `main` hoy | PR #41 | Acción |
 |---|---|---|---|
 | Cifra | 14 | 18 | Una sola cifra en home, `/tratamientos`, glosario, `llms.txt`, `llms-full.txt`, FAQ |
-| Altas | — | Skin Wave Max, Carbox CK, Kimi Face, Hao Face | Solo si R7 confirma inventario de sala |
+| Altas | — | Skin Wave Max, Carbox CK, Kimi Face, Hao Face | R7 = sí; verificar que el PR las liste y no meta Adipolite |
 | Adipolite | No es ficha Lumina (es Hebe corporal) | No debe colarse en catálogo facial | Rechazar si aparece como 19.ª Lumina |
 | Nombres | Cuky HIFU, Endo Jiwoo / EndoJiwoo, RejuveSkin, Sakura Ultra-Lift, Yori/Yoori Peel | Fotos `img/tech-*.webp` | Una grafía canónica + `alternateName` |
 | FAQ glosario | “¿Por qué 14 y no 11?” | Debe pasar a 18 vs 14, no dejar “14” en el botón | |
 | AEO 23 | Siguen diciendo 14 | #41 **no** toca `scripts/aeo_pages_*.py` | Tras merge, **no** regenerar hasta L1.1; sync schema/llms a mano en este PR de sync |
 
-**No mergear sin R7.** Con R7: marcar #41 ready, merge, luego PR de sync: `llms.txt` / `llms-full.txt` y nodos schema de home/`/tratamientos` (cifra + lista). No correr `build_aeo.py`.
+Tras el merge de #41 (otro worker): si ese merge no dejó cifra 18 en `llms.txt` / schema de home y `/tratamientos`, un PR de sync aparte. No correr `build_aeo.py`. Las 23 AEO siguen en 14 hasta L1.1.
 
 **Criterio de aceptación.** Una cifra (18) en superficies listadas. Cero `Adipolite` en HTML/llms Lumina. Cero “14 tecnolog” residual en esos archivos. Schema parseable.
 
@@ -394,15 +400,13 @@ curl -sI https://www.protocololumina.cl/franquicia | head -n 5
 
 ---
 
-#### L1.6 · Prioridad P1 · Esfuerzo M · Depende de R1 · Archivos `planes.html` `docs/H7-PRECIOS.md` `tratamientos/index.html`
+#### L1.6 · Prioridad P1 · Esfuerzo M · Depende de R1 (cerrado 2026-09-13 = b) · Archivos `planes.html` `docs/H7-PRECIOS.md` `tratamientos/index.html`
 
-**Prompt para la IA.** Leer `docs/H7-PRECIOS.md`.
+**Prompt para la IA.** **R1 locked = (b)** precios actuales. **No** ejecutar H7 (c) cero precio. **No** añadir UI de cuotas mensuales.
 
-- Si R1 **sigue (b)** (default hoy): en `planes.html`, `.plan-price::before { content:'desde ' }` → texto real `desde` en el HTML (lectores de pantalla e IA). Precios visibles **bajo 900px** (el breakpoint de `planes.html` no debe ocultar `.plan-price`). Guía de intensidad: segundo canal en `.intensity-legend` de `tratamientos/index.html` (hoy solo pills de color: añadir texto o `aria-label` “Suave / Regenerativo / Estructural”).
-- Si R1 **= (c)**: los **3 pasos** de `docs/H7-PRECIOS.md` (quitar `.plan-price` / tabla / modal JS; quitar `$27.990` de copy P3 si también se oculta; regenerar `llms.txt` sin P3). No tocar generador AEO salvo L1.1 cerrado.
-- Si R1 **= (a)**: no es este ID (volver Offer.price desde git history; PR aparte).
+En `planes.html`: `.plan-price::before { content:'desde ' }` → texto real `desde` en el HTML (lectores de pantalla e IA). Precios visibles **bajo 900px** (el breakpoint no debe ocultar `.plan-price`). Guía de intensidad: segundo canal en `.intensity-legend` de `tratamientos/index.html` (hoy pills de color: añadir texto o `aria-label` “Suave / Regenerativo / Estructural”). Leer `docs/H7-PRECIOS.md` solo como contexto del escenario (b).
 
-**Criterio de aceptación.** (b) “desde” en el DOM; precio visible a 390px y 899px. (c) cero cifras de plan en `/planes` y llms.
+**Criterio de aceptación.** “desde” en el DOM; precio visible a 390px y 899px. Cero UI nueva de cuotas. Cifras de plan siguen.
 
 **Verificación (comando).**
 
@@ -412,7 +416,7 @@ grep -n 'intensity-legend' tratamientos/index.html
 # Playwright 390px: screenshot /planes — precio visible (post-deploy)
 ```
 
-**Reversión.** Restaurar `::before`; o revertir pasos (c).
+**Reversión.** Restaurar `::before`; no tocar cifras.
 
 ---
 
@@ -437,9 +441,9 @@ curl -sI https://www.protocololumina.cl/ | grep -iE 'x-frame-options|x-content-t
 
 #### L2.1 · Prioridad P1 · Esfuerzo M · Depende de L1.4 · Archivos `evaluacion/index.html`
 
-**Prompt para la IA.** Misma a11y que Hebe H2.2 (el wizard es gemelo: `inputNombre`, `inputCelular`, `inputCorreo`). Hoy las `<label>` **no** tienen `for`; los inputs no tienen `aria-invalid` / `aria-describedby` / `required`. Asociar `label for` ↔ `id`. Errores en texto (no solo color) + `aria-live`. Prefijo `+56` ya `aria-hidden`. `btnSubmit`: `type="button"` explícito. **Cuotas:** solo si R1 permite hablar de precio/cuotas en el wizard; si R1 = (c), no añadir cuotas ni cifras de plan.
+**Prompt para la IA.** Misma a11y que Hebe H2.2 (el wizard es gemelo: `inputNombre`, `inputCelular`, `inputCorreo`). Hoy las `<label>` **no** tienen `for`; los inputs no tienen `aria-invalid` / `aria-describedby` / `required`. Asociar `label for` ↔ `id`. Errores en texto (no solo color) + `aria-live`. Prefijo `+56` ya `aria-hidden`. `btnSubmit`: `type="button"` explícito. **R1 locked:** no añadir UI de cuotas mensuales ni cambiar cifras de P3.
 
-**Criterio de aceptación.** Un lector de pantalla nombra los tres campos. Error de teléfono vacío es anunciado. Sin cuotas salvo R1.
+**Criterio de aceptación.** Un lector de pantalla nombra los tres campos. Error de teléfono vacío es anunciado. Cero UI de cuotas nuevas.
 
 **Verificación (comando).**
 
@@ -538,13 +542,13 @@ curl -sI https://www.protocololumina.cl/capacitacion | head -n 8
 
 ### Bloque 6 — Transversal (T)
 
-Misma red: GTM **GTM-TZC56NQ5**, WhatsApp **+56 9 6322 2683** (`56963222683`). No crear un GTM ni un WA “de Lumina” distinto.
+Misma red (**R2 locked**): GTM **GTM-TZC56NQ5**, WhatsApp **+56 9 6322 2683** (`56963222683`). Medir en Analytics **por URL de página**. No crear un GTM ni un WA “de Lumina” distinto.
 
-#### T6.1 · Prioridad P2 · Esfuerzo M · Depende de L1.1 (si se toca el template AEO) · Archivos `js/aeo.js` `index.html` `planes.html` `resultados.html` `evaluacion/index.html` `franquicia/index.html` + resto de HTML
+#### T6.1 · Prioridad P2 · Esfuerzo S · Depende de — · Archivos `js/aeo.js` (solo si se elige el opcional)
 
-**Prompt para la IA.** `clinica:'lumina'` está en **5 de ~33** HTML públicos (+ CTAs AEO vía `js/aeo.js`). Añadir `dataLayer.push` de pageview (o el objeto que Hebe use) con `clinica:'lumina'` en las páginas que tienen GTM y no lo envían: AEO (mejor en `scripts/aeo_template.py` + `js/aeo.js`), `/tratamientos`, `/fundador`, `/clinica/*`, `404.html`. No poner tracking en `/capacitacion` si debe quedar fuera de ads. No cambiar el ID de GTM.
+**Prompt para la IA.** **R2 locked:** no provisionar contenedor GTM nuevo ni otro número WA. Completar `clinica:'lumina'` en las páginas que aún no lo tienen es **opcional, no requerido**. Hoy está en 5 HTML + `js/aeo.js`. Si se hace, no cambiar `GTM-TZC56NQ5`. Si no se hace, este ID se cierra como no-op. La medición oficial es por page URL en Analytics.
 
-**Criterio de aceptación.** Grep: más páginas con `clinica:'lumina'` que 5. Cero `clinica:'hebe'` en este repo.
+**Criterio de aceptación.** Sigue un solo GTM y un solo WA. Cero contenedor/número nuevo. El opcional `clinica:'lumina'` no es gate.
 
 **Verificación (comando).**
 
@@ -557,7 +561,7 @@ grep -rE "GTM-TZC56NQ5" --include='*.html' . | grep -v '/.git/' | wc -l
 
 ---
 
-#### T6.2 · Prioridad P2 · Esfuerzo S · Depende de T6.1 · Archivos `js/aeo.js` `evaluacion/index.html`
+#### T6.2 · Prioridad P2 · Esfuerzo S · Depende de — · Archivos `js/aeo.js` `evaluacion/index.html`
 
 **Prompt para la IA.** Unificar evento de contacto: `contacto_web` + `cta_destination` `whatsapp` | `evaluacion_form` (ya en `js/aeo.js`). El wizard de `/evaluacion` ya manda `clinica:'lumina'` en varios `dataLayer.push`: no duplicar `Lead` de Meta en cada clic de CTA (el Lead legítimo es el submit). Documentar en el PR qué eventos disparan `fbq`.
 
@@ -573,9 +577,9 @@ grep -nE 'fbq\(|Lead|contacto_web|56963222683' js/aeo.js evaluacion/index.html |
 
 ---
 
-#### T6.3 · Prioridad P2 · Esfuerzo S · Depende de T6.1 · Archivos todos los `wa.me` / tel
+#### T6.3 · Prioridad P2 · Esfuerzo S · Depende de — · Archivos todos los `wa.me` / tel
 
-**Prompt para la IA.** Auditoría: un solo número `56963222683` / `+56963222683`. No añadir un segundo WA “Lumina”. Footer AEO ya lo usa (`scripts/aeo_template.py` `PHONE`). Si Hebe cambia de número, **preguntar** (R); no copiar un número de otro repo sin confirmación.
+**Prompt para la IA.** **R2 locked:** un solo número `56963222683` / `+56963222683`. No añadir un segundo WA “Lumina”. Footer AEO ya lo usa (`scripts/aeo_template.py` `PHONE`). No copiar un número de otro repo.
 
 **Criterio de aceptación.** Grep de `wa.me/` y `tel:` solo ese número (salvo `+56` visual).
 
@@ -591,22 +595,31 @@ grep -rhoE 'wa.me/[0-9]+|\+569[0-9]+' --include='*.html' --include='*.py' --incl
 
 ## 4. Solo Ricardo
 
-La IA **no asume** estas decisiones. Si un L/T depende de un R, para.
+R1–R5 y R7 están **locked 2026-09-13**. No reabrir. Si un L/T depende de un R **abierto** (R6, R8–R12), parar.
 
-| ID | Decisión / cuenta | Relevancia Lumina | Bloquea |
+### Locked
+
+| ID | Estado | Decisión | Acción Lumina |
 |---|---|---|---|
-| **R1** | H7 precios: (a) tabla exacta · **(b)** actual · (c) cero precio | **Sí** — `/planes`, llms, P3 $27.990 | L1.6, cuotas L2.1 |
-| **R2** | Nombres, fotos y registros Superintendencia de profesionales | **Sí** — `/equipo` Person | Person schema |
-| **R3** | Handle Instagram con “lumina” (hoy `rejuvenecimiento.facial.lumina`) | **Sí** — `sameAs` | Off-site |
-| **R4** | Acceso GSC + Bing Webmaster + recrawl | **Sí** | Medición H6 |
-| **R5** | Ítem Wikidata de la clínica | **Sí** | Off-site |
-| **R6** | Fichas Doctoralia (clínica + personas reales) | **Sí** | Off-site |
-| **R7** | Inventario 18 equipos: confirmar Skin Wave Max, Carbox CK, Kimi Face, Hao Face; **Adipolite no es Lumina**; grafías comerciales | **Sí** — merge #41 | L0.2, L5.2 |
-| **R8** | `legalName` (razón social chilena). Hoy se omite a propósito | **Sí** | Schema Organization |
-| **R9** | `foundingDate` 2025 en `scripts/aeo_template.py` — confirmar o dar otra | **Sí** | Fechas schema |
-| **R10** | Consentimiento testimonio Corea (reel) para web | **Sí** — `/opiniones` | Review extra |
-| **R11** | INAPI marcas → quitar `noindex` de `/franquicia` | **Sí** | Indexación franquicia |
-| **R12** | URL pública de booking Clinera por marca (`URL_RESERVA_LUMINA`) | **Sí** — CTAs `/clinica/*` | Sustituir `/evaluacion` |
+| **R1** | Locked | Precios actuales = H7 **(b)**. No (c) cero precio | L1.6: “desde” texto real, precio visible &lt;900px, segundo canal de intensidad. **Sin** UI nueva de cuotas mensuales |
+| **R2** | Locked | Un GTM `GTM-TZC56NQ5` y un WA `56963222683`. Medir en Analytics **por URL**. No split por marca | T6.1: **no** provisionar contenedor/número. Completar `clinica:'lumina'` es opcional |
+| **R3** | Locked | Un solo par de copy: *más de 5.000 pacientes* · *5/5 estrellas en Google* | Nunca `AggregateRating` ni Review oculto. No usar la cifra Hebe (30.000) |
+| **R4** | Locked · **solo Hebe** | KPI AUGE (sesiones que arrancan `/evaluacion` con origen AUGE; +20 % relativo; tope WA). Decidido en el repo Hebe | **Cero acción** en Lumina. No inventar un KPI AUGE facial |
+| **R5** | Locked baseline | PageSpeed **móvil** es el baseline. GSC sigue pendiente | Scores en §2. GSC **no bloquea** L1–L5 ni T6 |
+| **R7** | Locked | Mergear [#41](https://github.com/odracirnuzra10/lumina-web/pull/41) (14→18). Adipolite no es Lumina | L0.2 **desbloqueado**. **Otro worker** hace el merge |
+
+### Abiertos (la IA no asume)
+
+| ID | Decisión / cuenta | Bloquea |
+|---|---|---|
+| **R6** | Fichas Doctoralia (clínica + personas reales) | Off-site |
+| **R8** | `legalName` (razón social chilena; hoy se omite) | Schema Organization |
+| **R9** | `foundingDate` 2025 en `scripts/aeo_template.py` | Fechas schema |
+| **R10** | Consentimiento testimonio Corea (reel) para web | Review extra en `/opiniones` |
+| **R11** | INAPI marcas → quitar `noindex` de `/franquicia` | Indexación franquicia |
+| **R12** | URL pública de booking Clinera (`URL_RESERVA_LUMINA`) | Sustituir `/evaluacion` en `/clinica/*` |
+
+Siguen abiertas **sin reciclar IDs locked:** nombres/fotos/Superintendencia en `/equipo`; handle IG (`rejuvenecimiento.facial.lumina`); Wikidata. GSC/Bing es la cola de R5, no un gate.
 
 No crear `?cid=` de Google. Shares oficiales ya están (Vitacura `uKeMlkibRy1TPB7vK` · Concón `CeMMtlyCmwN5K3yxP` · Los Ángeles `GKckpVUP3cGC9XGLq`).
 
@@ -642,17 +655,17 @@ T0 = **13-sep-2026** (estado verificado). Mes 3 SoM = **1–15 dic 2026**.
 
 | Ventana | Fecha | Lumina | Transversal |
 |---|---|---|---|
-| Semana P0 | 13–20 sep | L0.1 `knowsAbout` · L0.2 review #41 (merge solo con R7) · L0.3 `CLAUDE.md` · **L0.4 este PR** | — |
+| Semana P0 | 13–20 sep | L0.1 `knowsAbout` · L0.2 **desbloqueado** (R7; merge #41 = otro worker) · L0.3 `CLAUDE.md` · **L0.4 este PR** | — |
 | T+7 | 20 sep | L1.1 generador (gate AEO). No editar las 23 páginas antes | — |
 | T+14 | 27 sep | L1.2 fundador/schema · L1.3 contraste · L1.4 focus/motion | — |
-| P1 cierre sep | 28–30 sep | L1.5 OG/lang · L1.6 precios (o H7-c) · L1.7 headers · L2.1 form | — |
-| T+30 | 13 oct | Primer corte: 34 loc, JSON-LD 0 fail, greps `honestás` = 0 | T6.1 `clinica:'lumina'` |
+| P1 cierre sep | 28–30 sep | L1.5 OG/lang · L1.6 (b) “desde” + precio &lt;900px · L1.7 headers · L2.1 form (sin cuotas) | — |
+| T+30 | 13 oct | Primer corte: 34 loc, JSON-LD 0 fail, greps `honestás` = 0 | T6.1 opcional; no nuevo GTM/WA |
 | Oct | oct | L5.1 answer-first SoM (por URL) · L5.2 llms post-L0.2 · L5.4 `/capacitacion` | T6.2 eventos · T6.3 WA único |
 | T+60 | 12 nov | SoM cualitativo intermedio (mismas 15 preguntas, no es mes 3) | Revisar GTM-TZC56NQ5 |
 | T+90 / mes 3 | **1–15 dic** | **L5.3** refresh + Share of Model mes 3 · meta 10 % citas con URL | Misma medición en Hebe (repo hermano) |
 | Cierre horizonte | 15 dic | Stop de features; solo hotfix YMYL / generador | — |
 
-P3 (condicional): Person (R2), `legalName` (R8), index `/franquicia` (R11), booking Clinera (R12), AggregateRating anidado (solo con reseñas Google reales).
+P3 (condicional, R abiertos): Person/Superintendencia, `legalName` (R8), index `/franquicia` (R11), booking Clinera (R12). **No** `AggregateRating` (R3).
 
 ---
 
