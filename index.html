@@ -103,12 +103,15 @@ body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink);
 .tier-pill.red    { color:#E89890; background:rgba(178,58,46,0.22);  border-color:rgba(232,152,144,0.32); }
 
 /* ─── CYBER LUMINA ─── */
-.cyber-bar { position:fixed; top:0; left:0; right:0; z-index:950; height:38px; display:flex; align-items:center; justify-content:center; padding:0 16px; background:linear-gradient(90deg,#B76E79,#E8B4B8); }
-.cyber-bar a { color:#1E1818; font-family:'Sora',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.cyber-bar a:hover { text-decoration:underline; }
-nav { top:38px !important; }
+.cyber-bar { position:fixed; top:0; left:0; right:0; z-index:950; height:54px; display:flex; align-items:center; justify-content:center; padding:0 16px; background:var(--ink); border-bottom:2px solid var(--rose); }
+.cyber-bar a { color:#fff; font-family:'Sora',sans-serif; font-size:15px; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-decoration:none; display:flex; align-items:center; gap:14px; white-space:nowrap; }
+.cyber-bar .cb-tag { background:linear-gradient(90deg,#C48B90,#E8B4B8); color:#1E1818; font-size:14px; font-weight:800; letter-spacing:2px; padding:7px 16px; border-radius:999px; }
+.cyber-bar .cb-off { color:var(--rose); }
+.cyber-bar .cb-go { font-size:12px; font-weight:500; letter-spacing:1.4px; color:rgba(240,238,233,0.7); }
+.cyber-bar a:hover .cb-go { text-decoration:underline; }
+nav { top:54px !important; }
 body.no-cyber nav { top:0 !important; }
-@media(max-width:900px){ .cyber-bar a { font-size:10px; letter-spacing:.8px; } }
+@media(max-width:900px){ .cyber-bar { height:56px; padding:0 12px; } nav { top:56px !important; } body.no-cyber nav { top:0 !important; } .cyber-bar a { font-size:11px; letter-spacing:.3px; gap:10px; white-space:normal; line-height:1.25; text-align:left; } .cyber-bar a span { white-space:nowrap; } .cyber-bar a > span:nth-child(2) { white-space:normal; } .cyber-bar .cb-tag { font-size:11px; letter-spacing:1px; padding:6px 10px; } .cyber-bar .cb-go { display:none; } }
 
 /* ─── NAV ─── */
 /* Starts transparent over dark hero, then becomes light on scroll */
@@ -1015,7 +1018,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 
 <!-- CYBER LUMINA -->
 <div class="cyber-bar" role="region" aria-label="Promoción Cyber Lumina">
-  <a href="/planes" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'promo_click',location:'cyber_bar',promo:'cyber_lumina',clinica:'lumina'})">✦ Cyber Lumina · Hasta 30% de descuento en planes seleccionados · Hasta el mié 7 oct →</a>
+  <a href="/planes" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'promo_click',location:'cyber_bar',promo:'cyber_lumina',clinica:'lumina'})"><span class="cb-tag">✦ Cyber Lumina</span><span>Hasta <span class="cb-off">30% OFF</span> en planes seleccionados</span><span class="cb-go">Hasta el mié 7 oct →</span></a>
 </div>
 <script>(function(){var b=document.querySelector('.cyber-bar');if(b&&Date.now()>Date.parse('2026-10-07T23:59:59-03:00')){b.remove();document.body.classList.add('no-cyber');}})();</script>
 
