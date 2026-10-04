@@ -102,6 +102,14 @@ body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink);
 .tier-pill.yellow { color:#F5D575; background:rgba(181,135,14,0.22); border-color:rgba(245,213,117,0.32); }
 .tier-pill.red    { color:#E89890; background:rgba(178,58,46,0.22);  border-color:rgba(232,152,144,0.32); }
 
+/* ─── CYBER LUMINA ─── */
+.cyber-bar { position:fixed; top:0; left:0; right:0; z-index:950; height:38px; display:flex; align-items:center; justify-content:center; padding:0 16px; background:linear-gradient(90deg,#B76E79,#E8B4B8); }
+.cyber-bar a { color:#1E1818; font-family:'Sora',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cyber-bar a:hover { text-decoration:underline; }
+nav { top:38px !important; }
+body.no-cyber nav { top:0 !important; }
+@media(max-width:900px){ .cyber-bar a { font-size:10px; letter-spacing:.8px; } }
+
 /* ─── NAV ─── */
 /* Starts transparent over dark hero, then becomes light on scroll */
 nav {
@@ -1004,6 +1012,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="star4" viewBox="0 0 24 36"><path d="M12 0C12.8 10 14 12 24 18C14 24 12.8 26 12 36C11.2 26 10 24 0 18C10 12 11.2 10 12 0Z"/></symbol>
 </svg>
+
+<!-- CYBER LUMINA -->
+<div class="cyber-bar" role="region" aria-label="Promoción Cyber Lumina">
+  <a href="/planes" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'promo_click',location:'cyber_bar',promo:'cyber_lumina',clinica:'lumina'})">✦ Cyber Lumina · Hasta 30% de descuento en planes seleccionados · Hasta el mié 7 oct →</a>
+</div>
+<script>(function(){var b=document.querySelector('.cyber-bar');if(b&&Date.now()>Date.parse('2026-10-07T23:59:59-03:00')){b.remove();document.body.classList.add('no-cyber');}})();</script>
 
 <!-- NAV -->
 <nav id="mainNav">
