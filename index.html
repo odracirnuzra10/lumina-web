@@ -107,6 +107,7 @@ body { font-family:'Sora',sans-serif; background:var(--petal); color:var(--ink);
 .cyber-bar a { color:#1E1818; font-family:'Sora',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .cyber-bar a:hover { text-decoration:underline; }
 nav { top:38px !important; }
+body.no-cyber nav { top:0 !important; }
 @media(max-width:900px){ .cyber-bar a { font-size:10px; letter-spacing:.8px; } }
 
 /* ─── NAV ─── */
@@ -1014,8 +1015,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 
 <!-- CYBER LUMINA -->
 <div class="cyber-bar" role="region" aria-label="Promoción Cyber Lumina">
-  <a href="/planes" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'promo_click',location:'cyber_bar',promo:'cyber_lumina',clinica:'lumina'})">✦ Cyber Lumina · Hasta 30% de descuento en planes seleccionados →</a>
+  <a href="/planes" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'promo_click',location:'cyber_bar',promo:'cyber_lumina',clinica:'lumina'})">✦ Cyber Lumina · Hasta 30% de descuento en planes seleccionados · Hasta el mié 7 oct →</a>
 </div>
+<script>(function(){var b=document.querySelector('.cyber-bar');if(b&&Date.now()>Date.parse('2026-10-07T23:59:59-03:00')){b.remove();document.body.classList.add('no-cyber');}})();</script>
 
 <!-- NAV -->
 <nav id="mainNav">
