@@ -2477,6 +2477,11 @@
 }
 </script>
 <!-- /PUENTE-AEO-GRAPH -->
+<script>
+/* Atribución de primer toque de la sesión (UTM, gclid, fbclid, página de entrada).
+   La lee /evaluacion al enviar el lead. Misma clave y forma que /franquicia. */
+window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window.sessionStorage,c=s.getItem(K);if(c)return JSON.parse(c);var q=new URLSearchParams(location.search),d={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(p){var v=q.get(p);if(v)d[p]=v});d.landing_page=location.pathname;d.landing_referrer=document.referrer||'';s.setItem(K,JSON.stringify(d));return d}catch(e){return{}}};window.luminaAttr();
+</script>
 </head>
 
 <body>
@@ -2846,9 +2851,13 @@
 
     // Embudo del wizard: un evento por paso alcanzado + las respuestas de salud,
     // siempre con la variante, para comparar dónde se cae la gente en cada orden.
+    // Va al dataLayer (GTM) y a GA4. El Google tag lo carga GTM: el gtag de abajo solo encola
+    // el comando, sin config propia, así que no duplica el page_view.
+    window.gtag = window.gtag || function () { (window.dataLayer = window.dataLayer || []).push(arguments); };
     function evalTrack(nombre, datos) {
       datos = Object.assign({ clinica: 'lumina', salud_orden: saludOrden }, datos || {});
       try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: nombre }, datos)); } catch (e) {}
+      try { gtag('event', nombre, Object.assign({ send_to: 'G-NGW7210RXB' }, datos)); } catch (e) {}
     }
     let selectedSede = '';
     let selectedDay = '';
@@ -3068,7 +3077,7 @@
       evalTrack('salud_respuesta', { respuesta: v });
       ajustarAltoVisor();
       if (stopHtml) {
-        (window.dataLayer = window.dataLayer || []).push({ event: 'evaluacion_no_apta', clinica: 'lumina', motivo: v });
+        evalTrack('evaluacion_no_apta', { motivo: v });
         if (typeof fbq === 'function') fbq('trackCustom', 'evaluacion_no_apta', { clinica: 'lumina', motivo: v });
       } else if (v === 'medicamento') {
         // Aviso + Continuar quedan bajo el pliegue: los trae a la vista.
@@ -3248,6 +3257,15 @@
       const _userAgent = navigator.userAgent || '';
       const _eventTime = Math.floor(Date.now() / 1000);
 
+      // Atribución de origen: primer toque de la sesión (luminaAttr en cada página) + último
+      // toque (la página desde la que se llegó acá). Mismos campos que el payload de Hebe.
+      const _attr = (typeof window.luminaAttr === 'function' ? window.luminaAttr() : {}) || {};
+      const _prevPage = document.referrer || '';
+      let _prevPath = '';
+      try {
+        if (_prevPage && new URL(_prevPage).host === window.location.host) _prevPath = new URL(_prevPage).pathname;
+      } catch (e) {}
+
       // Webhook n8n — payload enriquecido con atribución Meta
       const payload = {
         nombre,
@@ -3268,6 +3286,18 @@
         user_agent: _userAgent,
         event_source_url: window.location.href,
         event_time: _eventTime,
+        // Atribución de origen — qué contenido trajo el lead
+        pagina_origen: _prevPath,
+        referrer: _prevPage,
+        landing_page: _attr.landing_page || '',
+        landing_referrer: _attr.landing_referrer || '',
+        utm_source: _attr.utm_source || '',
+        utm_medium: _attr.utm_medium || '',
+        utm_campaign: _attr.utm_campaign || '',
+        utm_content: _attr.utm_content || '',
+        utm_term: _attr.utm_term || '',
+        gclid: _attr.gclid || '',
+        attr_fbclid: _attr.fbclid || '',
         // Filtro de salud
         salud: saludResumen(),
         salud_revisar: salud === 'medicamento',

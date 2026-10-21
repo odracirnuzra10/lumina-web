@@ -1192,6 +1192,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 }
 </script>
 <!-- /PUENTE-AEO-GRAPH -->
+<script>
+/* Atribución de primer toque de la sesión (UTM, gclid, fbclid, página de entrada).
+   La lee /evaluacion al enviar el lead. Misma clave y forma que /franquicia. */
+window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window.sessionStorage,c=s.getItem(K);if(c)return JSON.parse(c);var q=new URLSearchParams(location.search),d={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(p){var v=q.get(p);if(v)d[p]=v});d.landing_page=location.pathname;d.landing_referrer=document.referrer||'';s.setItem(K,JSON.stringify(d));return d}catch(e){return{}}};window.luminaAttr();
+</script>
 </head>
 <body>
 
