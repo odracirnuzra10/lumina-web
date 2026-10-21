@@ -1,4 +1,7 @@
 (function () {
+  // Atribución de primer toque de la sesión; la lee /evaluacion al enviar el lead.
+  window.luminaAttr = window.luminaAttr || function(){try{var K='lumina_attr',s=window.sessionStorage,c=s.getItem(K);if(c)return JSON.parse(c);var q=new URLSearchParams(location.search),d={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(function(p){var v=q.get(p);if(v)d[p]=v});d.landing_page=location.pathname;d.landing_referrer=document.referrer||'';s.setItem(K,JSON.stringify(d));return d}catch(e){return{}}};
+  window.luminaAttr();
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ clinica: 'lumina' });
   var ham = document.getElementById('hamburger');
