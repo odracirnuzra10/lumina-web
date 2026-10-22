@@ -2008,6 +2008,30 @@
         transform: translateX(-50%);
       }
     }
+    /* Móvil: un solo scroll, el de la página. La columna medía 100dvh con overflow oculto y
+       cada paso tenía scroll propio: el gesto sobre el formulario movía el paso y no la
+       página, y el botón de enviar podía quedar bajo el borde. */
+    @media (max-width: 768px) {
+      .page {
+        height: auto;
+        overflow: visible;
+        overflow-x: clip;
+      }
+
+      .right-col {
+        height: auto;
+        overflow: visible;
+      }
+
+      .right-inner {
+        max-height: none;
+        overflow: visible;
+      }
+
+      .step {
+        overflow: visible;
+      }
+    }
   </style>
 <script type="application/ld+json">
 {
@@ -2285,116 +2309,6 @@
           "position": 2,
           "name": "Evaluación P3",
           "item": "https://www.protocololumina.cl/evaluacion"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.protocololumina.cl/evaluacion#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Qué incluye la Evaluación P3?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Diagnóstico facial presencial de 45 minutos para armar el plan. Incluye análisis facial 3D con IA en el flujo actual. Se paga al confirmar la hora."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto dura?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "45 minutos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto cuesta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "$27.990. Si contratas un plan, se descuenta. No es reembolsable."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué llevar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cara limpia, fármacos, historia de rellenos/toxina/herpes, sede preferida."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Hay compromiso de comprar un plan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo se cotiza el tratamiento?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Después de verte. No por adelantado."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Usan AgendaPro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Reserva en este dominio."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Quién atiende?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Equipo clínico de la sede. Ver /equipo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo confirmo mi hora?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Puedo reagendar por WhatsApp?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Quién responde el WhatsApp de la clínica?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Guardan mi ficha entre sesiones?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Dónde están las sedes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00."
-          }
         }
       ]
     },
@@ -2924,6 +2838,7 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
       updateProgress();
       if (direction === 'forward' && !desdeHistorial) evalTrack('evaluacion_paso', { paso: NOMBRE_PASO[num] });
       ajustarAltoVisor(next);
+      guardarEstado();
       setTimeout(() => prev.classList.remove('exit-left', 'exit-right'), 500);
     }
 
@@ -3350,6 +3265,7 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
         btn.removeAttribute('aria-busy');
         if (ok) {
           window.__leadEnviado = true;
+          borrarEstado();
           // Meta Pixel — Lead: solo cuando n8n confirmó que recibió los datos
           if (typeof fbq === 'function') {
             // ✅ eventID va en el 2do argumento (options), NO dentro de custom data
@@ -3482,6 +3398,81 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
       return true;
     }
 
+    // Recargar a mitad del flujo no borra lo elegido: el estado vive en sessionStorage (solo
+    // esta pestaña) por 30 minutos y se borra apenas n8n confirma el lead.
+    const ESTADO_KEY = 'lumina_eval_estado';
+    const ESTADO_MAX_MS = 30 * 60 * 1000;
+    function guardarEstado() {
+      if (window.__leadEnviado) return;
+      try {
+        sessionStorage.setItem(ESTADO_KEY, JSON.stringify({
+          ts: Date.now(),
+          paso: currentStep,
+          sede: selectedSede,
+          dia: selectedDay,
+          franja: selectedSlot,
+          salud: saludApta ? salud : '',
+          nombre: document.getElementById('inputNombre').value,
+          celular: document.getElementById('inputCelular').value,
+          correo: document.getElementById('inputCorreo').value
+        }));
+      } catch (e) {}
+    }
+    function borrarEstado() {
+      try { sessionStorage.removeItem(ESTADO_KEY); } catch (e) {}
+    }
+    function restaurarEstado() {
+      let e = null;
+      try { e = JSON.parse(sessionStorage.getItem(ESTADO_KEY) || 'null'); } catch (err) {}
+      if (!e || !e.sede || Date.now() - e.ts > ESTADO_MAX_MS) return;
+      const card = [...document.querySelectorAll('.sede-card')].find(c => c.dataset.sede === e.sede);
+      if (!card) return;
+      selectedSede = e.sede;
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      // Los días se generan desde mañana: si el día guardado ya no está, se vuelve a elegir.
+      const dia = [...document.querySelectorAll('.day-btn')].find(b => b.dataset.day === e.dia);
+      const franja = [...document.querySelectorAll('.slot-btn')].find(b => b.dataset.slot === e.franja);
+      if (dia && franja) {
+        dia.classList.add('selected');
+        franja.classList.add('selected');
+        selectedDay = e.dia;
+        selectedSlot = e.franja;
+      }
+      const btnSalud = e.salud && document.querySelector('#saludQ [data-v="' + e.salud + '"]');
+      if (btnSalud) {
+        salud = e.salud;
+        saludApta = true;
+        btnSalud.classList.add('selected');
+        btnSalud.setAttribute('aria-pressed', 'true');
+        if (salud === 'medicamento') {
+          document.querySelector('.salud-ninguna-btn').classList.add('is-quiet');
+          const nota = document.getElementById('saludNota');
+          nota.innerHTML = SALUD_NOTA;
+          nota.hidden = false;
+          document.getElementById('saludNext').hidden = false;
+        }
+      }
+      document.getElementById('inputNombre').value = e.nombre || '';
+      document.getElementById('inputCelular').value = e.celular || '';
+      document.getElementById('inputCorreo').value = e.correo || '';
+      // Vuelve al primer paso que falte completar, sin pasar del paso en que estaba.
+      const posGuardado = ORDEN_PASOS.indexOf(e.paso);
+      const completo = p => p === 1 ? !!selectedSede
+        : p === 2 ? !!(selectedDay && selectedSlot)
+        : p === 2.2 ? saludApta
+        : p === 2.5 ? posGuardado > ORDEN_PASOS.indexOf(2.5)
+        : false;
+      let destino = ORDEN_PASOS.find(p => !completo(p));
+      if (ORDEN_PASOS.indexOf(destino) > posGuardado && posGuardado >= 0) destino = e.paso;
+      if (!destino || destino === 1) return;
+      pasoMax = Math.max(pasoMax, ORDEN_PASOS.indexOf(destino));
+      goToStep(destino, 'forward', true);
+      try { history.replaceState({ wizardPaso: destino }, ''); } catch (err) {}
+    }
+    ['inputNombre', 'inputCelular', 'inputCorreo'].forEach(id => document.getElementById(id).addEventListener('input', guardarEstado));
+    if (!new URLSearchParams(location.search).get('sede')) restaurarEstado();
+
     // Ruta alternativa: quien prefiere coordinar por WhatsApp en vez de pagar en línea
     function skipToWhatsapp() {
       document.getElementById('successTitulo').textContent = EXITO_TITULO;
@@ -3591,22 +3582,4 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
 })();
 </script>
 <p style="text-align:center;font-size:11px;opacity:.65;padding:12px"><span style="font-size:10px;opacity:.7">Agenda gestionada con <a href="https://clinera.io" rel="noopener" style="color:inherit;text-decoration:underline">Clinera</a></span></p>
-<section id="faq" class="faq-ops" style="max-width:720px;margin:48px auto;padding:24px 20px;border-top:1px solid #e5e5e5">
-<h2 style="font-size:1.4rem;margin-bottom:16px">Preguntas frecuentes</h2>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee" open><summary style="cursor:pointer;font-weight:600">¿Qué incluye la Evaluación P3?</summary><p style="margin:10px 0 0;line-height:1.6">Diagnóstico facial presencial de 45 minutos para armar el plan. Incluye análisis facial 3D con IA en el flujo actual. Se paga al confirmar la hora.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cuánto dura?</summary><p style="margin:10px 0 0;line-height:1.6">45 minutos.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cuánto cuesta?</summary><p style="margin:10px 0 0;line-height:1.6">$27.990. Si contratas un plan, se descuenta. No es reembolsable.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Qué llevar?</summary><p style="margin:10px 0 0;line-height:1.6">Cara limpia, fármacos, historia de rellenos/toxina/herpes, sede preferida.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Hay compromiso de comprar un plan?</summary><p style="margin:10px 0 0;line-height:1.6">No.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cómo se cotiza el tratamiento?</summary><p style="margin:10px 0 0;line-height:1.6">Después de verte. No por adelantado.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Usan AgendaPro?</summary><p style="margin:10px 0 0;line-height:1.6">No. Reserva en este dominio.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Quién atiende?</summary><p style="margin:10px 0 0;line-height:1.6">Equipo clínico de la sede. Ver /equipo.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Cómo confirmo mi hora?</summary><p style="margin:10px 0 0;line-height:1.6">Recibes confirmación automática por WhatsApp. La envía AURA, el asistente de IA de Clinera que gestiona nuestra agenda.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Puedo reagendar por WhatsApp?</summary><p style="margin:10px 0 0;line-height:1.6">Sí, responde al mensaje de confirmación y el asistente te ofrece horarios disponibles.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Quién responde el WhatsApp de la clínica?</summary><p style="margin:10px 0 0;line-height:1.6">Un asistente de IA atiende consultas de horarios y ubicación. Las evaluaciones y dudas clínicas las responde el equipo.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Guardan mi ficha entre sesiones?</summary><p style="margin:10px 0 0;line-height:1.6">Sí, cada sesión queda registrada con notas del profesional y evolución del tratamiento.</p></details>
-<details style="margin:0 0 10px;padding:12px 0;border-bottom:1px solid #eee"><summary style="cursor:pointer;font-weight:600">¿Dónde están las sedes?</summary><p style="margin:10px 0 0;line-height:1.6">Vitacura: Los Abedules 3085, Of. 105, Edificio Nueva Vitacura. Concón: Las Pelargonias 842, Oficina 1114, piso 11. Los Ángeles: Av. Gabriela Mistral 269. Horario: lun–vie 10:00–20:00, sáb 09:00–19:00.</p></details>
-<p class="aeo-eeat" style="margin-top:16px;font-size:13px;opacity:.75">Revisado por Equipo clínico Protocolo Lumina · Actualizado 2026-09-03</p>
-<p style="margin-top:18px"><a href="/clinica/como-confirmamos-tu-hora-por-whatsapp">Cómo confirmamos tu hora por WhatsApp</a></p>
-</section>
 </body></html>
