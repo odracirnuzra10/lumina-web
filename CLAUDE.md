@@ -11,6 +11,16 @@ Repo `lumina-web`. Sitio estático de [protocololumina.cl](https://www.protocolo
 - **Hand-pages** (no las toca el generador): `index.html`, `planes.html`, `tratamientos/index.html`, `resultados.html`, `evaluacion/index.html`, `franquicia/index.html`, `fundador/index.html`, `capacitacion/index.html`, las 3 `/clinica/*`, `404.html`.
 - Fechas JSON-LD: `scripts/schema_dates.py` (`format_schema_date`, zona `America/Santiago`). No inventar el día.
 
+## /evaluacion: breve, sin scroll
+
+El wizard de `/evaluacion` existe para que la paciente deje sus datos sin hacer scroll. **Nunca extiendas el largo vertical de la página ni de sus pasos.** Vale para cualquier cambio de UX/UI, SEO o AEO.
+
+- Nada de bloques nuevos dentro, entre o debajo de los pasos: FAQ, testimonios, texto SEO/AEO, banners, carruseles ni secciones de confianza.
+- El contenido nuevo va en otra página (`/preguntas-frecuentes` vía `scripts/aeo_pages_6.py`, `/clinica/*`, fichas de sede) y se enlaza desde allá, no desde el wizard.
+- `/evaluacion` no lleva `FAQPage`. Las preguntas de agendamiento viven en `/preguntas-frecuentes`.
+- Un paso o un campo nuevo en el formulario necesita aprobación explícita de Ricardo.
+- Antes de abrir un PR que toque `/evaluacion`, compara en 375x667 contra `main`: ningún paso puede quedar más alto.
+
 ## Commits
 
 Español, **imperativo** (`Corrige…`, `Agrega…`, `Quita…`). No mezclar inglés.
