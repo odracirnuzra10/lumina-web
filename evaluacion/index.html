@@ -643,6 +643,27 @@
       line-height: 1.2;
     }
 
+    /* Los Ángeles no abre los sábados: el día se ve, pero «full de evaluaciones». */
+    .day-btn.is-full,
+    .day-btn.is-full:hover {
+      border-color: #ececec;
+      background: #f5f5f5;
+      color: #8a8a8a;
+      cursor: not-allowed;
+    }
+
+    .day-btn.is-full .day-num {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      line-height: 1;
+      height: 1.44rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .slot-label {
       font-size: 0.76rem;
       color: var(--text-sec);
@@ -3076,6 +3097,7 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
       el.classList.add('selected');
       el.setAttribute('aria-pressed', 'true');
       selectedSede = el.dataset.sede;
+      aplicarCierreSede();
 
       // Meta Pixel — ViewContent (paso 1 → paso 2)
       if (typeof fbq === 'function') {
@@ -3114,7 +3136,45 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
     }
     generateDays();
 
+    // Los Ángeles no abre los sábados: ese día queda «full de evaluaciones» y no se puede elegir.
+    const SEDES_SIN_SABADO = ['losangeles'];
+    const SUB_DIAS = 'Selecciona tu preferencia y te lo confirmamos.';
+    let avisoFullTimer = 0;
+    function aplicarCierreSede() {
+      const cierra = SEDES_SIN_SABADO.indexOf(sedeSlug[selectedSede]) !== -1;
+      document.querySelectorAll('#dayGrid .day-btn').forEach(b => {
+        const num = b.querySelector('.day-num');
+        if (!num) return;
+        if (!num.dataset.n) num.dataset.n = num.textContent;
+        const full = cierra && (b.dataset.day || '').indexOf('SÁB') === 0;
+        b.classList.toggle('is-full', full);
+        num.textContent = full ? 'Full' : num.dataset.n;
+        if (full) {
+          b.setAttribute('aria-disabled', 'true');
+          b.setAttribute('aria-label', 'Sábado ' + num.dataset.n + ': full de evaluaciones');
+          b.title = 'Full de evaluaciones';
+          if (b.classList.contains('selected')) {
+            b.classList.remove('selected');
+            selectedDay = '';
+          }
+        } else {
+          b.removeAttribute('aria-disabled');
+          b.removeAttribute('aria-label');
+          b.removeAttribute('title');
+        }
+      });
+    }
+    function avisoFull(mostrar) {
+      const sub = document.querySelector('#step2 .step-sub');
+      if (!sub) return;
+      clearTimeout(avisoFullTimer);
+      sub.textContent = mostrar ? 'Sábado full de evaluaciones. Elige otro día.' : SUB_DIAS;
+      if (mostrar) avisoFullTimer = setTimeout(() => avisoFull(false), 4000);
+    }
+
     function selectDay(el) {
+      if (el.classList.contains('is-full')) { avisoFull(true); return; }
+      avisoFull(false);
       document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('selected'));
       el.classList.add('selected');
       selectedDay = el.dataset.day;
@@ -3623,8 +3683,9 @@ window.luminaAttr=window.luminaAttr||function(){try{var K='lumina_attr',s=window
       selectedSede = e.sede;
       card.classList.add('selected');
       card.setAttribute('aria-pressed', 'true');
+      aplicarCierreSede();
       // Los días se generan desde mañana: si el día guardado ya no está, se vuelve a elegir.
-      const dia = [...document.querySelectorAll('.day-btn')].find(b => b.dataset.day === e.dia);
+      const dia = [...document.querySelectorAll('.day-btn:not(.is-full)')].find(b => b.dataset.day === e.dia);
       const franja = [...document.querySelectorAll('.slot-btn')].find(b => b.dataset.slot === e.franja);
       if (dia && franja) {
         dia.classList.add('selected');
